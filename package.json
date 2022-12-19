@@ -1,0 +1,26 @@
+{
+  "name": "papasi",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": {
+    "name": "papasi",
+    "email": "post@papasi.io",
+    "url": "https://papasi.io"
+  },
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/papasi-io/papasi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/papasi-io/papasi.git/issues"
+  },
+  "homepage": "https://github.com/papasi-io/papasi.git#readme",
+  "scripts": {
+    "version": "node -p \"require('./package.json').version\"",
+    "changelog": "conventional-changelog -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
+  },
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {}
+}

@@ -1,0 +1,22 @@
+<!--begin::Menu toggle-->
+<a href="#" class="@ToggleBtnClass" data-swap-menu-trigger="@Trigger" data-swap-menu-attach="parent" data-swap-menu-placement="@MenuPlacement">
+    @((MarkupString)Theme.getSvgIcon("duotune/general/gen060.svg", "theme-light-show "+@ToggleBtnIconClass))
+    @((MarkupString)Theme.getSvgIcon("duotune/general/gen061.svg", "theme-dark-show "+@ToggleBtnIconClass))
+</a>
+<!--begin::Menu toggle-->
+
+<__Menu></__Menu>
+
+@code {
+    [Parameter]
+    public string ToggleBtnClass { get; set; } = "";
+
+    [Parameter]
+    public string MenuPlacement { get; set; } = "bottom-end";
+    
+    [Parameter]
+    public string ToggleBtnIconClass { get; set; } = "svg-icon svg-icon-2";
+    
+    [Parameter]
+    public string Trigger { get; set; } = "{default:'click', lg: 'hover'}";
+}

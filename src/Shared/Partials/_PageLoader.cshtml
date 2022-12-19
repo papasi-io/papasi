@@ -1,0 +1,15 @@
+@using Papasi.Theme.libs;
+
+@inject ITheme Theme;
+
+<!--begin::Page loader-->
+<div class="app-page-loader flex-column">
+	<img alt="Logo" src='@Theme.getAssetPath("media/logos/default.svg")' class="theme-light-show h-70px" />
+	<img alt="Logo" src='@Theme.getAssetPath("media/logos/default-dark.svg")' class="theme-dark-show h-70px" />
+
+	<div class="d-flex align-items-center mt-10">
+		<span class="spinner-border text-primary" role="status"></span>
+		<span class="text-muted fs-6 fw-semibold ms-5">Loading...</span>
+	</div>
+</div>
+<!--end::Page loader-->
