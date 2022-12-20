@@ -1,3 +1,3 @@
-# Papasi Decentralized Exchanges 
+# Decentralized Exchanges 
 Powered by Blockcore Atomic Swaps
 
