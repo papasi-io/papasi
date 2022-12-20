@@ -1,3 +1,3 @@
-# Decentralized Exchanges 
+# Decentralized Exchange
 Powered by Blockcore Atomic Swaps
 
