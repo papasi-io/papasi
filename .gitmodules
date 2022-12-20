@@ -1,0 +1,3 @@
+[submodule "papasi-lists"]
+	path = papasi-lists
+	url = https://github.com/papasi-io/papasi-lists
