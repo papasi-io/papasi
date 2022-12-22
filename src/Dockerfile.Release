@@ -6,7 +6,7 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN wget -qO- https://github.com/papasi.io/papasi/releases/download/#{VERSION}#/Papasi-#{VERSION}#-linux-x64.tar.gz | tar xvz
-
+RUN wget -c https://github.com/papasi.io/papasi/releases/download/#{VERSION}#/Papasi-#{VERSION}#-linux-x64.tar.gz -O - | sudo tar -xz
+    
 EXPOSE 5500
 ENTRYPOINT ["dotnet", "Papasi.dll"]
