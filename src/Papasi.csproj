@@ -7,7 +7,6 @@
 		<RunAOTCompilation>true</RunAOTCompilation>
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 		<DockerfileContext>.</DockerfileContext>
-		<PublishIISAssets>true</PublishIISAssets>
 	</PropertyGroup>
 
 	<ItemGroup>
