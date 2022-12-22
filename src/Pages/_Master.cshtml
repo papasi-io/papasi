@@ -65,15 +65,11 @@
 
 <script src="_framework/blazor.server.js" autostart="false"></script>
 <script>
-  Blazor.start({
-    configureSignalR: function (builder) {
-      let c = builder.build();
-      c.serverTimeoutInMilliseconds = 60000;
-      builder.build = () => {
-        return c;
-      };
-    }
-  });
+    (function start() {
+        Blazor.start({
+            configureSignalR: builder => builder.withUrl('_blazor', 1 | 4) // WebSockets and Long Polling
+        });
+    })()
 </script>
 </!body>
 <!--end::Body-->

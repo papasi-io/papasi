@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http.Connections;
 using Papasi.Data;
 using Papasi.Theme;
 using Papasi.Theme.libs;
@@ -36,7 +37,12 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 
 app.UseRouting();
-app.MapBlazorHub();
+
+app.MapBlazorHub(configureOptions: options =>
+{
+	options.Transports = HttpTransportType.WebSockets | HttpTransportType.LongPolling;
+});
+
 app.MapFallbackToPage("/_Host");
 
 app.Run();
