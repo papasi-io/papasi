@@ -12,6 +12,7 @@ builder.Services.AddServerSideBlazor()
 		options.ClientTimeoutInterval = TimeSpan.FromSeconds(60);
 		options.HandshakeTimeout = TimeSpan.FromSeconds(30);
 	});
+
 builder.Services.AddHttpClient();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddSingleton<ITheme, Theme>();
