@@ -7,12 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddServerSideBlazor()
-	.AddHubOptions(options =>
-	{
-		options.ClientTimeoutInterval = TimeSpan.FromSeconds(60);
-		options.HandshakeTimeout = TimeSpan.FromSeconds(30);
-	});
+builder.Services.AddServerSideBlazor();
 
 builder.Services.AddHttpClient();
 builder.Services.AddSingleton<WeatherForecastService>();
@@ -38,10 +33,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.MapBlazorHub(configureOptions: options =>
-{
-	options.Transports = HttpTransportType.WebSockets | HttpTransportType.LongPolling;
-});
+app.MapBlazorHub();
 
 app.MapFallbackToPage("/_Host");
 
