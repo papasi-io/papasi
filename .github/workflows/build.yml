@@ -31,7 +31,7 @@ jobs:
     env:
       PROJECT_NAME: 'Papasi'
       SOLUTION_PATH: 'src/Papasi.sln'
-      PROJECT_PATH: 'src/Papasi.csproj'
+      PROJECT_PATH: 'src/Papasi/Papasi.csproj'
       BUILD_CONFIGURATION: 'Release'
 
     steps:
