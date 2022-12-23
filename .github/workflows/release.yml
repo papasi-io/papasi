@@ -32,9 +32,9 @@ jobs:
           VERSION: ${{ github.event.release.tag_name }}
 
       - name: Build the Docker container image for Papasi
-        run: docker build -f "./src/Dockerfile.Release" -t miladsoft/papasi:latest -t miladsoft/papasi:${{ github.event.release.tag_name }} --label "unstable=true" "."
+        run: docker build -f "./src/Dockerfile.Release" -t papasi/papasi-io:latest -t papasi/papasi-io:${{ github.event.release.tag_name }} --label "unstable=true" "."
 
       - name: Login and Push to Docker Registry
         run: |
-          docker login -u "miladsoft" -p "${{secrets.DOCKER_KEY}}"
-          docker push --all-tags miladsoft/papasi
+          docker login -u "papasi" -p "${{secrets.DOCKER_KEY}}"
+          docker push --all-tags papasi/papasi-io
