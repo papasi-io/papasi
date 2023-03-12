@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Http.Connections;
 using Papasi.Data;
+using Papasi.Models;
+using Papasi.Models.Mappings;
 using Papasi.Theme;
 using Papasi.Theme.libs;
 
@@ -14,13 +16,22 @@ builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddSingleton<ITheme, Theme>();
 builder.Services.AddSingleton<IBootstrapBase, BootstrapBase>();
 
+
 IConfiguration configuration = new ConfigurationBuilder()
+							.AddJsonFile("appsettings.json")
+							.Build();
+builder.Services.AddOptions<AdminUserSeed>().Bind(configuration.GetSection("AdminUserSeed"));
+builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
+var connectionString = configuration.GetConnectionString("DefaultConnection");
+
+
+IConfiguration themeConfiguration = new ConfigurationBuilder()
 							.AddJsonFile("themesettings.json")
 							.Build();
+ThemeSettings.init(themeConfiguration);
 
 var app = builder.Build();
 
-ThemeSettings.init(configuration);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

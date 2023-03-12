@@ -1,10 +1,11 @@
 
 @page "/"
+
 @using Papasi.Theme.libs;
 
 @inject ITheme Theme;
 
-@layout Layout.Auth;
+@layout Layout.WithoutSidebar;
 
 
 <!--begin::Heading-->
@@ -29,7 +30,7 @@
 		<!--begin::Blockcore Wallet link--->
 		<a href="https://chrome.google.com/webstore/detail/blockcore-wallet/peigonhbenoefaeplkpalmafieegnapj" class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
 			<img alt="Logo" src='@Theme.getAssetPath("media/icons/blockcore-wallet.png")' class="h-15px me-3" />
-			Blockcore Wallet
+			Download Wallet
 		</a>
 		<!--end::Blockcore Wallet link--->
 	</div>
@@ -37,9 +38,9 @@
 	<!--begin::Col-->
 	<div class="col-md-6">
 		<!--begin::Blockcore Atomic Swaps service providers list link--->
-		<a href="#" class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
+		<a href="/market/providers" class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
 			<img alt="Logo" src='@Theme.getAssetPath("media/icons/blockcore-atomic-swap.png")' class="h-15px me-3" />
-			Blockcore Atomic Swaps
+			Atomic Swaps Providers
 		</a>
 		<!--end::Blockcore Atomic Swaps service providers list link--->
 	</div>
