@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Http.Connections;
 using Papasi.Data;
 using Papasi.Models;
@@ -21,6 +22,9 @@ IConfiguration configuration = new ConfigurationBuilder()
 							.AddJsonFile("appsettings.json")
 							.Build();
 builder.Services.AddOptions<AdminUserSeed>().Bind(configuration.GetSection("AdminUserSeed"));
+
+builder.Services.AddOptions<Providers>().Bind(configuration.GetSection("Providers"));
+
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 var connectionString = configuration.GetConnectionString("DefaultConnection");
 
