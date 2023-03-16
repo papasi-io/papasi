@@ -1,58 +1,129 @@
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Http.Connections;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Papasi.Areas.Cabin;
 using Papasi.Data;
+using Papasi.DataAccess;
+using Papasi.DataAccess.Utils;
+using Papasi.Entities;
 using Papasi.Models;
 using Papasi.Models.Mappings;
+using Papasi.Services;
 using Papasi.Theme;
 using Papasi.Theme.libs;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-builder.Services.AddRazorPages();
-builder.Services.AddServerSideBlazor();
-
-builder.Services.AddHttpClient();
-builder.Services.AddSingleton<WeatherForecastService>();
-builder.Services.AddSingleton<ITheme, Theme>();
-builder.Services.AddSingleton<IBootstrapBase, BootstrapBase>();
+ConfigureLogging(builder.Logging, builder.Environment, builder.Configuration);
+ConfigureServices(builder.Services, builder.Configuration);
+var webApp = builder.Build();
+ConfigureMiddlewares(webApp, webApp.Environment);
+ConfigureEndpoints(webApp);
+ConfigureDatabase(webApp);
+webApp.Run();
 
 
-IConfiguration configuration = new ConfigurationBuilder()
-							.AddJsonFile("appsettings.json")
-							.Build();
-builder.Services.AddOptions<AdminUserSeed>().Bind(configuration.GetSection("AdminUserSeed"));
-
-builder.Services.AddOptions<Providers>().Bind(configuration.GetSection("Providers"));
-
-builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
-var connectionString = configuration.GetConnectionString("DefaultConnection");
-
-
-IConfiguration themeConfiguration = new ConfigurationBuilder()
-							.AddJsonFile("themesettings.json")
-							.Build();
-ThemeSettings.init(themeConfiguration);
-
-var app = builder.Build();
-
-
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+void ConfigureServices(IServiceCollection services, IConfiguration configuration)
 {
-	app.UseExceptionHandler("/Error");
+    services.AddOptions<AdminUserSeed>().Bind(configuration.GetSection("AdminUserSeed"));
+
+    services.AddAutoMapper(typeof(MappingProfile).Assembly);
+
+    var connectionString = configuration.GetConnectionString("DefaultConnection");
+
+    // NOTE! this method of registering the db-context doesn't work with blazor-server apps!
+    //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString))
+
+    services.AddDbContextFactory<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+    services.AddScoped(serviceProvider =>
+                           serviceProvider.GetRequiredService<IDbContextFactory<ApplicationDbContext>>()
+                                          .CreateDbContext());
+
+
+    builder.Services.AddOptions<ProvidersURL>().Bind(configuration.GetSection("Providers"));
+    builder.Services.AddOptions<CoinsURL>().Bind(configuration.GetSection("Coins"));
+
+
+    IConfiguration themeConfiguration = new ConfigurationBuilder()
+                            .AddJsonFile("themesettings.json")
+                            .Build();
+    ThemeSettings.init(themeConfiguration);
+
+    services.AddIdentity<ApplicationUser, IdentityRole>()
+            .AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddDefaultTokenProviders()
+            .AddDefaultUI();
+
+    services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
+    services.AddScoped<IUserInfoService, UserInfoService>();
+    services.AddScoped<IProvidersService, ProvidersService>();
+    services.AddScoped<IMarketService, MarketService>();
+
+
+    services.AddScoped<IIdentityDbInitializer, IdentityDbInitializer>();
+
+    services.AddSingleton<ITheme, Theme>();
+    services.AddSingleton<IBootstrapBase, BootstrapBase>();
+
+
+    services.AddRazorPages();
+    services.AddServerSideBlazor();
 }
 
-
-app.UseStaticFiles();
-
-app.UseRouting();
-
-app.MapBlazorHub(configureOptions: options =>
+void ConfigureLogging(ILoggingBuilder logging, IHostEnvironment env, IConfiguration configuration)
 {
-	options.Transports = HttpTransportType.WebSockets | HttpTransportType.LongPolling;
-});
+    logging.ClearProviders();
 
-app.MapFallbackToPage("/_Host");
+    logging.AddDebug();
 
-app.Run();
+    if (env.IsDevelopment())
+    {
+        logging.AddConsole();
+    }
+
+    logging.AddConfiguration(configuration.GetSection("Logging"));
+}
+
+void ConfigureMiddlewares(IApplicationBuilder app, IHostEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        app.UseDeveloperExceptionPage();
+    }
+    else
+    {
+        app.UseExceptionHandler("/Error");
+        app.UseHsts();
+    }
+
+    app.UseHttpsRedirection();
+    app.UseStaticFiles();
+
+    app.UseRouting();
+
+    app.UseAuthentication();
+    app.UseAuthorization();
+}
+
+void ConfigureEndpoints(IApplicationBuilder app)
+{
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapRazorPages();
+        endpoints.MapBlazorHub();
+        endpoints.MapFallbackToPage("/_Host");
+    });
+}
+
+void ConfigureDatabase(IApplicationBuilder app)
+{
+    app.ApplicationServices.MigrateDbContext<ApplicationDbContext>(
+                                                                   scopedServiceProvider =>
+                                                                       scopedServiceProvider
+                                                                           .GetRequiredService<IIdentityDbInitializer>()
+                                                                           .SeedDatabaseWithAdminUserAsync()
+                                                                           .GetAwaiter()
+                                                                           .GetResult()
+                                                                  );
+}

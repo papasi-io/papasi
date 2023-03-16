@@ -1,0 +1,101 @@
+@using Papasi.Services;
+
+<!--begin::Providers List-->
+<div class="card card-flush h-md-100">
+    <!--begin::Header-->
+    <div class="card-header pt-7">
+        <!--begin::Title-->
+        <h3 class="card-title align-items-start flex-column">
+            <span class="card-label fw-bold text-gray-800">Blockcore Atomic Swaps Provider</span>
+            <span class="text-gray-400 mt-1 fw-semibold fs-6">Count: @Providers.Count()</span>
+        </h3>
+
+        <!--end::Title-->
+        <!--begin::Toolbar-->
+        <div class="card-toolbar">
+            <a href="https://github.com/papasi-io/papasi-lists" target="_blank" class="btn btn-sm btn-light">Apply</a>
+        </div>
+        <!--end::Toolbar-->
+    </div>
+    <!--end::Header-->
+    <!--begin::Body-->
+    <div class="card-body pt-6">
+        <!--begin::Table container-->
+        <div class="table-responsive">
+            <!--begin::Table-->
+            @if (Providers.Count() <= 0)
+            {
+                <div class="d-flex align-items-center m-auto">
+                    <span class="spinner-border text-primary" role="status"></span>
+                    <span class="text-muted fs-6 fw-semibold ms-5">Loading...</span>
+                </div>
+            }
+            else
+            {
+                <table class="table table-row-dashed align-middle gs-0 gy-3 my-0">
+                    <!--begin::Table head-->
+                    <thead>
+                        <tr class="fs-7 fw-bold text-gray-400 border-bottom-0">
+                            <th class="p-0 pb-3 min-w-175px text-start">Provider</th>
+                            <th class="p-0 pb-3 min-w-175px text-end pe-12">STATUS</th>
+                            <th class="p-0 pb-3 w-50px text-end">VIEW</th>
+                        </tr>
+                    </thead>
+                    <!--end::Table head-->
+                    <!--begin::Table body-->
+                    <tbody>
+                        @foreach (var item in Providers)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="symbol symbol-50px me-3">
+                                            <img src='@item.logo' class="" alt="@item.name" />
+                                        </div>
+                                        <div class="d-flex justify-content-start flex-column">
+                                            <a href="#" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">@item.name</a>
+                                            <span class="text-gray-400 fw-semibold d-block fs-7">@item.contact</span>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td class="p-0 pb-3 min-w-175px text-end pe-12">
+                                    @if (@item.isOnline)
+                                    {
+                                        <span class="badge py-3 px-4 fs-7 badge-light-success">Online</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge py-3 px-4 fs-7 badge-light-danger">Offline</span>
+                                    }
+                                </td>
+                                <td class="text-end">
+                                    <a href="@item.url" class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">@((MarkupString)Theme.getSvgIcon("duotune/arrows/arr001.svg", "svg-icon svg-icon-5 svg-icon-gray-700"))</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <!--end::Table body-->
+                </table>
+            }
+
+        </div>
+        <!--end::Table-->
+    </div>
+    <!--end: Card Body-->
+</div>
+<!--end::Providers List-->
+@code {
+
+    [Parameter]
+    public IEnumerable<Models.Providers> Providers { get; set; } = new List<Models.Providers>();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("TablesWidget.init");
+        }
+
+    }
+}

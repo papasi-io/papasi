@@ -5,7 +5,7 @@ var SwapCustomerViewPaymentTable = function () {
 
     // Define shared variables
     var datatable;
-    var table = document.querySelector('#swap_table_customers_payment');
+    var table = document.querySelector('#table_customers_payment');
 
     // Private functions
     var initCustomerView = function () {

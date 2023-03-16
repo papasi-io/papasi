@@ -1,7 +1,17 @@
-namespace Papasi.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public class Providers
+namespace Papasi.Models
 {
-    public string? Allow { get; set; }
-    public string? Deny { get; set; }
+	public class Providers
+	{
+		public string? name { get; set; }
+		public string? url { get; set; }
+		public string? logo { get; set; }
+		public string? contact { get; set; }
+		public bool isOnline { get; set; }
+	}
 }

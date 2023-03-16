@@ -3,28 +3,28 @@
 // Class definition
 var SwapCardsWidget1 = function () {
     // Private methods
-    var initChart = function() {
+    var initChart = function () {
         var element = document.getElementById("swap_card_widget_1_chart");
-        
+
         if (!element) {
             return;
         }
 
         var color = element.getAttribute('data-swap-chart-color');
-        
+
         var height = parseInt(SwapUtil.css(element, 'height'));
-        var labelColor = SwapUtil.getCssVariableValue('--swap-gray-500');         
+        var labelColor = SwapUtil.getCssVariableValue('--swap-gray-500');
         var baseColor = SwapUtil.isHexColor(color) ? color : SwapUtil.getCssVariableValue('--swap-' + color);
-        var secondaryColor = SwapUtil.getCssVariableValue('--swap-gray-300');        
+        var secondaryColor = SwapUtil.getCssVariableValue('--swap-gray-300');
 
         var options = {
             series: [{
                 name: 'Sales',
                 data: [30, 75, 55, 45, 30, 60, 75, 50],
                 margin: {
-					left: 5,
-					right: 5
-				}   
+                    left: 5,
+                    right: 5
+                }
             }],
             chart: {
                 fontFamily: 'inherit',
@@ -55,7 +55,7 @@ var SwapCardsWidget1 = function () {
                 width: 4,
                 colors: ['transparent']
             },
-            xaxis: {                
+            xaxis: {
                 axisBorder: {
                     show: false,
                 },
@@ -68,7 +68,7 @@ var SwapCardsWidget1 = function () {
                         colors: labelColor,
                         fontSize: '12px'
                     }
-                },               
+                },
                 crosshairs: {
                     show: false
                 }
@@ -117,7 +117,7 @@ var SwapCardsWidget1 = function () {
                 },
                 y: {
                     formatter: function (val) {
-                        return val + "%"  
+                        return val + "%"
                     }
                 }
             },
@@ -132,26 +132,26 @@ var SwapCardsWidget1 = function () {
                 },
                 padding: {
                     top: 10,
-					left: 25,
-					right: 25     
-				}               
+                    left: 25,
+                    right: 25
+                }
             }
         };
 
         // Set timeout to properly get the parent elements width
         var chart = new ApexCharts(element, options);
-        
+
         // Set timeout to properly get the parent elements width
-        setTimeout(function() {
-            chart.render();   
-        }, 300);  
+        setTimeout(function () {
+            chart.render();
+        }, 300);
     }
 
     // Public methods
     return {
         init: function () {
             initChart();
-        }   
+        }
     }
 }();
 
@@ -160,18 +160,18 @@ if (typeof module !== 'undefined') {
     window.SwapCardsWidget1 = module.exports = SwapCardsWidget1;
 }
 
-   
-        
-        
-        
-           
+
+
+
+
+
 "use strict";
 
 // Class definition
 var SwapCardsWidget10 = function () {
     // Private methods
-    var initChart = function() {
-        var el = document.getElementById('swap_card_widget_10_chart'); 
+    var initChart = function () {
+        var el = document.getElementById('swap_card_widget_10_chart');
 
         if (!el) {
             return;
@@ -180,14 +180,14 @@ var SwapCardsWidget10 = function () {
         var options = {
             size: el.getAttribute('data-swap-size') ? parseInt(el.getAttribute('data-swap-size')) : 70,
             lineWidth: el.getAttribute('data-swap-line') ? parseInt(el.getAttribute('data-swap-line')) : 11,
-            rotate: el.getAttribute('data-swap-rotate') ? parseInt(el.getAttribute('data-swap-rotate')) : 145,            
+            rotate: el.getAttribute('data-swap-rotate') ? parseInt(el.getAttribute('data-swap-rotate')) : 145,
             //percent:  el.getAttribute('data-swap-percent') ,
         }
 
         var canvas = document.createElement('canvas');
-        var span = document.createElement('span'); 
-            
-        if (typeof(G_vmlCanvasManager) !== 'undefined') {
+        var span = document.createElement('span');
+
+        if (typeof (G_vmlCanvasManager) !== 'undefined') {
             G_vmlCanvasManager.initElement(canvas);
         }
 
@@ -203,7 +203,7 @@ var SwapCardsWidget10 = function () {
         //imd = ctx.getImageData(0, 0, 240, 240);
         var radius = (options.size - options.lineWidth) / 2;
 
-        var drawCircle = function(color, lineWidth, percent) {
+        var drawCircle = function (color, lineWidth, percent) {
             percent = Math.min(Math.max(0, percent || 1), 1);
             ctx.beginPath();
             ctx.arc(0, 0, radius, 0, Math.PI * 2 * percent, false);
@@ -214,16 +214,16 @@ var SwapCardsWidget10 = function () {
         };
 
         // Init 
-        drawCircle('#E4E6EF', options.lineWidth, 100 / 100); 
+        drawCircle('#E4E6EF', options.lineWidth, 100 / 100);
         drawCircle(SwapUtil.getCssVariableValue('--swap-primary'), options.lineWidth, 100 / 150);
-        drawCircle(SwapUtil.getCssVariableValue('--swap-success'), options.lineWidth, 100 / 250);   
+        drawCircle(SwapUtil.getCssVariableValue('--swap-success'), options.lineWidth, 100 / 250);
     }
 
     // Public methods
     return {
         init: function () {
             initChart();
-        }   
+        }
     }
 }();
 
@@ -232,11 +232,11 @@ if (typeof module !== 'undefined') {
     window.SwapCardsWidget10 = module.exports = SwapCardsWidget10;
 }
 
-   
-        
-        
-        
-           
+
+
+
+
+
 "use strict";
 
 // Class definition
@@ -247,14 +247,14 @@ var SwapCardWidget12 = function () {
     };
 
     // Private methods
-    var initChart = function(chart) {
+    var initChart = function (chart) {
         var element = document.getElementById("swap_card_widget_12_chart");
 
         if (!element) {
             return;
         }
 
-        var height = parseInt(SwapUtil.css(element, 'height'));       
+        var height = parseInt(SwapUtil.css(element, 'height'));
         var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
         var baseColor = SwapUtil.getCssVariableValue('--swap-gray-800');
         var lightColor = SwapUtil.getCssVariableValue('--swap-success');
@@ -271,7 +271,7 @@ var SwapCardWidget12 = function () {
                 toolbar: {
                     show: false
                 }
-            },             
+            },
             legend: {
                 show: false
             },
@@ -288,7 +288,7 @@ var SwapCardWidget12 = function () {
                 width: 2,
                 colors: [baseColor]
             },
-            xaxis: {                 
+            xaxis: {
                 axisBorder: {
                     show: false,
                 },
@@ -357,8 +357,8 @@ var SwapCardWidget12 = function () {
                 }
             },
             colors: [lightColor],
-            grid: { 
-                borderColor: borderColor,                 
+            grid: {
+                borderColor: borderColor,
                 strokeDashArray: 4,
                 padding: {
                     top: 0,
@@ -372,19 +372,19 @@ var SwapCardWidget12 = function () {
                     }
                 }
             },
-            markers: {               
+            markers: {
                 strokeColor: baseColor,
                 strokeWidth: 2
             }
-        }; 
+        };
 
         chart.self = new ApexCharts(element, options);
 
         // Set timeout to properly get the parent elements width
-        setTimeout(function() {
+        setTimeout(function () {
             chart.self.render();
             chart.rendered = true;
-        }, 200);   
+        }, 200);
     }
 
     // Public methods
@@ -393,14 +393,14 @@ var SwapCardWidget12 = function () {
             initChart(chart);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
 
                 initChart(chart);
             });
-        }     
+        }
     }
 }();
 
@@ -420,14 +420,14 @@ var SwapCardWidget13 = function () {
     };
 
     // Private methods
-    var initChart = function(chart) {
+    var initChart = function (chart) {
         var element = document.getElementById("swap_card_widget_13_chart");
 
         if (!element) {
             return;
         }
 
-        var height = parseInt(SwapUtil.css(element, 'height'));       
+        var height = parseInt(SwapUtil.css(element, 'height'));
         var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
         var baseColor = SwapUtil.getCssVariableValue('--swap-gray-800');
         var lightColor = SwapUtil.getCssVariableValue('--swap-success');
@@ -444,7 +444,7 @@ var SwapCardWidget13 = function () {
                 toolbar: {
                     show: false
                 }
-            },             
+            },
             legend: {
                 show: false
             },
@@ -461,7 +461,7 @@ var SwapCardWidget13 = function () {
                 width: 2,
                 colors: [baseColor]
             },
-            xaxis: {                 
+            xaxis: {
                 axisBorder: {
                     show: false,
                 },
@@ -530,8 +530,8 @@ var SwapCardWidget13 = function () {
                 }
             },
             colors: [lightColor],
-            grid: {  
-                borderColor: borderColor,                
+            grid: {
+                borderColor: borderColor,
                 strokeDashArray: 4,
                 padding: {
                     top: 0,
@@ -549,15 +549,15 @@ var SwapCardWidget13 = function () {
                 strokeColor: baseColor,
                 strokeWidth: 2
             }
-        }; 
+        };
 
         chart.self = new ApexCharts(element, options);
 
         // Set timeout to properly get the parent elements width
-        setTimeout(function() {
+        setTimeout(function () {
             chart.self.render();
             chart.rendered = true;
-        }, 200); 
+        }, 200);
     }
 
     // Public methods
@@ -566,14 +566,14 @@ var SwapCardWidget13 = function () {
             initChart(chart);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
 
                 initChart(chart);
             });
-        }     
+        }
     }
 }();
 
@@ -587,8 +587,8 @@ if (typeof module !== 'undefined') {
 // Class definition
 var SwapCardsWidget17 = function () {
     // Private methods
-    var initChart = function() {
-        var el = document.getElementById('swap_card_widget_17_chart'); 
+    var initChart = function () {
+        var el = document.getElementById('swap_card_widget_17_chart');
 
         if (!el) {
             return;
@@ -597,14 +597,14 @@ var SwapCardsWidget17 = function () {
         var options = {
             size: el.getAttribute('data-swap-size') ? parseInt(el.getAttribute('data-swap-size')) : 70,
             lineWidth: el.getAttribute('data-swap-line') ? parseInt(el.getAttribute('data-swap-line')) : 11,
-            rotate: el.getAttribute('data-swap-rotate') ? parseInt(el.getAttribute('data-swap-rotate')) : 145,            
+            rotate: el.getAttribute('data-swap-rotate') ? parseInt(el.getAttribute('data-swap-rotate')) : 145,
             //percent:  el.getAttribute('data-swap-percent') ,
         }
 
         var canvas = document.createElement('canvas');
-        var span = document.createElement('span'); 
-            
-        if (typeof(G_vmlCanvasManager) !== 'undefined') {
+        var span = document.createElement('span');
+
+        if (typeof (G_vmlCanvasManager) !== 'undefined') {
             G_vmlCanvasManager.initElement(canvas);
         }
 
@@ -620,7 +620,7 @@ var SwapCardsWidget17 = function () {
         //imd = ctx.getImageData(0, 0, 240, 240);
         var radius = (options.size - options.lineWidth) / 2;
 
-        var drawCircle = function(color, lineWidth, percent) {
+        var drawCircle = function (color, lineWidth, percent) {
             percent = Math.min(Math.max(0, percent || 1), 1);
             ctx.beginPath();
             ctx.arc(0, 0, radius, 0, Math.PI * 2 * percent, false);
@@ -631,16 +631,16 @@ var SwapCardsWidget17 = function () {
         };
 
         // Init 
-        drawCircle('#E4E6EF', options.lineWidth, 100 / 100); 
+        drawCircle('#E4E6EF', options.lineWidth, 100 / 100);
         drawCircle(SwapUtil.getCssVariableValue('--swap-primary'), options.lineWidth, 100 / 150);
-        drawCircle(SwapUtil.getCssVariableValue('--swap-success'), options.lineWidth, 100 / 250);   
+        drawCircle(SwapUtil.getCssVariableValue('--swap-success'), options.lineWidth, 100 / 250);
     }
 
     // Public methods
     return {
         init: function () {
             initChart();
-        }   
+        }
     }
 }();
 
@@ -649,18 +649,18 @@ if (typeof module !== 'undefined') {
     window.SwapCardsWidget17 = module.exports = SwapCardsWidget17;
 }
 
-   
-        
-        
-        
-           
+
+
+
+
+
 "use strict";
 
 // Class definition
 var SwapCardsWidget19 = function () {
     // Private methods
-    var initChart = function() {
-        var el = document.getElementById('swap_card_widget_19_chart'); 
+    var initChart = function () {
+        var el = document.getElementById('swap_card_widget_19_chart');
 
         if (!el) {
             return;
@@ -669,14 +669,14 @@ var SwapCardsWidget19 = function () {
         var options = {
             size: el.getAttribute('data-swap-size') ? parseInt(el.getAttribute('data-swap-size')) : 70,
             lineWidth: el.getAttribute('data-swap-line') ? parseInt(el.getAttribute('data-swap-line')) : 11,
-            rotate: el.getAttribute('data-swap-rotate') ? parseInt(el.getAttribute('data-swap-rotate')) : 145,            
+            rotate: el.getAttribute('data-swap-rotate') ? parseInt(el.getAttribute('data-swap-rotate')) : 145,
             //percent:  el.getAttribute('data-swap-percent') ,
         }
 
         var canvas = document.createElement('canvas');
-        var span = document.createElement('span'); 
-            
-        if (typeof(G_vmlCanvasManager) !== 'undefined') {
+        var span = document.createElement('span');
+
+        if (typeof (G_vmlCanvasManager) !== 'undefined') {
             G_vmlCanvasManager.initElement(canvas);
         }
 
@@ -692,7 +692,7 @@ var SwapCardsWidget19 = function () {
         //imd = ctx.getImageData(0, 0, 240, 240);
         var radius = (options.size - options.lineWidth) / 2;
 
-        var drawCircle = function(color, lineWidth, percent) {
+        var drawCircle = function (color, lineWidth, percent) {
             percent = Math.min(Math.max(0, percent || 1), 1);
             ctx.beginPath();
             ctx.arc(0, 0, radius, 0, Math.PI * 2 * percent, false);
@@ -703,16 +703,16 @@ var SwapCardsWidget19 = function () {
         };
 
         // Init 
-        drawCircle('#E4E6EF', options.lineWidth, 100 / 100); 
+        drawCircle('#E4E6EF', options.lineWidth, 100 / 100);
         drawCircle(SwapUtil.getCssVariableValue('--swap-primary'), options.lineWidth, 100 / 150);
-        drawCircle(SwapUtil.getCssVariableValue('--swap-success'), options.lineWidth, 100 / 250);   
+        drawCircle(SwapUtil.getCssVariableValue('--swap-success'), options.lineWidth, 100 / 250);
     }
 
     // Public methods
     return {
         init: function () {
             initChart();
-        }   
+        }
     }
 }();
 
@@ -721,18 +721,18 @@ if (typeof module !== 'undefined') {
     window.SwapCardsWidget19 = module.exports = SwapCardsWidget19;
 }
 
-   
-        
-        
-        
-           
+
+
+
+
+
 "use strict";
 
 // Class definition
 var SwapCardsWidget4 = function () {
     // Private methods
-    var initChart = function() {
-        var el = document.getElementById('swap_card_widget_4_chart'); 
+    var initChart = function () {
+        var el = document.getElementById('swap_card_widget_4_chart');
 
         if (!el) {
             return;
@@ -741,14 +741,14 @@ var SwapCardsWidget4 = function () {
         var options = {
             size: el.getAttribute('data-swap-size') ? parseInt(el.getAttribute('data-swap-size')) : 70,
             lineWidth: el.getAttribute('data-swap-line') ? parseInt(el.getAttribute('data-swap-line')) : 11,
-            rotate: el.getAttribute('data-swap-rotate') ? parseInt(el.getAttribute('data-swap-rotate')) : 145,            
+            rotate: el.getAttribute('data-swap-rotate') ? parseInt(el.getAttribute('data-swap-rotate')) : 145,
             //percent:  el.getAttribute('data-swap-percent') ,
         }
 
         var canvas = document.createElement('canvas');
-        var span = document.createElement('span'); 
-            
-        if (typeof(G_vmlCanvasManager) !== 'undefined') {
+        var span = document.createElement('span');
+
+        if (typeof (G_vmlCanvasManager) !== 'undefined') {
             G_vmlCanvasManager.initElement(canvas);
         }
 
@@ -764,7 +764,7 @@ var SwapCardsWidget4 = function () {
         //imd = ctx.getImageData(0, 0, 240, 240);
         var radius = (options.size - options.lineWidth) / 2;
 
-        var drawCircle = function(color, lineWidth, percent) {
+        var drawCircle = function (color, lineWidth, percent) {
             percent = Math.min(Math.max(0, percent || 1), 1);
             ctx.beginPath();
             ctx.arc(0, 0, radius, 0, Math.PI * 2 * percent, false);
@@ -775,16 +775,16 @@ var SwapCardsWidget4 = function () {
         };
 
         // Init 
-        drawCircle('#E4E6EF', options.lineWidth, 100 / 100); 
+        drawCircle('#E4E6EF', options.lineWidth, 100 / 100);
         drawCircle(SwapUtil.getCssVariableValue('--swap-danger'), options.lineWidth, 100 / 150);
-        drawCircle(SwapUtil.getCssVariableValue('--swap-primary'), options.lineWidth, 100 / 250);   
+        drawCircle(SwapUtil.getCssVariableValue('--swap-primary'), options.lineWidth, 100 / 250);
     }
 
     // Public methods
     return {
         init: function () {
             initChart();
-        }   
+        }
     }
 }();
 
@@ -793,17 +793,17 @@ if (typeof module !== 'undefined') {
     window.SwapCardsWidget4 = module.exports = SwapCardsWidget4;
 }
 
-   
-        
-        
-        
-           
+
+
+
+
+
 "use strict";
 
 // Class definition
 var SwapCardsWidget6 = function () {
     // Private methods
-    var initChart = function() {
+    var initChart = function () {
         var element = document.getElementById("swap_card_widget_6_chart");
 
         if (!element) {
@@ -820,7 +820,7 @@ var SwapCardsWidget6 = function () {
             series: [{
                 name: 'Sales',
                 data: [30, 60, 53, 45, 60, 75, 53]
-            }, ],
+            },],
             chart: {
                 fontFamily: 'inherit',
                 type: 'bar',
@@ -850,7 +850,7 @@ var SwapCardsWidget6 = function () {
                 width: 9,
                 colors: ['transparent']
             },
-            xaxis: {                
+            xaxis: {
                 axisBorder: {
                     show: false,
                 },
@@ -913,7 +913,7 @@ var SwapCardsWidget6 = function () {
                 },
                 y: {
                     formatter: function (val) {
-                        return val + "%" 
+                        return val + "%"
                     }
                 }
             },
@@ -929,23 +929,23 @@ var SwapCardsWidget6 = function () {
                     lines: {
                         show: true
                     }
-                }             
+                }
             }
-        }; 
+        };
 
         var chart = new ApexCharts(element, options);
-        
+
         // Set timeout to properly get the parent elements width
-        setTimeout(function() {
-            chart.render();   
-        }, 300);     
+        setTimeout(function () {
+            chart.render();
+        }, 300);
     }
 
     // Public methods
     return {
         init: function () {
             initChart();
-        }   
+        }
     }
 }();
 
@@ -954,11 +954,11 @@ if (typeof module !== 'undefined') {
     window.SwapCardsWidget6 = module.exports = SwapCardsWidget6;
 }
 
-   
-        
-        
-        
-           
+
+
+
+
+
 "use strict";
 
 // Class definition
@@ -970,14 +970,14 @@ var SwapCardWidget8 = function () {
 
 
     // Private methods
-    var initChart = function(chart) {
+    var initChart = function (chart) {
         var element = document.getElementById("swap_card_widget_8_chart");
 
         if (!element) {
             return;
         }
 
-        var height = parseInt(SwapUtil.css(element, 'height'));       
+        var height = parseInt(SwapUtil.css(element, 'height'));
         var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
         var baseColor = SwapUtil.getCssVariableValue('--swap-gray-800');
         var lightColor = SwapUtil.getCssVariableValue('--swap-success');
@@ -994,7 +994,7 @@ var SwapCardWidget8 = function () {
                 toolbar: {
                     show: false
                 }
-            },             
+            },
             legend: {
                 show: false
             },
@@ -1011,7 +1011,7 @@ var SwapCardWidget8 = function () {
                 width: 2,
                 colors: [baseColor]
             },
-            xaxis: {                 
+            xaxis: {
                 axisBorder: {
                     show: false,
                 },
@@ -1080,8 +1080,8 @@ var SwapCardWidget8 = function () {
                 }
             },
             colors: [lightColor],
-            grid: {  
-                borderColor: borderColor,               
+            grid: {
+                borderColor: borderColor,
                 strokeDashArray: 4,
                 padding: {
                     top: 0,
@@ -1099,15 +1099,15 @@ var SwapCardWidget8 = function () {
                 strokeColor: baseColor,
                 strokeWidth: 2
             }
-        }; 
+        };
 
         chart.self = new ApexCharts(element, options);
 
         // Set timeout to properly get the parent elements width
-        setTimeout(function() {
+        setTimeout(function () {
             chart.self.render();
             chart.rendered = true;
-        }, 200);   
+        }, 200);
     }
 
     // Public methods
@@ -1116,14 +1116,14 @@ var SwapCardWidget8 = function () {
             initChart(chart);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
 
                 initChart(chart);
             });
-        }   
+        }
     }
 }();
 
@@ -1141,16 +1141,16 @@ var SwapCardWidget9 = function () {
         self: null,
         rendered: false
     };
-    
+
     // Private methods
-    var initChart = function(chart) {
+    var initChart = function (chart) {
         var element = document.getElementById("swap_card_widget_9_chart");
 
         if (!element) {
             return;
         }
 
-        var height = parseInt(SwapUtil.css(element, 'height'));       
+        var height = parseInt(SwapUtil.css(element, 'height'));
         var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
         var baseColor = SwapUtil.getCssVariableValue('--swap-gray-800');
         var lightColor = SwapUtil.getCssVariableValue('--swap-success');
@@ -1167,7 +1167,7 @@ var SwapCardWidget9 = function () {
                 toolbar: {
                     show: false
                 }
-            },             
+            },
             legend: {
                 show: false
             },
@@ -1184,7 +1184,7 @@ var SwapCardWidget9 = function () {
                 width: 2,
                 colors: [baseColor]
             },
-            xaxis: {                 
+            xaxis: {
                 axisBorder: {
                     show: false,
                 },
@@ -1253,8 +1253,8 @@ var SwapCardWidget9 = function () {
                 }
             },
             colors: [lightColor],
-            grid: {  
-                borderColor: borderColor,               
+            grid: {
+                borderColor: borderColor,
                 strokeDashArray: 4,
                 padding: {
                     top: 0,
@@ -1272,15 +1272,15 @@ var SwapCardWidget9 = function () {
                 strokeColor: baseColor,
                 strokeWidth: 2
             }
-        }; 
+        };
 
         chart.self = new ApexCharts(element, options);
 
         // Set timeout to properly get the parent elements width
-        setTimeout(function() {
+        setTimeout(function () {
             chart.self.render();
             chart.rendered = true;
-        }, 200);   
+        }, 200);
     }
 
     // Public methods
@@ -1289,14 +1289,14 @@ var SwapCardWidget9 = function () {
             initChart(chart);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
 
                 initChart(chart);
             });
-        }   
+        }
     }
 }();
 
@@ -1315,7 +1315,7 @@ var SwapChartsWidget1 = function () {
     };
 
     // Private methods
-    var initChart = function() {
+    var initChart = function () {
         var element = document.getElementById("swap_charts_widget_1");
 
         if (!element) {
@@ -1438,7 +1438,7 @@ var SwapChartsWidget1 = function () {
             colors: [baseColor, negativeColor],
             grid: {
                 borderColor: borderColor,
-                strokeDashArray: 4,               
+                strokeDashArray: 4,
                 yaxis: {
                     lines: {
                         show: true
@@ -1450,10 +1450,10 @@ var SwapChartsWidget1 = function () {
         chart.self = new ApexCharts(element, options);
 
         // Set timeout to properly get the parent elements width
-        setTimeout(function() {
+        setTimeout(function () {
             chart.self.render();
             chart.rendered = true;
-        }, 200); 
+        }, 200);
     }
 
     // Public methods
@@ -1462,14 +1462,14 @@ var SwapChartsWidget1 = function () {
             initChart();
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
 
                 initChart(chart);
             });
-        }   
+        }
     }
 }();
 
@@ -1486,7 +1486,7 @@ var SwapChartsWidget10 = function () {
     var chart1 = {
         self: null,
         rendered: false
-    }; 
+    };
 
     var chart2 = {
         self: null,
@@ -1501,19 +1501,19 @@ var SwapChartsWidget10 = function () {
     var chart4 = {
         self: null,
         rendered: false
-    };   
+    };
 
     // Private methods
-    var initChart = function(chart, toggle, chartSelector, data, initByDefault) {
+    var initChart = function (chart, toggle, chartSelector, data, initByDefault) {
         var element = document.querySelector(chartSelector);
 
         if (!element) {
             return;
         }
-        
+
         var height = parseInt(SwapUtil.css(element, 'height'));
         var labelColor = SwapUtil.getCssVariableValue('--swap-gray-900');
-        var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');    
+        var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
 
         var options = {
             series: [{
@@ -1526,13 +1526,13 @@ var SwapChartsWidget10 = function () {
                 height: height,
                 toolbar: {
                     show: false
-                }              
+                }
             },
             plotOptions: {
                 bar: {
                     horizontal: false,
                     columnWidth: ['22%'],
-                    borderRadius: 5,                     
+                    borderRadius: 5,
                     dataLabels: {
                         position: "top" // top, center, bottom
                     },
@@ -1543,15 +1543,15 @@ var SwapChartsWidget10 = function () {
                 show: false
             },
             dataLabels: {
-                enabled: true, 
-                offsetY: -30,                                             
+                enabled: true,
+                offsetY: -30,
                 style: {
                     fontSize: '13px',
                     colors: [labelColor]
                 },
-                formatter: function(val) {
+                formatter: function (val) {
                     return val + "K";
-                }          
+                }
             },
             stroke: {
                 show: true,
@@ -1570,11 +1570,11 @@ var SwapChartsWidget10 = function () {
                     style: {
                         colors: SwapUtil.getCssVariableValue('--swap-gray-500'),
                         fontSize: '13px'
-                    }                    
+                    }
                 },
                 crosshairs: {
-                    fill: {         
-                        gradient: {         
+                    fill: {
+                        gradient: {
                             opacityFrom: 0,
                             opacityTo: 0
                         }
@@ -1638,20 +1638,20 @@ var SwapChartsWidget10 = function () {
             }
         };
 
-        chart.self = new ApexCharts(element, options);        
+        chart.self = new ApexCharts(element, options);
         var tab = document.querySelector(toggle);
-        
+
         if (initByDefault === true) {
             // Set timeout to properly get the parent elements width
-            setTimeout(function() {
-                chart.self.render();  
+            setTimeout(function () {
+                chart.self.render();
                 chart.rendered = true;
             }, 200);
-        }        
+        }
 
         tab.addEventListener('shown.bs.tab', function (event) {
             if (chart.rendered === false) {
-                chart.self.render();  
+                chart.self.render();
                 chart.rendered = true;
             }
         });
@@ -1659,7 +1659,7 @@ var SwapChartsWidget10 = function () {
 
     // Public methods
     return {
-        init: function () {  
+        init: function () {
             var chart1Data = [30, 18, 43, 70, 13, 37, 23];
             initChart(chart1, '#swap_charts_widget_10_tab_1', '#swap_charts_widget_10_chart_1', chart1Data, true);
 
@@ -1674,7 +1674,7 @@ var SwapChartsWidget10 = function () {
 
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart1.rendered) {
                     chart1.self.destroy();
                 }
@@ -1690,13 +1690,13 @@ var SwapChartsWidget10 = function () {
                 if (chart4.rendered) {
                     chart4.self.destroy();
                 }
-                
+
                 initChart(chart1, '#swap_charts_widget_10_tab_1', '#swap_charts_widget_10_chart_1', chart1Data, chart1.rendered);
-                initChart(chart2, '#swap_charts_widget_10_tab_2', '#swap_charts_widget_10_chart_2', chart2Data, chart2.rendered);  
+                initChart(chart2, '#swap_charts_widget_10_tab_2', '#swap_charts_widget_10_chart_2', chart2Data, chart2.rendered);
                 initChart(chart3, '#swap_charts_widget_10_tab_3', '#swap_charts_widget_10_chart_3', chart3Data, chart3.rendered);
-                initChart(chart4, '#swap_charts_widget_10_tab_4', '#swap_charts_widget_10_chart_4', chart4Data, chart4.rendered);                  
-            });      
-        }   
+                initChart(chart4, '#swap_charts_widget_10_tab_4', '#swap_charts_widget_10_chart_4', chart4Data, chart4.rendered);
+            });
+        }
     }
 }();
 
@@ -1707,7 +1707,7 @@ if (typeof module !== 'undefined') {
 
 
 
- 
+
 "use strict";
 
 // Class definition
@@ -1715,7 +1715,7 @@ var SwapChartsWidget11 = function () {
     var chart1 = {
         self: null,
         rendered: false
-    }; 
+    };
 
     var chart2 = {
         self: null,
@@ -1728,23 +1728,23 @@ var SwapChartsWidget11 = function () {
     };
 
     // Private methods
-    var initChart = function(chart, toggle, chartSelector, data, initByDefault) {
-        var element = document.querySelector(chartSelector);  
+    var initChart = function (chart, toggle, chartSelector, data, initByDefault) {
+        var element = document.querySelector(chartSelector);
         var height = parseInt(SwapUtil.css(element, 'height'));
 
         if (!element) {
             return;
-        }        
-        
+        }
+
         var labelColor = SwapUtil.getCssVariableValue('--swap-gray-500');
         var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
-        var baseColor = SwapUtil.getCssVariableValue('--swap-success');         
+        var baseColor = SwapUtil.getCssVariableValue('--swap-success');
 
         var options = {
             series: [{
                 name: 'Deliveries',
                 data: data
-            }],            
+            }],
             chart: {
                 fontFamily: 'inherit',
                 type: 'area',
@@ -1752,7 +1752,7 @@ var SwapChartsWidget11 = function () {
                 toolbar: {
                     show: false
                 }
-            },             
+            },
             legend: {
                 show: false
             },
@@ -1775,7 +1775,7 @@ var SwapChartsWidget11 = function () {
                 colors: [baseColor]
             },
             xaxis: {
-                categories: ['', 'Apr 02', 'Apr 06', 'Apr 06', 'Apr 05', 'Apr 06', 'Apr 10', 'Apr 08', 'Apr 09', 'Apr 14', 'Apr 10', 'Apr 12', 'Apr 18', 'Apr 14', 
+                categories: ['', 'Apr 02', 'Apr 06', 'Apr 06', 'Apr 05', 'Apr 06', 'Apr 10', 'Apr 08', 'Apr 09', 'Apr 14', 'Apr 10', 'Apr 12', 'Apr 18', 'Apr 14',
                     'Apr 15', 'Apr 14', 'Apr 17', 'Apr 18', 'Apr 02', 'Apr 06', 'Apr 18', 'Apr 05', 'Apr 06', 'Apr 10', 'Apr 08', 'Apr 22', 'Apr 14', 'Apr 11', 'Apr 12', ''
                 ],
                 axisBorder: {
@@ -1818,7 +1818,7 @@ var SwapChartsWidget11 = function () {
                     style: {
                         colors: labelColor,
                         fontSize: '13px'
-                    }                     
+                    }
                 }
             },
             states: {
@@ -1848,7 +1848,7 @@ var SwapChartsWidget11 = function () {
                 },
                 y: {
                     formatter: function (val) {
-                        return + val  
+                        return + val
                     }
                 }
             },
@@ -1868,20 +1868,20 @@ var SwapChartsWidget11 = function () {
             }
         };
 
-        chart.self = new ApexCharts(element, options);        
+        chart.self = new ApexCharts(element, options);
         var tab = document.querySelector(toggle);
-        
+
         if (initByDefault === true) {
             // Set timeout to properly get the parent elements width
-            setTimeout(function() {
-                chart.self.render();  
+            setTimeout(function () {
+                chart.self.render();
                 chart.rendered = true;
             }, 200);
-        }        
+        }
 
         tab.addEventListener('shown.bs.tab', function (event) {
             if (chart.rendered === false) {
-                chart.self.render();  
+                chart.self.render();
                 chart.rendered = true;
             }
         });
@@ -1889,7 +1889,7 @@ var SwapChartsWidget11 = function () {
 
     // Public methods
     return {
-        init: function () { 
+        init: function () {
             var chart1Data = [16, 19, 19, 16, 16, 14, 15, 15, 17, 17, 19, 19, 18, 18, 20, 20, 18, 18, 22, 22, 20, 20, 18, 18, 20, 20, 18, 20, 20, 22];
             initChart(chart1, '#swap_charts_widget_11_tab_1', '#swap_charts_widget_11_chart_1', chart1Data, false);
 
@@ -1898,9 +1898,9 @@ var SwapChartsWidget11 = function () {
 
             var chart3Data = [17, 20, 20, 19, 19, 17, 17, 19, 19, 21, 21, 19, 19, 21, 21, 18, 18, 16, 17, 17, 19, 19, 21, 21, 19, 19, 17, 17, 18, 18];
             initChart(chart3, '#swap_charts_widget_11_tab_3', '#swap_charts_widget_11_chart_3', chart3Data, true);
-           
+
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart1.rendered) {
                     chart1.self.destroy();
                 }
@@ -1911,13 +1911,13 @@ var SwapChartsWidget11 = function () {
 
                 if (chart3.rendered) {
                     chart3.self.destroy();
-                } 
-                
+                }
+
                 initChart(chart1, '#swap_charts_widget_11_tab_1', '#swap_charts_widget_11_chart_1', chart1Data, chart1.rendered);
-                initChart(chart2, '#swap_charts_widget_11_tab_2', '#swap_charts_widget_11_chart_2', chart2Data, chart2.rendered);  
-                initChart(chart3, '#swap_charts_widget_11_tab_3', '#swap_charts_widget_11_chart_3', chart3Data, chart3.rendered);                                           
-            });             
-        }   
+                initChart(chart2, '#swap_charts_widget_11_tab_2', '#swap_charts_widget_11_chart_2', chart2Data, chart2.rendered);
+                initChart(chart3, '#swap_charts_widget_11_tab_3', '#swap_charts_widget_11_chart_3', chart3Data, chart3.rendered);
+            });
+        }
     }
 }();
 
@@ -1932,17 +1932,17 @@ if (typeof module !== 'undefined') {
 // Class definition
 var SwapChartsWidget12 = function () {
     // Private methods
-    var initChart = function(tabSelector, chartSelector, data, initByDefault) {
+    var initChart = function (tabSelector, chartSelector, data, initByDefault) {
         var element = document.querySelector(chartSelector);
 
         if (!element) {
             return;
         }
-        
+
         var height = parseInt(SwapUtil.css(element, 'height'));
         var labelColor = SwapUtil.getCssVariableValue('--swap-gray-900');
 
-        var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');    
+        var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
 
         var options = {
             series: [{
@@ -1955,13 +1955,13 @@ var SwapChartsWidget12 = function () {
                 height: height,
                 toolbar: {
                     show: false
-                }              
+                }
             },
             plotOptions: {
                 bar: {
                     horizontal: false,
                     columnWidth: ['22%'],
-                    borderRadius: 5,                     
+                    borderRadius: 5,
                     dataLabels: {
                         position: "top" // top, center, bottom
                     },
@@ -1972,16 +1972,16 @@ var SwapChartsWidget12 = function () {
                 show: false
             },
             dataLabels: {
-                enabled: true, 
-                offsetY: -28,                                             
+                enabled: true,
+                offsetY: -28,
                 style: {
                     fontSize: '13px',
                     colors: labelColor
-                }, 
-                
-                formatter: function(val) {
+                },
+
+                formatter: function (val) {
                     return val + "K";
-                } 
+                }
             },
             stroke: {
                 show: true,
@@ -2000,11 +2000,11 @@ var SwapChartsWidget12 = function () {
                     style: {
                         colors: SwapUtil.getCssVariableValue('--swap-gray-500'),
                         fontSize: '13px'
-                    }                    
+                    }
                 },
                 crosshairs: {
-                    fill: {         
-                        gradient: {         
+                    fill: {
+                        gradient: {
                             opacityFrom: 0,
                             opacityTo: 0
                         }
@@ -2017,10 +2017,10 @@ var SwapChartsWidget12 = function () {
                         colors: SwapUtil.getCssVariableValue('--swap-gray-500'),
                         fontSize: '13px'
                     },
-                    
-                    formatter: function(val) {
+
+                    formatter: function (val) {
                         return val + "K";
-                    } 
+                    }
                 }
             },
             fill: {
@@ -2053,7 +2053,7 @@ var SwapChartsWidget12 = function () {
                 },
                 y: {
                     formatter: function (val) {
-                        return  + val + 'K' 
+                        return + val + 'K'
                     }
                 }
             },
@@ -2073,11 +2073,11 @@ var SwapChartsWidget12 = function () {
 
         var init = false;
         var tab = document.querySelector(tabSelector);
-        
+
         if (initByDefault === true) {
             chart.render();
             init = true;
-        }        
+        }
 
         tab.addEventListener('shown.bs.tab', function (event) {
             if (init == false) {
@@ -2089,11 +2089,11 @@ var SwapChartsWidget12 = function () {
 
     // Public methods
     return {
-        init: function () {   
+        init: function () {
             initChart('#swap_charts_widget_12_tab_1', '#swap_charts_widget_12_chart_1', [54, 42, 75, 110, 23, 87, 50], true);
-            initChart('#swap_charts_widget_12_tab_2', '#swap_charts_widget_12_chart_2', [25, 55, 35, 50, 45, 20, 31], false); 
-            initChart('#swap_charts_widget_12_tab_3', '#swap_charts_widget_12_chart_3', [45, 15, 35, 70, 45, 50, 21], false); 
-        }        
+            initChart('#swap_charts_widget_12_tab_2', '#swap_charts_widget_12_chart_2', [25, 55, 35, 50, 45, 20, 31], false);
+            initChart('#swap_charts_widget_12_tab_3', '#swap_charts_widget_12_chart_3', [45, 15, 35, 70, 45, 50, 21], false);
+        }
     }
 }();
 
@@ -2104,7 +2104,7 @@ if (typeof module !== 'undefined') {
 
 
 
- 
+
 "use strict";
 
 // Class definition
@@ -2124,7 +2124,7 @@ var SwapChartsWidget13 = (function () {
 
         var root;
 
-        var init = function() {
+        var init = function () {
             // Create root element
             // https://www.amcharts.com/docs/v5/getting-started/#Root_element
             root = am5.Root.new(element);
@@ -2337,7 +2337,7 @@ var SwapChartsWidget13 = (function () {
                     })
                 );
 
-                
+
 
                 series.fills.template.setAll({
                     fillOpacity: 0.5,
@@ -2427,13 +2427,13 @@ var SwapChartsWidget13 = (function () {
         }); // end am5.ready()
 
         // Update chart on theme mode change
-		ThemeMode.on("kt.thememode.change", function() {     
-			// Destroy chart
-			root.dispose();
+        ThemeMode.on("kt.thememode.change", function () {
+            // Destroy chart
+            root.dispose();
 
-			// Reinit chart
-			init();
-		});
+            // Reinit chart
+            init();
+        });
     };
 
     // Public methods
@@ -2680,7 +2680,7 @@ var SwapChartsWidget15 = (function () {
 
         var root;
 
-        var init = function() {
+        var init = function () {
             // Create root element
             // https://www.amcharts.com/docs/v5/getting-started/#Root_element
             root = am5.Root.new(element);
@@ -2709,96 +2709,96 @@ var SwapChartsWidget15 = (function () {
                     country: "US",
                     visits: 725,
                     icon: "https://www.amcharts.com/wp-content/uploads/flags/united-states.svg",
-                    columnSettings: { 
-                        fill: am5.color(SwapUtil.getCssVariableValue('--swap-primary'))        
+                    columnSettings: {
+                        fill: am5.color(SwapUtil.getCssVariableValue('--swap-primary'))
                     }
                 },
                 {
                     country: "UK",
                     visits: 625,
                     icon: "https://www.amcharts.com/wp-content/uploads/flags/united-kingdom.svg",
-                    columnSettings: { 
-                        fill: am5.color(SwapUtil.getCssVariableValue('--swap-primary'))        
+                    columnSettings: {
+                        fill: am5.color(SwapUtil.getCssVariableValue('--swap-primary'))
                     }
                 },
                 {
                     country: "China",
                     visits: 602,
                     icon: "https://www.amcharts.com/wp-content/uploads/flags/china.svg",
-                    columnSettings: { 
-                        fill: am5.color(SwapUtil.getCssVariableValue('--swap-primary'))        
+                    columnSettings: {
+                        fill: am5.color(SwapUtil.getCssVariableValue('--swap-primary'))
                     }
                 },
                 {
                     country: "Japan",
                     visits: 509,
                     icon: "https://www.amcharts.com/wp-content/uploads/flags/japan.svg",
-                    columnSettings: { 
-                        fill: am5.color(SwapUtil.getCssVariableValue('--swap-primary'))        
+                    columnSettings: {
+                        fill: am5.color(SwapUtil.getCssVariableValue('--swap-primary'))
                     }
                 },
                 {
                     country: "Germany",
                     visits: 322,
                     icon: "https://www.amcharts.com/wp-content/uploads/flags/germany.svg",
-                    columnSettings: { 
-                        fill: am5.color(SwapUtil.getCssVariableValue('--swap-primary'))        
+                    columnSettings: {
+                        fill: am5.color(SwapUtil.getCssVariableValue('--swap-primary'))
                     }
                 },
                 {
                     country: "France",
                     visits: 214,
                     icon: "https://www.amcharts.com/wp-content/uploads/flags/france.svg",
-                    columnSettings: { 
-                        fill: am5.color(SwapUtil.getCssVariableValue('--swap-primary'))        
+                    columnSettings: {
+                        fill: am5.color(SwapUtil.getCssVariableValue('--swap-primary'))
                     }
                 },
                 {
                     country: "India",
                     visits: 204,
                     icon: "https://www.amcharts.com/wp-content/uploads/flags/india.svg",
-                    columnSettings: { 
-                        fill: am5.color(SwapUtil.getCssVariableValue('--swap-primary')),        
+                    columnSettings: {
+                        fill: am5.color(SwapUtil.getCssVariableValue('--swap-primary')),
                     }
                 },
                 {
                     country: "Spain",
                     visits: 200,
                     icon: "https://www.amcharts.com/wp-content/uploads/flags/spain.svg",
-                    columnSettings: { 
-                        fill: am5.color(SwapUtil.getCssVariableValue('--swap-primary'))        
+                    columnSettings: {
+                        fill: am5.color(SwapUtil.getCssVariableValue('--swap-primary'))
                     }
                 },
                 {
                     country: "Italy",
                     visits: 165,
                     icon: "https://www.amcharts.com/wp-content/uploads/flags/italy.svg",
-                    columnSettings: { 
-                        fill: am5.color(SwapUtil.getCssVariableValue('--swap-primary'))        
+                    columnSettings: {
+                        fill: am5.color(SwapUtil.getCssVariableValue('--swap-primary'))
                     }
                 },
                 {
                     country: "Russia",
                     visits: 152,
                     icon: "https://www.amcharts.com/wp-content/uploads/flags/russia.svg",
-                    columnSettings: { 
-                        fill: am5.color(SwapUtil.getCssVariableValue('--swap-primary'))        
+                    columnSettings: {
+                        fill: am5.color(SwapUtil.getCssVariableValue('--swap-primary'))
                     }
                 },
                 {
                     country: "Norway",
                     visits: 125,
                     icon: "https://www.amcharts.com/wp-content/uploads/flags/norway.svg",
-                    columnSettings: { 
-                        fill: am5.color(SwapUtil.getCssVariableValue('--swap-primary'))        
+                    columnSettings: {
+                        fill: am5.color(SwapUtil.getCssVariableValue('--swap-primary'))
                     }
                 },
                 {
                     country: "Canada",
                     visits: 99,
                     icon: "https://www.amcharts.com/wp-content/uploads/flags/canada.svg",
-                   columnSettings: { 
-                        fill: am5.color(SwapUtil.getCssVariableValue('--swap-primary'))        
+                    columnSettings: {
+                        fill: am5.color(SwapUtil.getCssVariableValue('--swap-primary'))
                     }
                 },
             ];
@@ -2827,12 +2827,12 @@ var SwapChartsWidget15 = (function () {
             );
 
             xAxis.get("renderer").labels.template.setAll({
-                paddingTop: 20,                
+                paddingTop: 20,
                 fontWeight: "400",
                 fontSize: 10,
                 fill: am5.color(SwapUtil.getCssVariableValue('--swap-gray-500'))
             });
-            
+
             xAxis.get("renderer").grid.template.setAll({
                 disabled: true,
                 strokeOpacity: 0
@@ -2898,13 +2898,13 @@ var SwapChartsWidget15 = (function () {
         });
 
         // Update chart on theme mode change
-		ThemeMode.on("kt.thememode.change", function() {     
-			// Destroy chart
-			root.dispose();
+        ThemeMode.on("kt.thememode.change", function () {
+            // Destroy chart
+            root.dispose();
 
-			// Reinit chart
-			init();
-		});
+            // Reinit chart
+            init();
+        });
     };
 
     // Public methods
@@ -2940,7 +2940,7 @@ var SwapChartsWidget16 = (function () {
 
         var root;
 
-        var init = function() {
+        var init = function () {
             // Create root element
             // https://www.amcharts.com/docs/v5/getting-started/#Root_element
             root = am5.Root.new(element);
@@ -3089,7 +3089,7 @@ var SwapChartsWidget16 = (function () {
                     strictMinMax: true,
                 })
             );
-            
+
             paretoAxis.get("renderer").labels.template.setAll({
                 fontWeight: "400",
                 fontSize: 13,
@@ -3164,13 +3164,13 @@ var SwapChartsWidget16 = (function () {
         });
 
         // Update chart on theme mode change
-		ThemeMode.on("kt.thememode.change", function() {     
-			// Destroy chart
-			root.dispose();
+        ThemeMode.on("kt.thememode.change", function () {
+            // Destroy chart
+            root.dispose();
 
-			// Reinit chart
-			init();
-		});
+            // Reinit chart
+            init();
+        });
     };
 
     // Public methods
@@ -3206,7 +3206,7 @@ var SwapChartsWidget17 = (function () {
 
         var root;
 
-        var init = function() {
+        var init = function () {
             // Create root element
             // https://www.amcharts.com/docs/v5/getting-started/#Root_element
             root = am5.Root.new(element);
@@ -3278,13 +3278,13 @@ var SwapChartsWidget17 = (function () {
         });
 
         // Update chart on theme mode change
-		ThemeMode.on("kt.thememode.change", function() {     
-			// Destroy chart
-			root.dispose();
+        ThemeMode.on("kt.thememode.change", function () {
+            // Destroy chart
+            root.dispose();
 
-			// Reinit chart
-			init();
-		});
+            // Reinit chart
+            init();
+        });
     };
 
     // Public methods
@@ -3311,16 +3311,16 @@ var SwapChartsWidget18 = function () {
     };
 
     // Private methods
-    var initChart = function(chart) {
+    var initChart = function (chart) {
         var element = document.getElementById("swap_charts_widget_18_chart");
 
         if (!element) {
             return;
         }
-        
+
         var height = parseInt(SwapUtil.css(element, 'height'));
         var labelColor = SwapUtil.getCssVariableValue('--swap-gray-900');
-        var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');    
+        var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
 
         var options = {
             series: [{
@@ -3333,13 +3333,13 @@ var SwapChartsWidget18 = function () {
                 height: height,
                 toolbar: {
                     show: false
-                }              
+                }
             },
             plotOptions: {
                 bar: {
                     horizontal: false,
                     columnWidth: ['28%'],
-                    borderRadius: 5,                     
+                    borderRadius: 5,
                     dataLabels: {
                         position: "top" // top, center, bottom
                     },
@@ -3350,15 +3350,15 @@ var SwapChartsWidget18 = function () {
                 show: false
             },
             dataLabels: {
-                enabled: true, 
-                offsetY: -28,                                             
+                enabled: true,
+                offsetY: -28,
                 style: {
                     fontSize: '13px',
                     colors: [labelColor]
                 },
-                    formatter: function(val) {
-                        return val;// + "H";
-                    }                           
+                formatter: function (val) {
+                    return val;// + "H";
+                }
             },
             stroke: {
                 show: true,
@@ -3377,11 +3377,11 @@ var SwapChartsWidget18 = function () {
                     style: {
                         colors: SwapUtil.getCssVariableValue('--swap-gray-500'),
                         fontSize: '13px'
-                    }                  
+                    }
                 },
                 crosshairs: {
-                    fill: {         
-                        gradient: {         
+                    fill: {
+                        gradient: {
                             opacityFrom: 0,
                             opacityTo: 0
                         }
@@ -3394,9 +3394,9 @@ var SwapChartsWidget18 = function () {
                         colors: SwapUtil.getCssVariableValue('--swap-gray-500'),
                         fontSize: '13px'
                     },
-                    formatter: function(val) {
+                    formatter: function (val) {
                         return val + "H";
-                    } 
+                    }
                 }
             },
             fill: {
@@ -3429,9 +3429,9 @@ var SwapChartsWidget18 = function () {
                 },
                 y: {
                     formatter: function (val) {
-                        return  + val + ' hours' 
+                        return + val + ' hours'
                     }
-                } 
+                }
             },
             colors: [SwapUtil.getCssVariableValue('--swap-primary'), SwapUtil.getCssVariableValue('--swap-primary-light')],
             grid: {
@@ -3448,10 +3448,10 @@ var SwapChartsWidget18 = function () {
         chart.self = new ApexCharts(element, options);
 
         // Set timeout to properly get the parent elements width
-        setTimeout(function() {
+        setTimeout(function () {
             chart.self.render();
             chart.rendered = true;
-        }, 200);           
+        }, 200);
     }
 
     // Public methods
@@ -3460,14 +3460,14 @@ var SwapChartsWidget18 = function () {
             initChart(chart);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
 
                 initChart(chart);
             });
-        }         
+        }
     }
 }();
 
@@ -3478,7 +3478,7 @@ if (typeof module !== 'undefined') {
 
 
 
- 
+
 "use strict";
 
 // Class definition
@@ -3498,7 +3498,7 @@ var SwapChartsWidget19 = (function () {
 
         var root;
 
-        var init = function() {
+        var init = function () {
             // Create root element
             // https://www.amcharts.com/docs/v5/getting-started/#Root_element
             root = am5.Root.new(element);
@@ -3682,13 +3682,13 @@ var SwapChartsWidget19 = (function () {
         });
 
         // Update chart on theme mode change
-		ThemeMode.on("kt.thememode.change", function() {     
-			// Destroy chart
-			root.dispose();
+        ThemeMode.on("kt.thememode.change", function () {
+            // Destroy chart
+            root.dispose();
 
-			// Reinit chart
-			init();
-		});
+            // Reinit chart
+            init();
+        });
     };
 
     var initChart2 = function () {
@@ -3705,7 +3705,7 @@ var SwapChartsWidget19 = (function () {
             return;
         }
 
-        var init = function() {
+        var init = function () {
             // Create root element
             // https://www.amcharts.com/docs/v5/getting-started/#Root_element
             root = am5.Root.new(element);
@@ -3883,13 +3883,13 @@ var SwapChartsWidget19 = (function () {
         });
 
         // Update chart on theme mode change
-		ThemeMode.on("kt.thememode.change", function() {     
-			// Destroy chart
-			root.dispose();
+        ThemeMode.on("kt.thememode.change", function () {
+            // Destroy chart
+            root.dispose();
 
-			// Reinit chart
-			init();
-		});
+            // Reinit chart
+            init();
+        });
     };
 
     // Public methods
@@ -3917,7 +3917,7 @@ var SwapChartsWidget2 = function () {
     };
 
     // Private methods
-    var initChart = function() {
+    var initChart = function () {
         var element = document.getElementById("swap_charts_widget_2");
 
         if (!element) {
@@ -4048,15 +4048,15 @@ var SwapChartsWidget2 = function () {
                 strokeColor: baseColor,
                 strokeWidth: 3
             }
-        }; 
+        };
 
         chart.self = new ApexCharts(element, options);
 
         // Set timeout to properly get the parent elements width
-        setTimeout(function() {
+        setTimeout(function () {
             chart.self.render();
             chart.rendered = true;
-        }, 200); 
+        }, 200);
     }
 
     // Public methods
@@ -4065,14 +4065,14 @@ var SwapChartsWidget2 = function () {
             initChart();
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
 
                 initChart();
             });
-        }   
+        }
     }
 }();
 
@@ -4090,15 +4090,15 @@ var SwapChartsWidget20 = function () {
         self: null,
         rendered: false
     };
-    
+
     // Private methods
-    var initChart = function(chart) {
+    var initChart = function (chart) {
         var element = document.getElementById("swap_charts_widget_20");
 
         if (!element) {
             return;
         }
-        
+
         var height = parseInt(SwapUtil.css(element, 'height'));
         var labelColor = SwapUtil.getCssVariableValue('--swap-gray-500');
         var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
@@ -4109,7 +4109,7 @@ var SwapChartsWidget20 = function () {
         var options = {
             series: [{
                 name: chartInfo,
-                data: [34.5,34.5,35,35,35.5,35.5,35,35,35.5,35.5,35,35,34.5,34.5,35,35,35.4,35.4,35]
+                data: [34.5, 34.5, 35, 35, 35.5, 35.5, 35, 35, 35.5, 35.5, 35, 35, 34.5, 34.5, 35, 35, 35.4, 35.4, 35]
             }],
             chart: {
                 fontFamily: 'inherit',
@@ -4241,10 +4241,10 @@ var SwapChartsWidget20 = function () {
         chart.self = new ApexCharts(element, options);
 
         // Set timeout to properly get the parent elements width
-        setTimeout(function() {
+        setTimeout(function () {
             chart.self.render();
             chart.rendered = true;
-        }, 200);           
+        }, 200);
     }
 
     // Public methods
@@ -4253,14 +4253,14 @@ var SwapChartsWidget20 = function () {
             initChart(chart);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
 
                 initChart(chart);
             });
-        }   
+        }
     }
 }();
 
@@ -4275,7 +4275,7 @@ if (typeof module !== 'undefined') {
 // Class definition
 var SwapChartsWidget21 = (function () {
     // Private methods
-    var initChart = function() {
+    var initChart = function () {
         var element = document.getElementById("swap_charts_widget_21");
 
         if (!element) {
@@ -4507,9 +4507,9 @@ var SwapChartsWidget21 = (function () {
         var chart = new ApexCharts(element, options);
 
         // Set timeout to properly get the parent elements width
-        setTimeout(function() {
+        setTimeout(function () {
             chart.render();
-        }, 200);  
+        }, 200);
     }
 
     // Public methods
@@ -4531,19 +4531,19 @@ if (typeof module !== "undefined") {
 // Class definition
 var SwapChartsWidget22 = function () {
     // Private methods
-    var initChart = function(tabSelector, chartSelector, data, initByDefault) {
-        var element = document.querySelector(chartSelector);        
+    var initChart = function (tabSelector, chartSelector, data, initByDefault) {
+        var element = document.querySelector(chartSelector);
 
         if (!element) {
             return;
-        }  
-          
+        }
+
         var height = parseInt(SwapUtil.css(element, 'height'));
-        
+
         var options = {
-            series: data,                 
-            chart: {           
-                fontFamily: 'inherit', 
+            series: data,
+            chart: {
+                fontFamily: 'inherit',
                 type: 'donut',
                 width: 250,
             },
@@ -4555,38 +4555,38 @@ var SwapChartsWidget22 = function () {
                             value: {
                                 fontSize: '10px'
                             }
-                        }                        
+                        }
                     }
                 }
             },
             colors: [
-                SwapUtil.getCssVariableValue('--swap-info'), 
-                SwapUtil.getCssVariableValue('--swap-success'), 
-                SwapUtil.getCssVariableValue('--swap-primary'), 
-                SwapUtil.getCssVariableValue('--swap-danger') 
-            ],           
+                SwapUtil.getCssVariableValue('--swap-info'),
+                SwapUtil.getCssVariableValue('--swap-success'),
+                SwapUtil.getCssVariableValue('--swap-primary'),
+                SwapUtil.getCssVariableValue('--swap-danger')
+            ],
             stroke: {
-              width: 0
+                width: 0
             },
             labels: ['Sales', 'Sales', 'Sales', 'Sales'],
             legend: {
                 show: false,
             },
             fill: {
-                type: 'false',          
-            }     
-        };                     
+                type: 'false',
+            }
+        };
 
         var chart = new ApexCharts(element, options);
 
         var init = false;
 
         var tab = document.querySelector(tabSelector);
-        
+
         if (initByDefault === true) {
             chart.render();
             init = true;
-        }        
+        }
 
         tab.addEventListener('shown.bs.tab', function (event) {
             if (init == false) {
@@ -4598,10 +4598,10 @@ var SwapChartsWidget22 = function () {
 
     // Public methods
     return {
-        init: function () {           
+        init: function () {
             initChart('#swap_chart_widgets_22_tab_1', '#swap_chart_widgets_22_chart_1', [20, 100, 15, 25], true);
-            initChart('#swap_chart_widgets_22_tab_2', '#swap_chart_widgets_22_chart_2', [70, 13, 11, 2], false);              
-        }   
+            initChart('#swap_chart_widgets_22_tab_2', '#swap_chart_widgets_22_chart_2', [70, 13, 11, 2], false);
+        }
     }
 }();
 
@@ -4612,5286 +4612,5287 @@ if (typeof module !== 'undefined') {
 
 // Class definition
 var SwapChartsWidget23 = (function () {
-	// Private methods
-	var initChart = function () {
-		// Check if amchart library is included
-		if (typeof am5 === "undefined") {
-			return;
-		}
+    // Private methods
+    var initChart = function () {
+        // Check if amchart library is included
+        if (typeof am5 === "undefined") {
+            return;
+        }
 
-		var element = document.getElementById("swap_charts_widget_23");
+        var element = document.getElementById("swap_charts_widget_23");
 
-		if (!element) {
-			return;
-		}
+        if (!element) {
+            return;
+        }
 
-		var root;
+        var root;
 
-		var init = function() {
-			// Create root element
-			// https://www.amcharts.com/docs/v5/getting-started/#Root_element
-			root = am5.Root.new(element);
+        var init = function () {
+            // Create root element
+            // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+            root = am5.Root.new(element);
 
-			// Set themes
-			// https://www.amcharts.com/docs/v5/concepts/themes/
-			root.setThemes([am5themes_Animated.new(root)]);
+            // Set themes
+            // https://www.amcharts.com/docs/v5/concepts/themes/
+            root.setThemes([am5themes_Animated.new(root)]);
 
-			// Create chart
-			// https://www.amcharts.com/docs/v5/charts/xy-chart/
-			var chart = root.container.children.push(
-				am5xy.XYChart.new(root, {
-					panX: false,
-					panY: false,
-					layout: root.verticalLayout,
-				})
-			);
+            // Create chart
+            // https://www.amcharts.com/docs/v5/charts/xy-chart/
+            var chart = root.container.children.push(
+                am5xy.XYChart.new(root, {
+                    panX: false,
+                    panY: false,
+                    layout: root.verticalLayout,
+                })
+            );
 
-			var data = [
-				{
-					year: "2016",
-					income: 23.5,
-					expenses: 21.1,
-					columnSettings: {
-						fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
-					},
-				},
-				{
-					year: "2017",
-					income: 26.2,
-					expenses: 30.5,
-					columnSettings: {
-						fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
-					},
-				},
-				{
-					year: "2018",
-					income: 30.1,
-					expenses: 34.9,
-					columnSettings: {
-						fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
-					},
-				},
-				{
-					year: "2019",
-					income: 29.5,
-					expenses: 31.1,
-					columnSettings: {
-						fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
-					},
-				},
-				{
-					year: "2020",
-					income: 30.6,
-					expenses: 28.2,
-					strokeSettings: {
-						strokeWidth: 3,
-						strokeDasharray: [5, 5],
-					},
-					columnSettings: {
-						fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
-					},
-				},
-				{
-					year: "2021",
-					income: 40.6,
-					expenses: 28.2,
-					strokeSettings: {
-						strokeWidth: 3,
-						strokeDasharray: [5, 5],
-					},
-					columnSettings: {
-						fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
-					},
-				},
-				{
-					year: "2022",
-					income: 34.1,
-					expenses: 32.9,
-					strokeSettings: {
-						strokeWidth: 3,
-						strokeDasharray: [5, 5],
-					},
-					columnSettings: {
-						fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
-					},
-				},
-			];
+            var data = [
+                {
+                    year: "2016",
+                    income: 23.5,
+                    expenses: 21.1,
+                    columnSettings: {
+                        fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
+                    },
+                },
+                {
+                    year: "2017",
+                    income: 26.2,
+                    expenses: 30.5,
+                    columnSettings: {
+                        fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
+                    },
+                },
+                {
+                    year: "2018",
+                    income: 30.1,
+                    expenses: 34.9,
+                    columnSettings: {
+                        fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
+                    },
+                },
+                {
+                    year: "2019",
+                    income: 29.5,
+                    expenses: 31.1,
+                    columnSettings: {
+                        fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
+                    },
+                },
+                {
+                    year: "2020",
+                    income: 30.6,
+                    expenses: 28.2,
+                    strokeSettings: {
+                        strokeWidth: 3,
+                        strokeDasharray: [5, 5],
+                    },
+                    columnSettings: {
+                        fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
+                    },
+                },
+                {
+                    year: "2021",
+                    income: 40.6,
+                    expenses: 28.2,
+                    strokeSettings: {
+                        strokeWidth: 3,
+                        strokeDasharray: [5, 5],
+                    },
+                    columnSettings: {
+                        fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
+                    },
+                },
+                {
+                    year: "2022",
+                    income: 34.1,
+                    expenses: 32.9,
+                    strokeSettings: {
+                        strokeWidth: 3,
+                        strokeDasharray: [5, 5],
+                    },
+                    columnSettings: {
+                        fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
+                    },
+                },
+            ];
 
-			// Create axes
-			// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-			var xAxis = chart.xAxes.push(
-				am5xy.CategoryAxis.new(root, {
-					categoryField: "year",
-					renderer: am5xy.AxisRendererX.new(root, {}),
-					//tooltip: am5.Tooltip.new(root, {}),
-				})
-			);
+            // Create axes
+            // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+            var xAxis = chart.xAxes.push(
+                am5xy.CategoryAxis.new(root, {
+                    categoryField: "year",
+                    renderer: am5xy.AxisRendererX.new(root, {}),
+                    //tooltip: am5.Tooltip.new(root, {}),
+                })
+            );
 
-			xAxis.data.setAll(data);
+            xAxis.data.setAll(data);
 
-			xAxis.get("renderer").labels.template.setAll({
-				paddingTop: 20,
-				fontWeight: "400",
-				fontSize: 11,
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-500")),
-			});
+            xAxis.get("renderer").labels.template.setAll({
+                paddingTop: 20,
+                fontWeight: "400",
+                fontSize: 11,
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-500")),
+            });
 
-			xAxis.get("renderer").grid.template.setAll({
-				disabled: true,
-				strokeOpacity: 0,
-			});
+            xAxis.get("renderer").grid.template.setAll({
+                disabled: true,
+                strokeOpacity: 0,
+            });
 
-			var yAxis = chart.yAxes.push(
-				am5xy.ValueAxis.new(root, {
-					min: 0,
-					extraMax: 0.1,
-					renderer: am5xy.AxisRendererY.new(root, {}),
-				})
-			);
+            var yAxis = chart.yAxes.push(
+                am5xy.ValueAxis.new(root, {
+                    min: 0,
+                    extraMax: 0.1,
+                    renderer: am5xy.AxisRendererY.new(root, {}),
+                })
+            );
 
-			yAxis.get("renderer").labels.template.setAll({
-				paddingTop: 0,
-				fontWeight: "400",
-				fontSize: 11,
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-500")),
-			});
+            yAxis.get("renderer").labels.template.setAll({
+                paddingTop: 0,
+                fontWeight: "400",
+                fontSize: 11,
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-500")),
+            });
 
-			yAxis.get("renderer").grid.template.setAll({
-				stroke: am5.color(SwapUtil.getCssVariableValue("--swap-gray-300")),
-				strokeWidth: 1,
-				strokeOpacity: 1,
-				strokeDasharray: [3],
-			});
+            yAxis.get("renderer").grid.template.setAll({
+                stroke: am5.color(SwapUtil.getCssVariableValue("--swap-gray-300")),
+                strokeWidth: 1,
+                strokeOpacity: 1,
+                strokeDasharray: [3],
+            });
 
-			// Add series
-			// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-			var series1 = chart.series.push(
-				am5xy.ColumnSeries.new(root, {
-					name: "Income",
-					xAxis: xAxis,
-					yAxis: yAxis,
-					valueYField: "income",
-					categoryXField: "year",
-					tooltip: am5.Tooltip.new(root, {
-						pointerOrientation: "horizontal",
-						labelText: "{name} in {categoryX}: {valueY} {info}",
-					}),
-				})
-			);
+            // Add series
+            // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+            var series1 = chart.series.push(
+                am5xy.ColumnSeries.new(root, {
+                    name: "Income",
+                    xAxis: xAxis,
+                    yAxis: yAxis,
+                    valueYField: "income",
+                    categoryXField: "year",
+                    tooltip: am5.Tooltip.new(root, {
+                        pointerOrientation: "horizontal",
+                        labelText: "{name} in {categoryX}: {valueY} {info}",
+                    }),
+                })
+            );
 
-			series1.columns.template.setAll({
-				tooltipY: am5.percent(10),
-				templateField: "columnSettings",
-			});
+            series1.columns.template.setAll({
+                tooltipY: am5.percent(10),
+                templateField: "columnSettings",
+            });
 
-			series1.data.setAll(data);
+            series1.data.setAll(data);
 
-			var series2 = chart.series.push(
-				am5xy.LineSeries.new(root, {
-					name: "Expenses",
-					xAxis: xAxis,
-					yAxis: yAxis,
-					valueYField: "expenses",
-					categoryXField: "year",
-					fill: am5.color(SwapUtil.getCssVariableValue("--swap-success")),
-					stroke: am5.color(SwapUtil.getCssVariableValue("--swap-success")),
-					tooltip: am5.Tooltip.new(root, {
-						pointerOrientation: "horizontal",
-						labelText: "{name} in {categoryX}: {valueY} {info}",
-					}),
-				})
-			);
+            var series2 = chart.series.push(
+                am5xy.LineSeries.new(root, {
+                    name: "Expenses",
+                    xAxis: xAxis,
+                    yAxis: yAxis,
+                    valueYField: "expenses",
+                    categoryXField: "year",
+                    fill: am5.color(SwapUtil.getCssVariableValue("--swap-success")),
+                    stroke: am5.color(SwapUtil.getCssVariableValue("--swap-success")),
+                    tooltip: am5.Tooltip.new(root, {
+                        pointerOrientation: "horizontal",
+                        labelText: "{name} in {categoryX}: {valueY} {info}",
+                    }),
+                })
+            );
 
-			series2.strokes.template.setAll({
-				stroke: am5.color(SwapUtil.getCssVariableValue("--swap-success")),
-			});
+            series2.strokes.template.setAll({
+                stroke: am5.color(SwapUtil.getCssVariableValue("--swap-success")),
+            });
 
-			series2.strokes.template.setAll({
-				strokeWidth: 3,
-				templateField: "strokeSettings",
-			});
+            series2.strokes.template.setAll({
+                strokeWidth: 3,
+                templateField: "strokeSettings",
+            });
 
-			series2.data.setAll(data);
+            series2.data.setAll(data);
 
-			series2.bullets.push(function () {
-				return am5.Bullet.new(root, {
-					sprite: am5.Circle.new(root, {
-						strokeWidth: 3,
-						stroke: am5.color(SwapUtil.getCssVariableValue("--swap-success")),
-						radius: 5,
-						fill: am5.color(SwapUtil.getCssVariableValue("--swap-success-light")),
-					}),
-				});
-			});
+            series2.bullets.push(function () {
+                return am5.Bullet.new(root, {
+                    sprite: am5.Circle.new(root, {
+                        strokeWidth: 3,
+                        stroke: am5.color(SwapUtil.getCssVariableValue("--swap-success")),
+                        radius: 5,
+                        fill: am5.color(SwapUtil.getCssVariableValue("--swap-success-light")),
+                    }),
+                });
+            });
 
-			series1.columns.template.setAll({
-				strokeOpacity: 0,
-				cornerRadiusBR: 0,
-				cornerRadiusTR: 6,
-				cornerRadiusBL: 0,
-				cornerRadiusTL: 6,
-			});
+            series1.columns.template.setAll({
+                strokeOpacity: 0,
+                cornerRadiusBR: 0,
+                cornerRadiusTR: 6,
+                cornerRadiusBL: 0,
+                cornerRadiusTL: 6,
+            });
 
-			chart.set("cursor", am5xy.XYCursor.new(root, {}));
+            chart.set("cursor", am5xy.XYCursor.new(root, {}));
 
-			chart.get("cursor").lineX.setAll({ visible: false });
-			chart.get("cursor").lineY.setAll({ visible: false });
+            chart.get("cursor").lineX.setAll({ visible: false });
+            chart.get("cursor").lineY.setAll({ visible: false });
 
-			// Add legend
-			// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
-			var legend = chart.children.push(
-				am5.Legend.new(root, {
-					centerX: am5.p50,
-					x: am5.p50,
-				})
-			);
-			legend.data.setAll(chart.series.values);
+            // Add legend
+            // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+            var legend = chart.children.push(
+                am5.Legend.new(root, {
+                    centerX: am5.p50,
+                    x: am5.p50,
+                })
+            );
+            legend.data.setAll(chart.series.values);
 
-			legend.labels.template.setAll({
-				fontWeight: "600",
-				fontSize: 14,
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700")),
-			});
+            legend.labels.template.setAll({
+                fontWeight: "600",
+                fontSize: 14,
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700")),
+            });
 
-			// Make stuff animate on load
-			// https://www.amcharts.com/docs/v5/concepts/animations/
-			chart.appear(1000, 100);
-			series1.appear();
-		}
+            // Make stuff animate on load
+            // https://www.amcharts.com/docs/v5/concepts/animations/
+            chart.appear(1000, 100);
+            series1.appear();
+        }
 
-		am5.ready(function () {
-			init();
-		}); // end am5.ready()
+        am5.ready(function () {
+            init();
+        }); // end am5.ready()
 
-		// Update chart on theme mode change
-		ThemeMode.on("kt.thememode.change", function() {     
-			// Destroy chart
-			root.dispose();
+        // Update chart on theme mode change
+        ThemeMode.on("kt.thememode.change", function () {
+            // Destroy chart
+            root.dispose();
 
-			// Reinit chart
-			init();
-		});
-	};
+            // Reinit chart
+            init();
+        });
+    };
 
-	// Public methods
-	return {
-		init: function () {
-			initChart();
-		},
-	};
+    // Public methods
+    return {
+        init: function () {
+            initChart();
+        },
+    };
 })();
 
 // Webpack support
 if (typeof module !== "undefined") {
-	window.SwapChartsWidget23 = module.exports = SwapChartsWidget23;
+    window.SwapChartsWidget23 = module.exports = SwapChartsWidget23;
 }
 
 
 // Class definition
 var SwapChartsWidget24 = (function () {
-	// Private methods
-	var initChart = function () {
-		// Check if amchart library is included
-		if (typeof am5 === 'undefined') {
-			return;
-		}
+    // Private methods
+    var initChart = function () {
+        // Check if amchart library is included
+        if (typeof am5 === 'undefined') {
+            return;
+        }
 
-		var element = document.getElementById("swap_charts_widget_24");
+        var element = document.getElementById("swap_charts_widget_24");
 
-		if (!element) {
-			return;
-		}
+        if (!element) {
+            return;
+        }
 
-		var root;
+        var root;
 
-		var init = function() {
-			var usData = [{
-				"age": "0 to 5",
-				"male": 10175713,
-				"female": 9736305
-			}, {
-				"age": "5 to 9",
-				"male": 10470147,
-				"female": 10031835
-			}, {
-				"age": "10 to 14",
-				"male": 10561873,
-				"female": 10117913
-			}, {
-				"age": "15 to 17",
-				"male": 6447043,
-				"female": 6142996
-			}, {
-				"age": "18 to 21",
-				"male": 9349745,
-				"female": 8874664
-			}, {
-				"age": "22 to 24",
-				"male": 6722248,
-				"female": 6422017
-			}, {
-				"age": "25 to 29",
-				"male": 10989596,
-				"female": 10708414
-			}, {
-				"age": "30 to 34",
-				"male": 10625791,
-				"female": 10557848
-			}, {
-				"age": "35 to 39",
-				"male": 9899569,
-				"female": 9956213
-			}, {
-				"age": "40 to 44",
-				"male": 10330986,
-				"female": 10465142
-			}, {
-				"age": "45 to 49",
-				"male": 10571984,
-				"female": 10798384
-			}, {
-				"age": "50 to 54",
-				"male": 11051409,
-				"female": 11474081
-			}, {
-				"age": "55 to 59",
-				"male": 10173646,
-				"female": 10828301
-			}, {
-				"age": "60 to 64",
-				"male": 8824852,
-				"female": 9590829
-			}, {
-				"age": "65 to 69",
-				"male": 6876271,
-				"female": 7671175
-			}, {
-				"age": "70 to 74",
-				"male": 4867513,
-				"female": 5720208
-			}, {
-				"age": "75 to 79",
-				"male": 3416432,
-				"female": 4313697
-			}, {
-				"age": "80 to 84",
-				"male": 2378691,
-				"female": 3432738
-			}, {
-				"age": "85 and Older",
-				"male": 2000771,
-				"female": 3937981
-			}];            
-			
-			var stateData = {
-			"AK": [{
-					"age": "0 to 5",
-					"male": 28346,
-					"female": 26607
-				}, {
-					"age": "10 to 14",
-					"male": 26350,
-					"female": 24821
-				}, {
-					"age": "15 to 17",
-					"male": 15929,
-					"female": 14735
-				}, {
-					"age": "18 to 21",
-					"male": 25360,
-					"female": 19030
-				}, {
-					"age": "22 to 24",
-					"male": 20755,
-					"female": 15663
-				}, {
-					"age": "25 to 29",
-					"male": 32415,
-					"female": 28259
-				}, {
-					"age": "30 to 34",
-					"male": 28232,
-					"female": 25272
-				}, {
-					"age": "35 to 39",
-					"male": 24217,
-					"female": 22002
-				}, {
-					"age": "40 to 44",
-					"male": 23429,
-					"female": 21968
-				}, {
-					"age": "45 to 49",
-					"male": 24764,
-					"female": 22784
-				}, {
-					"age": "5 to 9",
-					"male": 26276,
-					"female": 25063
-				}, {
-					"age": "50 to 54",
-					"male": 27623,
-					"female": 25503
-				}, {
-					"age": "55 to 59",
-					"male": 26300,
-					"female": 25198
-				}, {
-					"age": "60 to 64",
-					"male": 21798,
-					"female": 18970
-				}, {
-					"age": "65 to 69",
-					"male": 13758,
-					"female": 12899
-				}, {
-					"age": "70 to 74",
-					"male": 8877,
-					"female": 8269
-				}, {
-					"age": "75 to 79",
-					"male": 4834,
-					"female": 4894
-				}, {
-					"age": "80 to 84",
-					"male": 3015,
-					"female": 3758
-				}, {
-					"age": "85 and Older",
-					"male": 1882,
-					"female": 3520
-				}
-			],
-			"AL": [{
-					"age": "0 to 5",
-					"male": 150860,
-					"female": 144194
-				}, {
-					"age": "10 to 14",
-					"male": 161596,
-					"female": 156841
-				}, {
-					"age": "15 to 17",
-					"male": 98307,
-					"female": 94462
-				}, {
-					"age": "18 to 21",
-					"male": 142173,
-					"female": 136514
-				}, {
-					"age": "22 to 24",
-					"male": 99164,
-					"female": 101444
-				}, {
-					"age": "25 to 29",
-					"male": 154977,
-					"female": 159815
-				}, {
-					"age": "30 to 34",
-					"male": 150036,
-					"female": 156764
-				}, {
-					"age": "35 to 39",
-					"male": 141667,
-					"female": 152220
-				}, {
-					"age": "40 to 44",
-					"male": 155693,
-					"female": 159835
-				}, {
-					"age": "45 to 49",
-					"male": 156413,
-					"female": 163909
-				}, {
-					"age": "5 to 9",
-					"male": 156380,
-					"female": 149334
-				}, {
-					"age": "50 to 54",
-					"male": 166863,
-					"female": 178187
-				}, {
-					"age": "55 to 59",
-					"male": 156994,
-					"female": 169355
-				}, {
-					"age": "60 to 64",
-					"male": 140659,
-					"female": 156638
-				}, {
-					"age": "65 to 69",
-					"male": 112724,
-					"female": 128494
-				}, {
-					"age": "70 to 74",
-					"male": 79258,
-					"female": 96507
-				}, {
-					"age": "75 to 79",
-					"male": 55122,
-					"female": 75371
-				}, {
-					"age": "80 to 84",
-					"male": 36252,
-					"female": 53976
-				}, {
-					"age": "85 and Older",
-					"male": 25955,
-					"female": 55667
-				}
-			],
-			"AR": [{
-					"age": "0 to 5",
-					"male": 98246,
-					"female": 93534
-				}, {
-					"age": "10 to 14",
-					"male": 99707,
-					"female": 96862
-				}, {
-					"age": "15 to 17",
-					"male": 60521,
-					"female": 57735
-				}, {
-					"age": "18 to 21",
-					"male": 87209,
-					"female": 81936
-				}, {
-					"age": "22 to 24",
-					"male": 59114,
-					"female": 59387
-				}, {
-					"age": "25 to 29",
-					"male": 96190,
-					"female": 96573
-				}, {
-					"age": "30 to 34",
-					"male": 96273,
-					"female": 95632
-				}, {
-					"age": "35 to 39",
-					"male": 90371,
-					"female": 90620
-				}, {
-					"age": "40 to 44",
-					"male": 91881,
-					"female": 93777
-				}, {
-					"age": "45 to 49",
-					"male": 93238,
-					"female": 95476
-				}, {
-					"age": "5 to 9",
-					"male": 103613,
-					"female": 97603
-				}, {
-					"age": "50 to 54",
-					"male": 98960,
-					"female": 102953
-				}, {
-					"age": "55 to 59",
-					"male": 92133,
-					"female": 100676
-				}, {
-					"age": "60 to 64",
-					"male": 84082,
-					"female": 90243
-				}, {
-					"age": "65 to 69",
-					"male": 70121,
-					"female": 76669
-				}, {
-					"age": "70 to 74",
-					"male": 52154,
-					"female": 61686
-				}, {
-					"age": "75 to 79",
-					"male": 36856,
-					"female": 44371
-				}, {
-					"age": "80 to 84",
-					"male": 23098,
-					"female": 35328
-				}, {
-					"age": "85 and Older",
-					"male": 18146,
-					"female": 35234
-				}
-			],
-			"AZ": [{
-					"age": "0 to 5",
-					"male": 221511,
-					"female": 212324
-				}, {
-					"age": "10 to 14",
-					"male": 233530,
-					"female": 222965
-				}, {
-					"age": "15 to 17",
-					"male": 138926,
-					"female": 132399
-				}, {
-					"age": "18 to 21",
-					"male": 200240,
-					"female": 187786
-				}, {
-					"age": "22 to 24",
-					"male": 142852,
-					"female": 132457
-				}, {
-					"age": "25 to 29",
-					"male": 231488,
-					"female": 215985
-				}, {
-					"age": "30 to 34",
-					"male": 223754,
-					"female": 214946
-				}, {
-					"age": "35 to 39",
-					"male": 206718,
-					"female": 202482
-				}, {
-					"age": "40 to 44",
-					"male": 213591,
-					"female": 210621
-				}, {
-					"age": "45 to 49",
-					"male": 205830,
-					"female": 206081
-				}, {
-					"age": "5 to 9",
-					"male": 231249,
-					"female": 224385
-				}, {
-					"age": "50 to 54",
-					"male": 210386,
-					"female": 218328
-				}, {
-					"age": "55 to 59",
-					"male": 192614,
-					"female": 209767
-				}, {
-					"age": "60 to 64",
-					"male": 178325,
-					"female": 200313
-				}, {
-					"age": "65 to 69",
-					"male": 155852,
-					"female": 174407
-				}, {
-					"age": "70 to 74",
-					"male": 121878,
-					"female": 136840
-				}, {
-					"age": "75 to 79",
-					"male": 87470,
-					"female": 96953
-				}, {
-					"age": "80 to 84",
-					"male": 58553,
-					"female": 69559
-				}, {
-					"age": "85 and Older",
-					"male": 44321,
-					"female": 74242
-				}
-			],
-			"CA": [{
-					"age": "0 to 5",
-					"male": 1283763,
-					"female": 1228013
-				}, {
-					"age": "10 to 14",
-					"male": 1297819,
-					"female": 1245016
-				}, {
-					"age": "15 to 17",
-					"male": 811114,
-					"female": 773387
-				}, {
-					"age": "18 to 21",
-					"male": 1179739,
-					"female": 1100368
-				}, {
-					"age": "22 to 24",
-					"male": 883323,
-					"female": 825833
-				}, {
-					"age": "25 to 29",
-					"male": 1478557,
-					"female": 1387516
-				}, {
-					"age": "30 to 34",
-					"male": 1399835,
-					"female": 1348430
-				}, {
-					"age": "35 to 39",
-					"male": 1287803,
-					"female": 1271908
-				}, {
-					"age": "40 to 44",
-					"male": 1308311,
-					"female": 1309907
-				}, {
-					"age": "45 to 49",
-					"male": 1306719,
-					"female": 1303528
-				}, {
-					"age": "5 to 9",
-					"male": 1295030,
-					"female": 1240201
-				}, {
-					"age": "50 to 54",
-					"male": 1305323,
-					"female": 1330645
-				}, {
-					"age": "55 to 59",
-					"male": 1161821,
-					"female": 1223440
-				}, {
-					"age": "60 to 64",
-					"male": 975874,
-					"female": 1060921
-				}, {
-					"age": "65 to 69",
-					"male": 734814,
-					"female": 833926
-				}, {
-					"age": "70 to 74",
-					"male": 515115,
-					"female": 604615
-				}, {
-					"age": "75 to 79",
-					"male": 363282,
-					"female": 455568
-				}, {
-					"age": "80 to 84",
-					"male": 264126,
-					"female": 363937
-				}, {
-					"age": "85 and Older",
-					"male": 234767,
-					"female": 427170
-				}
-			],
-			"CO": [{
-					"age": "0 to 5",
-					"male": 173245,
-					"female": 163629
-				}, {
-					"age": "10 to 14",
-					"male": 179579,
-					"female": 170930
-				}, {
-					"age": "15 to 17",
-					"male": 102577,
-					"female": 98569
-				}, {
-					"age": "18 to 21",
-					"male": 152713,
-					"female": 139268
-				}, {
-					"age": "22 to 24",
-					"male": 116654,
-					"female": 108238
-				}, {
-					"age": "25 to 29",
-					"male": 204625,
-					"female": 188680
-				}, {
-					"age": "30 to 34",
-					"male": 200624,
-					"female": 188616
-				}, {
-					"age": "35 to 39",
-					"male": 183386,
-					"female": 175326
-				}, {
-					"age": "40 to 44",
-					"male": 184422,
-					"female": 173654
-				}, {
-					"age": "45 to 49",
-					"male": 174730,
-					"female": 172981
-				}, {
-					"age": "5 to 9",
-					"male": 179803,
-					"female": 173524
-				}, {
-					"age": "50 to 54",
-					"male": 183543,
-					"female": 187757
-				}, {
-					"age": "55 to 59",
-					"male": 170717,
-					"female": 179537
-				}, {
-					"age": "60 to 64",
-					"male": 150815,
-					"female": 155924
-				}, {
-					"age": "65 to 69",
-					"male": 111094,
-					"female": 119530
-				}, {
-					"age": "70 to 74",
-					"male": 72252,
-					"female": 80168
-				}, {
-					"age": "75 to 79",
-					"male": 49142,
-					"female": 59393
-				}, {
-					"age": "80 to 84",
-					"male": 31894,
-					"female": 43881
-				}, {
-					"age": "85 and Older",
-					"male": 26852,
-					"female": 50634
-				}
-			],
-			"CT": [{
-					"age": "0 to 5",
-					"male": 97647,
-					"female": 93798
-				}, {
-					"age": "10 to 14",
-					"male": 118032,
-					"female": 113043
-				}, {
-					"age": "15 to 17",
-					"male": 75546,
-					"female": 71687
-				}, {
-					"age": "18 to 21",
-					"male": 106966,
-					"female": 102763
-				}, {
-					"age": "22 to 24",
-					"male": 71125,
-					"female": 64777
-				}, {
-					"age": "25 to 29",
-					"male": 112189,
-					"female": 108170
-				}, {
-					"age": "30 to 34",
-					"male": 107223,
-					"female": 109096
-				}, {
-					"age": "35 to 39",
-					"male": 102424,
-					"female": 106008
-				}, {
-					"age": "40 to 44",
-					"male": 116664,
-					"female": 123744
-				}, {
-					"age": "45 to 49",
-					"male": 131872,
-					"female": 139406
-				}, {
-					"age": "5 to 9",
-					"male": 110043,
-					"female": 104940
-				}, {
-					"age": "50 to 54",
-					"male": 138644,
-					"female": 146532
-				}, {
-					"age": "55 to 59",
-					"male": 126670,
-					"female": 132895
-				}, {
-					"age": "60 to 64",
-					"male": 104701,
-					"female": 114339
-				}, {
-					"age": "65 to 69",
-					"male": 80178,
-					"female": 91052
-				}, {
-					"age": "70 to 74",
-					"male": 55237,
-					"female": 65488
-				}, {
-					"age": "75 to 79",
-					"male": 38844,
-					"female": 51544
-				}, {
-					"age": "80 to 84",
-					"male": 28908,
-					"female": 43036
-				}, {
-					"age": "85 and Older",
-					"male": 28694,
-					"female": 59297
-				}
-			],
-			"DC": [{
-					"age": "0 to 5",
-					"male": 20585,
-					"female": 19848
-				}, {
-					"age": "10 to 14",
-					"male": 12723,
-					"female": 11991
-				}, {
-					"age": "15 to 17",
-					"male": 7740,
-					"female": 7901
-				}, {
-					"age": "18 to 21",
-					"male": 22350,
-					"female": 25467
-				}, {
-					"age": "22 to 24",
-					"male": 15325,
-					"female": 19085
-				}, {
-					"age": "25 to 29",
-					"male": 35295,
-					"female": 41913
-				}, {
-					"age": "30 to 34",
-					"male": 32716,
-					"female": 35553
-				}, {
-					"age": "35 to 39",
-					"male": 23748,
-					"female": 24922
-				}, {
-					"age": "40 to 44",
-					"male": 21158,
-					"female": 20113
-				}, {
-					"age": "45 to 49",
-					"male": 19279,
-					"female": 18956
-				}, {
-					"age": "5 to 9",
-					"male": 14999,
-					"female": 15518
-				}, {
-					"age": "50 to 54",
-					"male": 19249,
-					"female": 19279
-				}, {
-					"age": "55 to 59",
-					"male": 17592,
-					"female": 18716
-				}, {
-					"age": "60 to 64",
-					"male": 14272,
-					"female": 17892
-				}, {
-					"age": "65 to 69",
-					"male": 9740,
-					"female": 13375
-				}, {
-					"age": "70 to 74",
-					"male": 8221,
-					"female": 9761
-				}, {
-					"age": "75 to 79",
-					"male": 5071,
-					"female": 7601
-				}, {
-					"age": "80 to 84",
-					"male": 3399,
-					"female": 5619
-				}, {
-					"age": "85 and Older",
-					"male": 3212,
-					"female": 7300
-				}
-			],
-			"DE": [{
-					"age": "0 to 5",
-					"male": 28382,
-					"female": 27430
-				}, {
-					"age": "10 to 14",
-					"male": 29482,
-					"female": 27484
-				}, {
-					"age": "15 to 17",
-					"male": 17589,
-					"female": 16828
-				}, {
-					"age": "18 to 21",
-					"male": 26852,
-					"female": 26911
-				}, {
-					"age": "22 to 24",
-					"male": 19006,
-					"female": 18413
-				}, {
-					"age": "25 to 29",
-					"male": 30933,
-					"female": 31146
-				}, {
-					"age": "30 to 34",
-					"male": 28602,
-					"female": 29431
-				}, {
-					"age": "35 to 39",
-					"male": 26498,
-					"female": 28738
-				}, {
-					"age": "40 to 44",
-					"male": 27674,
-					"female": 28519
-				}, {
-					"age": "45 to 49",
-					"male": 30582,
-					"female": 32924
-				}, {
-					"age": "5 to 9",
-					"male": 28224,
-					"female": 28735
-				}, {
-					"age": "50 to 54",
-					"male": 32444,
-					"female": 35052
-				}, {
-					"age": "55 to 59",
-					"male": 29048,
-					"female": 34377
-				}, {
-					"age": "60 to 64",
-					"male": 27925,
-					"female": 30017
-				}, {
-					"age": "65 to 69",
-					"male": 22767,
-					"female": 26707
-				}, {
-					"age": "70 to 74",
-					"male": 17121,
-					"female": 19327
-				}, {
-					"age": "75 to 79",
-					"male": 11479,
-					"female": 14264
-				}, {
-					"age": "80 to 84",
-					"male": 7473,
-					"female": 10353
-				}, {
-					"age": "85 and Older",
-					"male": 6332,
-					"female": 11385
-				}
-			],
-			"FL": [{
-					"age": "0 to 5",
-					"male": 552054,
-					"female": 529003
-				}, {
-					"age": "10 to 14",
-					"male": 582351,
-					"female": 558377
-				}, {
-					"age": "15 to 17",
-					"male": 363538,
-					"female": 345048
-				}, {
-					"age": "18 to 21",
-					"male": 528013,
-					"female": 498162
-				}, {
-					"age": "22 to 24",
-					"male": 385515,
-					"female": 368754
-				}, {
-					"age": "25 to 29",
-					"male": 641710,
-					"female": 622134
-				}, {
-					"age": "30 to 34",
-					"male": 602467,
-					"female": 602634
-				}, {
-					"age": "35 to 39",
-					"male": 579722,
-					"female": 585089
-				}, {
-					"age": "40 to 44",
-					"male": 623074,
-					"female": 639410
-				}, {
-					"age": "45 to 49",
-					"male": 659376,
-					"female": 677305
-				}, {
-					"age": "5 to 9",
-					"male": 567479,
-					"female": 543273
-				}, {
-					"age": "50 to 54",
-					"male": 687625,
-					"female": 723103
-				}, {
-					"age": "55 to 59",
-					"male": 626363,
-					"female": 685728
-				}, {
-					"age": "60 to 64",
-					"male": 566282,
-					"female": 651192
-				}, {
-					"age": "65 to 69",
-					"male": 517513,
-					"female": 589377
-				}, {
-					"age": "70 to 74",
-					"male": 407275,
-					"female": 470688
-				}, {
-					"age": "75 to 79",
-					"male": 305530,
-					"female": 361107
-				}, {
-					"age": "80 to 84",
-					"male": 219362,
-					"female": 281016
-				}, {
-					"age": "85 and Older",
-					"male": 184760,
-					"female": 314363
-				}
-			],
-			"GA": [{
-					"age": "0 to 5",
-					"male": 338979,
-					"female": 326326
-				}, {
-					"age": "10 to 14",
-					"male": 356404,
-					"female": 351833
-				}, {
-					"age": "15 to 17",
-					"male": 211908,
-					"female": 203412
-				}, {
-					"age": "18 to 21",
-					"male": 305617,
-					"female": 289233
-				}, {
-					"age": "22 to 24",
-					"male": 214032,
-					"female": 206526
-				}, {
-					"age": "25 to 29",
-					"male": 342885,
-					"female": 343115
-				}, {
-					"age": "30 to 34",
-					"male": 333159,
-					"female": 348125
-				}, {
-					"age": "35 to 39",
-					"male": 325121,
-					"female": 345251
-				}, {
-					"age": "40 to 44",
-					"male": 348120,
-					"female": 363703
-				}, {
-					"age": "45 to 49",
-					"male": 343559,
-					"female": 358754
-				}, {
-					"age": "5 to 9",
-					"male": 362147,
-					"female": 340071
-				}, {
-					"age": "50 to 54",
-					"male": 338424,
-					"female": 359362
-				}, {
-					"age": "55 to 59",
-					"male": 294734,
-					"female": 325653
-				}, {
-					"age": "60 to 64",
-					"male": 254497,
-					"female": 285276
-				}, {
-					"age": "65 to 69",
-					"male": 198714,
-					"female": 226714
-				}, {
-					"age": "70 to 74",
-					"male": 135107,
-					"female": 164091
-				}, {
-					"age": "75 to 79",
-					"male": 88135,
-					"female": 115830
-				}, {
-					"age": "80 to 84",
-					"male": 53792,
-					"female": 84961
-				}, {
-					"age": "85 and Older",
-					"male": 37997,
-					"female": 85126
-				}
-			],
-			"HI": [{
-					"age": "0 to 5",
-					"male": 46668,
-					"female": 44389
-				}, {
-					"age": "10 to 14",
-					"male": 42590,
-					"female": 41289
-				}, {
-					"age": "15 to 17",
-					"male": 24759,
-					"female": 23961
-				}, {
-					"age": "18 to 21",
-					"male": 39937,
-					"female": 32348
-				}, {
-					"age": "22 to 24",
-					"male": 35270,
-					"female": 28495
-				}, {
-					"age": "25 to 29",
-					"male": 58033,
-					"female": 48700
-				}, {
-					"age": "30 to 34",
-					"male": 51544,
-					"female": 47286
-				}, {
-					"age": "35 to 39",
-					"male": 44144,
-					"female": 42208
-				}, {
-					"age": "40 to 44",
-					"male": 45731,
-					"female": 43404
-				}, {
-					"age": "45 to 49",
-					"male": 44336,
-					"female": 44134
-				}, {
-					"age": "5 to 9",
-					"male": 44115,
-					"female": 40426
-				}, {
-					"age": "50 to 54",
-					"male": 46481,
-					"female": 46908
-				}, {
-					"age": "55 to 59",
-					"male": 45959,
-					"female": 47379
-				}, {
-					"age": "60 to 64",
-					"male": 42420,
-					"female": 43735
-				}, {
-					"age": "65 to 69",
-					"male": 34846,
-					"female": 36670
-				}, {
-					"age": "70 to 74",
-					"male": 22981,
-					"female": 25496
-				}, {
-					"age": "75 to 79",
-					"male": 15219,
-					"female": 18755
-				}, {
-					"age": "80 to 84",
-					"male": 11142,
-					"female": 17952
-				}, {
-					"age": "85 and Older",
-					"male": 13696,
-					"female": 22893
-				}
-			],
-			"IA": [{
-					"age": "0 to 5",
-					"male": 100400,
-					"female": 96170
-				}, {
-					"age": "10 to 14",
-					"male": 104674,
-					"female": 98485
-				}, {
-					"age": "15 to 17",
-					"male": 62452,
-					"female": 59605
-				}, {
-					"age": "18 to 21",
-					"male": 96966,
-					"female": 91782
-				}, {
-					"age": "22 to 24",
-					"male": 66307,
-					"female": 62504
-				}, {
-					"age": "25 to 29",
-					"male": 98079,
-					"female": 93653
-				}, {
-					"age": "30 to 34",
-					"male": 100924,
-					"female": 97248
-				}, {
-					"age": "35 to 39",
-					"male": 90980,
-					"female": 89632
-				}, {
-					"age": "40 to 44",
-					"male": 92961,
-					"female": 90218
-				}, {
-					"age": "45 to 49",
-					"male": 98877,
-					"female": 96654
-				}, {
-					"age": "5 to 9",
-					"male": 104279,
-					"female": 100558
-				}, {
-					"age": "50 to 54",
-					"male": 109267,
-					"female": 110142
-				}, {
-					"age": "55 to 59",
-					"male": 104021,
-					"female": 106042
-				}, {
-					"age": "60 to 64",
-					"male": 95379,
-					"female": 95499
-				}, {
-					"age": "65 to 69",
-					"male": 68276,
-					"female": 73624
-				}, {
-					"age": "70 to 74",
-					"male": 50414,
-					"female": 56973
-				}, {
-					"age": "75 to 79",
-					"male": 37867,
-					"female": 48121
-				}, {
-					"age": "80 to 84",
-					"male": 27523,
-					"female": 39851
-				}, {
-					"age": "85 and Older",
-					"male": 24949,
-					"female": 52170
-				}
-			],
-			"ID": [{
-					"age": "0 to 5",
-					"male": 58355,
-					"female": 56478
-				}, {
-					"age": "10 to 14",
-					"male": 62528,
-					"female": 59881
-				}, {
-					"age": "15 to 17",
-					"male": 36373,
-					"female": 33687
-				}, {
-					"age": "18 to 21",
-					"male": 45752,
-					"female": 45590
-				}, {
-					"age": "22 to 24",
-					"male": 34595,
-					"female": 30216
-				}, {
-					"age": "25 to 29",
-					"male": 53998,
-					"female": 52077
-				}, {
-					"age": "30 to 34",
-					"male": 54217,
-					"female": 52091
-				}, {
-					"age": "35 to 39",
-					"male": 51247,
-					"female": 47801
-				}, {
-					"age": "40 to 44",
-					"male": 49113,
-					"female": 49853
-				}, {
-					"age": "45 to 49",
-					"male": 48392,
-					"female": 48288
-				}, {
-					"age": "5 to 9",
-					"male": 63107,
-					"female": 59237
-				}, {
-					"age": "50 to 54",
-					"male": 51805,
-					"female": 52984
-				}, {
-					"age": "55 to 59",
-					"male": 49226,
-					"female": 51868
-				}, {
-					"age": "60 to 64",
-					"male": 47343,
-					"female": 47631
-				}, {
-					"age": "65 to 69",
-					"male": 38436,
-					"female": 38133
-				}, {
-					"age": "70 to 74",
-					"male": 26243,
-					"female": 28577
-				}, {
-					"age": "75 to 79",
-					"male": 18404,
-					"female": 20325
-				}, {
-					"age": "80 to 84",
-					"male": 11653,
-					"female": 15313
-				}, {
-					"age": "85 and Older",
-					"male": 9677,
-					"female": 16053
-				}
-			],
-			"IL": [{
-					"age": "0 to 5",
-					"male": 408295,
-					"female": 392900
-				}, {
-					"age": "10 to 14",
-					"male": 437688,
-					"female": 419077
-				}, {
-					"age": "15 to 17",
-					"male": 269202,
-					"female": 257213
-				}, {
-					"age": "18 to 21",
-					"male": 369219,
-					"female": 353570
-				}, {
-					"age": "22 to 24",
-					"male": 268501,
-					"female": 258559
-				}, {
-					"age": "25 to 29",
-					"male": 448001,
-					"female": 442418
-				}, {
-					"age": "30 to 34",
-					"male": 445416,
-					"female": 445729
-				}, {
-					"age": "35 to 39",
-					"male": 416265,
-					"female": 418999
-				}, {
-					"age": "40 to 44",
-					"male": 425825,
-					"female": 427573
-				}, {
-					"age": "45 to 49",
-					"male": 433177,
-					"female": 441116
-				}, {
-					"age": "5 to 9",
-					"male": 427121,
-					"female": 412238
-				}, {
-					"age": "50 to 54",
-					"male": 454039,
-					"female": 470982
-				}, {
-					"age": "55 to 59",
-					"male": 414948,
-					"female": 442280
-				}, {
-					"age": "60 to 64",
-					"male": 354782,
-					"female": 380640
-				}, {
-					"age": "65 to 69",
-					"male": 259363,
-					"female": 292899
-				}, {
-					"age": "70 to 74",
-					"male": 184622,
-					"female": 223905
-				}, {
-					"age": "75 to 79",
-					"male": 129016,
-					"female": 171743
-				}, {
-					"age": "80 to 84",
-					"male": 91973,
-					"female": 139204
-				}, {
-					"age": "85 and Older",
-					"male": 79446,
-					"female": 165817
-				}
-			],
-			"IN": [{
-					"age": "0 to 5",
-					"male": 215697,
-					"female": 205242
-				}, {
-					"age": "10 to 14",
-					"male": 229911,
-					"female": 221563
-				}, {
-					"age": "15 to 17",
-					"male": 139494,
-					"female": 132879
-				}, {
-					"age": "18 to 21",
-					"male": 198763,
-					"female": 194206
-				}, {
-					"age": "22 to 24",
-					"male": 140805,
-					"female": 131947
-				}, {
-					"age": "25 to 29",
-					"male": 210315,
-					"female": 208593
-				}, {
-					"age": "30 to 34",
-					"male": 211656,
-					"female": 210103
-				}, {
-					"age": "35 to 39",
-					"male": 201979,
-					"female": 200693
-				}, {
-					"age": "40 to 44",
-					"male": 212114,
-					"female": 212653
-				}, {
-					"age": "45 to 49",
-					"male": 216446,
-					"female": 219033
-				}, {
-					"age": "5 to 9",
-					"male": 226901,
-					"female": 214964
-				}, {
-					"age": "50 to 54",
-					"male": 232241,
-					"female": 237844
-				}, {
-					"age": "55 to 59",
-					"male": 217033,
-					"female": 228674
-				}, {
-					"age": "60 to 64",
-					"male": 186412,
-					"female": 197353
-				}, {
-					"age": "65 to 69",
-					"male": 140336,
-					"female": 156256
-				}, {
-					"age": "70 to 74",
-					"male": 99402,
-					"female": 116834
-				}, {
-					"age": "75 to 79",
-					"male": 68758,
-					"female": 88794
-				}, {
-					"age": "80 to 84",
-					"male": 47628,
-					"female": 72061
-				}, {
-					"age": "85 and Older",
-					"male": 39372,
-					"female": 83690
-				}
-			],
-			"KS": [{
-					"age": "0 to 5",
-					"male": 102716,
-					"female": 98004
-				}, {
-					"age": "10 to 14",
-					"male": 102335,
-					"female": 99132
-				}, {
-					"age": "15 to 17",
-					"male": 60870,
-					"female": 57957
-				}, {
-					"age": "18 to 21",
-					"male": 90593,
-					"female": 83299
-				}, {
-					"age": "22 to 24",
-					"male": 66512,
-					"female": 59368
-				}, {
-					"age": "25 to 29",
-					"male": 99384,
-					"female": 93840
-				}, {
-					"age": "30 to 34",
-					"male": 98020,
-					"female": 94075
-				}, {
-					"age": "35 to 39",
-					"male": 87763,
-					"female": 85422
-				}, {
-					"age": "40 to 44",
-					"male": 87647,
-					"female": 84970
-				}, {
-					"age": "45 to 49",
-					"male": 89233,
-					"female": 88877
-				}, {
-					"age": "5 to 9",
-					"male": 103861,
-					"female": 98642
-				}, {
-					"age": "50 to 54",
-					"male": 98398,
-					"female": 101197
-				}, {
-					"age": "55 to 59",
-					"male": 95861,
-					"female": 96152
-				}, {
-					"age": "60 to 64",
-					"male": 79440,
-					"female": 85124
-				}, {
-					"age": "65 to 69",
-					"male": 60035,
-					"female": 64369
-				}, {
-					"age": "70 to 74",
-					"male": 42434,
-					"female": 49221
-				}, {
-					"age": "75 to 79",
-					"male": 30967,
-					"female": 39425
-				}, {
-					"age": "80 to 84",
-					"male": 23026,
-					"female": 33863
-				}, {
-					"age": "85 and Older",
-					"male": 20767,
-					"female": 40188
-				}
-			],
-			"KY": [{
-					"age": "0 to 5",
-					"male": 142062,
-					"female": 134389
-				}, {
-					"age": "10 to 14",
-					"male": 147586,
-					"female": 138629
-				}, {
-					"age": "15 to 17",
-					"male": 87696,
-					"female": 83139
-				}, {
-					"age": "18 to 21",
-					"male": 128249,
-					"female": 121099
-				}, {
-					"age": "22 to 24",
-					"male": 90794,
-					"female": 85930
-				}, {
-					"age": "25 to 29",
-					"male": 140811,
-					"female": 139855
-				}, {
-					"age": "30 to 34",
-					"male": 142732,
-					"female": 142551
-				}, {
-					"age": "35 to 39",
-					"male": 137211,
-					"female": 136524
-				}, {
-					"age": "40 to 44",
-					"male": 145358,
-					"female": 145251
-				}, {
-					"age": "45 to 49",
-					"male": 148883,
-					"female": 150922
-				}, {
-					"age": "5 to 9",
-					"male": 143532,
-					"female": 139032
-				}, {
-					"age": "50 to 54",
-					"male": 156890,
-					"female": 163054
-				}, {
-					"age": "55 to 59",
-					"male": 147006,
-					"female": 156302
-				}, {
-					"age": "60 to 64",
-					"male": 129457,
-					"female": 139434
-				}, {
-					"age": "65 to 69",
-					"male": 100883,
-					"female": 112696
-				}, {
-					"age": "70 to 74",
-					"male": 71867,
-					"female": 83665
-				}, {
-					"age": "75 to 79",
-					"male": 47828,
-					"female": 62775
-				}, {
-					"age": "80 to 84",
-					"male": 31477,
-					"female": 46386
-				}, {
-					"age": "85 and Older",
-					"male": 23886,
-					"female": 51512
-				}
-			],
-			"LA": [{
-					"age": "0 to 5",
-					"male": 157642,
-					"female": 152324
-				}, {
-					"age": "10 to 14",
-					"male": 157781,
-					"female": 149752
-				}, {
-					"age": "15 to 17",
-					"male": 93357,
-					"female": 90227
-				}, {
-					"age": "18 to 21",
-					"male": 136496,
-					"female": 131202
-				}, {
-					"age": "22 to 24",
-					"male": 101438,
-					"female": 101480
-				}, {
-					"age": "25 to 29",
-					"male": 167414,
-					"female": 168886
-				}, {
-					"age": "30 to 34",
-					"male": 160094,
-					"female": 161424
-				}, {
-					"age": "35 to 39",
-					"male": 142182,
-					"female": 141813
-				}, {
-					"age": "40 to 44",
-					"male": 138717,
-					"female": 144789
-				}, {
-					"age": "45 to 49",
-					"male": 145906,
-					"female": 152340
-				}, {
-					"age": "5 to 9",
-					"male": 159193,
-					"female": 154320
-				}, {
-					"age": "50 to 54",
-					"male": 157743,
-					"female": 167125
-				}, {
-					"age": "55 to 59",
-					"male": 149001,
-					"female": 161295
-				}, {
-					"age": "60 to 64",
-					"male": 129265,
-					"female": 139378
-				}, {
-					"age": "65 to 69",
-					"male": 98404,
-					"female": 106844
-				}, {
-					"age": "70 to 74",
-					"male": 65845,
-					"female": 83779
-				}, {
-					"age": "75 to 79",
-					"male": 47365,
-					"female": 60745
-				}, {
-					"age": "80 to 84",
-					"male": 29452,
-					"female": 48839
-				}, {
-					"age": "85 and Older",
-					"male": 23861,
-					"female": 47535
-				}
-			],
-			"MA": [{
-					"age": "0 to 5",
-					"male": 187066,
-					"female": 178775
-				}, {
-					"age": "10 to 14",
-					"male": 205530,
-					"female": 195312
-				}, {
-					"age": "15 to 17",
-					"male": 129433,
-					"female": 123212
-				}, {
-					"age": "18 to 21",
-					"male": 207432,
-					"female": 213820
-				}, {
-					"age": "22 to 24",
-					"male": 140356,
-					"female": 135839
-				}, {
-					"age": "25 to 29",
-					"male": 235172,
-					"female": 237653
-				}, {
-					"age": "30 to 34",
-					"male": 216220,
-					"female": 221692
-				}, {
-					"age": "35 to 39",
-					"male": 196293,
-					"female": 202730
-				}, {
-					"age": "40 to 44",
-					"male": 218111,
-					"female": 231277
-				}, {
-					"age": "45 to 49",
-					"male": 237629,
-					"female": 249926
-				}, {
-					"age": "5 to 9",
-					"male": 191958,
-					"female": 186343
-				}, {
-					"age": "50 to 54",
-					"male": 247973,
-					"female": 260886
-				}, {
-					"age": "55 to 59",
-					"male": 227238,
-					"female": 241029
-				}, {
-					"age": "60 to 64",
-					"male": 189981,
-					"female": 211282
-				}, {
-					"age": "65 to 69",
-					"male": 146129,
-					"female": 164268
-				}, {
-					"age": "70 to 74",
-					"male": 100745,
-					"female": 123577
-				}, {
-					"age": "75 to 79",
-					"male": 70828,
-					"female": 92141
-				}, {
-					"age": "80 to 84",
-					"male": 52074,
-					"female": 81603
-				}, {
-					"age": "85 and Older",
-					"male": 49482,
-					"female": 104571
-				}
-			],
-			"MD": [{
-					"age": "0 to 5",
-					"male": 187617,
-					"female": 180105
-				}, {
-					"age": "10 to 14",
-					"male": 191787,
-					"female": 185380
-				}, {
-					"age": "15 to 17",
-					"male": 118027,
-					"female": 113549
-				}, {
-					"age": "18 to 21",
-					"male": 166991,
-					"female": 159589
-				}, {
-					"age": "22 to 24",
-					"male": 120617,
-					"female": 116602
-				}, {
-					"age": "25 to 29",
-					"male": 205555,
-					"female": 206944
-				}, {
-					"age": "30 to 34",
-					"male": 196824,
-					"female": 203989
-				}, {
-					"age": "35 to 39",
-					"male": 179340,
-					"female": 193957
-				}, {
-					"age": "40 to 44",
-					"male": 195388,
-					"female": 205570
-				}, {
-					"age": "45 to 49",
-					"male": 208382,
-					"female": 225458
-				}, {
-					"age": "5 to 9",
-					"male": 189781,
-					"female": 182034
-				}, {
-					"age": "50 to 54",
-					"male": 217574,
-					"female": 235604
-				}, {
-					"age": "55 to 59",
-					"male": 193789,
-					"female": 210582
-				}, {
-					"age": "60 to 64",
-					"male": 161828,
-					"female": 186524
-				}, {
-					"age": "65 to 69",
-					"male": 123204,
-					"female": 144193
-				}, {
-					"age": "70 to 74",
-					"male": 84114,
-					"female": 101563
-				}, {
-					"age": "75 to 79",
-					"male": 56755,
-					"female": 75715
-				}, {
-					"age": "80 to 84",
-					"male": 39615,
-					"female": 59728
-				}, {
-					"age": "85 and Older",
-					"male": 35455,
-					"female": 70809
-				}
-			],
-			"ME": [{
-					"age": "0 to 5",
-					"male": 33298,
-					"female": 32108
-				}, {
-					"age": "10 to 14",
-					"male": 38254,
-					"female": 36846
-				}, {
-					"age": "15 to 17",
-					"male": 24842,
-					"female": 23688
-				}, {
-					"age": "18 to 21",
-					"male": 35315,
-					"female": 33777
-				}, {
-					"age": "22 to 24",
-					"male": 23007,
-					"female": 21971
-				}, {
-					"age": "25 to 29",
-					"male": 37685,
-					"female": 38353
-				}, {
-					"age": "30 to 34",
-					"male": 36838,
-					"female": 37697
-				}, {
-					"age": "35 to 39",
-					"male": 35988,
-					"female": 37686
-				}, {
-					"age": "40 to 44",
-					"male": 42092,
-					"female": 42912
-				}, {
-					"age": "45 to 49",
-					"male": 47141,
-					"female": 49161
-				}, {
-					"age": "5 to 9",
-					"male": 38066,
-					"female": 35151
-				}, {
-					"age": "50 to 54",
-					"male": 53458,
-					"female": 55451
-				}, {
-					"age": "55 to 59",
-					"male": 51789,
-					"female": 55407
-				}, {
-					"age": "60 to 64",
-					"male": 47171,
-					"female": 49840
-				}, {
-					"age": "65 to 69",
-					"male": 37495,
-					"female": 39678
-				}, {
-					"age": "70 to 74",
-					"male": 26300,
-					"female": 28932
-				}, {
-					"age": "75 to 79",
-					"male": 18197,
-					"female": 22047
-				}, {
-					"age": "80 to 84",
-					"male": 12824,
-					"female": 18302
-				}, {
-					"age": "85 and Older",
-					"male": 10321,
-					"female": 20012
-				}
-			],
-			"MI": [{
-					"age": "0 to 5",
-					"male": 295157,
-					"female": 280629
-				}, {
-					"age": "10 to 14",
-					"male": 329983,
-					"female": 319870
-				}, {
-					"age": "15 to 17",
-					"male": 210017,
-					"female": 199977
-				}, {
-					"age": "18 to 21",
-					"male": 299937,
-					"female": 287188
-				}, {
-					"age": "22 to 24",
-					"male": 208270,
-					"female": 202858
-				}, {
-					"age": "25 to 29",
-					"male": 303606,
-					"female": 298013
-				}, {
-					"age": "30 to 34",
-					"male": 292780,
-					"female": 296303
-				}, {
-					"age": "35 to 39",
-					"male": 283925,
-					"female": 288526
-				}, {
-					"age": "40 to 44",
-					"male": 314544,
-					"female": 319923
-				}, {
-					"age": "45 to 49",
-					"male": 337524,
-					"female": 344097
-				}, {
-					"age": "5 to 9",
-					"male": 316345,
-					"female": 297675
-				}, {
-					"age": "50 to 54",
-					"male": 366054,
-					"female": 378332
-				}, {
-					"age": "55 to 59",
-					"male": 349590,
-					"female": 369347
-				}, {
-					"age": "60 to 64",
-					"male": 303421,
-					"female": 323815
-				}, {
-					"age": "65 to 69",
-					"male": 230810,
-					"female": 252455
-				}, {
-					"age": "70 to 74",
-					"male": 161676,
-					"female": 186453
-				}, {
-					"age": "75 to 79",
-					"male": 112555,
-					"female": 141554
-				}, {
-					"age": "80 to 84",
-					"male": 78669,
-					"female": 116914
-				}, {
-					"age": "85 and Older",
-					"male": 67110,
-					"female": 134669
-				}
-			],
-			"MN": [{
-					"age": "0 to 5",
-					"male": 178616,
-					"female": 170645
-				}, {
-					"age": "10 to 14",
-					"male": 180951,
-					"female": 174374
-				}, {
-					"age": "15 to 17",
-					"male": 110001,
-					"female": 104197
-				}, {
-					"age": "18 to 21",
-					"male": 148247,
-					"female": 144611
-				}, {
-					"age": "22 to 24",
-					"male": 108864,
-					"female": 103755
-				}, {
-					"age": "25 to 29",
-					"male": 185766,
-					"female": 180698
-				}, {
-					"age": "30 to 34",
-					"male": 189374,
-					"female": 184845
-				}, {
-					"age": "35 to 39",
-					"male": 166613,
-					"female": 160534
-				}, {
-					"age": "40 to 44",
-					"male": 172583,
-					"female": 171011
-				}, {
-					"age": "45 to 49",
-					"male": 184130,
-					"female": 182785
-				}, {
-					"age": "5 to 9",
-					"male": 185244,
-					"female": 176674
-				}, {
-					"age": "50 to 54",
-					"male": 202427,
-					"female": 203327
-				}, {
-					"age": "55 to 59",
-					"male": 187216,
-					"female": 189980
-				}, {
-					"age": "60 to 64",
-					"male": 157586,
-					"female": 160588
-				}, {
-					"age": "65 to 69",
-					"male": 114903,
-					"female": 121985
-				}, {
-					"age": "70 to 74",
-					"male": 81660,
-					"female": 92401
-				}, {
-					"age": "75 to 79",
-					"male": 57855,
-					"female": 72839
-				}, {
-					"age": "80 to 84",
-					"male": 42192,
-					"female": 58545
-				}, {
-					"age": "85 and Older",
-					"male": 37938,
-					"female": 73211
-				}
-			],
-			"MO": [{
-					"age": "0 to 5",
-					"male": 192851,
-					"female": 183921
-				}, {
-					"age": "10 to 14",
-					"male": 201273,
-					"female": 190020
-				}, {
-					"age": "15 to 17",
-					"male": 122944,
-					"female": 116383
-				}, {
-					"age": "18 to 21",
-					"male": 175782,
-					"female": 169076
-				}, {
-					"age": "22 to 24",
-					"male": 124584,
-					"female": 123027
-				}, {
-					"age": "25 to 29",
-					"male": 200511,
-					"female": 200134
-				}, {
-					"age": "30 to 34",
-					"male": 197781,
-					"female": 198735
-				}, {
-					"age": "35 to 39",
-					"male": 181485,
-					"female": 180002
-				}, {
-					"age": "40 to 44",
-					"male": 183318,
-					"female": 188038
-				}, {
-					"age": "45 to 49",
-					"male": 194538,
-					"female": 199735
-				}, {
-					"age": "5 to 9",
-					"male": 200091,
-					"female": 193196
-				}, {
-					"age": "50 to 54",
-					"male": 218663,
-					"female": 225083
-				}, {
-					"age": "55 to 59",
-					"male": 199513,
-					"female": 216459
-				}, {
-					"age": "60 to 64",
-					"male": 176036,
-					"female": 187668
-				}, {
-					"age": "65 to 69",
-					"male": 135605,
-					"female": 150815
-				}, {
-					"age": "70 to 74",
-					"male": 99845,
-					"female": 117802
-				}, {
-					"age": "75 to 79",
-					"male": 70734,
-					"female": 88769
-				}, {
-					"age": "80 to 84",
-					"male": 48118,
-					"female": 72085
-				}, {
-					"age": "85 and Older",
-					"male": 40331,
-					"female": 80497
-				}
-			],
-			"MS": [{
-					"age": "0 to 5",
-					"male": 100654,
-					"female": 97079
-				}, {
-					"age": "10 to 14",
-					"male": 107363,
-					"female": 101958
-				}, {
-					"age": "15 to 17",
-					"male": 62923,
-					"female": 60591
-				}, {
-					"age": "18 to 21",
-					"male": 94460,
-					"female": 94304
-				}, {
-					"age": "22 to 24",
-					"male": 63870,
-					"female": 58909
-				}, {
-					"age": "25 to 29",
-					"male": 96027,
-					"female": 98023
-				}, {
-					"age": "30 to 34",
-					"male": 95533,
-					"female": 98837
-				}, {
-					"age": "35 to 39",
-					"male": 88278,
-					"female": 92876
-				}, {
-					"age": "40 to 44",
-					"male": 93579,
-					"female": 97851
-				}, {
-					"age": "45 to 49",
-					"male": 92103,
-					"female": 98871
-				}, {
-					"age": "5 to 9",
-					"male": 104911,
-					"female": 100694
-				}, {
-					"age": "50 to 54",
-					"male": 98578,
-					"female": 106516
-				}, {
-					"age": "55 to 59",
-					"male": 94835,
-					"female": 101616
-				}, {
-					"age": "60 to 64",
-					"male": 80677,
-					"female": 91332
-				}, {
-					"age": "65 to 69",
-					"male": 64386,
-					"female": 72940
-				}, {
-					"age": "70 to 74",
-					"male": 46712,
-					"female": 56013
-				}, {
-					"age": "75 to 79",
-					"male": 32079,
-					"female": 42598
-				}, {
-					"age": "80 to 84",
-					"male": 19966,
-					"female": 32724
-				}, {
-					"age": "85 and Older",
-					"male": 14789,
-					"female": 32626
-				}
-			],
-			"MT": [{
-					"age": "0 to 5",
-					"male": 31021,
-					"female": 29676
-				}, {
-					"age": "10 to 14",
-					"male": 30960,
-					"female": 29710
-				}, {
-					"age": "15 to 17",
-					"male": 19558,
-					"female": 18061
-				}, {
-					"age": "18 to 21",
-					"male": 30975,
-					"female": 27314
-				}, {
-					"age": "22 to 24",
-					"male": 21419,
-					"female": 20153
-				}, {
-					"age": "25 to 29",
-					"male": 32300,
-					"female": 30805
-				}, {
-					"age": "30 to 34",
-					"male": 33167,
-					"female": 30964
-				}, {
-					"age": "35 to 39",
-					"male": 29772,
-					"female": 28999
-				}, {
-					"age": "40 to 44",
-					"male": 28538,
-					"female": 27311
-				}, {
-					"age": "45 to 49",
-					"male": 30820,
-					"female": 30608
-				}, {
-					"age": "5 to 9",
-					"male": 33641,
-					"female": 31763
-				}, {
-					"age": "50 to 54",
-					"male": 36761,
-					"female": 37476
-				}, {
-					"age": "55 to 59",
-					"male": 38291,
-					"female": 40028
-				}, {
-					"age": "60 to 64",
-					"male": 35306,
-					"female": 35021
-				}, {
-					"age": "65 to 69",
-					"male": 27786,
-					"female": 27047
-				}, {
-					"age": "70 to 74",
-					"male": 19708,
-					"female": 19938
-				}, {
-					"age": "75 to 79",
-					"male": 13344,
-					"female": 14751
-				}, {
-					"age": "80 to 84",
-					"male": 9435,
-					"female": 11392
-				}, {
-					"age": "85 and Older",
-					"male": 7361,
-					"female": 13519
-				}
-			],
-			"NC": [{
-					"age": "0 to 5",
-					"male": 311288,
-					"female": 299882
-				}, {
-					"age": "10 to 14",
-					"male": 333622,
-					"female": 316123
-				}, {
-					"age": "15 to 17",
-					"male": 194507,
-					"female": 185872
-				}, {
-					"age": "18 to 21",
-					"male": 299506,
-					"female": 275504
-				}, {
-					"age": "22 to 24",
-					"male": 207910,
-					"female": 196277
-				}, {
-					"age": "25 to 29",
-					"male": 317709,
-					"female": 324593
-				}, {
-					"age": "30 to 34",
-					"male": 311582,
-					"female": 323483
-				}, {
-					"age": "35 to 39",
-					"male": 308195,
-					"female": 319405
-				}, {
-					"age": "40 to 44",
-					"male": 334818,
-					"female": 349484
-				}, {
-					"age": "45 to 49",
-					"male": 331086,
-					"female": 345940
-				}, {
-					"age": "5 to 9",
-					"male": 325977,
-					"female": 316564
-				}, {
-					"age": "50 to 54",
-					"male": 334674,
-					"female": 355791
-				}, {
-					"age": "55 to 59",
-					"male": 308840,
-					"female": 341170
-				}, {
-					"age": "60 to 64",
-					"male": 270508,
-					"female": 303831
-				}, {
-					"age": "65 to 69",
-					"male": 225997,
-					"female": 254521
-				}, {
-					"age": "70 to 74",
-					"male": 154010,
-					"female": 186677
-				}, {
-					"age": "75 to 79",
-					"male": 106165,
-					"female": 139937
-				}, {
-					"age": "80 to 84",
-					"male": 68871,
-					"female": 104839
-				}, {
-					"age": "85 and Older",
-					"male": 50143,
-					"female": 110032
-				}
-			],
-			"ND": [{
-					"age": "0 to 5",
-					"male": 24524,
-					"female": 24340
-				}, {
-					"age": "10 to 14",
-					"male": 20939,
-					"female": 20728
-				}, {
-					"age": "15 to 17",
-					"male": 13197,
-					"female": 12227
-				}, {
-					"age": "18 to 21",
-					"male": 27439,
-					"female": 22447
-				}, {
-					"age": "22 to 24",
-					"male": 21413,
-					"female": 19299
-				}, {
-					"age": "25 to 29",
-					"male": 29543,
-					"female": 24602
-				}, {
-					"age": "30 to 34",
-					"male": 26425,
-					"female": 22798
-				}, {
-					"age": "35 to 39",
-					"male": 21846,
-					"female": 19046
-				}, {
-					"age": "40 to 44",
-					"male": 20123,
-					"female": 19010
-				}, {
-					"age": "45 to 49",
-					"male": 21386,
-					"female": 20572
-				}, {
-					"age": "5 to 9",
-					"male": 24336,
-					"female": 22721
-				}, {
-					"age": "50 to 54",
-					"male": 25126,
-					"female": 24631
-				}, {
-					"age": "55 to 59",
-					"male": 24412,
-					"female": 24022
-				}, {
-					"age": "60 to 64",
-					"male": 21598,
-					"female": 20250
-				}, {
-					"age": "65 to 69",
-					"male": 14868,
-					"female": 14633
-				}, {
-					"age": "70 to 74",
-					"male": 10729,
-					"female": 11878
-				}, {
-					"age": "75 to 79",
-					"male": 8086,
-					"female": 9626
-				}, {
-					"age": "80 to 84",
-					"male": 6222,
-					"female": 9241
-				}, {
-					"age": "85 and Older",
-					"male": 5751,
-					"female": 11606
-				}
-			],
-			"NE": [{
-					"age": "0 to 5",
-					"male": 67062,
-					"female": 62974
-				}, {
-					"age": "10 to 14",
-					"male": 64843,
-					"female": 62695
-				}, {
-					"age": "15 to 17",
-					"male": 38679,
-					"female": 36116
-				}, {
-					"age": "18 to 21",
-					"male": 56143,
-					"female": 54195
-				}, {
-					"age": "22 to 24",
-					"male": 40531,
-					"female": 38139
-				}, {
-					"age": "25 to 29",
-					"male": 64277,
-					"female": 61028
-				}, {
-					"age": "30 to 34",
-					"male": 64230,
-					"female": 62423
-				}, {
-					"age": "35 to 39",
-					"male": 57741,
-					"female": 55950
-				}, {
-					"age": "40 to 44",
-					"male": 56139,
-					"female": 54518
-				}, {
-					"age": "45 to 49",
-					"male": 57526,
-					"female": 57077
-				}, {
-					"age": "5 to 9",
-					"male": 68079,
-					"female": 64509
-				}, {
-					"age": "50 to 54",
-					"male": 64444,
-					"female": 65106
-				}, {
-					"age": "55 to 59",
-					"male": 61285,
-					"female": 62057
-				}, {
-					"age": "60 to 64",
-					"male": 52560,
-					"female": 54977
-				}, {
-					"age": "65 to 69",
-					"male": 39372,
-					"female": 41007
-				}, {
-					"age": "70 to 74",
-					"male": 27091,
-					"female": 31903
-				}, {
-					"age": "75 to 79",
-					"male": 20472,
-					"female": 26808
-				}, {
-					"age": "80 to 84",
-					"male": 15625,
-					"female": 21401
-				}, {
-					"age": "85 and Older",
-					"male": 13507,
-					"female": 26876
-				}
-			],
-			"NH": [{
-					"age": "0 to 5",
-					"male": 33531,
-					"female": 32061
-				}, {
-					"age": "10 to 14",
-					"male": 40472,
-					"female": 39574
-				}, {
-					"age": "15 to 17",
-					"male": 26632,
-					"female": 25155
-				}, {
-					"age": "18 to 21",
-					"male": 39600,
-					"female": 39270
-				}, {
-					"age": "22 to 24",
-					"male": 25067,
-					"female": 23439
-				}, {
-					"age": "25 to 29",
-					"male": 39514,
-					"female": 37529
-				}, {
-					"age": "30 to 34",
-					"male": 37282,
-					"female": 37104
-				}, {
-					"age": "35 to 39",
-					"male": 37177,
-					"female": 38432
-				}, {
-					"age": "40 to 44",
-					"male": 43571,
-					"female": 43894
-				}, {
-					"age": "45 to 49",
-					"male": 50559,
-					"female": 51423
-				}, {
-					"age": "5 to 9",
-					"male": 37873,
-					"female": 36382
-				}, {
-					"age": "50 to 54",
-					"male": 55573,
-					"female": 57097
-				}, {
-					"age": "55 to 59",
-					"male": 50802,
-					"female": 52906
-				}, {
-					"age": "60 to 64",
-					"male": 44934,
-					"female": 45384
-				}, {
-					"age": "65 to 69",
-					"male": 33322,
-					"female": 34773
-				}, {
-					"age": "70 to 74",
-					"male": 22786,
-					"female": 25421
-				}, {
-					"age": "75 to 79",
-					"male": 14988,
-					"female": 18865
-				}, {
-					"age": "80 to 84",
-					"male": 10661,
-					"female": 14921
-				}, {
-					"age": "85 and Older",
-					"male": 9140,
-					"female": 17087
-				}
-			],
-			"NJ": [{
-					"age": "0 to 5",
-					"male": 272239,
-					"female": 261405
-				}, {
-					"age": "10 to 14",
-					"male": 296798,
-					"female": 281395
-				}, {
-					"age": "15 to 17",
-					"male": 183608,
-					"female": 174902
-				}, {
-					"age": "18 to 21",
-					"male": 236406,
-					"female": 219234
-				}, {
-					"age": "22 to 24",
-					"male": 171414,
-					"female": 162551
-				}, {
-					"age": "25 to 29",
-					"male": 288078,
-					"female": 278395
-				}, {
-					"age": "30 to 34",
-					"male": 286242,
-					"female": 288661
-				}, {
-					"age": "35 to 39",
-					"male": 278323,
-					"female": 286407
-				}, {
-					"age": "40 to 44",
-					"male": 306371,
-					"female": 315976
-				}, {
-					"age": "45 to 49",
-					"male": 324604,
-					"female": 340805
-				}, {
-					"age": "5 to 9",
-					"male": 280348,
-					"female": 272618
-				}, {
-					"age": "50 to 54",
-					"male": 335379,
-					"female": 351753
-				}, {
-					"age": "55 to 59",
-					"male": 297889,
-					"female": 316509
-				}, {
-					"age": "60 to 64",
-					"male": 243909,
-					"female": 272971
-				}, {
-					"age": "65 to 69",
-					"male": 187928,
-					"female": 216233
-				}, {
-					"age": "70 to 74",
-					"male": 130458,
-					"female": 162862
-				}, {
-					"age": "75 to 79",
-					"male": 92629,
-					"female": 121544
-				}, {
-					"age": "80 to 84",
-					"male": 68009,
-					"female": 107002
-				}, {
-					"age": "85 and Older",
-					"male": 62395,
-					"female": 130163
-				}
-			],
-			"NM": [{
-					"age": "0 to 5",
-					"male": 70556,
-					"female": 67433
-				}, {
-					"age": "10 to 14",
-					"male": 72070,
-					"female": 69774
-				}, {
-					"age": "15 to 17",
-					"male": 42831,
-					"female": 41474
-				}, {
-					"age": "18 to 21",
-					"male": 61671,
-					"female": 59289
-				}, {
-					"age": "22 to 24",
-					"male": 47139,
-					"female": 41506
-				}, {
-					"age": "25 to 29",
-					"male": 73009,
-					"female": 67866
-				}, {
-					"age": "30 to 34",
-					"male": 69394,
-					"female": 66383
-				}, {
-					"age": "35 to 39",
-					"male": 62108,
-					"female": 60810
-				}, {
-					"age": "40 to 44",
-					"male": 61075,
-					"female": 61508
-				}, {
-					"age": "45 to 49",
-					"male": 62327,
-					"female": 64988
-				}, {
-					"age": "5 to 9",
-					"male": 72877,
-					"female": 69675
-				}, {
-					"age": "50 to 54",
-					"male": 69856,
-					"female": 73683
-				}, {
-					"age": "55 to 59",
-					"male": 66381,
-					"female": 73952
-				}, {
-					"age": "60 to 64",
-					"male": 61719,
-					"female": 66285
-				}, {
-					"age": "65 to 69",
-					"male": 48657,
-					"female": 54175
-				}, {
-					"age": "70 to 74",
-					"male": 35942,
-					"female": 39668
-				}, {
-					"age": "75 to 79",
-					"male": 24922,
-					"female": 29968
-				}, {
-					"age": "80 to 84",
-					"male": 16894,
-					"female": 21049
-				}, {
-					"age": "85 and Older",
-					"male": 12986,
-					"female": 22217
-				}
-			],
-			"NV": [{
-					"age": "0 to 5",
-					"male": 91556,
-					"female": 87252
-				}, {
-					"age": "10 to 14",
-					"male": 92376,
-					"female": 90127
-				}, {
-					"age": "15 to 17",
-					"male": 56635,
-					"female": 53976
-				}, {
-					"age": "18 to 21",
-					"male": 72185,
-					"female": 68570
-				}, {
-					"age": "22 to 24",
-					"male": 57429,
-					"female": 54635
-				}, {
-					"age": "25 to 29",
-					"male": 103079,
-					"female": 98260
-				}, {
-					"age": "30 to 34",
-					"male": 101626,
-					"female": 97574
-				}, {
-					"age": "35 to 39",
-					"male": 95952,
-					"female": 91752
-				}, {
-					"age": "40 to 44",
-					"male": 98405,
-					"female": 96018
-				}, {
-					"age": "45 to 49",
-					"male": 98297,
-					"female": 92880
-				}, {
-					"age": "5 to 9",
-					"male": 97639,
-					"female": 92019
-				}, {
-					"age": "50 to 54",
-					"male": 96647,
-					"female": 93838
-				}, {
-					"age": "55 to 59",
-					"male": 86430,
-					"female": 90916
-				}, {
-					"age": "60 to 64",
-					"male": 79651,
-					"female": 82206
-				}, {
-					"age": "65 to 69",
-					"male": 65973,
-					"female": 70582
-				}, {
-					"age": "70 to 74",
-					"male": 48879,
-					"female": 50485
-				}, {
-					"age": "75 to 79",
-					"male": 31798,
-					"female": 33652
-				}, {
-					"age": "80 to 84",
-					"male": 19722,
-					"female": 23399
-				}, {
-					"age": "85 and Older",
-					"male": 13456,
-					"female": 22760
-				}
-			],
-			"NY": [{
-					"age": "0 to 5",
-					"male": 601900,
-					"female": 574532
-				}, {
-					"age": "10 to 14",
-					"male": 602877,
-					"female": 576846
-				}, {
-					"age": "15 to 17",
-					"male": 381224,
-					"female": 364149
-				}, {
-					"age": "18 to 21",
-					"male": 579276,
-					"female": 563517
-				}, {
-					"age": "22 to 24",
-					"male": 423461,
-					"female": 419351
-				}, {
-					"age": "25 to 29",
-					"male": 722290,
-					"female": 728064
-				}, {
-					"age": "30 to 34",
-					"male": 668918,
-					"female": 684340
-				}, {
-					"age": "35 to 39",
-					"male": 607495,
-					"female": 628810
-				}, {
-					"age": "40 to 44",
-					"male": 632186,
-					"female": 660306
-				}, {
-					"age": "45 to 49",
-					"male": 674516,
-					"female": 708960
-				}, {
-					"age": "5 to 9",
-					"male": 588624,
-					"female": 561622
-				}, {
-					"age": "50 to 54",
-					"male": 695357,
-					"female": 740342
-				}, {
-					"age": "55 to 59",
-					"male": 633602,
-					"female": 685163
-				}, {
-					"age": "60 to 64",
-					"male": 540901,
-					"female": 604110
-				}, {
-					"age": "65 to 69",
-					"male": 409399,
-					"female": 483158
-				}, {
-					"age": "70 to 74",
-					"male": 287440,
-					"female": 357971
-				}, {
-					"age": "75 to 79",
-					"male": 207495,
-					"female": 274626
-				}, {
-					"age": "80 to 84",
-					"male": 150642,
-					"female": 231063
-				}, {
-					"age": "85 and Older",
-					"male": 134198,
-					"female": 284443
-				}
-			],
-			"OH": [{
-					"age": "0 to 5",
-					"male": 356598,
-					"female": 339398
-				}, {
-					"age": "10 to 14",
-					"male": 385542,
-					"female": 371142
-				}, {
-					"age": "15 to 17",
-					"male": 239825,
-					"female": 228296
-				}, {
-					"age": "18 to 21",
-					"male": 331115,
-					"female": 318019
-				}, {
-					"age": "22 to 24",
-					"male": 227916,
-					"female": 225400
-				}, {
-					"age": "25 to 29",
-					"male": 369646,
-					"female": 367475
-				}, {
-					"age": "30 to 34",
-					"male": 356757,
-					"female": 359375
-				}, {
-					"age": "35 to 39",
-					"male": 338273,
-					"female": 340410
-				}, {
-					"age": "40 to 44",
-					"male": 368578,
-					"female": 375476
-				}, {
-					"age": "45 to 49",
-					"male": 385388,
-					"female": 394341
-				}, {
-					"age": "5 to 9",
-					"male": 376976,
-					"female": 358242
-				}, {
-					"age": "50 to 54",
-					"male": 420561,
-					"female": 438290
-				}, {
-					"age": "55 to 59",
-					"male": 403067,
-					"female": 427137
-				}, {
-					"age": "60 to 64",
-					"male": 350563,
-					"female": 374890
-				}, {
-					"age": "65 to 69",
-					"male": 262844,
-					"female": 292745
-				}, {
-					"age": "70 to 74",
-					"male": 183419,
-					"female": 222552
-				}, {
-					"age": "75 to 79",
-					"male": 131940,
-					"female": 173303
-				}, {
-					"age": "80 to 84",
-					"male": 93267,
-					"female": 140079
-				}, {
-					"age": "85 and Older",
-					"male": 80618,
-					"female": 166514
-				}
-			],
-			"OK": [{
-					"age": "0 to 5",
-					"male": 135423,
-					"female": 130297
-				}, {
-					"age": "10 to 14",
-					"male": 133539,
-					"female": 128110
-				}, {
-					"age": "15 to 17",
-					"male": 79207,
-					"female": 74080
-				}, {
-					"age": "18 to 21",
-					"male": 115423,
-					"female": 107651
-				}, {
-					"age": "22 to 24",
-					"male": 85610,
-					"female": 80749
-				}, {
-					"age": "25 to 29",
-					"male": 135217,
-					"female": 130966
-				}, {
-					"age": "30 to 34",
-					"male": 132683,
-					"female": 128496
-				}, {
-					"age": "35 to 39",
-					"male": 118240,
-					"female": 116104
-				}, {
-					"age": "40 to 44",
-					"male": 118534,
-					"female": 117501
-				}, {
-					"age": "45 to 49",
-					"male": 117065,
-					"female": 118300
-				}, {
-					"age": "5 to 9",
-					"male": 137212,
-					"female": 130040
-				}, {
-					"age": "50 to 54",
-					"male": 129964,
-					"female": 132941
-				}, {
-					"age": "55 to 59",
-					"male": 121988,
-					"female": 129033
-				}, {
-					"age": "60 to 64",
-					"male": 105018,
-					"female": 113144
-				}, {
-					"age": "65 to 69",
-					"male": 82818,
-					"female": 93914
-				}, {
-					"age": "70 to 74",
-					"male": 62979,
-					"female": 71856
-				}, {
-					"age": "75 to 79",
-					"male": 43899,
-					"female": 54848
-				}, {
-					"age": "80 to 84",
-					"male": 29237,
-					"female": 42044
-				}, {
-					"age": "85 and Older",
-					"male": 22888,
-					"female": 42715
-				}
-			],
-			"OR": [{
-					"age": "0 to 5",
-					"male": 118561,
-					"female": 112841
-				}, {
-					"age": "10 to 14",
-					"male": 123223,
-					"female": 116373
-				}, {
-					"age": "15 to 17",
-					"male": 75620,
-					"female": 71764
-				}, {
-					"age": "18 to 21",
-					"male": 106121,
-					"female": 103044
-				}, {
-					"age": "22 to 24",
-					"male": 79106,
-					"female": 75639
-				}, {
-					"age": "25 to 29",
-					"male": 134241,
-					"female": 131539
-				}, {
-					"age": "30 to 34",
-					"male": 137090,
-					"female": 135734
-				}, {
-					"age": "35 to 39",
-					"male": 128812,
-					"female": 126071
-				}, {
-					"age": "40 to 44",
-					"male": 131405,
-					"female": 126875
-				}, {
-					"age": "45 to 49",
-					"male": 125373,
-					"female": 125074
-				}, {
-					"age": "5 to 9",
-					"male": 122920,
-					"female": 119049
-				}, {
-					"age": "50 to 54",
-					"male": 131932,
-					"female": 137021
-				}, {
-					"age": "55 to 59",
-					"male": 130434,
-					"female": 141380
-				}, {
-					"age": "60 to 64",
-					"male": 129063,
-					"female": 136051
-				}, {
-					"age": "65 to 69",
-					"male": 99577,
-					"female": 106208
-				}, {
-					"age": "70 to 74",
-					"male": 69028,
-					"female": 77428
-				}, {
-					"age": "75 to 79",
-					"male": 46055,
-					"female": 53682
-				}, {
-					"age": "80 to 84",
-					"male": 30900,
-					"female": 41853
-				}, {
-					"age": "85 and Older",
-					"male": 28992,
-					"female": 53154
-				}
-			],
-			"PA": [{
-					"age": "0 to 5",
-					"male": 367290,
-					"female": 350371
-				}, {
-					"age": "10 to 14",
-					"male": 393719,
-					"female": 374666
-				}, {
-					"age": "15 to 17",
-					"male": 250754,
-					"female": 236670
-				}, {
-					"age": "18 to 21",
-					"male": 378940,
-					"female": 369819
-				}, {
-					"age": "22 to 24",
-					"male": 251063,
-					"female": 243391
-				}, {
-					"age": "25 to 29",
-					"male": 420247,
-					"female": 410193
-				}, {
-					"age": "30 to 34",
-					"male": 391190,
-					"female": 387225
-				}, {
-					"age": "35 to 39",
-					"male": 365742,
-					"female": 365646
-				}, {
-					"age": "40 to 44",
-					"male": 399152,
-					"female": 405848
-				}, {
-					"age": "45 to 49",
-					"male": 435250,
-					"female": 446328
-				}, {
-					"age": "5 to 9",
-					"male": 381910,
-					"female": 366854
-				}, {
-					"age": "50 to 54",
-					"male": 472070,
-					"female": 489057
-				}, {
-					"age": "55 to 59",
-					"male": 456215,
-					"female": 475044
-				}, {
-					"age": "60 to 64",
-					"male": 390595,
-					"female": 419924
-				}, {
-					"age": "65 to 69",
-					"male": 301610,
-					"female": 335127
-				}, {
-					"age": "70 to 74",
-					"male": 212200,
-					"female": 256188
-				}, {
-					"age": "75 to 79",
-					"male": 156335,
-					"female": 205974
-				}, {
-					"age": "80 to 84",
-					"male": 117050,
-					"female": 178358
-				}, {
-					"age": "85 and Older",
-					"male": 104012,
-					"female": 217532
-				}
-			],
-			"RI": [{
-					"age": "0 to 5",
-					"male": 28289,
-					"female": 26941
-				}, {
-					"age": "10 to 14",
-					"male": 31383,
-					"female": 30724
-				}, {
-					"age": "15 to 17",
-					"male": 20093,
-					"female": 19249
-				}, {
-					"age": "18 to 21",
-					"male": 35376,
-					"female": 37870
-				}, {
-					"age": "22 to 24",
-					"male": 23397,
-					"female": 21358
-				}, {
-					"age": "25 to 29",
-					"male": 35958,
-					"female": 34710
-				}, {
-					"age": "30 to 34",
-					"male": 32410,
-					"female": 32567
-				}, {
-					"age": "35 to 39",
-					"male": 30325,
-					"female": 31145
-				}, {
-					"age": "40 to 44",
-					"male": 32542,
-					"female": 34087
-				}, {
-					"age": "45 to 49",
-					"male": 36151,
-					"female": 38462
-				}, {
-					"age": "5 to 9",
-					"male": 30462,
-					"female": 27878
-				}, {
-					"age": "50 to 54",
-					"male": 38419,
-					"female": 41642
-				}, {
-					"age": "55 to 59",
-					"male": 36706,
-					"female": 39127
-				}, {
-					"age": "60 to 64",
-					"male": 30349,
-					"female": 33752
-				}, {
-					"age": "65 to 69",
-					"male": 23462,
-					"female": 26311
-				}, {
-					"age": "70 to 74",
-					"male": 16385,
-					"female": 19335
-				}, {
-					"age": "75 to 79",
-					"male": 10978,
-					"female": 14833
-				}, {
-					"age": "80 to 84",
-					"male": 9224,
-					"female": 13439
-				}, {
-					"age": "85 and Older",
-					"male": 8479,
-					"female": 19843
-				}
-			],
-			"SC": [{
-					"age": "0 to 5",
-					"male": 148363,
-					"female": 144218
-				}, {
-					"age": "10 to 14",
-					"male": 153051,
-					"female": 148064
-				}, {
-					"age": "15 to 17",
-					"male": 92781,
-					"female": 88090
-				}, {
-					"age": "18 to 21",
-					"male": 150464,
-					"female": 136857
-				}, {
-					"age": "22 to 24",
-					"male": 99237,
-					"female": 99178
-				}, {
-					"age": "25 to 29",
-					"male": 156273,
-					"female": 156982
-				}, {
-					"age": "30 to 34",
-					"male": 148237,
-					"female": 153197
-				}, {
-					"age": "35 to 39",
-					"male": 139949,
-					"female": 146281
-				}, {
-					"age": "40 to 44",
-					"male": 151524,
-					"female": 157192
-				}, {
-					"age": "45 to 49",
-					"male": 153110,
-					"female": 163562
-				}, {
-					"age": "5 to 9",
-					"male": 156323,
-					"female": 150943
-				}, {
-					"age": "50 to 54",
-					"male": 161003,
-					"female": 173752
-				}, {
-					"age": "55 to 59",
-					"male": 150770,
-					"female": 169238
-				}, {
-					"age": "60 to 64",
-					"male": 141268,
-					"female": 160890
-				}, {
-					"age": "65 to 69",
-					"male": 120618,
-					"female": 137154
-				}, {
-					"age": "70 to 74",
-					"male": 85197,
-					"female": 97581
-				}, {
-					"age": "75 to 79",
-					"male": 55278,
-					"female": 69067
-				}, {
-					"age": "80 to 84",
-					"male": 33979,
-					"female": 50585
-				}, {
-					"age": "85 and Older",
-					"male": 24984,
-					"female": 52336
-				}
-			],
-			"SD": [{
-					"age": "0 to 5",
-					"male": 30615,
-					"female": 29377
-				}, {
-					"age": "10 to 14",
-					"male": 28360,
-					"female": 26492
-				}, {
-					"age": "15 to 17",
-					"male": 17193,
-					"female": 16250
-				}, {
-					"age": "18 to 21",
-					"male": 25514,
-					"female": 24234
-				}, {
-					"age": "22 to 24",
-					"male": 18413,
-					"female": 16324
-				}, {
-					"age": "25 to 29",
-					"male": 29131,
-					"female": 26757
-				}, {
-					"age": "30 to 34",
-					"male": 28133,
-					"female": 26710
-				}, {
-					"age": "35 to 39",
-					"male": 24971,
-					"female": 23347
-				}, {
-					"age": "40 to 44",
-					"male": 24234,
-					"female": 23231
-				}, {
-					"age": "45 to 49",
-					"male": 25555,
-					"female": 24867
-				}, {
-					"age": "5 to 9",
-					"male": 30399,
-					"female": 28980
-				}, {
-					"age": "50 to 54",
-					"male": 29754,
-					"female": 29530
-				}, {
-					"age": "55 to 59",
-					"male": 29075,
-					"female": 28968
-				}, {
-					"age": "60 to 64",
-					"male": 25633,
-					"female": 25530
-				}, {
-					"age": "65 to 69",
-					"male": 19320,
-					"female": 18489
-				}, {
-					"age": "70 to 74",
-					"male": 12964,
-					"female": 14702
-				}, {
-					"age": "75 to 79",
-					"male": 9646,
-					"female": 12077
-				}, {
-					"age": "80 to 84",
-					"male": 7669,
-					"female": 10566
-				}, {
-					"age": "85 and Older",
-					"male": 6898,
-					"female": 13282
-				}
-			],
-			"TN": [{
-					"age": "0 to 5",
-					"male": 204457,
-					"female": 196347
-				}, {
-					"age": "10 to 14",
-					"male": 217061,
-					"female": 206350
-				}, {
-					"age": "15 to 17",
-					"male": 129690,
-					"female": 124122
-				}, {
-					"age": "18 to 21",
-					"male": 183910,
-					"female": 175377
-				}, {
-					"age": "22 to 24",
-					"male": 132501,
-					"female": 134905
-				}, {
-					"age": "25 to 29",
-					"male": 210618,
-					"female": 214944
-				}, {
-					"age": "30 to 34",
-					"male": 209305,
-					"female": 214151
-				}, {
-					"age": "35 to 39",
-					"male": 200270,
-					"female": 207520
-				}, {
-					"age": "40 to 44",
-					"male": 216542,
-					"female": 219178
-				}, {
-					"age": "45 to 49",
-					"male": 217059,
-					"female": 224473
-				}, {
-					"age": "5 to 9",
-					"male": 210365,
-					"female": 204494
-				}, {
-					"age": "50 to 54",
-					"male": 223663,
-					"female": 238025
-				}, {
-					"age": "55 to 59",
-					"male": 210228,
-					"female": 229974
-				}, {
-					"age": "60 to 64",
-					"male": 186739,
-					"female": 207022
-				}, {
-					"age": "65 to 69",
-					"male": 153737,
-					"female": 171357
-				}, {
-					"age": "70 to 74",
-					"male": 108743,
-					"female": 125362
-				}, {
-					"age": "75 to 79",
-					"male": 72813,
-					"female": 94077
-				}, {
-					"age": "80 to 84",
-					"male": 46556,
-					"female": 71212
-				}, {
-					"age": "85 and Older",
-					"male": 33499,
-					"female": 72969
-				}
-			],
-			"TX": [{
-					"age": "0 to 5",
-					"male": 996070,
-					"female": 955235
-				}, {
-					"age": "10 to 14",
-					"male": 998209,
-					"female": 959762
-				}, {
-					"age": "15 to 17",
-					"male": 587712,
-					"female": 561008
-				}, {
-					"age": "18 to 21",
-					"male": 818590,
-					"female": 756451
-				}, {
-					"age": "22 to 24",
-					"male": 582570,
-					"female": 556850
-				}, {
-					"age": "25 to 29",
-					"male": 982673,
-					"female": 948564
-				}, {
-					"age": "30 to 34",
-					"male": 961403,
-					"female": 947710
-				}, {
-					"age": "35 to 39",
-					"male": 897542,
-					"female": 898907
-				}, {
-					"age": "40 to 44",
-					"male": 897922,
-					"female": 908091
-				}, {
-					"age": "45 to 49",
-					"male": 857621,
-					"female": 865642
-				}, {
-					"age": "5 to 9",
-					"male": 1021123,
-					"female": 979891
-				}, {
-					"age": "50 to 54",
-					"male": 861849,
-					"female": 880746
-				}, {
-					"age": "55 to 59",
-					"male": 761410,
-					"female": 799294
-				}, {
-					"age": "60 to 64",
-					"male": 635465,
-					"female": 692072
-				}, {
-					"age": "65 to 69",
-					"male": 483436,
-					"female": 533368
-				}, {
-					"age": "70 to 74",
-					"male": 330457,
-					"female": 389996
-				}, {
-					"age": "75 to 79",
-					"male": 228243,
-					"female": 289446
-				}, {
-					"age": "80 to 84",
-					"male": 153391,
-					"female": 219572
-				}, {
-					"age": "85 and Older",
-					"male": 115630,
-					"female": 224693
-				}
-			],
-			"UT": [{
-					"age": "0 to 5",
-					"male": 130873,
-					"female": 124371
-				}, {
-					"age": "10 to 14",
-					"male": 128076,
-					"female": 120364
-				}, {
-					"age": "15 to 17",
-					"male": 70832,
-					"female": 66798
-				}, {
-					"age": "18 to 21",
-					"male": 87877,
-					"female": 92950
-				}, {
-					"age": "22 to 24",
-					"male": 79431,
-					"female": 71405
-				}, {
-					"age": "25 to 29",
-					"male": 109125,
-					"female": 106576
-				}, {
-					"age": "30 to 34",
-					"male": 115198,
-					"female": 110546
-				}, {
-					"age": "35 to 39",
-					"male": 102771,
-					"female": 99664
-				}, {
-					"age": "40 to 44",
-					"male": 88181,
-					"female": 83229
-				}, {
-					"age": "45 to 49",
-					"male": 76552,
-					"female": 74993
-				}, {
-					"age": "5 to 9",
-					"male": 131094,
-					"female": 125110
-				}, {
-					"age": "50 to 54",
-					"male": 76913,
-					"female": 78113
-				}, {
-					"age": "55 to 59",
-					"male": 71490,
-					"female": 73221
-				}, {
-					"age": "60 to 64",
-					"male": 60996,
-					"female": 63835
-				}, {
-					"age": "65 to 69",
-					"male": 45491,
-					"female": 49273
-				}, {
-					"age": "70 to 74",
-					"male": 32191,
-					"female": 35931
-				}, {
-					"age": "75 to 79",
-					"male": 23112,
-					"female": 27761
-				}, {
-					"age": "80 to 84",
-					"male": 15827,
-					"female": 20155
-				}, {
-					"age": "85 and Older",
-					"male": 13199,
-					"female": 19855
-				}
-			],
-			"VA": [{
-					"age": "0 to 5",
-					"male": 262278,
-					"female": 250000
-				}, {
-					"age": "10 to 14",
-					"male": 266247,
-					"female": 251516
-				}, {
-					"age": "15 to 17",
-					"male": 160174,
-					"female": 153149
-				}, {
-					"age": "18 to 21",
-					"male": 248284,
-					"female": 233796
-				}, {
-					"age": "22 to 24",
-					"male": 175833,
-					"female": 167676
-				}, {
-					"age": "25 to 29",
-					"male": 296682,
-					"female": 287052
-				}, {
-					"age": "30 to 34",
-					"male": 286536,
-					"female": 283804
-				}, {
-					"age": "35 to 39",
-					"male": 264490,
-					"female": 265951
-				}, {
-					"age": "40 to 44",
-					"male": 278474,
-					"female": 286095
-				}, {
-					"age": "45 to 49",
-					"male": 286793,
-					"female": 297558
-				}, {
-					"age": "5 to 9",
-					"male": 264413,
-					"female": 256891
-				}, {
-					"age": "50 to 54",
-					"male": 296096,
-					"female": 309898
-				}, {
-					"age": "55 to 59",
-					"male": 262954,
-					"female": 283219
-				}, {
-					"age": "60 to 64",
-					"male": 228721,
-					"female": 250389
-				}, {
-					"age": "65 to 69",
-					"male": 178498,
-					"female": 197033
-				}, {
-					"age": "70 to 74",
-					"male": 123597,
-					"female": 146376
-				}, {
-					"age": "75 to 79",
-					"male": 82281,
-					"female": 103044
-				}, {
-					"age": "80 to 84",
-					"male": 55037,
-					"female": 80081
-				}, {
-					"age": "85 and Older",
-					"male": 43560,
-					"female": 92154
-				}
-			],
-			"VT": [{
-					"age": "0 to 5",
-					"male": 15766,
-					"female": 14629
-				}, {
-					"age": "10 to 14",
-					"male": 18674,
-					"female": 17317
-				}, {
-					"age": "15 to 17",
-					"male": 11909,
-					"female": 11565
-				}, {
-					"age": "18 to 21",
-					"male": 21686,
-					"female": 20502
-				}, {
-					"age": "22 to 24",
-					"male": 12648,
-					"female": 11840
-				}, {
-					"age": "25 to 29",
-					"male": 18005,
-					"female": 17548
-				}, {
-					"age": "30 to 34",
-					"male": 17565,
-					"female": 18161
-				}, {
-					"age": "35 to 39",
-					"male": 16856,
-					"female": 17454
-				}, {
-					"age": "40 to 44",
-					"male": 19431,
-					"female": 19600
-				}, {
-					"age": "45 to 49",
-					"male": 21315,
-					"female": 22377
-				}, {
-					"age": "5 to 9",
-					"male": 17073,
-					"female": 16338
-				}, {
-					"age": "50 to 54",
-					"male": 24629,
-					"female": 26080
-				}, {
-					"age": "55 to 59",
-					"male": 24925,
-					"female": 25588
-				}, {
-					"age": "60 to 64",
-					"male": 21769,
-					"female": 23081
-				}, {
-					"age": "65 to 69",
-					"male": 16842,
-					"female": 17925
-				}, {
-					"age": "70 to 74",
-					"male": 11855,
-					"female": 12331
-				}, {
-					"age": "75 to 79",
-					"male": 7639,
-					"female": 9192
-				}, {
-					"age": "80 to 84",
-					"male": 5291,
-					"female": 8001
-				}, {
-					"age": "85 and Older",
-					"male": 4695,
-					"female": 8502
-				}
-			],
-			"WA": [{
-					"age": "0 to 5",
-					"male": 228403,
-					"female": 217400
-				}, {
-					"age": "10 to 14",
-					"male": 224142,
-					"female": 217269
-				}, {
-					"age": "15 to 17",
-					"male": 136967,
-					"female": 130193
-				}, {
-					"age": "18 to 21",
-					"male": 195001,
-					"female": 179996
-				}, {
-					"age": "22 to 24",
-					"male": 151577,
-					"female": 140876
-				}, {
-					"age": "25 to 29",
-					"male": 260873,
-					"female": 244497
-				}, {
-					"age": "30 to 34",
-					"male": 252612,
-					"female": 243147
-				}, {
-					"age": "35 to 39",
-					"male": 230325,
-					"female": 223596
-				}, {
-					"age": "40 to 44",
-					"male": 234066,
-					"female": 228073
-				}, {
-					"age": "45 to 49",
-					"male": 233107,
-					"female": 230232
-				}, {
-					"age": "5 to 9",
-					"male": 227824,
-					"female": 214378
-				}, {
-					"age": "50 to 54",
-					"male": 245685,
-					"female": 247691
-				}, {
-					"age": "55 to 59",
-					"male": 231612,
-					"female": 241813
-				}, {
-					"age": "60 to 64",
-					"male": 206233,
-					"female": 219560
-				}, {
-					"age": "65 to 69",
-					"male": 158697,
-					"female": 170678
-				}, {
-					"age": "70 to 74",
-					"male": 107931,
-					"female": 118093
-				}, {
-					"age": "75 to 79",
-					"male": 70497,
-					"female": 83476
-				}, {
-					"age": "80 to 84",
-					"male": 48802,
-					"female": 66167
-				}, {
-					"age": "85 and Older",
-					"male": 43371,
-					"female": 80604
-				}
-			],
-			"WI": [{
-					"age": "0 to 5",
-					"male": 176217,
-					"female": 168178
-				}, {
-					"age": "10 to 14",
-					"male": 191911,
-					"female": 180587
-				}, {
-					"age": "15 to 17",
-					"male": 115730,
-					"female": 110660
-				}, {
-					"age": "18 to 21",
-					"male": 167063,
-					"female": 161358
-				}, {
-					"age": "22 to 24",
-					"male": 117861,
-					"female": 113393
-				}, {
-					"age": "25 to 29",
-					"male": 183464,
-					"female": 176718
-				}, {
-					"age": "30 to 34",
-					"male": 187494,
-					"female": 181605
-				}, {
-					"age": "35 to 39",
-					"male": 172689,
-					"female": 168116
-				}, {
-					"age": "40 to 44",
-					"male": 179862,
-					"female": 176322
-				}, {
-					"age": "45 to 49",
-					"male": 198114,
-					"female": 197462
-				}, {
-					"age": "5 to 9",
-					"male": 186006,
-					"female": 180034
-				}, {
-					"age": "50 to 54",
-					"male": 217886,
-					"female": 219813
-				}, {
-					"age": "55 to 59",
-					"male": 204370,
-					"female": 206108
-				}, {
-					"age": "60 to 64",
-					"male": 176161,
-					"female": 178738
-				}, {
-					"age": "65 to 69",
-					"male": 130349,
-					"female": 136552
-				}, {
-					"age": "70 to 74",
-					"male": 90955,
-					"female": 103217
-				}, {
-					"age": "75 to 79",
-					"male": 65738,
-					"female": 81341
-				}, {
-					"age": "80 to 84",
-					"male": 48337,
-					"female": 67614
-				}, {
-					"age": "85 and Older",
-					"male": 41178,
-					"female": 82916
-				}
-			],
-			"WV": [{
-					"age": "0 to 5",
-					"male": 52472,
-					"female": 50287
-				}, {
-					"age": "10 to 14",
-					"male": 55269,
-					"female": 52689
-				}, {
-					"age": "15 to 17",
-					"male": 34100,
-					"female": 32359
-				}, {
-					"age": "18 to 21",
-					"male": 51801,
-					"female": 48967
-				}, {
-					"age": "22 to 24",
-					"male": 35920,
-					"female": 34241
-				}, {
-					"age": "25 to 29",
-					"male": 54564,
-					"female": 52255
-				}, {
-					"age": "30 to 34",
-					"male": 56430,
-					"female": 55121
-				}, {
-					"age": "35 to 39",
-					"male": 55764,
-					"female": 55399
-				}, {
-					"age": "40 to 44",
-					"male": 60662,
-					"female": 59373
-				}, {
-					"age": "45 to 49",
-					"male": 61771,
-					"female": 61257
-				}, {
-					"age": "5 to 9",
-					"male": 53707,
-					"female": 51490
-				}, {
-					"age": "50 to 54",
-					"male": 66156,
-					"female": 68671
-				}, {
-					"age": "55 to 59",
-					"male": 66936,
-					"female": 71680
-				}, {
-					"age": "60 to 64",
-					"male": 65717,
-					"female": 67056
-				}, {
-					"age": "65 to 69",
-					"male": 51285,
-					"female": 54807
-				}, {
-					"age": "70 to 74",
-					"male": 36504,
-					"female": 39946
-				}, {
-					"age": "75 to 79",
-					"male": 25738,
-					"female": 31619
-				}, {
-					"age": "80 to 84",
-					"male": 16397,
-					"female": 24351
-				}, {
-					"age": "85 and Older",
-					"male": 12438,
-					"female": 26221
-				}
-			],
-			"WY": [{
-					"age": "0 to 5",
-					"male": 19649,
-					"female": 18996
-				}, {
-					"age": "10 to 14",
-					"male": 20703,
-					"female": 17785
-				}, {
-					"age": "15 to 17",
-					"male": 11500,
-					"female": 10383
-				}, {
-					"age": "18 to 21",
-					"male": 18008,
-					"female": 15534
-				}, {
-					"age": "22 to 24",
-					"male": 12727,
-					"female": 11405
-				}, {
-					"age": "25 to 29",
-					"male": 21459,
-					"female": 19350
-				}, {
-					"age": "30 to 34",
-					"male": 21008,
-					"female": 19465
-				}, {
-					"age": "35 to 39",
-					"male": 18573,
-					"female": 17022
-				}, {
-					"age": "40 to 44",
-					"male": 17553,
-					"female": 16402
-				}, {
-					"age": "45 to 49",
-					"male": 17580,
-					"female": 16702
-				}, {
-					"age": "5 to 9",
-					"male": 19198,
-					"female": 19519
-				}, {
-					"age": "50 to 54",
-					"male": 20337,
-					"female": 20958
-				}, {
-					"age": "55 to 59",
-					"male": 21523,
-					"female": 21000
-				}, {
-					"age": "60 to 64",
-					"male": 19048,
-					"female": 18292
-				}, {
-					"age": "65 to 69",
-					"male": 13999,
-					"female": 13130
-				}, {
-					"age": "70 to 74",
-					"male": 8710,
-					"female": 9880
-				}, {
-					"age": "75 to 79",
-					"male": 6149,
-					"female": 6938
-				}, {
-					"age": "80 to 84",
-					"male": 4442,
-					"female": 5560
-				}, {
-					"age": "85 and Older",
-					"male": 3395,
-					"female": 5797
-				}
-			]};
-			
-			function aggregateData(list) {
-				var maleTotal = 0;
-				var femaleTotal = 0;
-				
-				for(var i = 0; i < list.length; i++) {
-					var row = list[i];
-					maleTotal += row.male;
-					femaleTotal += row.female;
-				}
-				
-				for(var i = 0; i < list.length; i++) {
-					var row = list[i];
-					row.malePercent = -1 * Math.round((row.male / maleTotal) * 10000) / 100;
-					row.femalePercent = Math.round((row.female / femaleTotal) * 10000) / 100;
-				}
-				
-				return list;
-			}
-			
-			usData = aggregateData(usData);			
-			
-			// ===========================================================
-			// Root and wrapper container
-			// ===========================================================
-			
-			// Create root and chart
-			root = am5.Root.new(element);
-			
-			// Set themes
-			root.setThemes([
-				am5themes_Animated.new(root)
-			]);
-			
-			// Create wrapper container
-			var container = root.container.children.push(am5.Container.new(root, {
-				layout: root.horizontalLayout,
-				width: am5.p100,
-				height: am5.p100
-			}))
-			
-			// Set up formats
-			root.numberFormatter.setAll({
-				numberFormat: "#.##as"
-			});			
-			
-			// ===========================================================
-			// XY chart
-			// ===========================================================
-			
-			// Create chart
-			var chart = container.children.push(am5xy.XYChart.new(root, {
-				panX: false,
-				panY: false,
-				wheelX: "none",
-				wheelY: "none",
-				layout: root.verticalLayout,
-				width: am5.percent(60)
-			}));
-			
-			// Create axes
-			var yAxis1 = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
-				categoryField: "age",
-				renderer: am5xy.AxisRendererY.new(root, {})
-			}));
+        var init = function () {
+            var usData = [{
+                "age": "0 to 5",
+                "male": 10175713,
+                "female": 9736305
+            }, {
+                "age": "5 to 9",
+                "male": 10470147,
+                "female": 10031835
+            }, {
+                "age": "10 to 14",
+                "male": 10561873,
+                "female": 10117913
+            }, {
+                "age": "15 to 17",
+                "male": 6447043,
+                "female": 6142996
+            }, {
+                "age": "18 to 21",
+                "male": 9349745,
+                "female": 8874664
+            }, {
+                "age": "22 to 24",
+                "male": 6722248,
+                "female": 6422017
+            }, {
+                "age": "25 to 29",
+                "male": 10989596,
+                "female": 10708414
+            }, {
+                "age": "30 to 34",
+                "male": 10625791,
+                "female": 10557848
+            }, {
+                "age": "35 to 39",
+                "male": 9899569,
+                "female": 9956213
+            }, {
+                "age": "40 to 44",
+                "male": 10330986,
+                "female": 10465142
+            }, {
+                "age": "45 to 49",
+                "male": 10571984,
+                "female": 10798384
+            }, {
+                "age": "50 to 54",
+                "male": 11051409,
+                "female": 11474081
+            }, {
+                "age": "55 to 59",
+                "male": 10173646,
+                "female": 10828301
+            }, {
+                "age": "60 to 64",
+                "male": 8824852,
+                "female": 9590829
+            }, {
+                "age": "65 to 69",
+                "male": 6876271,
+                "female": 7671175
+            }, {
+                "age": "70 to 74",
+                "male": 4867513,
+                "female": 5720208
+            }, {
+                "age": "75 to 79",
+                "male": 3416432,
+                "female": 4313697
+            }, {
+                "age": "80 to 84",
+                "male": 2378691,
+                "female": 3432738
+            }, {
+                "age": "85 and Older",
+                "male": 2000771,
+                "female": 3937981
+            }];
 
-			yAxis1.get("renderer").labels.template.setAll({
-				paddingTop: 0,
-				fontWeight: "400",
-				fontSize: 11,
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-500")),
-			});
+            var stateData = {
+                "AK": [{
+                    "age": "0 to 5",
+                    "male": 28346,
+                    "female": 26607
+                }, {
+                    "age": "10 to 14",
+                    "male": 26350,
+                    "female": 24821
+                }, {
+                    "age": "15 to 17",
+                    "male": 15929,
+                    "female": 14735
+                }, {
+                    "age": "18 to 21",
+                    "male": 25360,
+                    "female": 19030
+                }, {
+                    "age": "22 to 24",
+                    "male": 20755,
+                    "female": 15663
+                }, {
+                    "age": "25 to 29",
+                    "male": 32415,
+                    "female": 28259
+                }, {
+                    "age": "30 to 34",
+                    "male": 28232,
+                    "female": 25272
+                }, {
+                    "age": "35 to 39",
+                    "male": 24217,
+                    "female": 22002
+                }, {
+                    "age": "40 to 44",
+                    "male": 23429,
+                    "female": 21968
+                }, {
+                    "age": "45 to 49",
+                    "male": 24764,
+                    "female": 22784
+                }, {
+                    "age": "5 to 9",
+                    "male": 26276,
+                    "female": 25063
+                }, {
+                    "age": "50 to 54",
+                    "male": 27623,
+                    "female": 25503
+                }, {
+                    "age": "55 to 59",
+                    "male": 26300,
+                    "female": 25198
+                }, {
+                    "age": "60 to 64",
+                    "male": 21798,
+                    "female": 18970
+                }, {
+                    "age": "65 to 69",
+                    "male": 13758,
+                    "female": 12899
+                }, {
+                    "age": "70 to 74",
+                    "male": 8877,
+                    "female": 8269
+                }, {
+                    "age": "75 to 79",
+                    "male": 4834,
+                    "female": 4894
+                }, {
+                    "age": "80 to 84",
+                    "male": 3015,
+                    "female": 3758
+                }, {
+                    "age": "85 and Older",
+                    "male": 1882,
+                    "female": 3520
+                }
+                ],
+                "AL": [{
+                    "age": "0 to 5",
+                    "male": 150860,
+                    "female": 144194
+                }, {
+                    "age": "10 to 14",
+                    "male": 161596,
+                    "female": 156841
+                }, {
+                    "age": "15 to 17",
+                    "male": 98307,
+                    "female": 94462
+                }, {
+                    "age": "18 to 21",
+                    "male": 142173,
+                    "female": 136514
+                }, {
+                    "age": "22 to 24",
+                    "male": 99164,
+                    "female": 101444
+                }, {
+                    "age": "25 to 29",
+                    "male": 154977,
+                    "female": 159815
+                }, {
+                    "age": "30 to 34",
+                    "male": 150036,
+                    "female": 156764
+                }, {
+                    "age": "35 to 39",
+                    "male": 141667,
+                    "female": 152220
+                }, {
+                    "age": "40 to 44",
+                    "male": 155693,
+                    "female": 159835
+                }, {
+                    "age": "45 to 49",
+                    "male": 156413,
+                    "female": 163909
+                }, {
+                    "age": "5 to 9",
+                    "male": 156380,
+                    "female": 149334
+                }, {
+                    "age": "50 to 54",
+                    "male": 166863,
+                    "female": 178187
+                }, {
+                    "age": "55 to 59",
+                    "male": 156994,
+                    "female": 169355
+                }, {
+                    "age": "60 to 64",
+                    "male": 140659,
+                    "female": 156638
+                }, {
+                    "age": "65 to 69",
+                    "male": 112724,
+                    "female": 128494
+                }, {
+                    "age": "70 to 74",
+                    "male": 79258,
+                    "female": 96507
+                }, {
+                    "age": "75 to 79",
+                    "male": 55122,
+                    "female": 75371
+                }, {
+                    "age": "80 to 84",
+                    "male": 36252,
+                    "female": 53976
+                }, {
+                    "age": "85 and Older",
+                    "male": 25955,
+                    "female": 55667
+                }
+                ],
+                "AR": [{
+                    "age": "0 to 5",
+                    "male": 98246,
+                    "female": 93534
+                }, {
+                    "age": "10 to 14",
+                    "male": 99707,
+                    "female": 96862
+                }, {
+                    "age": "15 to 17",
+                    "male": 60521,
+                    "female": 57735
+                }, {
+                    "age": "18 to 21",
+                    "male": 87209,
+                    "female": 81936
+                }, {
+                    "age": "22 to 24",
+                    "male": 59114,
+                    "female": 59387
+                }, {
+                    "age": "25 to 29",
+                    "male": 96190,
+                    "female": 96573
+                }, {
+                    "age": "30 to 34",
+                    "male": 96273,
+                    "female": 95632
+                }, {
+                    "age": "35 to 39",
+                    "male": 90371,
+                    "female": 90620
+                }, {
+                    "age": "40 to 44",
+                    "male": 91881,
+                    "female": 93777
+                }, {
+                    "age": "45 to 49",
+                    "male": 93238,
+                    "female": 95476
+                }, {
+                    "age": "5 to 9",
+                    "male": 103613,
+                    "female": 97603
+                }, {
+                    "age": "50 to 54",
+                    "male": 98960,
+                    "female": 102953
+                }, {
+                    "age": "55 to 59",
+                    "male": 92133,
+                    "female": 100676
+                }, {
+                    "age": "60 to 64",
+                    "male": 84082,
+                    "female": 90243
+                }, {
+                    "age": "65 to 69",
+                    "male": 70121,
+                    "female": 76669
+                }, {
+                    "age": "70 to 74",
+                    "male": 52154,
+                    "female": 61686
+                }, {
+                    "age": "75 to 79",
+                    "male": 36856,
+                    "female": 44371
+                }, {
+                    "age": "80 to 84",
+                    "male": 23098,
+                    "female": 35328
+                }, {
+                    "age": "85 and Older",
+                    "male": 18146,
+                    "female": 35234
+                }
+                ],
+                "AZ": [{
+                    "age": "0 to 5",
+                    "male": 221511,
+                    "female": 212324
+                }, {
+                    "age": "10 to 14",
+                    "male": 233530,
+                    "female": 222965
+                }, {
+                    "age": "15 to 17",
+                    "male": 138926,
+                    "female": 132399
+                }, {
+                    "age": "18 to 21",
+                    "male": 200240,
+                    "female": 187786
+                }, {
+                    "age": "22 to 24",
+                    "male": 142852,
+                    "female": 132457
+                }, {
+                    "age": "25 to 29",
+                    "male": 231488,
+                    "female": 215985
+                }, {
+                    "age": "30 to 34",
+                    "male": 223754,
+                    "female": 214946
+                }, {
+                    "age": "35 to 39",
+                    "male": 206718,
+                    "female": 202482
+                }, {
+                    "age": "40 to 44",
+                    "male": 213591,
+                    "female": 210621
+                }, {
+                    "age": "45 to 49",
+                    "male": 205830,
+                    "female": 206081
+                }, {
+                    "age": "5 to 9",
+                    "male": 231249,
+                    "female": 224385
+                }, {
+                    "age": "50 to 54",
+                    "male": 210386,
+                    "female": 218328
+                }, {
+                    "age": "55 to 59",
+                    "male": 192614,
+                    "female": 209767
+                }, {
+                    "age": "60 to 64",
+                    "male": 178325,
+                    "female": 200313
+                }, {
+                    "age": "65 to 69",
+                    "male": 155852,
+                    "female": 174407
+                }, {
+                    "age": "70 to 74",
+                    "male": 121878,
+                    "female": 136840
+                }, {
+                    "age": "75 to 79",
+                    "male": 87470,
+                    "female": 96953
+                }, {
+                    "age": "80 to 84",
+                    "male": 58553,
+                    "female": 69559
+                }, {
+                    "age": "85 and Older",
+                    "male": 44321,
+                    "female": 74242
+                }
+                ],
+                "CA": [{
+                    "age": "0 to 5",
+                    "male": 1283763,
+                    "female": 1228013
+                }, {
+                    "age": "10 to 14",
+                    "male": 1297819,
+                    "female": 1245016
+                }, {
+                    "age": "15 to 17",
+                    "male": 811114,
+                    "female": 773387
+                }, {
+                    "age": "18 to 21",
+                    "male": 1179739,
+                    "female": 1100368
+                }, {
+                    "age": "22 to 24",
+                    "male": 883323,
+                    "female": 825833
+                }, {
+                    "age": "25 to 29",
+                    "male": 1478557,
+                    "female": 1387516
+                }, {
+                    "age": "30 to 34",
+                    "male": 1399835,
+                    "female": 1348430
+                }, {
+                    "age": "35 to 39",
+                    "male": 1287803,
+                    "female": 1271908
+                }, {
+                    "age": "40 to 44",
+                    "male": 1308311,
+                    "female": 1309907
+                }, {
+                    "age": "45 to 49",
+                    "male": 1306719,
+                    "female": 1303528
+                }, {
+                    "age": "5 to 9",
+                    "male": 1295030,
+                    "female": 1240201
+                }, {
+                    "age": "50 to 54",
+                    "male": 1305323,
+                    "female": 1330645
+                }, {
+                    "age": "55 to 59",
+                    "male": 1161821,
+                    "female": 1223440
+                }, {
+                    "age": "60 to 64",
+                    "male": 975874,
+                    "female": 1060921
+                }, {
+                    "age": "65 to 69",
+                    "male": 734814,
+                    "female": 833926
+                }, {
+                    "age": "70 to 74",
+                    "male": 515115,
+                    "female": 604615
+                }, {
+                    "age": "75 to 79",
+                    "male": 363282,
+                    "female": 455568
+                }, {
+                    "age": "80 to 84",
+                    "male": 264126,
+                    "female": 363937
+                }, {
+                    "age": "85 and Older",
+                    "male": 234767,
+                    "female": 427170
+                }
+                ],
+                "CO": [{
+                    "age": "0 to 5",
+                    "male": 173245,
+                    "female": 163629
+                }, {
+                    "age": "10 to 14",
+                    "male": 179579,
+                    "female": 170930
+                }, {
+                    "age": "15 to 17",
+                    "male": 102577,
+                    "female": 98569
+                }, {
+                    "age": "18 to 21",
+                    "male": 152713,
+                    "female": 139268
+                }, {
+                    "age": "22 to 24",
+                    "male": 116654,
+                    "female": 108238
+                }, {
+                    "age": "25 to 29",
+                    "male": 204625,
+                    "female": 188680
+                }, {
+                    "age": "30 to 34",
+                    "male": 200624,
+                    "female": 188616
+                }, {
+                    "age": "35 to 39",
+                    "male": 183386,
+                    "female": 175326
+                }, {
+                    "age": "40 to 44",
+                    "male": 184422,
+                    "female": 173654
+                }, {
+                    "age": "45 to 49",
+                    "male": 174730,
+                    "female": 172981
+                }, {
+                    "age": "5 to 9",
+                    "male": 179803,
+                    "female": 173524
+                }, {
+                    "age": "50 to 54",
+                    "male": 183543,
+                    "female": 187757
+                }, {
+                    "age": "55 to 59",
+                    "male": 170717,
+                    "female": 179537
+                }, {
+                    "age": "60 to 64",
+                    "male": 150815,
+                    "female": 155924
+                }, {
+                    "age": "65 to 69",
+                    "male": 111094,
+                    "female": 119530
+                }, {
+                    "age": "70 to 74",
+                    "male": 72252,
+                    "female": 80168
+                }, {
+                    "age": "75 to 79",
+                    "male": 49142,
+                    "female": 59393
+                }, {
+                    "age": "80 to 84",
+                    "male": 31894,
+                    "female": 43881
+                }, {
+                    "age": "85 and Older",
+                    "male": 26852,
+                    "female": 50634
+                }
+                ],
+                "CT": [{
+                    "age": "0 to 5",
+                    "male": 97647,
+                    "female": 93798
+                }, {
+                    "age": "10 to 14",
+                    "male": 118032,
+                    "female": 113043
+                }, {
+                    "age": "15 to 17",
+                    "male": 75546,
+                    "female": 71687
+                }, {
+                    "age": "18 to 21",
+                    "male": 106966,
+                    "female": 102763
+                }, {
+                    "age": "22 to 24",
+                    "male": 71125,
+                    "female": 64777
+                }, {
+                    "age": "25 to 29",
+                    "male": 112189,
+                    "female": 108170
+                }, {
+                    "age": "30 to 34",
+                    "male": 107223,
+                    "female": 109096
+                }, {
+                    "age": "35 to 39",
+                    "male": 102424,
+                    "female": 106008
+                }, {
+                    "age": "40 to 44",
+                    "male": 116664,
+                    "female": 123744
+                }, {
+                    "age": "45 to 49",
+                    "male": 131872,
+                    "female": 139406
+                }, {
+                    "age": "5 to 9",
+                    "male": 110043,
+                    "female": 104940
+                }, {
+                    "age": "50 to 54",
+                    "male": 138644,
+                    "female": 146532
+                }, {
+                    "age": "55 to 59",
+                    "male": 126670,
+                    "female": 132895
+                }, {
+                    "age": "60 to 64",
+                    "male": 104701,
+                    "female": 114339
+                }, {
+                    "age": "65 to 69",
+                    "male": 80178,
+                    "female": 91052
+                }, {
+                    "age": "70 to 74",
+                    "male": 55237,
+                    "female": 65488
+                }, {
+                    "age": "75 to 79",
+                    "male": 38844,
+                    "female": 51544
+                }, {
+                    "age": "80 to 84",
+                    "male": 28908,
+                    "female": 43036
+                }, {
+                    "age": "85 and Older",
+                    "male": 28694,
+                    "female": 59297
+                }
+                ],
+                "DC": [{
+                    "age": "0 to 5",
+                    "male": 20585,
+                    "female": 19848
+                }, {
+                    "age": "10 to 14",
+                    "male": 12723,
+                    "female": 11991
+                }, {
+                    "age": "15 to 17",
+                    "male": 7740,
+                    "female": 7901
+                }, {
+                    "age": "18 to 21",
+                    "male": 22350,
+                    "female": 25467
+                }, {
+                    "age": "22 to 24",
+                    "male": 15325,
+                    "female": 19085
+                }, {
+                    "age": "25 to 29",
+                    "male": 35295,
+                    "female": 41913
+                }, {
+                    "age": "30 to 34",
+                    "male": 32716,
+                    "female": 35553
+                }, {
+                    "age": "35 to 39",
+                    "male": 23748,
+                    "female": 24922
+                }, {
+                    "age": "40 to 44",
+                    "male": 21158,
+                    "female": 20113
+                }, {
+                    "age": "45 to 49",
+                    "male": 19279,
+                    "female": 18956
+                }, {
+                    "age": "5 to 9",
+                    "male": 14999,
+                    "female": 15518
+                }, {
+                    "age": "50 to 54",
+                    "male": 19249,
+                    "female": 19279
+                }, {
+                    "age": "55 to 59",
+                    "male": 17592,
+                    "female": 18716
+                }, {
+                    "age": "60 to 64",
+                    "male": 14272,
+                    "female": 17892
+                }, {
+                    "age": "65 to 69",
+                    "male": 9740,
+                    "female": 13375
+                }, {
+                    "age": "70 to 74",
+                    "male": 8221,
+                    "female": 9761
+                }, {
+                    "age": "75 to 79",
+                    "male": 5071,
+                    "female": 7601
+                }, {
+                    "age": "80 to 84",
+                    "male": 3399,
+                    "female": 5619
+                }, {
+                    "age": "85 and Older",
+                    "male": 3212,
+                    "female": 7300
+                }
+                ],
+                "DE": [{
+                    "age": "0 to 5",
+                    "male": 28382,
+                    "female": 27430
+                }, {
+                    "age": "10 to 14",
+                    "male": 29482,
+                    "female": 27484
+                }, {
+                    "age": "15 to 17",
+                    "male": 17589,
+                    "female": 16828
+                }, {
+                    "age": "18 to 21",
+                    "male": 26852,
+                    "female": 26911
+                }, {
+                    "age": "22 to 24",
+                    "male": 19006,
+                    "female": 18413
+                }, {
+                    "age": "25 to 29",
+                    "male": 30933,
+                    "female": 31146
+                }, {
+                    "age": "30 to 34",
+                    "male": 28602,
+                    "female": 29431
+                }, {
+                    "age": "35 to 39",
+                    "male": 26498,
+                    "female": 28738
+                }, {
+                    "age": "40 to 44",
+                    "male": 27674,
+                    "female": 28519
+                }, {
+                    "age": "45 to 49",
+                    "male": 30582,
+                    "female": 32924
+                }, {
+                    "age": "5 to 9",
+                    "male": 28224,
+                    "female": 28735
+                }, {
+                    "age": "50 to 54",
+                    "male": 32444,
+                    "female": 35052
+                }, {
+                    "age": "55 to 59",
+                    "male": 29048,
+                    "female": 34377
+                }, {
+                    "age": "60 to 64",
+                    "male": 27925,
+                    "female": 30017
+                }, {
+                    "age": "65 to 69",
+                    "male": 22767,
+                    "female": 26707
+                }, {
+                    "age": "70 to 74",
+                    "male": 17121,
+                    "female": 19327
+                }, {
+                    "age": "75 to 79",
+                    "male": 11479,
+                    "female": 14264
+                }, {
+                    "age": "80 to 84",
+                    "male": 7473,
+                    "female": 10353
+                }, {
+                    "age": "85 and Older",
+                    "male": 6332,
+                    "female": 11385
+                }
+                ],
+                "FL": [{
+                    "age": "0 to 5",
+                    "male": 552054,
+                    "female": 529003
+                }, {
+                    "age": "10 to 14",
+                    "male": 582351,
+                    "female": 558377
+                }, {
+                    "age": "15 to 17",
+                    "male": 363538,
+                    "female": 345048
+                }, {
+                    "age": "18 to 21",
+                    "male": 528013,
+                    "female": 498162
+                }, {
+                    "age": "22 to 24",
+                    "male": 385515,
+                    "female": 368754
+                }, {
+                    "age": "25 to 29",
+                    "male": 641710,
+                    "female": 622134
+                }, {
+                    "age": "30 to 34",
+                    "male": 602467,
+                    "female": 602634
+                }, {
+                    "age": "35 to 39",
+                    "male": 579722,
+                    "female": 585089
+                }, {
+                    "age": "40 to 44",
+                    "male": 623074,
+                    "female": 639410
+                }, {
+                    "age": "45 to 49",
+                    "male": 659376,
+                    "female": 677305
+                }, {
+                    "age": "5 to 9",
+                    "male": 567479,
+                    "female": 543273
+                }, {
+                    "age": "50 to 54",
+                    "male": 687625,
+                    "female": 723103
+                }, {
+                    "age": "55 to 59",
+                    "male": 626363,
+                    "female": 685728
+                }, {
+                    "age": "60 to 64",
+                    "male": 566282,
+                    "female": 651192
+                }, {
+                    "age": "65 to 69",
+                    "male": 517513,
+                    "female": 589377
+                }, {
+                    "age": "70 to 74",
+                    "male": 407275,
+                    "female": 470688
+                }, {
+                    "age": "75 to 79",
+                    "male": 305530,
+                    "female": 361107
+                }, {
+                    "age": "80 to 84",
+                    "male": 219362,
+                    "female": 281016
+                }, {
+                    "age": "85 and Older",
+                    "male": 184760,
+                    "female": 314363
+                }
+                ],
+                "GA": [{
+                    "age": "0 to 5",
+                    "male": 338979,
+                    "female": 326326
+                }, {
+                    "age": "10 to 14",
+                    "male": 356404,
+                    "female": 351833
+                }, {
+                    "age": "15 to 17",
+                    "male": 211908,
+                    "female": 203412
+                }, {
+                    "age": "18 to 21",
+                    "male": 305617,
+                    "female": 289233
+                }, {
+                    "age": "22 to 24",
+                    "male": 214032,
+                    "female": 206526
+                }, {
+                    "age": "25 to 29",
+                    "male": 342885,
+                    "female": 343115
+                }, {
+                    "age": "30 to 34",
+                    "male": 333159,
+                    "female": 348125
+                }, {
+                    "age": "35 to 39",
+                    "male": 325121,
+                    "female": 345251
+                }, {
+                    "age": "40 to 44",
+                    "male": 348120,
+                    "female": 363703
+                }, {
+                    "age": "45 to 49",
+                    "male": 343559,
+                    "female": 358754
+                }, {
+                    "age": "5 to 9",
+                    "male": 362147,
+                    "female": 340071
+                }, {
+                    "age": "50 to 54",
+                    "male": 338424,
+                    "female": 359362
+                }, {
+                    "age": "55 to 59",
+                    "male": 294734,
+                    "female": 325653
+                }, {
+                    "age": "60 to 64",
+                    "male": 254497,
+                    "female": 285276
+                }, {
+                    "age": "65 to 69",
+                    "male": 198714,
+                    "female": 226714
+                }, {
+                    "age": "70 to 74",
+                    "male": 135107,
+                    "female": 164091
+                }, {
+                    "age": "75 to 79",
+                    "male": 88135,
+                    "female": 115830
+                }, {
+                    "age": "80 to 84",
+                    "male": 53792,
+                    "female": 84961
+                }, {
+                    "age": "85 and Older",
+                    "male": 37997,
+                    "female": 85126
+                }
+                ],
+                "HI": [{
+                    "age": "0 to 5",
+                    "male": 46668,
+                    "female": 44389
+                }, {
+                    "age": "10 to 14",
+                    "male": 42590,
+                    "female": 41289
+                }, {
+                    "age": "15 to 17",
+                    "male": 24759,
+                    "female": 23961
+                }, {
+                    "age": "18 to 21",
+                    "male": 39937,
+                    "female": 32348
+                }, {
+                    "age": "22 to 24",
+                    "male": 35270,
+                    "female": 28495
+                }, {
+                    "age": "25 to 29",
+                    "male": 58033,
+                    "female": 48700
+                }, {
+                    "age": "30 to 34",
+                    "male": 51544,
+                    "female": 47286
+                }, {
+                    "age": "35 to 39",
+                    "male": 44144,
+                    "female": 42208
+                }, {
+                    "age": "40 to 44",
+                    "male": 45731,
+                    "female": 43404
+                }, {
+                    "age": "45 to 49",
+                    "male": 44336,
+                    "female": 44134
+                }, {
+                    "age": "5 to 9",
+                    "male": 44115,
+                    "female": 40426
+                }, {
+                    "age": "50 to 54",
+                    "male": 46481,
+                    "female": 46908
+                }, {
+                    "age": "55 to 59",
+                    "male": 45959,
+                    "female": 47379
+                }, {
+                    "age": "60 to 64",
+                    "male": 42420,
+                    "female": 43735
+                }, {
+                    "age": "65 to 69",
+                    "male": 34846,
+                    "female": 36670
+                }, {
+                    "age": "70 to 74",
+                    "male": 22981,
+                    "female": 25496
+                }, {
+                    "age": "75 to 79",
+                    "male": 15219,
+                    "female": 18755
+                }, {
+                    "age": "80 to 84",
+                    "male": 11142,
+                    "female": 17952
+                }, {
+                    "age": "85 and Older",
+                    "male": 13696,
+                    "female": 22893
+                }
+                ],
+                "IA": [{
+                    "age": "0 to 5",
+                    "male": 100400,
+                    "female": 96170
+                }, {
+                    "age": "10 to 14",
+                    "male": 104674,
+                    "female": 98485
+                }, {
+                    "age": "15 to 17",
+                    "male": 62452,
+                    "female": 59605
+                }, {
+                    "age": "18 to 21",
+                    "male": 96966,
+                    "female": 91782
+                }, {
+                    "age": "22 to 24",
+                    "male": 66307,
+                    "female": 62504
+                }, {
+                    "age": "25 to 29",
+                    "male": 98079,
+                    "female": 93653
+                }, {
+                    "age": "30 to 34",
+                    "male": 100924,
+                    "female": 97248
+                }, {
+                    "age": "35 to 39",
+                    "male": 90980,
+                    "female": 89632
+                }, {
+                    "age": "40 to 44",
+                    "male": 92961,
+                    "female": 90218
+                }, {
+                    "age": "45 to 49",
+                    "male": 98877,
+                    "female": 96654
+                }, {
+                    "age": "5 to 9",
+                    "male": 104279,
+                    "female": 100558
+                }, {
+                    "age": "50 to 54",
+                    "male": 109267,
+                    "female": 110142
+                }, {
+                    "age": "55 to 59",
+                    "male": 104021,
+                    "female": 106042
+                }, {
+                    "age": "60 to 64",
+                    "male": 95379,
+                    "female": 95499
+                }, {
+                    "age": "65 to 69",
+                    "male": 68276,
+                    "female": 73624
+                }, {
+                    "age": "70 to 74",
+                    "male": 50414,
+                    "female": 56973
+                }, {
+                    "age": "75 to 79",
+                    "male": 37867,
+                    "female": 48121
+                }, {
+                    "age": "80 to 84",
+                    "male": 27523,
+                    "female": 39851
+                }, {
+                    "age": "85 and Older",
+                    "male": 24949,
+                    "female": 52170
+                }
+                ],
+                "ID": [{
+                    "age": "0 to 5",
+                    "male": 58355,
+                    "female": 56478
+                }, {
+                    "age": "10 to 14",
+                    "male": 62528,
+                    "female": 59881
+                }, {
+                    "age": "15 to 17",
+                    "male": 36373,
+                    "female": 33687
+                }, {
+                    "age": "18 to 21",
+                    "male": 45752,
+                    "female": 45590
+                }, {
+                    "age": "22 to 24",
+                    "male": 34595,
+                    "female": 30216
+                }, {
+                    "age": "25 to 29",
+                    "male": 53998,
+                    "female": 52077
+                }, {
+                    "age": "30 to 34",
+                    "male": 54217,
+                    "female": 52091
+                }, {
+                    "age": "35 to 39",
+                    "male": 51247,
+                    "female": 47801
+                }, {
+                    "age": "40 to 44",
+                    "male": 49113,
+                    "female": 49853
+                }, {
+                    "age": "45 to 49",
+                    "male": 48392,
+                    "female": 48288
+                }, {
+                    "age": "5 to 9",
+                    "male": 63107,
+                    "female": 59237
+                }, {
+                    "age": "50 to 54",
+                    "male": 51805,
+                    "female": 52984
+                }, {
+                    "age": "55 to 59",
+                    "male": 49226,
+                    "female": 51868
+                }, {
+                    "age": "60 to 64",
+                    "male": 47343,
+                    "female": 47631
+                }, {
+                    "age": "65 to 69",
+                    "male": 38436,
+                    "female": 38133
+                }, {
+                    "age": "70 to 74",
+                    "male": 26243,
+                    "female": 28577
+                }, {
+                    "age": "75 to 79",
+                    "male": 18404,
+                    "female": 20325
+                }, {
+                    "age": "80 to 84",
+                    "male": 11653,
+                    "female": 15313
+                }, {
+                    "age": "85 and Older",
+                    "male": 9677,
+                    "female": 16053
+                }
+                ],
+                "IL": [{
+                    "age": "0 to 5",
+                    "male": 408295,
+                    "female": 392900
+                }, {
+                    "age": "10 to 14",
+                    "male": 437688,
+                    "female": 419077
+                }, {
+                    "age": "15 to 17",
+                    "male": 269202,
+                    "female": 257213
+                }, {
+                    "age": "18 to 21",
+                    "male": 369219,
+                    "female": 353570
+                }, {
+                    "age": "22 to 24",
+                    "male": 268501,
+                    "female": 258559
+                }, {
+                    "age": "25 to 29",
+                    "male": 448001,
+                    "female": 442418
+                }, {
+                    "age": "30 to 34",
+                    "male": 445416,
+                    "female": 445729
+                }, {
+                    "age": "35 to 39",
+                    "male": 416265,
+                    "female": 418999
+                }, {
+                    "age": "40 to 44",
+                    "male": 425825,
+                    "female": 427573
+                }, {
+                    "age": "45 to 49",
+                    "male": 433177,
+                    "female": 441116
+                }, {
+                    "age": "5 to 9",
+                    "male": 427121,
+                    "female": 412238
+                }, {
+                    "age": "50 to 54",
+                    "male": 454039,
+                    "female": 470982
+                }, {
+                    "age": "55 to 59",
+                    "male": 414948,
+                    "female": 442280
+                }, {
+                    "age": "60 to 64",
+                    "male": 354782,
+                    "female": 380640
+                }, {
+                    "age": "65 to 69",
+                    "male": 259363,
+                    "female": 292899
+                }, {
+                    "age": "70 to 74",
+                    "male": 184622,
+                    "female": 223905
+                }, {
+                    "age": "75 to 79",
+                    "male": 129016,
+                    "female": 171743
+                }, {
+                    "age": "80 to 84",
+                    "male": 91973,
+                    "female": 139204
+                }, {
+                    "age": "85 and Older",
+                    "male": 79446,
+                    "female": 165817
+                }
+                ],
+                "IN": [{
+                    "age": "0 to 5",
+                    "male": 215697,
+                    "female": 205242
+                }, {
+                    "age": "10 to 14",
+                    "male": 229911,
+                    "female": 221563
+                }, {
+                    "age": "15 to 17",
+                    "male": 139494,
+                    "female": 132879
+                }, {
+                    "age": "18 to 21",
+                    "male": 198763,
+                    "female": 194206
+                }, {
+                    "age": "22 to 24",
+                    "male": 140805,
+                    "female": 131947
+                }, {
+                    "age": "25 to 29",
+                    "male": 210315,
+                    "female": 208593
+                }, {
+                    "age": "30 to 34",
+                    "male": 211656,
+                    "female": 210103
+                }, {
+                    "age": "35 to 39",
+                    "male": 201979,
+                    "female": 200693
+                }, {
+                    "age": "40 to 44",
+                    "male": 212114,
+                    "female": 212653
+                }, {
+                    "age": "45 to 49",
+                    "male": 216446,
+                    "female": 219033
+                }, {
+                    "age": "5 to 9",
+                    "male": 226901,
+                    "female": 214964
+                }, {
+                    "age": "50 to 54",
+                    "male": 232241,
+                    "female": 237844
+                }, {
+                    "age": "55 to 59",
+                    "male": 217033,
+                    "female": 228674
+                }, {
+                    "age": "60 to 64",
+                    "male": 186412,
+                    "female": 197353
+                }, {
+                    "age": "65 to 69",
+                    "male": 140336,
+                    "female": 156256
+                }, {
+                    "age": "70 to 74",
+                    "male": 99402,
+                    "female": 116834
+                }, {
+                    "age": "75 to 79",
+                    "male": 68758,
+                    "female": 88794
+                }, {
+                    "age": "80 to 84",
+                    "male": 47628,
+                    "female": 72061
+                }, {
+                    "age": "85 and Older",
+                    "male": 39372,
+                    "female": 83690
+                }
+                ],
+                "KS": [{
+                    "age": "0 to 5",
+                    "male": 102716,
+                    "female": 98004
+                }, {
+                    "age": "10 to 14",
+                    "male": 102335,
+                    "female": 99132
+                }, {
+                    "age": "15 to 17",
+                    "male": 60870,
+                    "female": 57957
+                }, {
+                    "age": "18 to 21",
+                    "male": 90593,
+                    "female": 83299
+                }, {
+                    "age": "22 to 24",
+                    "male": 66512,
+                    "female": 59368
+                }, {
+                    "age": "25 to 29",
+                    "male": 99384,
+                    "female": 93840
+                }, {
+                    "age": "30 to 34",
+                    "male": 98020,
+                    "female": 94075
+                }, {
+                    "age": "35 to 39",
+                    "male": 87763,
+                    "female": 85422
+                }, {
+                    "age": "40 to 44",
+                    "male": 87647,
+                    "female": 84970
+                }, {
+                    "age": "45 to 49",
+                    "male": 89233,
+                    "female": 88877
+                }, {
+                    "age": "5 to 9",
+                    "male": 103861,
+                    "female": 98642
+                }, {
+                    "age": "50 to 54",
+                    "male": 98398,
+                    "female": 101197
+                }, {
+                    "age": "55 to 59",
+                    "male": 95861,
+                    "female": 96152
+                }, {
+                    "age": "60 to 64",
+                    "male": 79440,
+                    "female": 85124
+                }, {
+                    "age": "65 to 69",
+                    "male": 60035,
+                    "female": 64369
+                }, {
+                    "age": "70 to 74",
+                    "male": 42434,
+                    "female": 49221
+                }, {
+                    "age": "75 to 79",
+                    "male": 30967,
+                    "female": 39425
+                }, {
+                    "age": "80 to 84",
+                    "male": 23026,
+                    "female": 33863
+                }, {
+                    "age": "85 and Older",
+                    "male": 20767,
+                    "female": 40188
+                }
+                ],
+                "KY": [{
+                    "age": "0 to 5",
+                    "male": 142062,
+                    "female": 134389
+                }, {
+                    "age": "10 to 14",
+                    "male": 147586,
+                    "female": 138629
+                }, {
+                    "age": "15 to 17",
+                    "male": 87696,
+                    "female": 83139
+                }, {
+                    "age": "18 to 21",
+                    "male": 128249,
+                    "female": 121099
+                }, {
+                    "age": "22 to 24",
+                    "male": 90794,
+                    "female": 85930
+                }, {
+                    "age": "25 to 29",
+                    "male": 140811,
+                    "female": 139855
+                }, {
+                    "age": "30 to 34",
+                    "male": 142732,
+                    "female": 142551
+                }, {
+                    "age": "35 to 39",
+                    "male": 137211,
+                    "female": 136524
+                }, {
+                    "age": "40 to 44",
+                    "male": 145358,
+                    "female": 145251
+                }, {
+                    "age": "45 to 49",
+                    "male": 148883,
+                    "female": 150922
+                }, {
+                    "age": "5 to 9",
+                    "male": 143532,
+                    "female": 139032
+                }, {
+                    "age": "50 to 54",
+                    "male": 156890,
+                    "female": 163054
+                }, {
+                    "age": "55 to 59",
+                    "male": 147006,
+                    "female": 156302
+                }, {
+                    "age": "60 to 64",
+                    "male": 129457,
+                    "female": 139434
+                }, {
+                    "age": "65 to 69",
+                    "male": 100883,
+                    "female": 112696
+                }, {
+                    "age": "70 to 74",
+                    "male": 71867,
+                    "female": 83665
+                }, {
+                    "age": "75 to 79",
+                    "male": 47828,
+                    "female": 62775
+                }, {
+                    "age": "80 to 84",
+                    "male": 31477,
+                    "female": 46386
+                }, {
+                    "age": "85 and Older",
+                    "male": 23886,
+                    "female": 51512
+                }
+                ],
+                "LA": [{
+                    "age": "0 to 5",
+                    "male": 157642,
+                    "female": 152324
+                }, {
+                    "age": "10 to 14",
+                    "male": 157781,
+                    "female": 149752
+                }, {
+                    "age": "15 to 17",
+                    "male": 93357,
+                    "female": 90227
+                }, {
+                    "age": "18 to 21",
+                    "male": 136496,
+                    "female": 131202
+                }, {
+                    "age": "22 to 24",
+                    "male": 101438,
+                    "female": 101480
+                }, {
+                    "age": "25 to 29",
+                    "male": 167414,
+                    "female": 168886
+                }, {
+                    "age": "30 to 34",
+                    "male": 160094,
+                    "female": 161424
+                }, {
+                    "age": "35 to 39",
+                    "male": 142182,
+                    "female": 141813
+                }, {
+                    "age": "40 to 44",
+                    "male": 138717,
+                    "female": 144789
+                }, {
+                    "age": "45 to 49",
+                    "male": 145906,
+                    "female": 152340
+                }, {
+                    "age": "5 to 9",
+                    "male": 159193,
+                    "female": 154320
+                }, {
+                    "age": "50 to 54",
+                    "male": 157743,
+                    "female": 167125
+                }, {
+                    "age": "55 to 59",
+                    "male": 149001,
+                    "female": 161295
+                }, {
+                    "age": "60 to 64",
+                    "male": 129265,
+                    "female": 139378
+                }, {
+                    "age": "65 to 69",
+                    "male": 98404,
+                    "female": 106844
+                }, {
+                    "age": "70 to 74",
+                    "male": 65845,
+                    "female": 83779
+                }, {
+                    "age": "75 to 79",
+                    "male": 47365,
+                    "female": 60745
+                }, {
+                    "age": "80 to 84",
+                    "male": 29452,
+                    "female": 48839
+                }, {
+                    "age": "85 and Older",
+                    "male": 23861,
+                    "female": 47535
+                }
+                ],
+                "MA": [{
+                    "age": "0 to 5",
+                    "male": 187066,
+                    "female": 178775
+                }, {
+                    "age": "10 to 14",
+                    "male": 205530,
+                    "female": 195312
+                }, {
+                    "age": "15 to 17",
+                    "male": 129433,
+                    "female": 123212
+                }, {
+                    "age": "18 to 21",
+                    "male": 207432,
+                    "female": 213820
+                }, {
+                    "age": "22 to 24",
+                    "male": 140356,
+                    "female": 135839
+                }, {
+                    "age": "25 to 29",
+                    "male": 235172,
+                    "female": 237653
+                }, {
+                    "age": "30 to 34",
+                    "male": 216220,
+                    "female": 221692
+                }, {
+                    "age": "35 to 39",
+                    "male": 196293,
+                    "female": 202730
+                }, {
+                    "age": "40 to 44",
+                    "male": 218111,
+                    "female": 231277
+                }, {
+                    "age": "45 to 49",
+                    "male": 237629,
+                    "female": 249926
+                }, {
+                    "age": "5 to 9",
+                    "male": 191958,
+                    "female": 186343
+                }, {
+                    "age": "50 to 54",
+                    "male": 247973,
+                    "female": 260886
+                }, {
+                    "age": "55 to 59",
+                    "male": 227238,
+                    "female": 241029
+                }, {
+                    "age": "60 to 64",
+                    "male": 189981,
+                    "female": 211282
+                }, {
+                    "age": "65 to 69",
+                    "male": 146129,
+                    "female": 164268
+                }, {
+                    "age": "70 to 74",
+                    "male": 100745,
+                    "female": 123577
+                }, {
+                    "age": "75 to 79",
+                    "male": 70828,
+                    "female": 92141
+                }, {
+                    "age": "80 to 84",
+                    "male": 52074,
+                    "female": 81603
+                }, {
+                    "age": "85 and Older",
+                    "male": 49482,
+                    "female": 104571
+                }
+                ],
+                "MD": [{
+                    "age": "0 to 5",
+                    "male": 187617,
+                    "female": 180105
+                }, {
+                    "age": "10 to 14",
+                    "male": 191787,
+                    "female": 185380
+                }, {
+                    "age": "15 to 17",
+                    "male": 118027,
+                    "female": 113549
+                }, {
+                    "age": "18 to 21",
+                    "male": 166991,
+                    "female": 159589
+                }, {
+                    "age": "22 to 24",
+                    "male": 120617,
+                    "female": 116602
+                }, {
+                    "age": "25 to 29",
+                    "male": 205555,
+                    "female": 206944
+                }, {
+                    "age": "30 to 34",
+                    "male": 196824,
+                    "female": 203989
+                }, {
+                    "age": "35 to 39",
+                    "male": 179340,
+                    "female": 193957
+                }, {
+                    "age": "40 to 44",
+                    "male": 195388,
+                    "female": 205570
+                }, {
+                    "age": "45 to 49",
+                    "male": 208382,
+                    "female": 225458
+                }, {
+                    "age": "5 to 9",
+                    "male": 189781,
+                    "female": 182034
+                }, {
+                    "age": "50 to 54",
+                    "male": 217574,
+                    "female": 235604
+                }, {
+                    "age": "55 to 59",
+                    "male": 193789,
+                    "female": 210582
+                }, {
+                    "age": "60 to 64",
+                    "male": 161828,
+                    "female": 186524
+                }, {
+                    "age": "65 to 69",
+                    "male": 123204,
+                    "female": 144193
+                }, {
+                    "age": "70 to 74",
+                    "male": 84114,
+                    "female": 101563
+                }, {
+                    "age": "75 to 79",
+                    "male": 56755,
+                    "female": 75715
+                }, {
+                    "age": "80 to 84",
+                    "male": 39615,
+                    "female": 59728
+                }, {
+                    "age": "85 and Older",
+                    "male": 35455,
+                    "female": 70809
+                }
+                ],
+                "ME": [{
+                    "age": "0 to 5",
+                    "male": 33298,
+                    "female": 32108
+                }, {
+                    "age": "10 to 14",
+                    "male": 38254,
+                    "female": 36846
+                }, {
+                    "age": "15 to 17",
+                    "male": 24842,
+                    "female": 23688
+                }, {
+                    "age": "18 to 21",
+                    "male": 35315,
+                    "female": 33777
+                }, {
+                    "age": "22 to 24",
+                    "male": 23007,
+                    "female": 21971
+                }, {
+                    "age": "25 to 29",
+                    "male": 37685,
+                    "female": 38353
+                }, {
+                    "age": "30 to 34",
+                    "male": 36838,
+                    "female": 37697
+                }, {
+                    "age": "35 to 39",
+                    "male": 35988,
+                    "female": 37686
+                }, {
+                    "age": "40 to 44",
+                    "male": 42092,
+                    "female": 42912
+                }, {
+                    "age": "45 to 49",
+                    "male": 47141,
+                    "female": 49161
+                }, {
+                    "age": "5 to 9",
+                    "male": 38066,
+                    "female": 35151
+                }, {
+                    "age": "50 to 54",
+                    "male": 53458,
+                    "female": 55451
+                }, {
+                    "age": "55 to 59",
+                    "male": 51789,
+                    "female": 55407
+                }, {
+                    "age": "60 to 64",
+                    "male": 47171,
+                    "female": 49840
+                }, {
+                    "age": "65 to 69",
+                    "male": 37495,
+                    "female": 39678
+                }, {
+                    "age": "70 to 74",
+                    "male": 26300,
+                    "female": 28932
+                }, {
+                    "age": "75 to 79",
+                    "male": 18197,
+                    "female": 22047
+                }, {
+                    "age": "80 to 84",
+                    "male": 12824,
+                    "female": 18302
+                }, {
+                    "age": "85 and Older",
+                    "male": 10321,
+                    "female": 20012
+                }
+                ],
+                "MI": [{
+                    "age": "0 to 5",
+                    "male": 295157,
+                    "female": 280629
+                }, {
+                    "age": "10 to 14",
+                    "male": 329983,
+                    "female": 319870
+                }, {
+                    "age": "15 to 17",
+                    "male": 210017,
+                    "female": 199977
+                }, {
+                    "age": "18 to 21",
+                    "male": 299937,
+                    "female": 287188
+                }, {
+                    "age": "22 to 24",
+                    "male": 208270,
+                    "female": 202858
+                }, {
+                    "age": "25 to 29",
+                    "male": 303606,
+                    "female": 298013
+                }, {
+                    "age": "30 to 34",
+                    "male": 292780,
+                    "female": 296303
+                }, {
+                    "age": "35 to 39",
+                    "male": 283925,
+                    "female": 288526
+                }, {
+                    "age": "40 to 44",
+                    "male": 314544,
+                    "female": 319923
+                }, {
+                    "age": "45 to 49",
+                    "male": 337524,
+                    "female": 344097
+                }, {
+                    "age": "5 to 9",
+                    "male": 316345,
+                    "female": 297675
+                }, {
+                    "age": "50 to 54",
+                    "male": 366054,
+                    "female": 378332
+                }, {
+                    "age": "55 to 59",
+                    "male": 349590,
+                    "female": 369347
+                }, {
+                    "age": "60 to 64",
+                    "male": 303421,
+                    "female": 323815
+                }, {
+                    "age": "65 to 69",
+                    "male": 230810,
+                    "female": 252455
+                }, {
+                    "age": "70 to 74",
+                    "male": 161676,
+                    "female": 186453
+                }, {
+                    "age": "75 to 79",
+                    "male": 112555,
+                    "female": 141554
+                }, {
+                    "age": "80 to 84",
+                    "male": 78669,
+                    "female": 116914
+                }, {
+                    "age": "85 and Older",
+                    "male": 67110,
+                    "female": 134669
+                }
+                ],
+                "MN": [{
+                    "age": "0 to 5",
+                    "male": 178616,
+                    "female": 170645
+                }, {
+                    "age": "10 to 14",
+                    "male": 180951,
+                    "female": 174374
+                }, {
+                    "age": "15 to 17",
+                    "male": 110001,
+                    "female": 104197
+                }, {
+                    "age": "18 to 21",
+                    "male": 148247,
+                    "female": 144611
+                }, {
+                    "age": "22 to 24",
+                    "male": 108864,
+                    "female": 103755
+                }, {
+                    "age": "25 to 29",
+                    "male": 185766,
+                    "female": 180698
+                }, {
+                    "age": "30 to 34",
+                    "male": 189374,
+                    "female": 184845
+                }, {
+                    "age": "35 to 39",
+                    "male": 166613,
+                    "female": 160534
+                }, {
+                    "age": "40 to 44",
+                    "male": 172583,
+                    "female": 171011
+                }, {
+                    "age": "45 to 49",
+                    "male": 184130,
+                    "female": 182785
+                }, {
+                    "age": "5 to 9",
+                    "male": 185244,
+                    "female": 176674
+                }, {
+                    "age": "50 to 54",
+                    "male": 202427,
+                    "female": 203327
+                }, {
+                    "age": "55 to 59",
+                    "male": 187216,
+                    "female": 189980
+                }, {
+                    "age": "60 to 64",
+                    "male": 157586,
+                    "female": 160588
+                }, {
+                    "age": "65 to 69",
+                    "male": 114903,
+                    "female": 121985
+                }, {
+                    "age": "70 to 74",
+                    "male": 81660,
+                    "female": 92401
+                }, {
+                    "age": "75 to 79",
+                    "male": 57855,
+                    "female": 72839
+                }, {
+                    "age": "80 to 84",
+                    "male": 42192,
+                    "female": 58545
+                }, {
+                    "age": "85 and Older",
+                    "male": 37938,
+                    "female": 73211
+                }
+                ],
+                "MO": [{
+                    "age": "0 to 5",
+                    "male": 192851,
+                    "female": 183921
+                }, {
+                    "age": "10 to 14",
+                    "male": 201273,
+                    "female": 190020
+                }, {
+                    "age": "15 to 17",
+                    "male": 122944,
+                    "female": 116383
+                }, {
+                    "age": "18 to 21",
+                    "male": 175782,
+                    "female": 169076
+                }, {
+                    "age": "22 to 24",
+                    "male": 124584,
+                    "female": 123027
+                }, {
+                    "age": "25 to 29",
+                    "male": 200511,
+                    "female": 200134
+                }, {
+                    "age": "30 to 34",
+                    "male": 197781,
+                    "female": 198735
+                }, {
+                    "age": "35 to 39",
+                    "male": 181485,
+                    "female": 180002
+                }, {
+                    "age": "40 to 44",
+                    "male": 183318,
+                    "female": 188038
+                }, {
+                    "age": "45 to 49",
+                    "male": 194538,
+                    "female": 199735
+                }, {
+                    "age": "5 to 9",
+                    "male": 200091,
+                    "female": 193196
+                }, {
+                    "age": "50 to 54",
+                    "male": 218663,
+                    "female": 225083
+                }, {
+                    "age": "55 to 59",
+                    "male": 199513,
+                    "female": 216459
+                }, {
+                    "age": "60 to 64",
+                    "male": 176036,
+                    "female": 187668
+                }, {
+                    "age": "65 to 69",
+                    "male": 135605,
+                    "female": 150815
+                }, {
+                    "age": "70 to 74",
+                    "male": 99845,
+                    "female": 117802
+                }, {
+                    "age": "75 to 79",
+                    "male": 70734,
+                    "female": 88769
+                }, {
+                    "age": "80 to 84",
+                    "male": 48118,
+                    "female": 72085
+                }, {
+                    "age": "85 and Older",
+                    "male": 40331,
+                    "female": 80497
+                }
+                ],
+                "MS": [{
+                    "age": "0 to 5",
+                    "male": 100654,
+                    "female": 97079
+                }, {
+                    "age": "10 to 14",
+                    "male": 107363,
+                    "female": 101958
+                }, {
+                    "age": "15 to 17",
+                    "male": 62923,
+                    "female": 60591
+                }, {
+                    "age": "18 to 21",
+                    "male": 94460,
+                    "female": 94304
+                }, {
+                    "age": "22 to 24",
+                    "male": 63870,
+                    "female": 58909
+                }, {
+                    "age": "25 to 29",
+                    "male": 96027,
+                    "female": 98023
+                }, {
+                    "age": "30 to 34",
+                    "male": 95533,
+                    "female": 98837
+                }, {
+                    "age": "35 to 39",
+                    "male": 88278,
+                    "female": 92876
+                }, {
+                    "age": "40 to 44",
+                    "male": 93579,
+                    "female": 97851
+                }, {
+                    "age": "45 to 49",
+                    "male": 92103,
+                    "female": 98871
+                }, {
+                    "age": "5 to 9",
+                    "male": 104911,
+                    "female": 100694
+                }, {
+                    "age": "50 to 54",
+                    "male": 98578,
+                    "female": 106516
+                }, {
+                    "age": "55 to 59",
+                    "male": 94835,
+                    "female": 101616
+                }, {
+                    "age": "60 to 64",
+                    "male": 80677,
+                    "female": 91332
+                }, {
+                    "age": "65 to 69",
+                    "male": 64386,
+                    "female": 72940
+                }, {
+                    "age": "70 to 74",
+                    "male": 46712,
+                    "female": 56013
+                }, {
+                    "age": "75 to 79",
+                    "male": 32079,
+                    "female": 42598
+                }, {
+                    "age": "80 to 84",
+                    "male": 19966,
+                    "female": 32724
+                }, {
+                    "age": "85 and Older",
+                    "male": 14789,
+                    "female": 32626
+                }
+                ],
+                "MT": [{
+                    "age": "0 to 5",
+                    "male": 31021,
+                    "female": 29676
+                }, {
+                    "age": "10 to 14",
+                    "male": 30960,
+                    "female": 29710
+                }, {
+                    "age": "15 to 17",
+                    "male": 19558,
+                    "female": 18061
+                }, {
+                    "age": "18 to 21",
+                    "male": 30975,
+                    "female": 27314
+                }, {
+                    "age": "22 to 24",
+                    "male": 21419,
+                    "female": 20153
+                }, {
+                    "age": "25 to 29",
+                    "male": 32300,
+                    "female": 30805
+                }, {
+                    "age": "30 to 34",
+                    "male": 33167,
+                    "female": 30964
+                }, {
+                    "age": "35 to 39",
+                    "male": 29772,
+                    "female": 28999
+                }, {
+                    "age": "40 to 44",
+                    "male": 28538,
+                    "female": 27311
+                }, {
+                    "age": "45 to 49",
+                    "male": 30820,
+                    "female": 30608
+                }, {
+                    "age": "5 to 9",
+                    "male": 33641,
+                    "female": 31763
+                }, {
+                    "age": "50 to 54",
+                    "male": 36761,
+                    "female": 37476
+                }, {
+                    "age": "55 to 59",
+                    "male": 38291,
+                    "female": 40028
+                }, {
+                    "age": "60 to 64",
+                    "male": 35306,
+                    "female": 35021
+                }, {
+                    "age": "65 to 69",
+                    "male": 27786,
+                    "female": 27047
+                }, {
+                    "age": "70 to 74",
+                    "male": 19708,
+                    "female": 19938
+                }, {
+                    "age": "75 to 79",
+                    "male": 13344,
+                    "female": 14751
+                }, {
+                    "age": "80 to 84",
+                    "male": 9435,
+                    "female": 11392
+                }, {
+                    "age": "85 and Older",
+                    "male": 7361,
+                    "female": 13519
+                }
+                ],
+                "NC": [{
+                    "age": "0 to 5",
+                    "male": 311288,
+                    "female": 299882
+                }, {
+                    "age": "10 to 14",
+                    "male": 333622,
+                    "female": 316123
+                }, {
+                    "age": "15 to 17",
+                    "male": 194507,
+                    "female": 185872
+                }, {
+                    "age": "18 to 21",
+                    "male": 299506,
+                    "female": 275504
+                }, {
+                    "age": "22 to 24",
+                    "male": 207910,
+                    "female": 196277
+                }, {
+                    "age": "25 to 29",
+                    "male": 317709,
+                    "female": 324593
+                }, {
+                    "age": "30 to 34",
+                    "male": 311582,
+                    "female": 323483
+                }, {
+                    "age": "35 to 39",
+                    "male": 308195,
+                    "female": 319405
+                }, {
+                    "age": "40 to 44",
+                    "male": 334818,
+                    "female": 349484
+                }, {
+                    "age": "45 to 49",
+                    "male": 331086,
+                    "female": 345940
+                }, {
+                    "age": "5 to 9",
+                    "male": 325977,
+                    "female": 316564
+                }, {
+                    "age": "50 to 54",
+                    "male": 334674,
+                    "female": 355791
+                }, {
+                    "age": "55 to 59",
+                    "male": 308840,
+                    "female": 341170
+                }, {
+                    "age": "60 to 64",
+                    "male": 270508,
+                    "female": 303831
+                }, {
+                    "age": "65 to 69",
+                    "male": 225997,
+                    "female": 254521
+                }, {
+                    "age": "70 to 74",
+                    "male": 154010,
+                    "female": 186677
+                }, {
+                    "age": "75 to 79",
+                    "male": 106165,
+                    "female": 139937
+                }, {
+                    "age": "80 to 84",
+                    "male": 68871,
+                    "female": 104839
+                }, {
+                    "age": "85 and Older",
+                    "male": 50143,
+                    "female": 110032
+                }
+                ],
+                "ND": [{
+                    "age": "0 to 5",
+                    "male": 24524,
+                    "female": 24340
+                }, {
+                    "age": "10 to 14",
+                    "male": 20939,
+                    "female": 20728
+                }, {
+                    "age": "15 to 17",
+                    "male": 13197,
+                    "female": 12227
+                }, {
+                    "age": "18 to 21",
+                    "male": 27439,
+                    "female": 22447
+                }, {
+                    "age": "22 to 24",
+                    "male": 21413,
+                    "female": 19299
+                }, {
+                    "age": "25 to 29",
+                    "male": 29543,
+                    "female": 24602
+                }, {
+                    "age": "30 to 34",
+                    "male": 26425,
+                    "female": 22798
+                }, {
+                    "age": "35 to 39",
+                    "male": 21846,
+                    "female": 19046
+                }, {
+                    "age": "40 to 44",
+                    "male": 20123,
+                    "female": 19010
+                }, {
+                    "age": "45 to 49",
+                    "male": 21386,
+                    "female": 20572
+                }, {
+                    "age": "5 to 9",
+                    "male": 24336,
+                    "female": 22721
+                }, {
+                    "age": "50 to 54",
+                    "male": 25126,
+                    "female": 24631
+                }, {
+                    "age": "55 to 59",
+                    "male": 24412,
+                    "female": 24022
+                }, {
+                    "age": "60 to 64",
+                    "male": 21598,
+                    "female": 20250
+                }, {
+                    "age": "65 to 69",
+                    "male": 14868,
+                    "female": 14633
+                }, {
+                    "age": "70 to 74",
+                    "male": 10729,
+                    "female": 11878
+                }, {
+                    "age": "75 to 79",
+                    "male": 8086,
+                    "female": 9626
+                }, {
+                    "age": "80 to 84",
+                    "male": 6222,
+                    "female": 9241
+                }, {
+                    "age": "85 and Older",
+                    "male": 5751,
+                    "female": 11606
+                }
+                ],
+                "NE": [{
+                    "age": "0 to 5",
+                    "male": 67062,
+                    "female": 62974
+                }, {
+                    "age": "10 to 14",
+                    "male": 64843,
+                    "female": 62695
+                }, {
+                    "age": "15 to 17",
+                    "male": 38679,
+                    "female": 36116
+                }, {
+                    "age": "18 to 21",
+                    "male": 56143,
+                    "female": 54195
+                }, {
+                    "age": "22 to 24",
+                    "male": 40531,
+                    "female": 38139
+                }, {
+                    "age": "25 to 29",
+                    "male": 64277,
+                    "female": 61028
+                }, {
+                    "age": "30 to 34",
+                    "male": 64230,
+                    "female": 62423
+                }, {
+                    "age": "35 to 39",
+                    "male": 57741,
+                    "female": 55950
+                }, {
+                    "age": "40 to 44",
+                    "male": 56139,
+                    "female": 54518
+                }, {
+                    "age": "45 to 49",
+                    "male": 57526,
+                    "female": 57077
+                }, {
+                    "age": "5 to 9",
+                    "male": 68079,
+                    "female": 64509
+                }, {
+                    "age": "50 to 54",
+                    "male": 64444,
+                    "female": 65106
+                }, {
+                    "age": "55 to 59",
+                    "male": 61285,
+                    "female": 62057
+                }, {
+                    "age": "60 to 64",
+                    "male": 52560,
+                    "female": 54977
+                }, {
+                    "age": "65 to 69",
+                    "male": 39372,
+                    "female": 41007
+                }, {
+                    "age": "70 to 74",
+                    "male": 27091,
+                    "female": 31903
+                }, {
+                    "age": "75 to 79",
+                    "male": 20472,
+                    "female": 26808
+                }, {
+                    "age": "80 to 84",
+                    "male": 15625,
+                    "female": 21401
+                }, {
+                    "age": "85 and Older",
+                    "male": 13507,
+                    "female": 26876
+                }
+                ],
+                "NH": [{
+                    "age": "0 to 5",
+                    "male": 33531,
+                    "female": 32061
+                }, {
+                    "age": "10 to 14",
+                    "male": 40472,
+                    "female": 39574
+                }, {
+                    "age": "15 to 17",
+                    "male": 26632,
+                    "female": 25155
+                }, {
+                    "age": "18 to 21",
+                    "male": 39600,
+                    "female": 39270
+                }, {
+                    "age": "22 to 24",
+                    "male": 25067,
+                    "female": 23439
+                }, {
+                    "age": "25 to 29",
+                    "male": 39514,
+                    "female": 37529
+                }, {
+                    "age": "30 to 34",
+                    "male": 37282,
+                    "female": 37104
+                }, {
+                    "age": "35 to 39",
+                    "male": 37177,
+                    "female": 38432
+                }, {
+                    "age": "40 to 44",
+                    "male": 43571,
+                    "female": 43894
+                }, {
+                    "age": "45 to 49",
+                    "male": 50559,
+                    "female": 51423
+                }, {
+                    "age": "5 to 9",
+                    "male": 37873,
+                    "female": 36382
+                }, {
+                    "age": "50 to 54",
+                    "male": 55573,
+                    "female": 57097
+                }, {
+                    "age": "55 to 59",
+                    "male": 50802,
+                    "female": 52906
+                }, {
+                    "age": "60 to 64",
+                    "male": 44934,
+                    "female": 45384
+                }, {
+                    "age": "65 to 69",
+                    "male": 33322,
+                    "female": 34773
+                }, {
+                    "age": "70 to 74",
+                    "male": 22786,
+                    "female": 25421
+                }, {
+                    "age": "75 to 79",
+                    "male": 14988,
+                    "female": 18865
+                }, {
+                    "age": "80 to 84",
+                    "male": 10661,
+                    "female": 14921
+                }, {
+                    "age": "85 and Older",
+                    "male": 9140,
+                    "female": 17087
+                }
+                ],
+                "NJ": [{
+                    "age": "0 to 5",
+                    "male": 272239,
+                    "female": 261405
+                }, {
+                    "age": "10 to 14",
+                    "male": 296798,
+                    "female": 281395
+                }, {
+                    "age": "15 to 17",
+                    "male": 183608,
+                    "female": 174902
+                }, {
+                    "age": "18 to 21",
+                    "male": 236406,
+                    "female": 219234
+                }, {
+                    "age": "22 to 24",
+                    "male": 171414,
+                    "female": 162551
+                }, {
+                    "age": "25 to 29",
+                    "male": 288078,
+                    "female": 278395
+                }, {
+                    "age": "30 to 34",
+                    "male": 286242,
+                    "female": 288661
+                }, {
+                    "age": "35 to 39",
+                    "male": 278323,
+                    "female": 286407
+                }, {
+                    "age": "40 to 44",
+                    "male": 306371,
+                    "female": 315976
+                }, {
+                    "age": "45 to 49",
+                    "male": 324604,
+                    "female": 340805
+                }, {
+                    "age": "5 to 9",
+                    "male": 280348,
+                    "female": 272618
+                }, {
+                    "age": "50 to 54",
+                    "male": 335379,
+                    "female": 351753
+                }, {
+                    "age": "55 to 59",
+                    "male": 297889,
+                    "female": 316509
+                }, {
+                    "age": "60 to 64",
+                    "male": 243909,
+                    "female": 272971
+                }, {
+                    "age": "65 to 69",
+                    "male": 187928,
+                    "female": 216233
+                }, {
+                    "age": "70 to 74",
+                    "male": 130458,
+                    "female": 162862
+                }, {
+                    "age": "75 to 79",
+                    "male": 92629,
+                    "female": 121544
+                }, {
+                    "age": "80 to 84",
+                    "male": 68009,
+                    "female": 107002
+                }, {
+                    "age": "85 and Older",
+                    "male": 62395,
+                    "female": 130163
+                }
+                ],
+                "NM": [{
+                    "age": "0 to 5",
+                    "male": 70556,
+                    "female": 67433
+                }, {
+                    "age": "10 to 14",
+                    "male": 72070,
+                    "female": 69774
+                }, {
+                    "age": "15 to 17",
+                    "male": 42831,
+                    "female": 41474
+                }, {
+                    "age": "18 to 21",
+                    "male": 61671,
+                    "female": 59289
+                }, {
+                    "age": "22 to 24",
+                    "male": 47139,
+                    "female": 41506
+                }, {
+                    "age": "25 to 29",
+                    "male": 73009,
+                    "female": 67866
+                }, {
+                    "age": "30 to 34",
+                    "male": 69394,
+                    "female": 66383
+                }, {
+                    "age": "35 to 39",
+                    "male": 62108,
+                    "female": 60810
+                }, {
+                    "age": "40 to 44",
+                    "male": 61075,
+                    "female": 61508
+                }, {
+                    "age": "45 to 49",
+                    "male": 62327,
+                    "female": 64988
+                }, {
+                    "age": "5 to 9",
+                    "male": 72877,
+                    "female": 69675
+                }, {
+                    "age": "50 to 54",
+                    "male": 69856,
+                    "female": 73683
+                }, {
+                    "age": "55 to 59",
+                    "male": 66381,
+                    "female": 73952
+                }, {
+                    "age": "60 to 64",
+                    "male": 61719,
+                    "female": 66285
+                }, {
+                    "age": "65 to 69",
+                    "male": 48657,
+                    "female": 54175
+                }, {
+                    "age": "70 to 74",
+                    "male": 35942,
+                    "female": 39668
+                }, {
+                    "age": "75 to 79",
+                    "male": 24922,
+                    "female": 29968
+                }, {
+                    "age": "80 to 84",
+                    "male": 16894,
+                    "female": 21049
+                }, {
+                    "age": "85 and Older",
+                    "male": 12986,
+                    "female": 22217
+                }
+                ],
+                "NV": [{
+                    "age": "0 to 5",
+                    "male": 91556,
+                    "female": 87252
+                }, {
+                    "age": "10 to 14",
+                    "male": 92376,
+                    "female": 90127
+                }, {
+                    "age": "15 to 17",
+                    "male": 56635,
+                    "female": 53976
+                }, {
+                    "age": "18 to 21",
+                    "male": 72185,
+                    "female": 68570
+                }, {
+                    "age": "22 to 24",
+                    "male": 57429,
+                    "female": 54635
+                }, {
+                    "age": "25 to 29",
+                    "male": 103079,
+                    "female": 98260
+                }, {
+                    "age": "30 to 34",
+                    "male": 101626,
+                    "female": 97574
+                }, {
+                    "age": "35 to 39",
+                    "male": 95952,
+                    "female": 91752
+                }, {
+                    "age": "40 to 44",
+                    "male": 98405,
+                    "female": 96018
+                }, {
+                    "age": "45 to 49",
+                    "male": 98297,
+                    "female": 92880
+                }, {
+                    "age": "5 to 9",
+                    "male": 97639,
+                    "female": 92019
+                }, {
+                    "age": "50 to 54",
+                    "male": 96647,
+                    "female": 93838
+                }, {
+                    "age": "55 to 59",
+                    "male": 86430,
+                    "female": 90916
+                }, {
+                    "age": "60 to 64",
+                    "male": 79651,
+                    "female": 82206
+                }, {
+                    "age": "65 to 69",
+                    "male": 65973,
+                    "female": 70582
+                }, {
+                    "age": "70 to 74",
+                    "male": 48879,
+                    "female": 50485
+                }, {
+                    "age": "75 to 79",
+                    "male": 31798,
+                    "female": 33652
+                }, {
+                    "age": "80 to 84",
+                    "male": 19722,
+                    "female": 23399
+                }, {
+                    "age": "85 and Older",
+                    "male": 13456,
+                    "female": 22760
+                }
+                ],
+                "NY": [{
+                    "age": "0 to 5",
+                    "male": 601900,
+                    "female": 574532
+                }, {
+                    "age": "10 to 14",
+                    "male": 602877,
+                    "female": 576846
+                }, {
+                    "age": "15 to 17",
+                    "male": 381224,
+                    "female": 364149
+                }, {
+                    "age": "18 to 21",
+                    "male": 579276,
+                    "female": 563517
+                }, {
+                    "age": "22 to 24",
+                    "male": 423461,
+                    "female": 419351
+                }, {
+                    "age": "25 to 29",
+                    "male": 722290,
+                    "female": 728064
+                }, {
+                    "age": "30 to 34",
+                    "male": 668918,
+                    "female": 684340
+                }, {
+                    "age": "35 to 39",
+                    "male": 607495,
+                    "female": 628810
+                }, {
+                    "age": "40 to 44",
+                    "male": 632186,
+                    "female": 660306
+                }, {
+                    "age": "45 to 49",
+                    "male": 674516,
+                    "female": 708960
+                }, {
+                    "age": "5 to 9",
+                    "male": 588624,
+                    "female": 561622
+                }, {
+                    "age": "50 to 54",
+                    "male": 695357,
+                    "female": 740342
+                }, {
+                    "age": "55 to 59",
+                    "male": 633602,
+                    "female": 685163
+                }, {
+                    "age": "60 to 64",
+                    "male": 540901,
+                    "female": 604110
+                }, {
+                    "age": "65 to 69",
+                    "male": 409399,
+                    "female": 483158
+                }, {
+                    "age": "70 to 74",
+                    "male": 287440,
+                    "female": 357971
+                }, {
+                    "age": "75 to 79",
+                    "male": 207495,
+                    "female": 274626
+                }, {
+                    "age": "80 to 84",
+                    "male": 150642,
+                    "female": 231063
+                }, {
+                    "age": "85 and Older",
+                    "male": 134198,
+                    "female": 284443
+                }
+                ],
+                "OH": [{
+                    "age": "0 to 5",
+                    "male": 356598,
+                    "female": 339398
+                }, {
+                    "age": "10 to 14",
+                    "male": 385542,
+                    "female": 371142
+                }, {
+                    "age": "15 to 17",
+                    "male": 239825,
+                    "female": 228296
+                }, {
+                    "age": "18 to 21",
+                    "male": 331115,
+                    "female": 318019
+                }, {
+                    "age": "22 to 24",
+                    "male": 227916,
+                    "female": 225400
+                }, {
+                    "age": "25 to 29",
+                    "male": 369646,
+                    "female": 367475
+                }, {
+                    "age": "30 to 34",
+                    "male": 356757,
+                    "female": 359375
+                }, {
+                    "age": "35 to 39",
+                    "male": 338273,
+                    "female": 340410
+                }, {
+                    "age": "40 to 44",
+                    "male": 368578,
+                    "female": 375476
+                }, {
+                    "age": "45 to 49",
+                    "male": 385388,
+                    "female": 394341
+                }, {
+                    "age": "5 to 9",
+                    "male": 376976,
+                    "female": 358242
+                }, {
+                    "age": "50 to 54",
+                    "male": 420561,
+                    "female": 438290
+                }, {
+                    "age": "55 to 59",
+                    "male": 403067,
+                    "female": 427137
+                }, {
+                    "age": "60 to 64",
+                    "male": 350563,
+                    "female": 374890
+                }, {
+                    "age": "65 to 69",
+                    "male": 262844,
+                    "female": 292745
+                }, {
+                    "age": "70 to 74",
+                    "male": 183419,
+                    "female": 222552
+                }, {
+                    "age": "75 to 79",
+                    "male": 131940,
+                    "female": 173303
+                }, {
+                    "age": "80 to 84",
+                    "male": 93267,
+                    "female": 140079
+                }, {
+                    "age": "85 and Older",
+                    "male": 80618,
+                    "female": 166514
+                }
+                ],
+                "OK": [{
+                    "age": "0 to 5",
+                    "male": 135423,
+                    "female": 130297
+                }, {
+                    "age": "10 to 14",
+                    "male": 133539,
+                    "female": 128110
+                }, {
+                    "age": "15 to 17",
+                    "male": 79207,
+                    "female": 74080
+                }, {
+                    "age": "18 to 21",
+                    "male": 115423,
+                    "female": 107651
+                }, {
+                    "age": "22 to 24",
+                    "male": 85610,
+                    "female": 80749
+                }, {
+                    "age": "25 to 29",
+                    "male": 135217,
+                    "female": 130966
+                }, {
+                    "age": "30 to 34",
+                    "male": 132683,
+                    "female": 128496
+                }, {
+                    "age": "35 to 39",
+                    "male": 118240,
+                    "female": 116104
+                }, {
+                    "age": "40 to 44",
+                    "male": 118534,
+                    "female": 117501
+                }, {
+                    "age": "45 to 49",
+                    "male": 117065,
+                    "female": 118300
+                }, {
+                    "age": "5 to 9",
+                    "male": 137212,
+                    "female": 130040
+                }, {
+                    "age": "50 to 54",
+                    "male": 129964,
+                    "female": 132941
+                }, {
+                    "age": "55 to 59",
+                    "male": 121988,
+                    "female": 129033
+                }, {
+                    "age": "60 to 64",
+                    "male": 105018,
+                    "female": 113144
+                }, {
+                    "age": "65 to 69",
+                    "male": 82818,
+                    "female": 93914
+                }, {
+                    "age": "70 to 74",
+                    "male": 62979,
+                    "female": 71856
+                }, {
+                    "age": "75 to 79",
+                    "male": 43899,
+                    "female": 54848
+                }, {
+                    "age": "80 to 84",
+                    "male": 29237,
+                    "female": 42044
+                }, {
+                    "age": "85 and Older",
+                    "male": 22888,
+                    "female": 42715
+                }
+                ],
+                "OR": [{
+                    "age": "0 to 5",
+                    "male": 118561,
+                    "female": 112841
+                }, {
+                    "age": "10 to 14",
+                    "male": 123223,
+                    "female": 116373
+                }, {
+                    "age": "15 to 17",
+                    "male": 75620,
+                    "female": 71764
+                }, {
+                    "age": "18 to 21",
+                    "male": 106121,
+                    "female": 103044
+                }, {
+                    "age": "22 to 24",
+                    "male": 79106,
+                    "female": 75639
+                }, {
+                    "age": "25 to 29",
+                    "male": 134241,
+                    "female": 131539
+                }, {
+                    "age": "30 to 34",
+                    "male": 137090,
+                    "female": 135734
+                }, {
+                    "age": "35 to 39",
+                    "male": 128812,
+                    "female": 126071
+                }, {
+                    "age": "40 to 44",
+                    "male": 131405,
+                    "female": 126875
+                }, {
+                    "age": "45 to 49",
+                    "male": 125373,
+                    "female": 125074
+                }, {
+                    "age": "5 to 9",
+                    "male": 122920,
+                    "female": 119049
+                }, {
+                    "age": "50 to 54",
+                    "male": 131932,
+                    "female": 137021
+                }, {
+                    "age": "55 to 59",
+                    "male": 130434,
+                    "female": 141380
+                }, {
+                    "age": "60 to 64",
+                    "male": 129063,
+                    "female": 136051
+                }, {
+                    "age": "65 to 69",
+                    "male": 99577,
+                    "female": 106208
+                }, {
+                    "age": "70 to 74",
+                    "male": 69028,
+                    "female": 77428
+                }, {
+                    "age": "75 to 79",
+                    "male": 46055,
+                    "female": 53682
+                }, {
+                    "age": "80 to 84",
+                    "male": 30900,
+                    "female": 41853
+                }, {
+                    "age": "85 and Older",
+                    "male": 28992,
+                    "female": 53154
+                }
+                ],
+                "PA": [{
+                    "age": "0 to 5",
+                    "male": 367290,
+                    "female": 350371
+                }, {
+                    "age": "10 to 14",
+                    "male": 393719,
+                    "female": 374666
+                }, {
+                    "age": "15 to 17",
+                    "male": 250754,
+                    "female": 236670
+                }, {
+                    "age": "18 to 21",
+                    "male": 378940,
+                    "female": 369819
+                }, {
+                    "age": "22 to 24",
+                    "male": 251063,
+                    "female": 243391
+                }, {
+                    "age": "25 to 29",
+                    "male": 420247,
+                    "female": 410193
+                }, {
+                    "age": "30 to 34",
+                    "male": 391190,
+                    "female": 387225
+                }, {
+                    "age": "35 to 39",
+                    "male": 365742,
+                    "female": 365646
+                }, {
+                    "age": "40 to 44",
+                    "male": 399152,
+                    "female": 405848
+                }, {
+                    "age": "45 to 49",
+                    "male": 435250,
+                    "female": 446328
+                }, {
+                    "age": "5 to 9",
+                    "male": 381910,
+                    "female": 366854
+                }, {
+                    "age": "50 to 54",
+                    "male": 472070,
+                    "female": 489057
+                }, {
+                    "age": "55 to 59",
+                    "male": 456215,
+                    "female": 475044
+                }, {
+                    "age": "60 to 64",
+                    "male": 390595,
+                    "female": 419924
+                }, {
+                    "age": "65 to 69",
+                    "male": 301610,
+                    "female": 335127
+                }, {
+                    "age": "70 to 74",
+                    "male": 212200,
+                    "female": 256188
+                }, {
+                    "age": "75 to 79",
+                    "male": 156335,
+                    "female": 205974
+                }, {
+                    "age": "80 to 84",
+                    "male": 117050,
+                    "female": 178358
+                }, {
+                    "age": "85 and Older",
+                    "male": 104012,
+                    "female": 217532
+                }
+                ],
+                "RI": [{
+                    "age": "0 to 5",
+                    "male": 28289,
+                    "female": 26941
+                }, {
+                    "age": "10 to 14",
+                    "male": 31383,
+                    "female": 30724
+                }, {
+                    "age": "15 to 17",
+                    "male": 20093,
+                    "female": 19249
+                }, {
+                    "age": "18 to 21",
+                    "male": 35376,
+                    "female": 37870
+                }, {
+                    "age": "22 to 24",
+                    "male": 23397,
+                    "female": 21358
+                }, {
+                    "age": "25 to 29",
+                    "male": 35958,
+                    "female": 34710
+                }, {
+                    "age": "30 to 34",
+                    "male": 32410,
+                    "female": 32567
+                }, {
+                    "age": "35 to 39",
+                    "male": 30325,
+                    "female": 31145
+                }, {
+                    "age": "40 to 44",
+                    "male": 32542,
+                    "female": 34087
+                }, {
+                    "age": "45 to 49",
+                    "male": 36151,
+                    "female": 38462
+                }, {
+                    "age": "5 to 9",
+                    "male": 30462,
+                    "female": 27878
+                }, {
+                    "age": "50 to 54",
+                    "male": 38419,
+                    "female": 41642
+                }, {
+                    "age": "55 to 59",
+                    "male": 36706,
+                    "female": 39127
+                }, {
+                    "age": "60 to 64",
+                    "male": 30349,
+                    "female": 33752
+                }, {
+                    "age": "65 to 69",
+                    "male": 23462,
+                    "female": 26311
+                }, {
+                    "age": "70 to 74",
+                    "male": 16385,
+                    "female": 19335
+                }, {
+                    "age": "75 to 79",
+                    "male": 10978,
+                    "female": 14833
+                }, {
+                    "age": "80 to 84",
+                    "male": 9224,
+                    "female": 13439
+                }, {
+                    "age": "85 and Older",
+                    "male": 8479,
+                    "female": 19843
+                }
+                ],
+                "SC": [{
+                    "age": "0 to 5",
+                    "male": 148363,
+                    "female": 144218
+                }, {
+                    "age": "10 to 14",
+                    "male": 153051,
+                    "female": 148064
+                }, {
+                    "age": "15 to 17",
+                    "male": 92781,
+                    "female": 88090
+                }, {
+                    "age": "18 to 21",
+                    "male": 150464,
+                    "female": 136857
+                }, {
+                    "age": "22 to 24",
+                    "male": 99237,
+                    "female": 99178
+                }, {
+                    "age": "25 to 29",
+                    "male": 156273,
+                    "female": 156982
+                }, {
+                    "age": "30 to 34",
+                    "male": 148237,
+                    "female": 153197
+                }, {
+                    "age": "35 to 39",
+                    "male": 139949,
+                    "female": 146281
+                }, {
+                    "age": "40 to 44",
+                    "male": 151524,
+                    "female": 157192
+                }, {
+                    "age": "45 to 49",
+                    "male": 153110,
+                    "female": 163562
+                }, {
+                    "age": "5 to 9",
+                    "male": 156323,
+                    "female": 150943
+                }, {
+                    "age": "50 to 54",
+                    "male": 161003,
+                    "female": 173752
+                }, {
+                    "age": "55 to 59",
+                    "male": 150770,
+                    "female": 169238
+                }, {
+                    "age": "60 to 64",
+                    "male": 141268,
+                    "female": 160890
+                }, {
+                    "age": "65 to 69",
+                    "male": 120618,
+                    "female": 137154
+                }, {
+                    "age": "70 to 74",
+                    "male": 85197,
+                    "female": 97581
+                }, {
+                    "age": "75 to 79",
+                    "male": 55278,
+                    "female": 69067
+                }, {
+                    "age": "80 to 84",
+                    "male": 33979,
+                    "female": 50585
+                }, {
+                    "age": "85 and Older",
+                    "male": 24984,
+                    "female": 52336
+                }
+                ],
+                "SD": [{
+                    "age": "0 to 5",
+                    "male": 30615,
+                    "female": 29377
+                }, {
+                    "age": "10 to 14",
+                    "male": 28360,
+                    "female": 26492
+                }, {
+                    "age": "15 to 17",
+                    "male": 17193,
+                    "female": 16250
+                }, {
+                    "age": "18 to 21",
+                    "male": 25514,
+                    "female": 24234
+                }, {
+                    "age": "22 to 24",
+                    "male": 18413,
+                    "female": 16324
+                }, {
+                    "age": "25 to 29",
+                    "male": 29131,
+                    "female": 26757
+                }, {
+                    "age": "30 to 34",
+                    "male": 28133,
+                    "female": 26710
+                }, {
+                    "age": "35 to 39",
+                    "male": 24971,
+                    "female": 23347
+                }, {
+                    "age": "40 to 44",
+                    "male": 24234,
+                    "female": 23231
+                }, {
+                    "age": "45 to 49",
+                    "male": 25555,
+                    "female": 24867
+                }, {
+                    "age": "5 to 9",
+                    "male": 30399,
+                    "female": 28980
+                }, {
+                    "age": "50 to 54",
+                    "male": 29754,
+                    "female": 29530
+                }, {
+                    "age": "55 to 59",
+                    "male": 29075,
+                    "female": 28968
+                }, {
+                    "age": "60 to 64",
+                    "male": 25633,
+                    "female": 25530
+                }, {
+                    "age": "65 to 69",
+                    "male": 19320,
+                    "female": 18489
+                }, {
+                    "age": "70 to 74",
+                    "male": 12964,
+                    "female": 14702
+                }, {
+                    "age": "75 to 79",
+                    "male": 9646,
+                    "female": 12077
+                }, {
+                    "age": "80 to 84",
+                    "male": 7669,
+                    "female": 10566
+                }, {
+                    "age": "85 and Older",
+                    "male": 6898,
+                    "female": 13282
+                }
+                ],
+                "TN": [{
+                    "age": "0 to 5",
+                    "male": 204457,
+                    "female": 196347
+                }, {
+                    "age": "10 to 14",
+                    "male": 217061,
+                    "female": 206350
+                }, {
+                    "age": "15 to 17",
+                    "male": 129690,
+                    "female": 124122
+                }, {
+                    "age": "18 to 21",
+                    "male": 183910,
+                    "female": 175377
+                }, {
+                    "age": "22 to 24",
+                    "male": 132501,
+                    "female": 134905
+                }, {
+                    "age": "25 to 29",
+                    "male": 210618,
+                    "female": 214944
+                }, {
+                    "age": "30 to 34",
+                    "male": 209305,
+                    "female": 214151
+                }, {
+                    "age": "35 to 39",
+                    "male": 200270,
+                    "female": 207520
+                }, {
+                    "age": "40 to 44",
+                    "male": 216542,
+                    "female": 219178
+                }, {
+                    "age": "45 to 49",
+                    "male": 217059,
+                    "female": 224473
+                }, {
+                    "age": "5 to 9",
+                    "male": 210365,
+                    "female": 204494
+                }, {
+                    "age": "50 to 54",
+                    "male": 223663,
+                    "female": 238025
+                }, {
+                    "age": "55 to 59",
+                    "male": 210228,
+                    "female": 229974
+                }, {
+                    "age": "60 to 64",
+                    "male": 186739,
+                    "female": 207022
+                }, {
+                    "age": "65 to 69",
+                    "male": 153737,
+                    "female": 171357
+                }, {
+                    "age": "70 to 74",
+                    "male": 108743,
+                    "female": 125362
+                }, {
+                    "age": "75 to 79",
+                    "male": 72813,
+                    "female": 94077
+                }, {
+                    "age": "80 to 84",
+                    "male": 46556,
+                    "female": 71212
+                }, {
+                    "age": "85 and Older",
+                    "male": 33499,
+                    "female": 72969
+                }
+                ],
+                "TX": [{
+                    "age": "0 to 5",
+                    "male": 996070,
+                    "female": 955235
+                }, {
+                    "age": "10 to 14",
+                    "male": 998209,
+                    "female": 959762
+                }, {
+                    "age": "15 to 17",
+                    "male": 587712,
+                    "female": 561008
+                }, {
+                    "age": "18 to 21",
+                    "male": 818590,
+                    "female": 756451
+                }, {
+                    "age": "22 to 24",
+                    "male": 582570,
+                    "female": 556850
+                }, {
+                    "age": "25 to 29",
+                    "male": 982673,
+                    "female": 948564
+                }, {
+                    "age": "30 to 34",
+                    "male": 961403,
+                    "female": 947710
+                }, {
+                    "age": "35 to 39",
+                    "male": 897542,
+                    "female": 898907
+                }, {
+                    "age": "40 to 44",
+                    "male": 897922,
+                    "female": 908091
+                }, {
+                    "age": "45 to 49",
+                    "male": 857621,
+                    "female": 865642
+                }, {
+                    "age": "5 to 9",
+                    "male": 1021123,
+                    "female": 979891
+                }, {
+                    "age": "50 to 54",
+                    "male": 861849,
+                    "female": 880746
+                }, {
+                    "age": "55 to 59",
+                    "male": 761410,
+                    "female": 799294
+                }, {
+                    "age": "60 to 64",
+                    "male": 635465,
+                    "female": 692072
+                }, {
+                    "age": "65 to 69",
+                    "male": 483436,
+                    "female": 533368
+                }, {
+                    "age": "70 to 74",
+                    "male": 330457,
+                    "female": 389996
+                }, {
+                    "age": "75 to 79",
+                    "male": 228243,
+                    "female": 289446
+                }, {
+                    "age": "80 to 84",
+                    "male": 153391,
+                    "female": 219572
+                }, {
+                    "age": "85 and Older",
+                    "male": 115630,
+                    "female": 224693
+                }
+                ],
+                "UT": [{
+                    "age": "0 to 5",
+                    "male": 130873,
+                    "female": 124371
+                }, {
+                    "age": "10 to 14",
+                    "male": 128076,
+                    "female": 120364
+                }, {
+                    "age": "15 to 17",
+                    "male": 70832,
+                    "female": 66798
+                }, {
+                    "age": "18 to 21",
+                    "male": 87877,
+                    "female": 92950
+                }, {
+                    "age": "22 to 24",
+                    "male": 79431,
+                    "female": 71405
+                }, {
+                    "age": "25 to 29",
+                    "male": 109125,
+                    "female": 106576
+                }, {
+                    "age": "30 to 34",
+                    "male": 115198,
+                    "female": 110546
+                }, {
+                    "age": "35 to 39",
+                    "male": 102771,
+                    "female": 99664
+                }, {
+                    "age": "40 to 44",
+                    "male": 88181,
+                    "female": 83229
+                }, {
+                    "age": "45 to 49",
+                    "male": 76552,
+                    "female": 74993
+                }, {
+                    "age": "5 to 9",
+                    "male": 131094,
+                    "female": 125110
+                }, {
+                    "age": "50 to 54",
+                    "male": 76913,
+                    "female": 78113
+                }, {
+                    "age": "55 to 59",
+                    "male": 71490,
+                    "female": 73221
+                }, {
+                    "age": "60 to 64",
+                    "male": 60996,
+                    "female": 63835
+                }, {
+                    "age": "65 to 69",
+                    "male": 45491,
+                    "female": 49273
+                }, {
+                    "age": "70 to 74",
+                    "male": 32191,
+                    "female": 35931
+                }, {
+                    "age": "75 to 79",
+                    "male": 23112,
+                    "female": 27761
+                }, {
+                    "age": "80 to 84",
+                    "male": 15827,
+                    "female": 20155
+                }, {
+                    "age": "85 and Older",
+                    "male": 13199,
+                    "female": 19855
+                }
+                ],
+                "VA": [{
+                    "age": "0 to 5",
+                    "male": 262278,
+                    "female": 250000
+                }, {
+                    "age": "10 to 14",
+                    "male": 266247,
+                    "female": 251516
+                }, {
+                    "age": "15 to 17",
+                    "male": 160174,
+                    "female": 153149
+                }, {
+                    "age": "18 to 21",
+                    "male": 248284,
+                    "female": 233796
+                }, {
+                    "age": "22 to 24",
+                    "male": 175833,
+                    "female": 167676
+                }, {
+                    "age": "25 to 29",
+                    "male": 296682,
+                    "female": 287052
+                }, {
+                    "age": "30 to 34",
+                    "male": 286536,
+                    "female": 283804
+                }, {
+                    "age": "35 to 39",
+                    "male": 264490,
+                    "female": 265951
+                }, {
+                    "age": "40 to 44",
+                    "male": 278474,
+                    "female": 286095
+                }, {
+                    "age": "45 to 49",
+                    "male": 286793,
+                    "female": 297558
+                }, {
+                    "age": "5 to 9",
+                    "male": 264413,
+                    "female": 256891
+                }, {
+                    "age": "50 to 54",
+                    "male": 296096,
+                    "female": 309898
+                }, {
+                    "age": "55 to 59",
+                    "male": 262954,
+                    "female": 283219
+                }, {
+                    "age": "60 to 64",
+                    "male": 228721,
+                    "female": 250389
+                }, {
+                    "age": "65 to 69",
+                    "male": 178498,
+                    "female": 197033
+                }, {
+                    "age": "70 to 74",
+                    "male": 123597,
+                    "female": 146376
+                }, {
+                    "age": "75 to 79",
+                    "male": 82281,
+                    "female": 103044
+                }, {
+                    "age": "80 to 84",
+                    "male": 55037,
+                    "female": 80081
+                }, {
+                    "age": "85 and Older",
+                    "male": 43560,
+                    "female": 92154
+                }
+                ],
+                "VT": [{
+                    "age": "0 to 5",
+                    "male": 15766,
+                    "female": 14629
+                }, {
+                    "age": "10 to 14",
+                    "male": 18674,
+                    "female": 17317
+                }, {
+                    "age": "15 to 17",
+                    "male": 11909,
+                    "female": 11565
+                }, {
+                    "age": "18 to 21",
+                    "male": 21686,
+                    "female": 20502
+                }, {
+                    "age": "22 to 24",
+                    "male": 12648,
+                    "female": 11840
+                }, {
+                    "age": "25 to 29",
+                    "male": 18005,
+                    "female": 17548
+                }, {
+                    "age": "30 to 34",
+                    "male": 17565,
+                    "female": 18161
+                }, {
+                    "age": "35 to 39",
+                    "male": 16856,
+                    "female": 17454
+                }, {
+                    "age": "40 to 44",
+                    "male": 19431,
+                    "female": 19600
+                }, {
+                    "age": "45 to 49",
+                    "male": 21315,
+                    "female": 22377
+                }, {
+                    "age": "5 to 9",
+                    "male": 17073,
+                    "female": 16338
+                }, {
+                    "age": "50 to 54",
+                    "male": 24629,
+                    "female": 26080
+                }, {
+                    "age": "55 to 59",
+                    "male": 24925,
+                    "female": 25588
+                }, {
+                    "age": "60 to 64",
+                    "male": 21769,
+                    "female": 23081
+                }, {
+                    "age": "65 to 69",
+                    "male": 16842,
+                    "female": 17925
+                }, {
+                    "age": "70 to 74",
+                    "male": 11855,
+                    "female": 12331
+                }, {
+                    "age": "75 to 79",
+                    "male": 7639,
+                    "female": 9192
+                }, {
+                    "age": "80 to 84",
+                    "male": 5291,
+                    "female": 8001
+                }, {
+                    "age": "85 and Older",
+                    "male": 4695,
+                    "female": 8502
+                }
+                ],
+                "WA": [{
+                    "age": "0 to 5",
+                    "male": 228403,
+                    "female": 217400
+                }, {
+                    "age": "10 to 14",
+                    "male": 224142,
+                    "female": 217269
+                }, {
+                    "age": "15 to 17",
+                    "male": 136967,
+                    "female": 130193
+                }, {
+                    "age": "18 to 21",
+                    "male": 195001,
+                    "female": 179996
+                }, {
+                    "age": "22 to 24",
+                    "male": 151577,
+                    "female": 140876
+                }, {
+                    "age": "25 to 29",
+                    "male": 260873,
+                    "female": 244497
+                }, {
+                    "age": "30 to 34",
+                    "male": 252612,
+                    "female": 243147
+                }, {
+                    "age": "35 to 39",
+                    "male": 230325,
+                    "female": 223596
+                }, {
+                    "age": "40 to 44",
+                    "male": 234066,
+                    "female": 228073
+                }, {
+                    "age": "45 to 49",
+                    "male": 233107,
+                    "female": 230232
+                }, {
+                    "age": "5 to 9",
+                    "male": 227824,
+                    "female": 214378
+                }, {
+                    "age": "50 to 54",
+                    "male": 245685,
+                    "female": 247691
+                }, {
+                    "age": "55 to 59",
+                    "male": 231612,
+                    "female": 241813
+                }, {
+                    "age": "60 to 64",
+                    "male": 206233,
+                    "female": 219560
+                }, {
+                    "age": "65 to 69",
+                    "male": 158697,
+                    "female": 170678
+                }, {
+                    "age": "70 to 74",
+                    "male": 107931,
+                    "female": 118093
+                }, {
+                    "age": "75 to 79",
+                    "male": 70497,
+                    "female": 83476
+                }, {
+                    "age": "80 to 84",
+                    "male": 48802,
+                    "female": 66167
+                }, {
+                    "age": "85 and Older",
+                    "male": 43371,
+                    "female": 80604
+                }
+                ],
+                "WI": [{
+                    "age": "0 to 5",
+                    "male": 176217,
+                    "female": 168178
+                }, {
+                    "age": "10 to 14",
+                    "male": 191911,
+                    "female": 180587
+                }, {
+                    "age": "15 to 17",
+                    "male": 115730,
+                    "female": 110660
+                }, {
+                    "age": "18 to 21",
+                    "male": 167063,
+                    "female": 161358
+                }, {
+                    "age": "22 to 24",
+                    "male": 117861,
+                    "female": 113393
+                }, {
+                    "age": "25 to 29",
+                    "male": 183464,
+                    "female": 176718
+                }, {
+                    "age": "30 to 34",
+                    "male": 187494,
+                    "female": 181605
+                }, {
+                    "age": "35 to 39",
+                    "male": 172689,
+                    "female": 168116
+                }, {
+                    "age": "40 to 44",
+                    "male": 179862,
+                    "female": 176322
+                }, {
+                    "age": "45 to 49",
+                    "male": 198114,
+                    "female": 197462
+                }, {
+                    "age": "5 to 9",
+                    "male": 186006,
+                    "female": 180034
+                }, {
+                    "age": "50 to 54",
+                    "male": 217886,
+                    "female": 219813
+                }, {
+                    "age": "55 to 59",
+                    "male": 204370,
+                    "female": 206108
+                }, {
+                    "age": "60 to 64",
+                    "male": 176161,
+                    "female": 178738
+                }, {
+                    "age": "65 to 69",
+                    "male": 130349,
+                    "female": 136552
+                }, {
+                    "age": "70 to 74",
+                    "male": 90955,
+                    "female": 103217
+                }, {
+                    "age": "75 to 79",
+                    "male": 65738,
+                    "female": 81341
+                }, {
+                    "age": "80 to 84",
+                    "male": 48337,
+                    "female": 67614
+                }, {
+                    "age": "85 and Older",
+                    "male": 41178,
+                    "female": 82916
+                }
+                ],
+                "WV": [{
+                    "age": "0 to 5",
+                    "male": 52472,
+                    "female": 50287
+                }, {
+                    "age": "10 to 14",
+                    "male": 55269,
+                    "female": 52689
+                }, {
+                    "age": "15 to 17",
+                    "male": 34100,
+                    "female": 32359
+                }, {
+                    "age": "18 to 21",
+                    "male": 51801,
+                    "female": 48967
+                }, {
+                    "age": "22 to 24",
+                    "male": 35920,
+                    "female": 34241
+                }, {
+                    "age": "25 to 29",
+                    "male": 54564,
+                    "female": 52255
+                }, {
+                    "age": "30 to 34",
+                    "male": 56430,
+                    "female": 55121
+                }, {
+                    "age": "35 to 39",
+                    "male": 55764,
+                    "female": 55399
+                }, {
+                    "age": "40 to 44",
+                    "male": 60662,
+                    "female": 59373
+                }, {
+                    "age": "45 to 49",
+                    "male": 61771,
+                    "female": 61257
+                }, {
+                    "age": "5 to 9",
+                    "male": 53707,
+                    "female": 51490
+                }, {
+                    "age": "50 to 54",
+                    "male": 66156,
+                    "female": 68671
+                }, {
+                    "age": "55 to 59",
+                    "male": 66936,
+                    "female": 71680
+                }, {
+                    "age": "60 to 64",
+                    "male": 65717,
+                    "female": 67056
+                }, {
+                    "age": "65 to 69",
+                    "male": 51285,
+                    "female": 54807
+                }, {
+                    "age": "70 to 74",
+                    "male": 36504,
+                    "female": 39946
+                }, {
+                    "age": "75 to 79",
+                    "male": 25738,
+                    "female": 31619
+                }, {
+                    "age": "80 to 84",
+                    "male": 16397,
+                    "female": 24351
+                }, {
+                    "age": "85 and Older",
+                    "male": 12438,
+                    "female": 26221
+                }
+                ],
+                "WY": [{
+                    "age": "0 to 5",
+                    "male": 19649,
+                    "female": 18996
+                }, {
+                    "age": "10 to 14",
+                    "male": 20703,
+                    "female": 17785
+                }, {
+                    "age": "15 to 17",
+                    "male": 11500,
+                    "female": 10383
+                }, {
+                    "age": "18 to 21",
+                    "male": 18008,
+                    "female": 15534
+                }, {
+                    "age": "22 to 24",
+                    "male": 12727,
+                    "female": 11405
+                }, {
+                    "age": "25 to 29",
+                    "male": 21459,
+                    "female": 19350
+                }, {
+                    "age": "30 to 34",
+                    "male": 21008,
+                    "female": 19465
+                }, {
+                    "age": "35 to 39",
+                    "male": 18573,
+                    "female": 17022
+                }, {
+                    "age": "40 to 44",
+                    "male": 17553,
+                    "female": 16402
+                }, {
+                    "age": "45 to 49",
+                    "male": 17580,
+                    "female": 16702
+                }, {
+                    "age": "5 to 9",
+                    "male": 19198,
+                    "female": 19519
+                }, {
+                    "age": "50 to 54",
+                    "male": 20337,
+                    "female": 20958
+                }, {
+                    "age": "55 to 59",
+                    "male": 21523,
+                    "female": 21000
+                }, {
+                    "age": "60 to 64",
+                    "male": 19048,
+                    "female": 18292
+                }, {
+                    "age": "65 to 69",
+                    "male": 13999,
+                    "female": 13130
+                }, {
+                    "age": "70 to 74",
+                    "male": 8710,
+                    "female": 9880
+                }, {
+                    "age": "75 to 79",
+                    "male": 6149,
+                    "female": 6938
+                }, {
+                    "age": "80 to 84",
+                    "male": 4442,
+                    "female": 5560
+                }, {
+                    "age": "85 and Older",
+                    "male": 3395,
+                    "female": 5797
+                }
+                ]
+            };
 
-			yAxis1.get("renderer").grid.template.setAll({
-				stroke: am5.color(SwapUtil.getCssVariableValue("--swap-gray-300")),
-				strokeWidth: 1,
-				strokeOpacity: 1,
-				strokeDasharray: [3],
-			});
+            function aggregateData(list) {
+                var maleTotal = 0;
+                var femaleTotal = 0;
 
-			yAxis1.data.setAll(usData);            
-			
-			var yAxis2 = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
-				categoryField: "age",
-				renderer: am5xy.AxisRendererY.new(root, {
-					opposite: true
-				})
-			}));
+                for (var i = 0; i < list.length; i++) {
+                    var row = list[i];
+                    maleTotal += row.male;
+                    femaleTotal += row.female;
+                }
 
-			yAxis2.get("renderer").grid.template.setAll({
-				stroke: am5.color(SwapUtil.getCssVariableValue("--swap-gray-300")),
-				strokeWidth: 1,
-				strokeOpacity: 1,
-				strokeDasharray: [3],
-			});
-			
-			yAxis2.get("renderer").labels.template.setAll({
-				paddingTop: 0,
-				fontWeight: "400",
-				fontSize: 11,
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-500")),
-			});
+                for (var i = 0; i < list.length; i++) {
+                    var row = list[i];
+                    row.malePercent = -1 * Math.round((row.male / maleTotal) * 10000) / 100;
+                    row.femalePercent = Math.round((row.female / femaleTotal) * 10000) / 100;
+                }
 
-			yAxis2.data.setAll(usData);
-			
-			var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
-				min: -10,
-				max: 10,
-				numberFormat: "#.s'%'",
-				renderer: am5xy.AxisRendererX.new(root, {
-					minGridDistance: 40
-				})
-			}));
+                return list;
+            }
 
-			xAxis.get("renderer").labels.template.setAll({
-				paddingTop: 20,
-				fontWeight: "400",
-				fontSize: 11,
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-500")),
-			});
+            usData = aggregateData(usData);
 
-			xAxis.get("renderer").grid.template.setAll({
-				disabled: true,
-				strokeOpacity: 0,
-			});
-			
-			// Create series
-			var maleSeries = chart.series.push(am5xy.ColumnSeries.new(root, {
-				name: "Males",
-				xAxis: xAxis,
-				yAxis: yAxis1,
-				valueXField: "malePercent",
-				categoryYField: "age",
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-success")),
-				clustered: false,
-			}));            
-			
-			maleSeries.columns.template.setAll({
-				tooltipText: "Males, age {categoryY}: {male} ({malePercent.formatNumber('#.0s')}%)",
-				tooltipX: am5.p100,
-				cornerRadiusBR: 4,
-				cornerRadiusTR: 4,
-				cornerRadiusBL: 0,
-				cornerRadiusTL: 0,
-			});
-			
-			maleSeries.data.setAll(usData);
-			
-			var femaleSeries = chart.series.push(am5xy.ColumnSeries.new(root, {
-				name: "Males",
-				xAxis: xAxis,
-				yAxis: yAxis1,
-				valueXField: "femalePercent",
-				categoryYField: "age",
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
-				clustered: false,
-			}));
-			
-			femaleSeries.columns.template.setAll({
-				tooltipText: "Males, age {categoryY}: {female} ({femalePercent.formatNumber('#.0s')}%)",
-				tooltipX: am5.p100,
-				cornerRadiusBR: 4,
-				cornerRadiusTR: 4,
-				cornerRadiusBL: 0,
-				cornerRadiusTL: 0,
-			});
-			
-			femaleSeries.data.setAll(usData);
-			
-			// Add labels
-			var maleLabel = chart.plotContainer.children.push(am5.Label.new(root, {
-				text: "Males",
-				fontSize: 13,
-				fontWeight: '500',
-				y: 5,
-				x: 5,
-				//centerX: am5.p50,
-				fill: maleSeries.get("fill")
-			}));
-			
-			var femaleLabel = chart.plotContainer.children.push(am5.Label.new(root, {
-				text: "Females",
-				fontSize: 13,
-				fontWeight: '500',
-				y: 5,
-				x: am5.p100,
-				centerX: am5.p100,
-				dx: -5,
-				fill: femaleSeries.get("fill")
-			}));            
-			
-			// ===========================================================
-			// Map chart
-			// ===========================================================
-			
-			// Create chart
-			var map = container.children.push(
-				am5map.MapChart.new(root, {
-					panX: "none",
-					panY: "none",
-					wheelY: "none",
-					projection: am5map.geoAlbersUsa(),
-					width: am5.percent(40)
-				})
-			);
-			
-			chart.getTooltip().set("autoTextColor", false);
-			
-			// Title
-			var title = map.children.push(am5.Label.new(root, {
-				text: "United States",
-				fontSize: 14,
-				fontWeight: '500',
-				fill: am5.color(SwapUtil.getCssVariableValue('--swap-gray-800')),
-				y: 20,
-				x: am5.p50,
-				centerX: am5.p50
-			}));
-			
-			// Create polygon series
-			var polygonSeries = map.series.push(
-				am5map.MapPolygonSeries.new(root, {
-					fill: am5.color(SwapUtil.getCssVariableValue('--swap-gray-300')),
-					geoJSON: am5geodata_usaLow
-				})
-			);
-			
-			polygonSeries.mapPolygons.template.setAll({
-				tooltipText: "{name}",
-				interactive: true
-			});
+            // ===========================================================
+            // Root and wrapper container
+            // ===========================================================
 
-			polygonSeries.mapPolygons.template.states.create("hover", {
-				fill: am5.color(SwapUtil.getCssVariableValue('--swap-success')),
-			});
+            // Create root and chart
+            root = am5.Root.new(element);
 
-			polygonSeries.mapPolygons.template.states.create("active", {
-					fill: am5.color(SwapUtil.getCssVariableValue('--swap-success')),
-			});
-			
-			var activePolygon;
-			polygonSeries.mapPolygons.template.events.on("click", function(ev) {
-				if (activePolygon) {
-					activePolygon.set("active", false);
-				}
-				activePolygon = ev.target;
-				activePolygon.set("active", true);
-				var state  = ev.target.dataItem.dataContext.id.split("-").pop();
-				var data = aggregateData(stateData[state]);
-				
-				for(var i = 0; i < data.length; i++){
-					maleSeries.data.setIndex(i, data[i]);
-					femaleSeries.data.setIndex(i, data[i]);
-				}            
-			
-				title.set("text", ev.target.dataItem.dataContext.name);
-			}); 
-		}
+            // Set themes
+            root.setThemes([
+                am5themes_Animated.new(root)
+            ]);
 
-		// On amchart ready
-		am5.ready(function() {      
-			// Init chart      
-			init();
-		});
+            // Create wrapper container
+            var container = root.container.children.push(am5.Container.new(root, {
+                layout: root.horizontalLayout,
+                width: am5.p100,
+                height: am5.p100
+            }))
 
-		// Update chart on theme mode change
-		ThemeMode.on("kt.thememode.change", function() {     
-			// Destroy chart
-			root.dispose();
+            // Set up formats
+            root.numberFormatter.setAll({
+                numberFormat: "#.##as"
+            });
 
-			// Reinit chart
-			init();
-		});
-	};
+            // ===========================================================
+            // XY chart
+            // ===========================================================
 
-	// Public methods
-	return {
-		init: function () {
-			initChart();
-		},
-	};
+            // Create chart
+            var chart = container.children.push(am5xy.XYChart.new(root, {
+                panX: false,
+                panY: false,
+                wheelX: "none",
+                wheelY: "none",
+                layout: root.verticalLayout,
+                width: am5.percent(60)
+            }));
+
+            // Create axes
+            var yAxis1 = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
+                categoryField: "age",
+                renderer: am5xy.AxisRendererY.new(root, {})
+            }));
+
+            yAxis1.get("renderer").labels.template.setAll({
+                paddingTop: 0,
+                fontWeight: "400",
+                fontSize: 11,
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-500")),
+            });
+
+            yAxis1.get("renderer").grid.template.setAll({
+                stroke: am5.color(SwapUtil.getCssVariableValue("--swap-gray-300")),
+                strokeWidth: 1,
+                strokeOpacity: 1,
+                strokeDasharray: [3],
+            });
+
+            yAxis1.data.setAll(usData);
+
+            var yAxis2 = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
+                categoryField: "age",
+                renderer: am5xy.AxisRendererY.new(root, {
+                    opposite: true
+                })
+            }));
+
+            yAxis2.get("renderer").grid.template.setAll({
+                stroke: am5.color(SwapUtil.getCssVariableValue("--swap-gray-300")),
+                strokeWidth: 1,
+                strokeOpacity: 1,
+                strokeDasharray: [3],
+            });
+
+            yAxis2.get("renderer").labels.template.setAll({
+                paddingTop: 0,
+                fontWeight: "400",
+                fontSize: 11,
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-500")),
+            });
+
+            yAxis2.data.setAll(usData);
+
+            var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
+                min: -10,
+                max: 10,
+                numberFormat: "#.s'%'",
+                renderer: am5xy.AxisRendererX.new(root, {
+                    minGridDistance: 40
+                })
+            }));
+
+            xAxis.get("renderer").labels.template.setAll({
+                paddingTop: 20,
+                fontWeight: "400",
+                fontSize: 11,
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-500")),
+            });
+
+            xAxis.get("renderer").grid.template.setAll({
+                disabled: true,
+                strokeOpacity: 0,
+            });
+
+            // Create series
+            var maleSeries = chart.series.push(am5xy.ColumnSeries.new(root, {
+                name: "Males",
+                xAxis: xAxis,
+                yAxis: yAxis1,
+                valueXField: "malePercent",
+                categoryYField: "age",
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-success")),
+                clustered: false,
+            }));
+
+            maleSeries.columns.template.setAll({
+                tooltipText: "Males, age {categoryY}: {male} ({malePercent.formatNumber('#.0s')}%)",
+                tooltipX: am5.p100,
+                cornerRadiusBR: 4,
+                cornerRadiusTR: 4,
+                cornerRadiusBL: 0,
+                cornerRadiusTL: 0,
+            });
+
+            maleSeries.data.setAll(usData);
+
+            var femaleSeries = chart.series.push(am5xy.ColumnSeries.new(root, {
+                name: "Males",
+                xAxis: xAxis,
+                yAxis: yAxis1,
+                valueXField: "femalePercent",
+                categoryYField: "age",
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
+                clustered: false,
+            }));
+
+            femaleSeries.columns.template.setAll({
+                tooltipText: "Males, age {categoryY}: {female} ({femalePercent.formatNumber('#.0s')}%)",
+                tooltipX: am5.p100,
+                cornerRadiusBR: 4,
+                cornerRadiusTR: 4,
+                cornerRadiusBL: 0,
+                cornerRadiusTL: 0,
+            });
+
+            femaleSeries.data.setAll(usData);
+
+            // Add labels
+            var maleLabel = chart.plotContainer.children.push(am5.Label.new(root, {
+                text: "Males",
+                fontSize: 13,
+                fontWeight: '500',
+                y: 5,
+                x: 5,
+                //centerX: am5.p50,
+                fill: maleSeries.get("fill")
+            }));
+
+            var femaleLabel = chart.plotContainer.children.push(am5.Label.new(root, {
+                text: "Females",
+                fontSize: 13,
+                fontWeight: '500',
+                y: 5,
+                x: am5.p100,
+                centerX: am5.p100,
+                dx: -5,
+                fill: femaleSeries.get("fill")
+            }));
+
+            // ===========================================================
+            // Map chart
+            // ===========================================================
+
+            // Create chart
+            var map = container.children.push(
+                am5map.MapChart.new(root, {
+                    panX: "none",
+                    panY: "none",
+                    wheelY: "none",
+                    projection: am5map.geoAlbersUsa(),
+                    width: am5.percent(40)
+                })
+            );
+
+            chart.getTooltip().set("autoTextColor", false);
+
+            // Title
+            var title = map.children.push(am5.Label.new(root, {
+                text: "United States",
+                fontSize: 14,
+                fontWeight: '500',
+                fill: am5.color(SwapUtil.getCssVariableValue('--swap-gray-800')),
+                y: 20,
+                x: am5.p50,
+                centerX: am5.p50
+            }));
+
+            // Create polygon series
+            var polygonSeries = map.series.push(
+                am5map.MapPolygonSeries.new(root, {
+                    fill: am5.color(SwapUtil.getCssVariableValue('--swap-gray-300')),
+                    geoJSON: am5geodata_usaLow
+                })
+            );
+
+            polygonSeries.mapPolygons.template.setAll({
+                tooltipText: "{name}",
+                interactive: true
+            });
+
+            polygonSeries.mapPolygons.template.states.create("hover", {
+                fill: am5.color(SwapUtil.getCssVariableValue('--swap-success')),
+            });
+
+            polygonSeries.mapPolygons.template.states.create("active", {
+                fill: am5.color(SwapUtil.getCssVariableValue('--swap-success')),
+            });
+
+            var activePolygon;
+            polygonSeries.mapPolygons.template.events.on("click", function (ev) {
+                if (activePolygon) {
+                    activePolygon.set("active", false);
+                }
+                activePolygon = ev.target;
+                activePolygon.set("active", true);
+                var state = ev.target.dataItem.dataContext.id.split("-").pop();
+                var data = aggregateData(stateData[state]);
+
+                for (var i = 0; i < data.length; i++) {
+                    maleSeries.data.setIndex(i, data[i]);
+                    femaleSeries.data.setIndex(i, data[i]);
+                }
+
+                title.set("text", ev.target.dataItem.dataContext.name);
+            });
+        }
+
+        // On amchart ready
+        am5.ready(function () {
+            // Init chart      
+            init();
+        });
+
+        // Update chart on theme mode change
+        ThemeMode.on("kt.thememode.change", function () {
+            // Destroy chart
+            root.dispose();
+
+            // Reinit chart
+            init();
+        });
+    };
+
+    // Public methods
+    return {
+        init: function () {
+            initChart();
+        },
+    };
 })();
 
 // Webpack support
 if (typeof module !== "undefined") {
-		window.SwapChartsWidget24 = module.exports = SwapChartsWidget24;
+    window.SwapChartsWidget24 = module.exports = SwapChartsWidget24;
 }
 
 
- 
+
 "use strict";
 
 // Class definition
 var SwapChartsWidget25 = (function () {
-	// Private methods
-	var initChart1 = function () {
-		// Check if amchart library is included
-		if (typeof am5 === "undefined") {
-			return;
-		}
+    // Private methods
+    var initChart1 = function () {
+        // Check if amchart library is included
+        if (typeof am5 === "undefined") {
+            return;
+        }
 
-		var element = document.getElementById("swap_charts_widget_25_chart_1");
+        var element = document.getElementById("swap_charts_widget_25_chart_1");
 
-		if ( !element ) {
-			return;
-		}
+        if (!element) {
+            return;
+        }
 
-		var root;
+        var root;
 
-		var init = function() {
-			// Create root element
-			// https://www.amcharts.com/docs/v5/getting-started/#Root_element
-			root = am5.Root.new(element);
+        var init = function () {
+            // Create root element
+            // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+            root = am5.Root.new(element);
 
-			// Set themes
-			// https://www.amcharts.com/docs/v5/concepts/themes/
-			root.setThemes([am5themes_Animated.new(root)]);
+            // Set themes
+            // https://www.amcharts.com/docs/v5/concepts/themes/
+            root.setThemes([am5themes_Animated.new(root)]);
 
-			// Create chart
-			// https://www.amcharts.com/docs/v5/charts/radar-chart/
-			var chart = root.container.children.push(
-				am5radar.RadarChart.new(root, {
-					panX: false,
-					panY: false,
-					wheelX: "panX",
-					wheelY: "zoomX",
-					innerRadius: am5.percent(40),
-					radius: am5.percent(70),
-					arrangeTooltips: false,
-				})
-			);
+            // Create chart
+            // https://www.amcharts.com/docs/v5/charts/radar-chart/
+            var chart = root.container.children.push(
+                am5radar.RadarChart.new(root, {
+                    panX: false,
+                    panY: false,
+                    wheelX: "panX",
+                    wheelY: "zoomX",
+                    innerRadius: am5.percent(40),
+                    radius: am5.percent(70),
+                    arrangeTooltips: false,
+                })
+            );
 
-			var cursor = chart.set(
-				"cursor",
-				am5radar.RadarCursor.new(root, {
-					behavior: "zoomX",
-				})
-			);
+            var cursor = chart.set(
+                "cursor",
+                am5radar.RadarCursor.new(root, {
+                    behavior: "zoomX",
+                })
+            );
 
-			cursor.lineY.set("visible", false);
+            cursor.lineY.set("visible", false);
 
-			// Create axes and their renderers
-			// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
-			var xRenderer = am5radar.AxisRendererCircular.new(root, {
-				minGridDistance: 30,
-			});
+            // Create axes and their renderers
+            // https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
+            var xRenderer = am5radar.AxisRendererCircular.new(root, {
+                minGridDistance: 30,
+            });
 
-			xRenderer.labels.template.setAll({
-				textType: "radial",
-				radius: 10,
-				paddingTop: 0,
-				paddingBottom: 0,
-				centerY: am5.p50,
-				fontWeight: "400",
-				fontSize: 11,
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700")),
-			});
+            xRenderer.labels.template.setAll({
+                textType: "radial",
+                radius: 10,
+                paddingTop: 0,
+                paddingBottom: 0,
+                centerY: am5.p50,
+                fontWeight: "400",
+                fontSize: 11,
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700")),
+            });
 
-			xRenderer.grid.template.setAll({
-				location: 0.5,
-				strokeDasharray: [2, 2],
-				stroke: SwapUtil.getCssVariableValue('--swap-gray-400')
-			});
+            xRenderer.grid.template.setAll({
+                location: 0.5,
+                strokeDasharray: [2, 2],
+                stroke: SwapUtil.getCssVariableValue('--swap-gray-400')
+            });
 
-			var xAxis = chart.xAxes.push(
-				am5xy.CategoryAxis.new(root, {
-					maxDeviation: 0,
-					categoryField: "name",
-					renderer: xRenderer,
-				})
-			);
+            var xAxis = chart.xAxes.push(
+                am5xy.CategoryAxis.new(root, {
+                    maxDeviation: 0,
+                    categoryField: "name",
+                    renderer: xRenderer,
+                })
+            );
 
-			var yRenderer = am5radar.AxisRendererRadial.new(root, {
-				minGridDistance: 30,
-			});
+            var yRenderer = am5radar.AxisRendererRadial.new(root, {
+                minGridDistance: 30,
+            });
 
-			yRenderer.labels.template.setAll({
-				fontWeight: "500",
-				fontSize: 12,
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700")),
-			});
+            yRenderer.labels.template.setAll({
+                fontWeight: "500",
+                fontSize: 12,
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700")),
+            });
 
-			var yAxis = chart.yAxes.push(
-				am5xy.ValueAxis.new(root, {
-					renderer: yRenderer,
-				})
-			);
+            var yAxis = chart.yAxes.push(
+                am5xy.ValueAxis.new(root, {
+                    renderer: yRenderer,
+                })
+            );
 
-			yRenderer.grid.template.setAll({
-				strokeDasharray: [2, 2],
-				stroke: SwapUtil.getCssVariableValue('--swap-gray-400')
-			});
+            yRenderer.grid.template.setAll({
+                strokeDasharray: [2, 2],
+                stroke: SwapUtil.getCssVariableValue('--swap-gray-400')
+            });
 
-			// Create series
-			// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
-			var series1 = chart.series.push(
-				am5radar.RadarLineSeries.new(root, {
-					name: "Revenue",
-					xAxis: xAxis,
-					yAxis: yAxis,
-					valueYField: "value1",
-					categoryXField: "name",
-					fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
-				})
-			);
+            // Create series
+            // https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
+            var series1 = chart.series.push(
+                am5radar.RadarLineSeries.new(root, {
+                    name: "Revenue",
+                    xAxis: xAxis,
+                    yAxis: yAxis,
+                    valueYField: "value1",
+                    categoryXField: "name",
+                    fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
+                })
+            );
 
-			series1.strokes.template.setAll({
-				strokeOpacity: 0,
-			});
+            series1.strokes.template.setAll({
+                strokeOpacity: 0,
+            });
 
-			series1.fills.template.setAll({
-				visible: true,
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
-				fillOpacity: 0.5,
-			});
+            series1.fills.template.setAll({
+                visible: true,
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
+                fillOpacity: 0.5,
+            });
 
-			var series2 = chart.series.push(
-				am5radar.RadarLineSeries.new(root, {
-					name: "Expense",
-					xAxis: xAxis,
-					yAxis: yAxis,
-					valueYField: "value2",
-					categoryXField: "name",
-					stacked: true,
-					tooltip: am5.Tooltip.new(root, {
-						labelText: "Revenue: {value1}\nExpense:{value2}",
-					}),
-					fill: am5.color(SwapUtil.getCssVariableValue("--swap-success")),
-				})
-			);
+            var series2 = chart.series.push(
+                am5radar.RadarLineSeries.new(root, {
+                    name: "Expense",
+                    xAxis: xAxis,
+                    yAxis: yAxis,
+                    valueYField: "value2",
+                    categoryXField: "name",
+                    stacked: true,
+                    tooltip: am5.Tooltip.new(root, {
+                        labelText: "Revenue: {value1}\nExpense:{value2}",
+                    }),
+                    fill: am5.color(SwapUtil.getCssVariableValue("--swap-success")),
+                })
+            );
 
-			series2.strokes.template.setAll({
-				strokeOpacity: 0,
-			});
+            series2.strokes.template.setAll({
+                strokeOpacity: 0,
+            });
 
-			series2.fills.template.setAll({
-				visible: true,
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
-				fillOpacity: 0.5,
-			});
+            series2.fills.template.setAll({
+                visible: true,
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
+                fillOpacity: 0.5,
+            });
 
-			var legend = chart.radarContainer.children.push(
-				am5.Legend.new(root, {
-					width: 150,
-					centerX: am5.p50,
-					centerY: am5.p50,
-				})
-			);
-			legend.data.setAll([series1, series2]);
+            var legend = chart.radarContainer.children.push(
+                am5.Legend.new(root, {
+                    width: 150,
+                    centerX: am5.p50,
+                    centerY: am5.p50,
+                })
+            );
+            legend.data.setAll([series1, series2]);
 
-			legend.labels.template.setAll({
-				fontWeight: "600",
-				fontSize: 13,
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700")),
-			});
+            legend.labels.template.setAll({
+                fontWeight: "600",
+                fontSize: 13,
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700")),
+            });
 
-			// Set data
-			// https://www.amcharts.com/docs/v5/charts/radar-chart/#Setting_data
-			var data = [
-				{
-					name: "Openlane",
-					value1: 160.2,
-					value2: 26.9,
-				},
-				{
-					name: "Yearin",
-					value1: 120.1,
-					value2: 50.5,
-				},
-				{
-					name: "Goodsilron",
-					value1: 150.7,
-					value2: 12.3,
-				},
-				{
-					name: "Condax",
-					value1: 69.4,
-					value2: 74.5,
-				},
-				{
-					name: "Opentech",
-					value1: 78.5,
-					value2: 29.7,
-				},
-				{
-					name: "Golddex",
-					value1: 77.6,
-					value2: 102.2,
-				},
-				{
-					name: "Isdom",
-					value1: 69.8,
-					value2: 22.6,
-				},
-				{
-					name: "Plusstrip",
-					value1: 63.6,
-					value2: 45.3,
-				},
-				{
-					name: "Kinnamplus",
-					value1: 59.7,
-					value2: 12.8,
-				},
-				{
-					name: "Zumgoity",
-					value1: 64.3,
-					value2: 19.6,
-				},
-				{
-					name: "Stanredtax",
-					value1: 52.9,
-					value2: 96.3,
-				},
-				{
-					name: "Conecom",
-					value1: 42.9,
-					value2: 11.9,
-				},
-				{
-					name: "Zencorporation",
-					value1: 40.9,
-					value2: 16.8,
-				},
-				{
-					name: "Iselectrics",
-					value1: 39.2,
-					value2: 9.9,
-				},
-				{
-					name: "Treequote",
-					value1: 76.6,
-					value2: 36.9,
-				},
-				{
-					name: "Sumace",
-					value1: 34.8,
-					value2: 14.6,
-				},
-				{
-					name: "Lexiqvolax",
-					value1: 32.1,
-					value2: 35.6,
-				},
-				{
-					name: "Sunnamplex",
-					value1: 31.8,
-					value2: 5.9,
-				},
-				{
-					name: "Faxquote",
-					value1: 29.3,
-					value2: 14.7,
-				},
-				{
-					name: "Donware",
-					value1: 23.0,
-					value2: 2.8,
-				},
-				{
-					name: "Warephase",
-					value1: 21.5,
-					value2: 12.1,
-				},
-				{
-					name: "Donquadtech",
-					value1: 19.7,
-					value2: 10.8,
-				},
-				{
-					name: "Nam-zim",
-					value1: 15.5,
-					value2: 4.1,
-				},
-				{
-					name: "Y-corporation",
-					value1: 14.2,
-					value2: 11.3,
-				},
-			];
+            // Set data
+            // https://www.amcharts.com/docs/v5/charts/radar-chart/#Setting_data
+            var data = [
+                {
+                    name: "Openlane",
+                    value1: 160.2,
+                    value2: 26.9,
+                },
+                {
+                    name: "Yearin",
+                    value1: 120.1,
+                    value2: 50.5,
+                },
+                {
+                    name: "Goodsilron",
+                    value1: 150.7,
+                    value2: 12.3,
+                },
+                {
+                    name: "Condax",
+                    value1: 69.4,
+                    value2: 74.5,
+                },
+                {
+                    name: "Opentech",
+                    value1: 78.5,
+                    value2: 29.7,
+                },
+                {
+                    name: "Golddex",
+                    value1: 77.6,
+                    value2: 102.2,
+                },
+                {
+                    name: "Isdom",
+                    value1: 69.8,
+                    value2: 22.6,
+                },
+                {
+                    name: "Plusstrip",
+                    value1: 63.6,
+                    value2: 45.3,
+                },
+                {
+                    name: "Kinnamplus",
+                    value1: 59.7,
+                    value2: 12.8,
+                },
+                {
+                    name: "Zumgoity",
+                    value1: 64.3,
+                    value2: 19.6,
+                },
+                {
+                    name: "Stanredtax",
+                    value1: 52.9,
+                    value2: 96.3,
+                },
+                {
+                    name: "Conecom",
+                    value1: 42.9,
+                    value2: 11.9,
+                },
+                {
+                    name: "Zencorporation",
+                    value1: 40.9,
+                    value2: 16.8,
+                },
+                {
+                    name: "Iselectrics",
+                    value1: 39.2,
+                    value2: 9.9,
+                },
+                {
+                    name: "Treequote",
+                    value1: 76.6,
+                    value2: 36.9,
+                },
+                {
+                    name: "Sumace",
+                    value1: 34.8,
+                    value2: 14.6,
+                },
+                {
+                    name: "Lexiqvolax",
+                    value1: 32.1,
+                    value2: 35.6,
+                },
+                {
+                    name: "Sunnamplex",
+                    value1: 31.8,
+                    value2: 5.9,
+                },
+                {
+                    name: "Faxquote",
+                    value1: 29.3,
+                    value2: 14.7,
+                },
+                {
+                    name: "Donware",
+                    value1: 23.0,
+                    value2: 2.8,
+                },
+                {
+                    name: "Warephase",
+                    value1: 21.5,
+                    value2: 12.1,
+                },
+                {
+                    name: "Donquadtech",
+                    value1: 19.7,
+                    value2: 10.8,
+                },
+                {
+                    name: "Nam-zim",
+                    value1: 15.5,
+                    value2: 4.1,
+                },
+                {
+                    name: "Y-corporation",
+                    value1: 14.2,
+                    value2: 11.3,
+                },
+            ];
 
-			series1.data.setAll(data);
-			series2.data.setAll(data);
-			xAxis.data.setAll(data);
+            series1.data.setAll(data);
+            series2.data.setAll(data);
+            xAxis.data.setAll(data);
 
-			// Animate chart and series in
-			// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
-			series1.appear(1000);
-			series2.appear(1000);
-			chart.appear(1000, 100);
-		}
+            // Animate chart and series in
+            // https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+            series1.appear(1000);
+            series2.appear(1000);
+            chart.appear(1000, 100);
+        }
 
-		// On amchart ready
-		am5.ready(function () {
-			init();
-		}); 
+        // On amchart ready
+        am5.ready(function () {
+            init();
+        });
 
-		// Update chart on theme mode change
-		ThemeMode.on("kt.thememode.change", function() {     
-			// Destroy chart
-			root.dispose();
+        // Update chart on theme mode change
+        ThemeMode.on("kt.thememode.change", function () {
+            // Destroy chart
+            root.dispose();
 
-			// Reinit chart
-			init();
-		});
-	};
+            // Reinit chart
+            init();
+        });
+    };
 
-	var initChart2 = function () {
-		// Check if amchart library is included
-		if (typeof am5 === "undefined") {
-			return;
-		}
+    var initChart2 = function () {
+        // Check if amchart library is included
+        if (typeof am5 === "undefined") {
+            return;
+        }
 
-		var element = document.getElementById("swap_charts_widget_25_chart_2");
+        var element = document.getElementById("swap_charts_widget_25_chart_2");
 
-		if (!element) {
-			return;
-		}
+        if (!element) {
+            return;
+        }
 
-		var root;
+        var root;
 
-		var init = function() {
-			// Create root element
-			// https://www.amcharts.com/docs/v5/getting-started/#Root_element
-			root = am5.Root.new(element);
+        var init = function () {
+            // Create root element
+            // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+            root = am5.Root.new(element);
 
-			// Set themes
-			// https://www.amcharts.com/docs/v5/concepts/themes/
-			root.setThemes([am5themes_Animated.new(root)]);
+            // Set themes
+            // https://www.amcharts.com/docs/v5/concepts/themes/
+            root.setThemes([am5themes_Animated.new(root)]);
 
-			// Create chart
-			// https://www.amcharts.com/docs/v5/charts/radar-chart/
-			var chart = root.container.children.push(
-				am5radar.RadarChart.new(root, {
-					panX: false,
-					panY: false,
-					wheelX: "panX",
-					wheelY: "zoomX",
-					innerRadius: am5.percent(40),
-					radius: am5.percent(70),
-					arrangeTooltips: false,
-				})
-			);
+            // Create chart
+            // https://www.amcharts.com/docs/v5/charts/radar-chart/
+            var chart = root.container.children.push(
+                am5radar.RadarChart.new(root, {
+                    panX: false,
+                    panY: false,
+                    wheelX: "panX",
+                    wheelY: "zoomX",
+                    innerRadius: am5.percent(40),
+                    radius: am5.percent(70),
+                    arrangeTooltips: false,
+                })
+            );
 
-			var cursor = chart.set(
-				"cursor",
-				am5radar.RadarCursor.new(root, {
-					behavior: "zoomX",
-				})
-			);
+            var cursor = chart.set(
+                "cursor",
+                am5radar.RadarCursor.new(root, {
+                    behavior: "zoomX",
+                })
+            );
 
-			cursor.lineY.set("visible", false);
+            cursor.lineY.set("visible", false);
 
-			// Create axes and their renderers
-			// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
-			var xRenderer = am5radar.AxisRendererCircular.new(root, {
-				minGridDistance: 30,
-			});
-			xRenderer.labels.template.setAll({
-				textType: "radial",
-				radius: 10,
-				paddingTop: 0,
-				paddingBottom: 0,
-				centerY: am5.p50,
-				fontWeight: "400",
-				fontSize: 11,
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700")),
-			});
+            // Create axes and their renderers
+            // https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
+            var xRenderer = am5radar.AxisRendererCircular.new(root, {
+                minGridDistance: 30,
+            });
+            xRenderer.labels.template.setAll({
+                textType: "radial",
+                radius: 10,
+                paddingTop: 0,
+                paddingBottom: 0,
+                centerY: am5.p50,
+                fontWeight: "400",
+                fontSize: 11,
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700")),
+            });
 
-			xRenderer.grid.template.setAll({
-				location: 0.5,
-				strokeDasharray: [2, 2],
-				stroke: SwapUtil.getCssVariableValue('--swap-gray-400')
-			});
+            xRenderer.grid.template.setAll({
+                location: 0.5,
+                strokeDasharray: [2, 2],
+                stroke: SwapUtil.getCssVariableValue('--swap-gray-400')
+            });
 
-			var xAxis = chart.xAxes.push(
-				am5xy.CategoryAxis.new(root, {
-					maxDeviation: 0,
-					categoryField: "name",
-					renderer: xRenderer,
-				})
-			);
+            var xAxis = chart.xAxes.push(
+                am5xy.CategoryAxis.new(root, {
+                    maxDeviation: 0,
+                    categoryField: "name",
+                    renderer: xRenderer,
+                })
+            );
 
-			var yRenderer = am5radar.AxisRendererRadial.new(root, {
-				minGridDistance: 30,
-			});
+            var yRenderer = am5radar.AxisRendererRadial.new(root, {
+                minGridDistance: 30,
+            });
 
-			var yAxis = chart.yAxes.push(
-				am5xy.ValueAxis.new(root, {
-					renderer: yRenderer,
-				})
-			);
+            var yAxis = chart.yAxes.push(
+                am5xy.ValueAxis.new(root, {
+                    renderer: yRenderer,
+                })
+            );
 
-			yRenderer.grid.template.setAll({
-				strokeDasharray: [2, 2],
-				stroke: SwapUtil.getCssVariableValue('--swap-gray-400')
-			});
+            yRenderer.grid.template.setAll({
+                strokeDasharray: [2, 2],
+                stroke: SwapUtil.getCssVariableValue('--swap-gray-400')
+            });
 
-			yRenderer.labels.template.setAll({
-				fontWeight: "500",
-				fontSize: 12,
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700")),
-			});
+            yRenderer.labels.template.setAll({
+                fontWeight: "500",
+                fontSize: 12,
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700")),
+            });
 
-			// Create series
-			// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
-			var series1 = chart.series.push(
-				am5radar.RadarLineSeries.new(root, {
-					name: "Revenue",
-					xAxis: xAxis,
-					yAxis: yAxis,
-					valueYField: "value1",
-					categoryXField: "name",
-					fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
-				})
-			);
+            // Create series
+            // https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
+            var series1 = chart.series.push(
+                am5radar.RadarLineSeries.new(root, {
+                    name: "Revenue",
+                    xAxis: xAxis,
+                    yAxis: yAxis,
+                    valueYField: "value1",
+                    categoryXField: "name",
+                    fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
+                })
+            );
 
-			series1.strokes.template.setAll({
-				strokeOpacity: 0,
-			});
+            series1.strokes.template.setAll({
+                strokeOpacity: 0,
+            });
 
-			series1.fills.template.setAll({
-				visible: true,
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
-				fillOpacity: 0.5,
-			});
+            series1.fills.template.setAll({
+                visible: true,
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
+                fillOpacity: 0.5,
+            });
 
-			var series2 = chart.series.push(
-				am5radar.RadarLineSeries.new(root, {
-					name: "Expense",
-					xAxis: xAxis,
-					yAxis: yAxis,
-					valueYField: "value2",
-					categoryXField: "name",
-					stacked: true,
-					tooltip: am5.Tooltip.new(root, {
-						labelText: "Revenue: {value1}\nExpense:{value2}",
-					}),
-					fill: am5.color(SwapUtil.getCssVariableValue("--swap-success")),
-				})
-			);
+            var series2 = chart.series.push(
+                am5radar.RadarLineSeries.new(root, {
+                    name: "Expense",
+                    xAxis: xAxis,
+                    yAxis: yAxis,
+                    valueYField: "value2",
+                    categoryXField: "name",
+                    stacked: true,
+                    tooltip: am5.Tooltip.new(root, {
+                        labelText: "Revenue: {value1}\nExpense:{value2}",
+                    }),
+                    fill: am5.color(SwapUtil.getCssVariableValue("--swap-success")),
+                })
+            );
 
-			series2.strokes.template.setAll({
-				strokeOpacity: 0,
-			});
+            series2.strokes.template.setAll({
+                strokeOpacity: 0,
+            });
 
-			series2.fills.template.setAll({
-				visible: true,
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
-				fillOpacity: 0.5,
-			});
+            series2.fills.template.setAll({
+                visible: true,
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
+                fillOpacity: 0.5,
+            });
 
-			var legend = chart.radarContainer.children.push(
-				am5.Legend.new(root, {
-					width: 150,
-					centerX: am5.p50,
-					centerY: am5.p50,
-				})
-			);
-			legend.data.setAll([series1, series2]);
+            var legend = chart.radarContainer.children.push(
+                am5.Legend.new(root, {
+                    width: 150,
+                    centerX: am5.p50,
+                    centerY: am5.p50,
+                })
+            );
+            legend.data.setAll([series1, series2]);
 
-			legend.labels.template.setAll({
-				fontWeight: "600",
-				fontSize: 13,
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700")),
-			});
+            legend.labels.template.setAll({
+                fontWeight: "600",
+                fontSize: 13,
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700")),
+            });
 
-			// Set data
-			// https://www.amcharts.com/docs/v5/charts/radar-chart/#Setting_data
-			var data = [
-				{
-					name: "Openlane",
-					value1: 160.2,
-					value2: 66.9,
-				},
-				{
-					name: "Yearin",
-					value1: 150.1,
-					value2: 50.5,
-				},
-				{
-					name: "Goodsilron",
-					value1: 120.7,
-					value2: 32.3,
-				},
-				{
-					name: "Condax",
-					value1: 89.4,
-					value2: 74.5,
-				},
-				{
-					name: "Opentech",
-					value1: 78.5,
-					value2: 29.7,
-				},
-				{
-					name: "Golddex",
-					value1: 77.6,
-					value2: 102.2,
-				},
-				{
-					name: "Isdom",
-					value1: 69.8,
-					value2: 22.6,
-				},
-				{
-					name: "Plusstrip",
-					value1: 63.6,
-					value2: 45.3,
-				},
-				{
-					name: "Kinnamplus",
-					value1: 59.7,
-					value2: 12.8,
-				},
-				{
-					name: "Zumgoity",
-					value1: 54.3,
-					value2: 19.6,
-				},
-				{
-					name: "Stanredtax",
-					value1: 52.9,
-					value2: 96.3,
-				},
-				{
-					name: "Conecom",
-					value1: 42.9,
-					value2: 11.9,
-				},
-				{
-					name: "Zencorporation",
-					value1: 40.9,
-					value2: 16.8,
-				},
-				{
-					name: "Iselectrics",
-					value1: 39.2,
-					value2: 9.9,
-				},
-				{
-					name: "Treequote",
-					value1: 36.6,
-					value2: 36.9,
-				},
-				{
-					name: "Sumace",
-					value1: 34.8,
-					value2: 14.6,
-				},
-				{
-					name: "Lexiqvolax",
-					value1: 32.1,
-					value2: 35.6,
-				},
-				{
-					name: "Sunnamplex",
-					value1: 31.8,
-					value2: 5.9,
-				},
-				{
-					name: "Faxquote",
-					value1: 29.3,
-					value2: 14.7,
-				},
-				{
-					name: "Donware",
-					value1: 23.0,
-					value2: 2.8,
-				},
-				{
-					name: "Warephase",
-					value1: 21.5,
-					value2: 12.1,
-				},
-				{
-					name: "Donquadtech",
-					value1: 19.7,
-					value2: 10.8,
-				},
-				{
-					name: "Nam-zim",
-					value1: 15.5,
-					value2: 4.1,
-				},
-				{
-					name: "Y-corporation",
-					value1: 14.2,
-					value2: 11.3,
-				},
-			];
+            // Set data
+            // https://www.amcharts.com/docs/v5/charts/radar-chart/#Setting_data
+            var data = [
+                {
+                    name: "Openlane",
+                    value1: 160.2,
+                    value2: 66.9,
+                },
+                {
+                    name: "Yearin",
+                    value1: 150.1,
+                    value2: 50.5,
+                },
+                {
+                    name: "Goodsilron",
+                    value1: 120.7,
+                    value2: 32.3,
+                },
+                {
+                    name: "Condax",
+                    value1: 89.4,
+                    value2: 74.5,
+                },
+                {
+                    name: "Opentech",
+                    value1: 78.5,
+                    value2: 29.7,
+                },
+                {
+                    name: "Golddex",
+                    value1: 77.6,
+                    value2: 102.2,
+                },
+                {
+                    name: "Isdom",
+                    value1: 69.8,
+                    value2: 22.6,
+                },
+                {
+                    name: "Plusstrip",
+                    value1: 63.6,
+                    value2: 45.3,
+                },
+                {
+                    name: "Kinnamplus",
+                    value1: 59.7,
+                    value2: 12.8,
+                },
+                {
+                    name: "Zumgoity",
+                    value1: 54.3,
+                    value2: 19.6,
+                },
+                {
+                    name: "Stanredtax",
+                    value1: 52.9,
+                    value2: 96.3,
+                },
+                {
+                    name: "Conecom",
+                    value1: 42.9,
+                    value2: 11.9,
+                },
+                {
+                    name: "Zencorporation",
+                    value1: 40.9,
+                    value2: 16.8,
+                },
+                {
+                    name: "Iselectrics",
+                    value1: 39.2,
+                    value2: 9.9,
+                },
+                {
+                    name: "Treequote",
+                    value1: 36.6,
+                    value2: 36.9,
+                },
+                {
+                    name: "Sumace",
+                    value1: 34.8,
+                    value2: 14.6,
+                },
+                {
+                    name: "Lexiqvolax",
+                    value1: 32.1,
+                    value2: 35.6,
+                },
+                {
+                    name: "Sunnamplex",
+                    value1: 31.8,
+                    value2: 5.9,
+                },
+                {
+                    name: "Faxquote",
+                    value1: 29.3,
+                    value2: 14.7,
+                },
+                {
+                    name: "Donware",
+                    value1: 23.0,
+                    value2: 2.8,
+                },
+                {
+                    name: "Warephase",
+                    value1: 21.5,
+                    value2: 12.1,
+                },
+                {
+                    name: "Donquadtech",
+                    value1: 19.7,
+                    value2: 10.8,
+                },
+                {
+                    name: "Nam-zim",
+                    value1: 15.5,
+                    value2: 4.1,
+                },
+                {
+                    name: "Y-corporation",
+                    value1: 14.2,
+                    value2: 11.3,
+                },
+            ];
 
-			series1.data.setAll(data);
-			series2.data.setAll(data);
-			xAxis.data.setAll(data);
+            series1.data.setAll(data);
+            series2.data.setAll(data);
+            xAxis.data.setAll(data);
 
-			// Animate chart and series in
-			// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
-			series1.appear(1000);
-			series2.appear(1000);
-			chart.appear(1000, 100);
-		}
+            // Animate chart and series in
+            // https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+            series1.appear(1000);
+            series2.appear(1000);
+            chart.appear(1000, 100);
+        }
 
-		// On amchart ready
-		am5.ready(function () {
-			init();
-		}); // end am5.ready()
+        // On amchart ready
+        am5.ready(function () {
+            init();
+        }); // end am5.ready()
 
-		// Update chart on theme mode change
-		ThemeMode.on("kt.thememode.change", function() {     
-			// Destroy chart
-			root.dispose();
+        // Update chart on theme mode change
+        ThemeMode.on("kt.thememode.change", function () {
+            // Destroy chart
+            root.dispose();
 
-			// Reinit chart
-			init();
-		});
-	};
+            // Reinit chart
+            init();
+        });
+    };
 
-	// Public methods
-	return {
-		init: function () {
-			initChart1();
-			initChart2();
-		},
-	};
+    // Public methods
+    return {
+        init: function () {
+            initChart1();
+            initChart2();
+        },
+    };
 })();
 
 // Webpack support
 if (typeof module !== "undefined") {
-	window.SwapChartsWidget25 = module.exports = SwapChartsWidget25;
+    window.SwapChartsWidget25 = module.exports = SwapChartsWidget25;
 }
 
 
@@ -9905,13 +9906,13 @@ var SwapChartsWidget26 = function () {
     };
 
     // Private methods
-    var initChart = function() {
+    var initChart = function () {
         var element = document.getElementById("swap_charts_widget_26");
 
         if (!element) {
             return;
         }
-        
+
         var height = parseInt(SwapUtil.css(element, 'height'));
         var labelColor = SwapUtil.getCssVariableValue('--swap-gray-500');
         var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
@@ -10054,10 +10055,10 @@ var SwapChartsWidget26 = function () {
         chart.self = new ApexCharts(element, options);
 
         // Set timeout to properly get the parent elements width
-        setTimeout(function() {
+        setTimeout(function () {
             chart.self.render();
             chart.rendered = true;
-        }, 200);            
+        }, 200);
     }
 
     // Public methods
@@ -10066,14 +10067,14 @@ var SwapChartsWidget26 = function () {
             initChart();
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
 
                 initChart();
             });
-        }   
+        }
     }
 }();
 
@@ -10092,30 +10093,30 @@ var SwapChartsWidget27 = function () {
         rendered: false
     };
     // Private methods
-    var initChart = function(chart) {
-        var element = document.getElementById("swap_charts_widget_27"); 
+    var initChart = function (chart) {
+        var element = document.getElementById("swap_charts_widget_27");
 
         if (!element) {
             return;
         }
-        
-        var labelColor = SwapUtil.getCssVariableValue('--swap-gray-800');    
+
+        var labelColor = SwapUtil.getCssVariableValue('--swap-gray-800');
         var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
         var maxValue = 18;
-        
+
         var options = {
             series: [{
                 name: 'Sessions',
-                data: [12.478, 7.546, 6.083, 5.041, 4.420]                                                                                                             
-            }],           
+                data: [12.478, 7.546, 6.083, 5.041, 4.420]
+            }],
             chart: {
                 fontFamily: 'inherit',
                 type: 'bar',
                 height: 350,
                 toolbar: {
                     show: false
-                }                             
-            },                    
+                }
+            },
             plotOptions: {
                 bar: {
                     borderRadius: 8,
@@ -10123,14 +10124,14 @@ var SwapChartsWidget27 = function () {
                     distributed: true,
                     barHeight: 50,
                     dataLabels: {
-				        position: 'bottom' // use 'bottom' for left and 'top' for right align(textAnchor)
-			        }                                                       
+                        position: 'bottom' // use 'bottom' for left and 'top' for right align(textAnchor)
+                    }
                 }
             },
             dataLabels: {  // Docs: https://apexcharts.com/docs/options/datalabels/
-                enabled: true,              
-                textAnchor: 'start',  
-                offsetX: 0,                 
+                enabled: true,
+                textAnchor: 'start',
+                offsetX: 0,
                 formatter: function (val, opts) {
                     var val = val * 1000;
                     var Format = wNumb({
@@ -10144,13 +10145,13 @@ var SwapChartsWidget27 = function () {
                 style: {
                     fontSize: '14px',
                     fontWeight: '600',
-                    align: 'left',                                                            
-                }                                       
-            },             
+                    align: 'left',
+                }
+            },
             legend: {
                 show: false
-            },                               
-            colors: ['#3E97FF', '#F1416C', '#50CD89', '#FFC700', '#7239EA'],                                                                      
+            },
+            colors: ['#3E97FF', '#F1416C', '#50CD89', '#FFC700', '#7239EA'],
             xaxis: {
                 categories: ["USA", "India", 'Canada', 'Brasil', 'France'],
                 labels: {
@@ -10161,45 +10162,45 @@ var SwapChartsWidget27 = function () {
                         colors: labelColor,
                         fontSize: '14px',
                         fontWeight: '600',
-                        align: 'left'                                              
-                    }                  
+                        align: 'left'
+                    }
                 },
                 axisBorder: {
-					show: false
-				}                         
+                    show: false
+                }
             },
             yaxis: {
-                labels: {       
+                labels: {
                     formatter: function (val, opt) {
                         if (Number.isInteger(val)) {
-                            var percentage = parseInt(val * 100 / maxValue) . toString(); 
+                            var percentage = parseInt(val * 100 / maxValue).toString();
                             return val + ' - ' + percentage + '%';
                         } else {
                             return val;
                         }
-                    },            
+                    },
                     style: {
                         colors: labelColor,
                         fontSize: '14px',
-                        fontWeight: '600'                                                                 
+                        fontWeight: '600'
                     },
                     offsetY: 2,
-                    align: 'left' 
-                }           
+                    align: 'left'
+                }
             },
-            grid: {                
-                borderColor: borderColor,                
+            grid: {
+                borderColor: borderColor,
                 xaxis: {
                     lines: {
                         show: true
                     }
-                },   
+                },
                 yaxis: {
                     lines: {
-                        show: false  
+                        show: false
                     }
                 },
-                strokeDashArray: 4              
+                strokeDashArray: 4
             },
             tooltip: {
                 style: {
@@ -10210,16 +10211,16 @@ var SwapChartsWidget27 = function () {
                         return val;
                     }
                 }
-            }                                 
-        };  
-          
+            }
+        };
+
         chart.self = new ApexCharts(element, options);
 
         // Set timeout to properly get the parent elements width
-        setTimeout(function() {
+        setTimeout(function () {
             chart.self.render();
             chart.rendered = true;
-        }, 200);        
+        }, 200);
     }
 
     // Public methods
@@ -10228,14 +10229,14 @@ var SwapChartsWidget27 = function () {
             initChart(chart);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
 
                 initChart(chart);
             });
-        }   
+        }
     }
 }();
 
@@ -10246,7 +10247,7 @@ if (typeof module !== 'undefined') {
 
 
 
- 
+
 "use strict";
 
 // Class definition
@@ -10255,25 +10256,25 @@ var SwapChartsWidget28 = function () {
         self: null,
         rendered: false
     };
-    
+
     // Private methods
-    var initChart = function(chart) {
+    var initChart = function (chart) {
         var element = document.getElementById("swap_charts_widget_28");
 
         if (!element) {
             return;
         }
-        
+
         var height = parseInt(SwapUtil.css(element, 'height'));
         var labelColor = SwapUtil.getCssVariableValue('--swap-gray-500');
         var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
-        var baseColor = SwapUtil.getCssVariableValue('--swap-info');         
+        var baseColor = SwapUtil.getCssVariableValue('--swap-info');
 
         var options = {
             series: [{
                 name: 'Links',
                 data: [190, 230, 230, 200, 200, 190, 190, 200, 200, 220, 220, 200, 200, 210, 210]
-            }],            
+            }],
             chart: {
                 fontFamily: 'inherit',
                 type: 'area',
@@ -10281,7 +10282,7 @@ var SwapChartsWidget28 = function () {
                 toolbar: {
                     show: false
                 }
-            },            
+            },
             legend: {
                 show: false
             },
@@ -10318,7 +10319,7 @@ var SwapChartsWidget28 = function () {
                     rotateAlways: false,
                     style: {
                         colors: labelColor,
-                        fontSize: '12px'                        
+                        fontSize: '12px'
                     }
                 },
                 crosshairs: {
@@ -10348,7 +10349,7 @@ var SwapChartsWidget28 = function () {
                         fontSize: '12px'
                     },
                     formatter: function (val) {
-                        return val 
+                        return val
                     }
                 }
             },
@@ -10379,7 +10380,7 @@ var SwapChartsWidget28 = function () {
                 },
                 y: {
                     formatter: function (val) {
-                        return val 
+                        return val
                     }
                 }
             },
@@ -10402,10 +10403,10 @@ var SwapChartsWidget28 = function () {
         chart.self = new ApexCharts(element, options);
 
         // Set timeout to properly get the parent elements width
-        setTimeout(function() {
+        setTimeout(function () {
             chart.self.render();
             chart.rendered = true;
-        }, 200);  
+        }, 200);
     }
 
     // Public methods
@@ -10414,14 +10415,14 @@ var SwapChartsWidget28 = function () {
             initChart(chart);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
 
                 initChart(chart);
             });
-        }   
+        }
     }
 }();
 
@@ -10441,23 +10442,23 @@ var SwapChartsWidget29 = function () {
     };
 
     // Private methods
-    var initChart = function(chart) {
+    var initChart = function (chart) {
         var element = document.getElementById("swap_charts_widget_29");
 
         if (!element) {
             return;
         }
-        
+
         var height = parseInt(SwapUtil.css(element, 'height'));
         var labelColor = SwapUtil.getCssVariableValue('--swap-gray-500');
         var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
-        var baseColor = SwapUtil.getCssVariableValue('--swap-warning');         
+        var baseColor = SwapUtil.getCssVariableValue('--swap-warning');
 
         var options = {
             series: [{
                 name: 'Position',
                 data: [4, 7.5, 7.5, 6, 6, 4, 4, 6, 6, 8, 8, 6, 6, 7, 7]
-            }],            
+            }],
             chart: {
                 fontFamily: 'inherit',
                 type: 'area',
@@ -10465,7 +10466,7 @@ var SwapChartsWidget29 = function () {
                 toolbar: {
                     show: false
                 }
-            },            
+            },
             legend: {
                 show: false
             },
@@ -10502,7 +10503,7 @@ var SwapChartsWidget29 = function () {
                     rotateAlways: false,
                     style: {
                         colors: labelColor,
-                        fontSize: '12px'                       
+                        fontSize: '12px'
                     }
                 },
                 crosshairs: {
@@ -10532,7 +10533,7 @@ var SwapChartsWidget29 = function () {
                         fontSize: '12px'
                     },
                     formatter: function (val) {
-                        return val 
+                        return val
                     }
                 }
             },
@@ -10563,7 +10564,7 @@ var SwapChartsWidget29 = function () {
                 },
                 y: {
                     formatter: function (val) {
-                        return val 
+                        return val
                     }
                 }
             },
@@ -10586,10 +10587,10 @@ var SwapChartsWidget29 = function () {
         chart.self = new ApexCharts(element, options);
 
         // Set timeout to properly get the parent elements width
-        setTimeout(function() {
+        setTimeout(function () {
             chart.self.render();
             chart.rendered = true;
-        }, 200);      
+        }, 200);
     }
 
     // Public methods
@@ -10598,14 +10599,14 @@ var SwapChartsWidget29 = function () {
             initChart(chart);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
 
                 initChart(chart);
             });
-        }   
+        }
     }
 }();
 
@@ -10625,13 +10626,13 @@ var SwapChartsWidget3 = function () {
     };
 
     // Private methods
-    var initChart = function(chart) {
+    var initChart = function (chart) {
         var element = document.getElementById("swap_charts_widget_3");
 
         if (!element) {
             return;
         }
-        
+
         var height = parseInt(SwapUtil.css(element, 'height'));
         var labelColor = SwapUtil.getCssVariableValue('--swap-gray-500');
         var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
@@ -10642,7 +10643,7 @@ var SwapChartsWidget3 = function () {
             series: [{
                 name: 'Sales',
                 data: [18, 18, 20, 20, 18, 18, 22, 22, 20, 20, 18, 18, 20, 20, 18, 18, 20, 20, 22]
-            }],            
+            }],
             chart: {
                 fontFamily: 'inherit',
                 type: 'area',
@@ -10773,10 +10774,10 @@ var SwapChartsWidget3 = function () {
         chart.self = new ApexCharts(element, options);
 
         // Set timeout to properly get the parent elements width
-        setTimeout(function() {
+        setTimeout(function () {
             chart.self.render();
             chart.rendered = true;
-        }, 200);  
+        }, 200);
     }
 
     // Public methods
@@ -10785,14 +10786,14 @@ var SwapChartsWidget3 = function () {
             initChart(chart);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
 
                 initChart(chart);
             });
-        }   
+        }
     }
 }();
 
@@ -10821,7 +10822,7 @@ var SwapChartsWidget30 = (function () {
 
         var root;
 
-        var init = function() {
+        var init = function () {
             // Create root element
             // https://www.amcharts.com/docs/v5/getting-started/#Root_element
             root = am5.Root.new(element);
@@ -10893,13 +10894,13 @@ var SwapChartsWidget30 = (function () {
         });
 
         // Update chart on theme mode change
-		ThemeMode.on("kt.thememode.change", function() {     
-			// Destroy chart
-			root.dispose();
+        ThemeMode.on("kt.thememode.change", function () {
+            // Destroy chart
+            root.dispose();
 
-			// Reinit chart
-			init();
-		});
+            // Reinit chart
+            init();
+        });
     };
 
     // Public methods
@@ -10920,331 +10921,331 @@ if (typeof module !== "undefined") {
 
 // Class definition
 var SwapChartsWidget31 = (function () {
-	// Private methods
-	var initChart1 = function () {
-		// Check if amchart library is included
-		if (typeof am5 === "undefined") {
-			return;
-		}
+    // Private methods
+    var initChart1 = function () {
+        // Check if amchart library is included
+        if (typeof am5 === "undefined") {
+            return;
+        }
 
-		var element = document.getElementById("swap_charts_widget_31_chart");
+        var element = document.getElementById("swap_charts_widget_31_chart");
 
-		if (!element) {
-			return;
-		}
+        if (!element) {
+            return;
+        }
 
-		var chart;
-		var root;
+        var chart;
+        var root;
 
-		var init = function() {
-			// Create root element
-			// https://www.amcharts.com/docs/v5/getting-started/#Root_element
-			root = am5.Root.new(element);
+        var init = function () {
+            // Create root element
+            // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+            root = am5.Root.new(element);
 
-			// Set themes
-			// https://www.amcharts.com/docs/v5/concepts/themes/
-			root.setThemes([am5themes_Animated.new(root)]);
+            // Set themes
+            // https://www.amcharts.com/docs/v5/concepts/themes/
+            root.setThemes([am5themes_Animated.new(root)]);
 
-			// Create chart
-			// https://www.amcharts.com/docs/v5/charts/radar-chart/
-			chart = root.container.children.push(
-				am5radar.RadarChart.new(root, {
-					panX: false,
-					panY: false,
-					wheelX: "panX",
-					wheelY: "zoomX",
-					innerRadius: am5.percent(40),
-					radius: am5.percent(70),
-					arrangeTooltips: false,
-				})
-			);
+            // Create chart
+            // https://www.amcharts.com/docs/v5/charts/radar-chart/
+            chart = root.container.children.push(
+                am5radar.RadarChart.new(root, {
+                    panX: false,
+                    panY: false,
+                    wheelX: "panX",
+                    wheelY: "zoomX",
+                    innerRadius: am5.percent(40),
+                    radius: am5.percent(70),
+                    arrangeTooltips: false,
+                })
+            );
 
-			var cursor = chart.set(
-				"cursor",
-				am5radar.RadarCursor.new(root, {
-					behavior: "zoomX",
-				})
-			);
+            var cursor = chart.set(
+                "cursor",
+                am5radar.RadarCursor.new(root, {
+                    behavior: "zoomX",
+                })
+            );
 
-			cursor.lineY.set("visible", false);
+            cursor.lineY.set("visible", false);
 
-			// Create axes and their renderers
-			// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
-			var xRenderer = am5radar.AxisRendererCircular.new(root, {
-				minGridDistance: 30,
-			});
-			
-			xRenderer.labels.template.setAll({
-				textType: "radial",
-				radius: 10,
-				paddingTop: 0,
-				paddingBottom: 0,
-				centerY: am5.p50,
-				fontWeight: "400",
-				fontSize: 11,
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-800")),
-			});
+            // Create axes and their renderers
+            // https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
+            var xRenderer = am5radar.AxisRendererCircular.new(root, {
+                minGridDistance: 30,
+            });
 
-			xRenderer.grid.template.setAll({
-				location: 0.5,
-				strokeDasharray: [2, 2],
-				stroke: SwapUtil.getCssVariableValue('--swap-gray-400')
-			});
+            xRenderer.labels.template.setAll({
+                textType: "radial",
+                radius: 10,
+                paddingTop: 0,
+                paddingBottom: 0,
+                centerY: am5.p50,
+                fontWeight: "400",
+                fontSize: 11,
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-800")),
+            });
 
-			var xAxis = chart.xAxes.push(
-				am5xy.CategoryAxis.new(root, {
-					maxDeviation: 0,
-					categoryField: "name",
-					renderer: xRenderer,
-				})
-			);
+            xRenderer.grid.template.setAll({
+                location: 0.5,
+                strokeDasharray: [2, 2],
+                stroke: SwapUtil.getCssVariableValue('--swap-gray-400')
+            });
 
-			var yRenderer = am5radar.AxisRendererRadial.new(root, {
-				minGridDistance: 30,
-			});
+            var xAxis = chart.xAxes.push(
+                am5xy.CategoryAxis.new(root, {
+                    maxDeviation: 0,
+                    categoryField: "name",
+                    renderer: xRenderer,
+                })
+            );
 
-			yRenderer.labels.template.setAll({
-				fontWeight: "500",
-				fontSize: 12,
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700")),
-			});
+            var yRenderer = am5radar.AxisRendererRadial.new(root, {
+                minGridDistance: 30,
+            });
 
-			var yAxis = chart.yAxes.push(
-				am5xy.ValueAxis.new(root, {
-					renderer: yRenderer,
-				})
-			);
+            yRenderer.labels.template.setAll({
+                fontWeight: "500",
+                fontSize: 12,
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700")),
+            });
 
-			yRenderer.grid.template.setAll({
-				strokeDasharray: [2, 2],
-				stroke: SwapUtil.getCssVariableValue('--swap-gray-400')				
-			});
+            var yAxis = chart.yAxes.push(
+                am5xy.ValueAxis.new(root, {
+                    renderer: yRenderer,
+                })
+            );
 
-			// Create series
-			// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
-			var series1 = chart.series.push(
-				am5radar.RadarLineSeries.new(root, {
-					name: "Revenue",
-					xAxis: xAxis,
-					yAxis: yAxis,
-					valueYField: "value1",
-					categoryXField: "name",
-					fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
-				})
-			);
+            yRenderer.grid.template.setAll({
+                strokeDasharray: [2, 2],
+                stroke: SwapUtil.getCssVariableValue('--swap-gray-400')
+            });
 
-			series1.strokes.template.setAll({
-				strokeOpacity: 0,
-			});
+            // Create series
+            // https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
+            var series1 = chart.series.push(
+                am5radar.RadarLineSeries.new(root, {
+                    name: "Revenue",
+                    xAxis: xAxis,
+                    yAxis: yAxis,
+                    valueYField: "value1",
+                    categoryXField: "name",
+                    fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
+                })
+            );
 
-			series1.fills.template.setAll({
-				visible: true,
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
-				fillOpacity: 0.5,
-			});
+            series1.strokes.template.setAll({
+                strokeOpacity: 0,
+            });
 
-			var series2 = chart.series.push(
-				am5radar.RadarLineSeries.new(root, {
-					name: "Expense",
-					xAxis: xAxis,
-					yAxis: yAxis,
-					valueYField: "value2",
-					categoryXField: "name",
-					stacked: true,
-					tooltip: am5.Tooltip.new(root, {
-						labelText: "Revenue: {value1}\nExpense:{value2}",
-					}),
-					fill: am5.color(SwapUtil.getCssVariableValue("--swap-success")),
-				})
-			);
+            series1.fills.template.setAll({
+                visible: true,
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
+                fillOpacity: 0.5,
+            });
 
-			series2.strokes.template.setAll({
-				strokeOpacity: 0,
-			});
+            var series2 = chart.series.push(
+                am5radar.RadarLineSeries.new(root, {
+                    name: "Expense",
+                    xAxis: xAxis,
+                    yAxis: yAxis,
+                    valueYField: "value2",
+                    categoryXField: "name",
+                    stacked: true,
+                    tooltip: am5.Tooltip.new(root, {
+                        labelText: "Revenue: {value1}\nExpense:{value2}",
+                    }),
+                    fill: am5.color(SwapUtil.getCssVariableValue("--swap-success")),
+                })
+            );
 
-			series2.fills.template.setAll({
-				visible: true,
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
-				fillOpacity: 0.5,
-			});
+            series2.strokes.template.setAll({
+                strokeOpacity: 0,
+            });
 
-			var legend = chart.radarContainer.children.push(
-				am5.Legend.new(root, {
-					width: 150,
-					centerX: am5.p50,
-					centerY: am5.p50
-				})
-			);
-			legend.data.setAll([series1, series2]);
+            series2.fills.template.setAll({
+                visible: true,
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-primary")),
+                fillOpacity: 0.5,
+            });
 
-			legend.labels.template.setAll({
-				fontWeight: "600",
-				fontSize: 13,
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700")),
-			});
+            var legend = chart.radarContainer.children.push(
+                am5.Legend.new(root, {
+                    width: 150,
+                    centerX: am5.p50,
+                    centerY: am5.p50
+                })
+            );
+            legend.data.setAll([series1, series2]);
 
-			// Set data
-			// https://www.amcharts.com/docs/v5/charts/radar-chart/#Setting_data
-			var data = [
-				{
-					name: "Openlane",
-					value1: 160.2,
-					value2: 26.9,
-				},
-				{
-					name: "Yearin",
-					value1: 120.1,
-					value2: 50.5,
-				},
-				{
-					name: "Goodsilron",
-					value1: 150.7,
-					value2: 12.3,
-				},
-				{
-					name: "Condax",
-					value1: 69.4,
-					value2: 74.5,
-				},
-				{
-					name: "Opentech",
-					value1: 78.5,
-					value2: 29.7,
-				},
-				{
-					name: "Golddex",
-					value1: 77.6,
-					value2: 102.2,
-				},
-				{
-					name: "Isdom",
-					value1: 69.8,
-					value2: 22.6,
-				},
-				{
-					name: "Plusstrip",
-					value1: 63.6,
-					value2: 45.3,
-				},
-				{
-					name: "Kinnamplus",
-					value1: 59.7,
-					value2: 12.8,
-				},
-				{
-					name: "Zumgoity",
-					value1: 64.3,
-					value2: 19.6,
-				},
-				{
-					name: "Stanredtax",
-					value1: 52.9,
-					value2: 96.3,
-				},
-				{
-					name: "Conecom",
-					value1: 42.9,
-					value2: 11.9,
-				},
-				{
-					name: "Zencorporation",
-					value1: 40.9,
-					value2: 16.8,
-				},
-				{
-					name: "Iselectrics",
-					value1: 39.2,
-					value2: 9.9,
-				},
-				{
-					name: "Treequote",
-					value1: 76.6,
-					value2: 36.9,
-				},
-				{
-					name: "Sumace",
-					value1: 34.8,
-					value2: 14.6,
-				},
-				{
-					name: "Lexiqvolax",
-					value1: 32.1,
-					value2: 35.6,
-				},
-				{
-					name: "Sunnamplex",
-					value1: 31.8,
-					value2: 5.9,
-				},
-				{
-					name: "Faxquote",
-					value1: 29.3,
-					value2: 14.7,
-				},
-				{
-					name: "Donware",
-					value1: 23.0,
-					value2: 2.8,
-				},
-				{
-					name: "Warephase",
-					value1: 21.5,
-					value2: 12.1,
-				},
-				{
-					name: "Donquadtech",
-					value1: 19.7,
-					value2: 10.8,
-				},
-				{
-					name: "Nam-zim",
-					value1: 15.5,
-					value2: 4.1,
-				},
-				{
-					name: "Y-corporation",
-					value1: 14.2,
-					value2: 11.3,
-				},
-			];
+            legend.labels.template.setAll({
+                fontWeight: "600",
+                fontSize: 13,
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700")),
+            });
 
-			series1.data.setAll(data);
-			series2.data.setAll(data);
-			xAxis.data.setAll(data);
+            // Set data
+            // https://www.amcharts.com/docs/v5/charts/radar-chart/#Setting_data
+            var data = [
+                {
+                    name: "Openlane",
+                    value1: 160.2,
+                    value2: 26.9,
+                },
+                {
+                    name: "Yearin",
+                    value1: 120.1,
+                    value2: 50.5,
+                },
+                {
+                    name: "Goodsilron",
+                    value1: 150.7,
+                    value2: 12.3,
+                },
+                {
+                    name: "Condax",
+                    value1: 69.4,
+                    value2: 74.5,
+                },
+                {
+                    name: "Opentech",
+                    value1: 78.5,
+                    value2: 29.7,
+                },
+                {
+                    name: "Golddex",
+                    value1: 77.6,
+                    value2: 102.2,
+                },
+                {
+                    name: "Isdom",
+                    value1: 69.8,
+                    value2: 22.6,
+                },
+                {
+                    name: "Plusstrip",
+                    value1: 63.6,
+                    value2: 45.3,
+                },
+                {
+                    name: "Kinnamplus",
+                    value1: 59.7,
+                    value2: 12.8,
+                },
+                {
+                    name: "Zumgoity",
+                    value1: 64.3,
+                    value2: 19.6,
+                },
+                {
+                    name: "Stanredtax",
+                    value1: 52.9,
+                    value2: 96.3,
+                },
+                {
+                    name: "Conecom",
+                    value1: 42.9,
+                    value2: 11.9,
+                },
+                {
+                    name: "Zencorporation",
+                    value1: 40.9,
+                    value2: 16.8,
+                },
+                {
+                    name: "Iselectrics",
+                    value1: 39.2,
+                    value2: 9.9,
+                },
+                {
+                    name: "Treequote",
+                    value1: 76.6,
+                    value2: 36.9,
+                },
+                {
+                    name: "Sumace",
+                    value1: 34.8,
+                    value2: 14.6,
+                },
+                {
+                    name: "Lexiqvolax",
+                    value1: 32.1,
+                    value2: 35.6,
+                },
+                {
+                    name: "Sunnamplex",
+                    value1: 31.8,
+                    value2: 5.9,
+                },
+                {
+                    name: "Faxquote",
+                    value1: 29.3,
+                    value2: 14.7,
+                },
+                {
+                    name: "Donware",
+                    value1: 23.0,
+                    value2: 2.8,
+                },
+                {
+                    name: "Warephase",
+                    value1: 21.5,
+                    value2: 12.1,
+                },
+                {
+                    name: "Donquadtech",
+                    value1: 19.7,
+                    value2: 10.8,
+                },
+                {
+                    name: "Nam-zim",
+                    value1: 15.5,
+                    value2: 4.1,
+                },
+                {
+                    name: "Y-corporation",
+                    value1: 14.2,
+                    value2: 11.3,
+                },
+            ];
 
-			// Animate chart and series in
-			// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
-			series1.appear(1000);
-			series2.appear(1000);
-			chart.appear(1000, 100);
-		}
+            series1.data.setAll(data);
+            series2.data.setAll(data);
+            xAxis.data.setAll(data);
 
-		// On amchart ready
-		am5.ready(function () {
-			init();
-		}); // end am5.ready()
+            // Animate chart and series in
+            // https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+            series1.appear(1000);
+            series2.appear(1000);
+            chart.appear(1000, 100);
+        }
 
-		// Update chart on theme mode change
-		ThemeMode.on("kt.thememode.change", function() {     
-			// Destroy chart
-			root.dispose();
+        // On amchart ready
+        am5.ready(function () {
+            init();
+        }); // end am5.ready()
 
-			// Reinit chart
-			init();
-		});
-	};
+        // Update chart on theme mode change
+        ThemeMode.on("kt.thememode.change", function () {
+            // Destroy chart
+            root.dispose();
 
-	// Public methods
-	return {
-		init: function () {
-			initChart1();
-		}
-	};
+            // Reinit chart
+            init();
+        });
+    };
+
+    // Public methods
+    return {
+        init: function () {
+            initChart1();
+        }
+    };
 })();
 
 // Webpack support
 if (typeof module !== "undefined") {
-	window.SwapChartsWidget31 = module.exports = SwapChartsWidget31;
+    window.SwapChartsWidget31 = module.exports = SwapChartsWidget31;
 }
 
 
@@ -11255,7 +11256,7 @@ var SwapChartsWidget32 = function () {
     var chart1 = {
         self: null,
         rendered: false
-    }; 
+    };
 
     var chart2 = {
         self: null,
@@ -11268,17 +11269,17 @@ var SwapChartsWidget32 = function () {
     };
 
     // Private methods
-    var initChart = function(chart, toggle, chartSelector, data, initByDefault) {
-        var element = document.querySelector(chartSelector);      
+    var initChart = function (chart, toggle, chartSelector, data, initByDefault) {
+        var element = document.querySelector(chartSelector);
 
         if (!element) {
             return;
         }
-        
+
         var height = parseInt(SwapUtil.css(element, 'height'));
         var labelColor = SwapUtil.getCssVariableValue('--swap-gray-900');
 
-        var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');    
+        var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
 
         var options = {
             series: [{
@@ -11291,13 +11292,13 @@ var SwapChartsWidget32 = function () {
                 height: height,
                 toolbar: {
                     show: false
-                }              
+                }
             },
             plotOptions: {
                 bar: {
                     horizontal: false,
                     columnWidth: ['22%'],
-                    borderRadius: 5,                     
+                    borderRadius: 5,
                     dataLabels: {
                         position: "top" // top, center, bottom
                     },
@@ -11308,8 +11309,8 @@ var SwapChartsWidget32 = function () {
                 show: false
             },
             dataLabels: {
-                enabled: true, 
-                offsetY: -28,                                             
+                enabled: true,
+                offsetY: -28,
                 style: {
                     fontSize: '13px',
                     colors: [labelColor]
@@ -11332,11 +11333,11 @@ var SwapChartsWidget32 = function () {
                     style: {
                         colors: SwapUtil.getCssVariableValue('--swap-gray-500'),
                         fontSize: '13px'
-                    }                    
+                    }
                 },
                 crosshairs: {
-                    fill: {         
-                        gradient: {         
+                    fill: {
+                        gradient: {
                             opacityFrom: 0,
                             opacityTo: 0
                         }
@@ -11391,21 +11392,21 @@ var SwapChartsWidget32 = function () {
                 }
             }
         };
-        
-        chart.self = new ApexCharts(element, options);        
+
+        chart.self = new ApexCharts(element, options);
         var tab = document.querySelector(toggle);
-        
+
         if (initByDefault === true) {
             // Set timeout to properly get the parent elements width
-            setTimeout(function() {
-                chart.self.render();  
+            setTimeout(function () {
+                chart.self.render();
                 chart.rendered = true;
             }, 200);
-        }        
+        }
 
         tab.addEventListener('shown.bs.tab', function (event) {
             if (chart.rendered === false) {
-                chart.self.render();  
+                chart.self.render();
                 chart.rendered = true;
             }
         });
@@ -11413,7 +11414,7 @@ var SwapChartsWidget32 = function () {
 
     // Public methods
     return {
-        init: function () {   
+        init: function () {
             var chart1Data = [54, 42, 75, 110, 23, 87, 50];
             initChart(chart1, '#swap_charts_widget_32_tab_1', '#swap_charts_widget_32_chart_1', chart1Data, true);
 
@@ -11421,10 +11422,10 @@ var SwapChartsWidget32 = function () {
             initChart(chart2, '#swap_charts_widget_32_tab_2', '#swap_charts_widget_32_chart_2', chart2Data, false);
 
             var chart3Data = [45, 15, 35, 70, 45, 50, 21];
-            initChart(chart3, '#swap_charts_widget_32_tab_3', '#swap_charts_widget_32_chart_3', chart3Data, false);          
-            
+            initChart(chart3, '#swap_charts_widget_32_tab_3', '#swap_charts_widget_32_chart_3', chart3Data, false);
+
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart1.rendered) {
                     chart1.self.destroy();
                 }
@@ -11435,13 +11436,13 @@ var SwapChartsWidget32 = function () {
 
                 if (chart3.rendered) {
                     chart3.self.destroy();
-                } 
-                
+                }
+
                 initChart(chart1, '#swap_charts_widget_32_tab_1', '#swap_charts_widget_32_chart_1', chart1Data, chart1.rendered);
-                initChart(chart2, '#swap_charts_widget_32_tab_2', '#swap_charts_widget_32_chart_2', chart2Data, chart2.rendered);  
-                initChart(chart3, '#swap_charts_widget_32_tab_3', '#swap_charts_widget_32_chart_3', chart3Data, chart3.rendered);                                           
-            });         
-        }        
+                initChart(chart2, '#swap_charts_widget_32_tab_2', '#swap_charts_widget_32_chart_2', chart2Data, chart2.rendered);
+                initChart(chart3, '#swap_charts_widget_32_tab_3', '#swap_charts_widget_32_chart_3', chart3Data, chart3.rendered);
+            });
+        }
     }
 }();
 
@@ -11452,9 +11453,9 @@ if (typeof module !== 'undefined') {
 
 
 
- 
-         
-    
+
+
+
 "use strict";
 
 // Class definition
@@ -11462,7 +11463,7 @@ var SwapChartsWidget33 = function () {
     var chart1 = {
         self: null,
         rendered: false
-    }; 
+    };
 
     var chart2 = {
         self: null,
@@ -11485,25 +11486,25 @@ var SwapChartsWidget33 = function () {
     };
 
     // Private methods
-    var initChart = function(chart, toggle, chartSelector, data, labels, initByDefault) {
+    var initChart = function (chart, toggle, chartSelector, data, labels, initByDefault) {
         var element = document.querySelector(chartSelector);
 
         if (!element) {
             return;
         }
-        
+
         var color = element.getAttribute('data-swap-chart-color');
         var height = parseInt(SwapUtil.css(element, 'height'));
-        
+
         var labelColor = SwapUtil.getCssVariableValue('--swap-gray-500');
         var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
-        var baseColor = SwapUtil.getCssVariableValue('--swap-' + color);    
+        var baseColor = SwapUtil.getCssVariableValue('--swap-' + color);
 
         var options = {
             series: [{
                 name: 'Etherium ',
                 data: data
-            }],            
+            }],
             chart: {
                 fontFamily: 'inherit',
                 type: 'area',
@@ -11511,7 +11512,7 @@ var SwapChartsWidget33 = function () {
                 toolbar: {
                     show: false
                 }
-            },            
+            },
             legend: {
                 show: false
             },
@@ -11549,7 +11550,7 @@ var SwapChartsWidget33 = function () {
                     show: false,
                     style: {
                         colors: labelColor,
-                        fontSize: '12px'                       
+                        fontSize: '12px'
                     }
                 },
                 crosshairs: {
@@ -11574,7 +11575,7 @@ var SwapChartsWidget33 = function () {
                 max: 4000,
                 min: 1000,
                 labels: {
-                    show: false                    
+                    show: false
                 }
             },
             states: {
@@ -11624,28 +11625,28 @@ var SwapChartsWidget33 = function () {
             }
         };
 
-        chart.self = new ApexCharts(element, options);        
+        chart.self = new ApexCharts(element, options);
         var tab = document.querySelector(toggle);
-        
+
         if (initByDefault === true) {
             // Set timeout to properly get the parent elements width
-            setTimeout(function() {
-                chart.self.render();  
+            setTimeout(function () {
+                chart.self.render();
                 chart.rendered = true;
             }, 200);
-        }        
+        }
 
         tab.addEventListener('shown.bs.tab', function (event) {
             if (chart.rendered === false) {
-                chart.self.render();  
+                chart.self.render();
                 chart.rendered = true;
             }
         });
     }
 
     // Public methods
-    return {       
-        init: function () {   
+    return {
+        init: function () {
             var chart1Data = [2100, 3200, 3200, 2400, 2400, 1800, 1800, 2400, 2400, 3200, 3200, 3000, 3000, 3250, 3250];
             var chart1Labels = ['10AM', '10.30AM', '11AM', '11.15AM', '11.30AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', '9PM'];
 
@@ -11661,18 +11662,18 @@ var SwapChartsWidget33 = function () {
 
             initChart(chart3, '#swap_charts_widget_33_tab_3', '#swap_charts_widget_33_chart_3', chart3Data, chart3Labels, false);
 
-            var chart4Data =  [1800, 1800, 2400, 2400, 3200, 3200, 3000, 2100, 3200, 3300, 2400, 2400, 3000, 3200, 3100];
+            var chart4Data = [1800, 1800, 2400, 2400, 3200, 3200, 3000, 2100, 3200, 3300, 2400, 2400, 3000, 3200, 3100];
             var chart4Labels = ['Jun 2021', 'Jul 2021', 'Aug 2021', 'Sep 2021', 'Oct 2021', 'Nov 2021', 'Dec 2021', 'Jan 2022', 'Feb 2022', 'Mar 2022', 'Apr 2022', 'May 2022', 'Jun 2022', 'Jul 2022', 'Aug 2022'];
 
-            initChart(chart4, '#swap_charts_widget_33_tab_4', '#swap_charts_widget_33_chart_4', chart4Data, chart4Labels, false);                
-            
+            initChart(chart4, '#swap_charts_widget_33_tab_4', '#swap_charts_widget_33_chart_4', chart4Data, chart4Labels, false);
+
             var chart5Data = [3000, 2100, 3300, 3100, 1800, 1800, 2400, 2400, 3100, 3100, 2400, 2400, 3000, 2400, 2800];
             var chart5Labels = ['Sep 2021', 'Oct 2021', 'Nov 2021', 'Dec 2021', 'Jan 2022', 'Feb 2022', 'Mar 2022', 'Apr 2022', 'May 2022', 'Jun 2022', 'Jul 2022', 'Aug 2022', 'Sep 2022', 'Oct 2022', 'Nov 2022'];
 
             initChart(chart5, '#swap_charts_widget_33_tab_5', '#swap_charts_widget_33_chart_5', chart5Data, chart5Labels, false);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart1.rendered) {
                     chart1.self.destroy();
                 }
@@ -11694,12 +11695,12 @@ var SwapChartsWidget33 = function () {
                 }
 
                 initChart(chart1, '#swap_charts_widget_33_tab_1', '#swap_charts_widget_33_chart_1', chart1Data, chart1Labels, chart1.rendered);
-                initChart(chart2, '#swap_charts_widget_33_tab_2', '#swap_charts_widget_33_chart_2', chart2Data, chart2Labels, chart2.rendered);  
+                initChart(chart2, '#swap_charts_widget_33_tab_2', '#swap_charts_widget_33_chart_2', chart2Data, chart2Labels, chart2.rendered);
                 initChart(chart3, '#swap_charts_widget_33_tab_3', '#swap_charts_widget_33_chart_3', chart3Data, chart3Labels, chart3.rendered);
-                initChart(chart4, '#swap_charts_widget_33_tab_4', '#swap_charts_widget_33_chart_4', chart4Data, chart4Labels, chart4.rendered); 
-                initChart(chart5, '#swap_charts_widget_33_tab_5', '#swap_charts_widget_33_chart_5', chart5Data, chart5Labels, chart5.rendered); 
+                initChart(chart4, '#swap_charts_widget_33_tab_4', '#swap_charts_widget_33_chart_4', chart4Data, chart4Labels, chart4.rendered);
+                initChart(chart5, '#swap_charts_widget_33_tab_5', '#swap_charts_widget_33_chart_5', chart5Data, chart5Labels, chart5.rendered);
             });
-        }  
+        }
     }
 }();
 
@@ -11710,7 +11711,7 @@ if (typeof module !== 'undefined') {
 
 
 
- 
+
 "use strict";
 
 // Class definition
@@ -11718,7 +11719,7 @@ var SwapChartsWidget34 = function () {
     var chart1 = {
         self: null,
         rendered: false
-    }; 
+    };
 
     var chart2 = {
         self: null,
@@ -11740,25 +11741,25 @@ var SwapChartsWidget34 = function () {
         rendered: false
     };
     // Private methods
-    var initChart = function(chart, toggle, chartSelector, data, labels, initByDefault) {
+    var initChart = function (chart, toggle, chartSelector, data, labels, initByDefault) {
         var element = document.querySelector(chartSelector);
 
         if (!element) {
             return;
-        }        
-         
+        }
+
         var height = parseInt(SwapUtil.css(element, 'height'));
         var color = element.getAttribute('data-swap-chart-color');
 
         var labelColor = SwapUtil.getCssVariableValue('--swap-gray-500');
         var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
-        var baseColor = SwapUtil.getCssVariableValue('--swap-' + color);    
+        var baseColor = SwapUtil.getCssVariableValue('--swap-' + color);
 
         var options = {
             series: [{
                 name: 'Earnings',
                 data: data
-            }],            
+            }],
             chart: {
                 fontFamily: 'inherit',
                 type: 'area',
@@ -11766,7 +11767,7 @@ var SwapChartsWidget34 = function () {
                 toolbar: {
                     show: false
                 }
-            },            
+            },
             legend: {
                 show: false
             },
@@ -11804,7 +11805,7 @@ var SwapChartsWidget34 = function () {
                     show: false,
                     style: {
                         colors: labelColor,
-                        fontSize: '12px'                       
+                        fontSize: '12px'
                     }
                 },
                 crosshairs: {
@@ -11829,7 +11830,7 @@ var SwapChartsWidget34 = function () {
                 max: 4000,
                 min: 1000,
                 labels: {
-                    show: false                    
+                    show: false
                 }
             },
             states: {
@@ -11879,20 +11880,20 @@ var SwapChartsWidget34 = function () {
             }
         };
 
-        chart.self = new ApexCharts(element, options);        
+        chart.self = new ApexCharts(element, options);
         var tab = document.querySelector(toggle);
-        
+
         if (initByDefault === true) {
             // Set timeout to properly get the parent elements width
-            setTimeout(function() {
-                chart.self.render();  
+            setTimeout(function () {
+                chart.self.render();
                 chart.rendered = true;
             }, 200);
-        }        
+        }
 
         tab.addEventListener('shown.bs.tab', function (event) {
             if (chart.rendered === false) {
-                chart.self.render();  
+                chart.self.render();
                 chart.rendered = true;
             }
         });
@@ -11900,7 +11901,7 @@ var SwapChartsWidget34 = function () {
 
     // Public methods
     return {
-        init: function () { 
+        init: function () {
             var chart1Data = [2100, 2800, 2800, 2400, 2400, 1800, 1800, 2400, 2400, 3200, 3200, 2800, 2800, 3250, 3250];
             var chart1Labels = ['10AM', '10.30AM', '11AM', '11.15AM', '11.30AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', '9PM'];
 
@@ -11916,18 +11917,18 @@ var SwapChartsWidget34 = function () {
 
             initChart(chart3, '#swap_charts_widget_34_tab_3', '#swap_charts_widget_34_chart_3', chart3Data, chart3Labels, false);
 
-            var chart4Data =  [1800, 1800, 2400, 2400, 3100, 3100, 3000, 2100, 3200, 3200, 2400, 2400, 3000, 3200, 3100];
+            var chart4Data = [1800, 1800, 2400, 2400, 3100, 3100, 3000, 2100, 3200, 3200, 2400, 2400, 3000, 3200, 3100];
             var chart4Labels = ['Jun 2021', 'Jul 2021', 'Aug 2021', 'Sep 2021', 'Oct 2021', 'Nov 2021', 'Dec 2021', 'Jan 2022', 'Feb 2022', 'Mar 2022', 'Apr 2022', 'May 2022', 'Jun 2022', 'Jul 2022', 'Aug 2022'];
 
-            initChart(chart4, '#swap_charts_widget_34_tab_4', '#swap_charts_widget_34_chart_4', chart4Data, chart4Labels, false);                
-            
+            initChart(chart4, '#swap_charts_widget_34_tab_4', '#swap_charts_widget_34_chart_4', chart4Data, chart4Labels, false);
+
             var chart5Data = [3000, 2100, 3200, 3200, 1800, 1800, 2400, 2400, 3100, 3100, 2400, 2400, 3000, 2400, 2800];
             var chart5Labels = ['Sep 2021', 'Oct 2021', 'Nov 2021', 'Dec 2021', 'Jan 2022', 'Feb 2022', 'Mar 2022', 'Apr 2022', 'May 2022', 'Jun 2022', 'Jul 2022', 'Aug 2022', 'Sep 2022', 'Oct 2022', 'Nov 2022'];
 
             initChart(chart5, '#swap_charts_widget_34_tab_5', '#swap_charts_widget_34_chart_5', chart5Data, chart5Labels, false);
-            
+
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart1.rendered) {
                     chart1.self.destroy();
                 }
@@ -11949,12 +11950,12 @@ var SwapChartsWidget34 = function () {
                 }
 
                 initChart(chart1, '#swap_charts_widget_34_tab_1', '#swap_charts_widget_34_chart_1', chart1Data, chart1Labels, chart1.rendered);
-                initChart(chart2, '#swap_charts_widget_34_tab_2', '#swap_charts_widget_34_chart_2', chart2Data, chart2Labels, chart2.rendered);  
+                initChart(chart2, '#swap_charts_widget_34_tab_2', '#swap_charts_widget_34_chart_2', chart2Data, chart2Labels, chart2.rendered);
                 initChart(chart3, '#swap_charts_widget_34_tab_3', '#swap_charts_widget_34_chart_3', chart3Data, chart3Labels, chart3.rendered);
-                initChart(chart4, '#swap_charts_widget_34_tab_4', '#swap_charts_widget_34_chart_4', chart4Data, chart4Labels, chart4.rendered); 
-                initChart(chart5, '#swap_charts_widget_34_tab_5', '#swap_charts_widget_34_chart_5', chart5Data, chart5Labels, chart5.rendered); 
+                initChart(chart4, '#swap_charts_widget_34_tab_4', '#swap_charts_widget_34_chart_4', chart4Data, chart4Labels, chart4.rendered);
+                initChart(chart5, '#swap_charts_widget_34_tab_5', '#swap_charts_widget_34_chart_5', chart5Data, chart5Labels, chart5.rendered);
             });
-        }   
+        }
     }
 }();
 
@@ -11965,7 +11966,7 @@ if (typeof module !== 'undefined') {
 
 
 
- 
+
 "use strict";
 
 // Class definition
@@ -11973,7 +11974,7 @@ var SwapChartsWidget35 = function () {
     var chart1 = {
         self: null,
         rendered: false
-    }; 
+    };
 
     var chart2 = {
         self: null,
@@ -11994,28 +11995,28 @@ var SwapChartsWidget35 = function () {
         self: null,
         rendered: false
     };
-    
+
 
     // Private methods
-    var initChart = function(chart, toggle, chartSelector, data, labels, initByDefault) {
-        var element = document.querySelector(chartSelector);       
+    var initChart = function (chart, toggle, chartSelector, data, labels, initByDefault) {
+        var element = document.querySelector(chartSelector);
 
         if (!element) {
             return;
-        }     
-         
+        }
+
         var height = parseInt(SwapUtil.css(element, 'height'));
-        var color = element.getAttribute('data-swap-chart-color');        
-        
+        var color = element.getAttribute('data-swap-chart-color');
+
         var labelColor = SwapUtil.getCssVariableValue('--swap-gray-500');
         var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
-        var baseColor = SwapUtil.getCssVariableValue('--swap-' + color);    
+        var baseColor = SwapUtil.getCssVariableValue('--swap-' + color);
 
         var options = {
             series: [{
                 name: 'Earnings',
                 data: data
-            }],            
+            }],
             chart: {
                 fontFamily: 'inherit',
                 type: 'area',
@@ -12023,7 +12024,7 @@ var SwapChartsWidget35 = function () {
                 toolbar: {
                     show: false
                 }
-            },            
+            },
             legend: {
                 show: false
             },
@@ -12061,7 +12062,7 @@ var SwapChartsWidget35 = function () {
                     show: false,
                     style: {
                         colors: labelColor,
-                        fontSize: '12px'                       
+                        fontSize: '12px'
                     }
                 },
                 crosshairs: {
@@ -12086,7 +12087,7 @@ var SwapChartsWidget35 = function () {
                 max: 4000,
                 min: 1000,
                 labels: {
-                    show: false                    
+                    show: false
                 }
             },
             states: {
@@ -12136,20 +12137,20 @@ var SwapChartsWidget35 = function () {
             }
         };
 
-        chart.self = new ApexCharts(element, options);        
+        chart.self = new ApexCharts(element, options);
         var tab = document.querySelector(toggle);
-        
+
         if (initByDefault === true) {
             // Set timeout to properly get the parent elements width
-            setTimeout(function() {
-                chart.self.render();  
+            setTimeout(function () {
+                chart.self.render();
                 chart.rendered = true;
             }, 200);
-        }        
+        }
 
         tab.addEventListener('shown.bs.tab', function (event) {
             if (chart.rendered === false) {
-                chart.self.render();  
+                chart.self.render();
                 chart.rendered = true;
             }
         });
@@ -12157,7 +12158,7 @@ var SwapChartsWidget35 = function () {
 
     // Public methods
     return {
-        init: function () {   
+        init: function () {
             var chart1Data = [2100, 3100, 3100, 2400, 2400, 1800, 1800, 2400, 2400, 3200, 3200, 2800, 2800, 3250, 3250];
             var chart1Labels = ['10AM', '10.30AM', '11AM', '11.15AM', '11.30AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', '9PM'];
 
@@ -12173,18 +12174,18 @@ var SwapChartsWidget35 = function () {
 
             initChart(chart3, '#swap_charts_widget_35_tab_3', '#swap_charts_widget_35_chart_3', chart3Data, chart3Labels, false);
 
-            var chart4Data =  [1800, 1800, 2400, 2400, 3200, 3200, 3000, 2100, 3200, 3200, 2400, 2400, 3000, 3200, 3100];
+            var chart4Data = [1800, 1800, 2400, 2400, 3200, 3200, 3000, 2100, 3200, 3200, 2400, 2400, 3000, 3200, 3100];
             var chart4Labels = ['Jun 2021', 'Jul 2021', 'Aug 2021', 'Sep 2021', 'Oct 2021', 'Nov 2021', 'Dec 2021', 'Jan 2022', 'Feb 2022', 'Mar 2022', 'Apr 2022', 'May 2022', 'Jun 2022', 'Jul 2022', 'Aug 2022'];
 
-            initChart(chart4, '#swap_charts_widget_35_tab_4', '#swap_charts_widget_35_chart_4', chart4Data, chart4Labels, false);                
-            
+            initChart(chart4, '#swap_charts_widget_35_tab_4', '#swap_charts_widget_35_chart_4', chart4Data, chart4Labels, false);
+
             var chart5Data = [3200, 2100, 3200, 3200, 3200, 3500, 3000, 2400, 3250, 2400, 2400, 3250, 3000, 2400, 2800];
             var chart5Labels = ['Sep 2021', 'Oct 2021', 'Nov 2021', 'Dec 2021', 'Jan 2022', 'Feb 2022', 'Mar 2022', 'Apr 2022', 'May 2022', 'Jun 2022', 'Jul 2022', 'Aug 2022', 'Sep 2022', 'Oct 2022', 'Nov 2022'];
 
             initChart(chart5, '#swap_charts_widget_35_tab_5', '#swap_charts_widget_35_chart_5', chart5Data, chart5Labels, false);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart1.rendered) {
                     chart1.self.destroy();
                 }
@@ -12206,12 +12207,12 @@ var SwapChartsWidget35 = function () {
                 }
 
                 initChart(chart1, '#swap_charts_widget_35_tab_1', '#swap_charts_widget_35_chart_1', chart1Data, chart1Labels, chart1.rendered);
-                initChart(chart2, '#swap_charts_widget_35_tab_2', '#swap_charts_widget_35_chart_2', chart2Data, chart2Labels, chart2.rendered);  
+                initChart(chart2, '#swap_charts_widget_35_tab_2', '#swap_charts_widget_35_chart_2', chart2Data, chart2Labels, chart2.rendered);
                 initChart(chart3, '#swap_charts_widget_35_tab_3', '#swap_charts_widget_35_chart_3', chart3Data, chart3Labels, chart3.rendered);
-                initChart(chart4, '#swap_charts_widget_35_tab_4', '#swap_charts_widget_35_chart_4', chart4Data, chart4Labels, chart4.rendered); 
-                initChart(chart5, '#swap_charts_widget_35_tab_5', '#swap_charts_widget_35_chart_5', chart5Data, chart5Labels, chart5.rendered); 
+                initChart(chart4, '#swap_charts_widget_35_tab_4', '#swap_charts_widget_35_chart_4', chart4Data, chart4Labels, chart4.rendered);
+                initChart(chart5, '#swap_charts_widget_35_tab_5', '#swap_charts_widget_35_chart_5', chart5Data, chart5Labels, chart5.rendered);
             });
-        }   
+        }
     }
 }();
 
@@ -12222,7 +12223,7 @@ if (typeof module !== 'undefined') {
 
 
 
- 
+
 "use strict";
 
 // Class definition
@@ -12233,13 +12234,13 @@ var SwapChartsWidget36 = function () {
     };
 
     // Private methods
-    var initChart = function(chart) {
+    var initChart = function (chart) {
         var element = document.getElementById("swap_charts_widget_36");
 
         if (!element) {
             return;
         }
-        
+
         var height = parseInt(SwapUtil.css(element, 'height'));
         var labelColor = SwapUtil.getCssVariableValue('--swap-gray-500');
         var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
@@ -12330,7 +12331,7 @@ var SwapChartsWidget36 = function () {
                     style: {
                         colors: labelColor,
                         fontSize: '12px'
-                    } 
+                    }
                 }
             },
             states: {
@@ -12357,7 +12358,7 @@ var SwapChartsWidget36 = function () {
             tooltip: {
                 style: {
                     fontSize: '12px'
-                } 
+                }
             },
             colors: [lightprimaryColor, lightsuccessColor],
             grid: {
@@ -12378,10 +12379,10 @@ var SwapChartsWidget36 = function () {
         chart.self = new ApexCharts(element, options);
 
         // Set timeout to properly get the parent elements width
-        setTimeout(function() {
+        setTimeout(function () {
             chart.self.render();
             chart.rendered = true;
-        }, 200);      
+        }, 200);
     }
 
     // Public methods
@@ -12390,14 +12391,14 @@ var SwapChartsWidget36 = function () {
             initChart(chart);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
 
                 initChart(chart);
             });
-        }   
+        }
     }
 }();
 
@@ -12414,7 +12415,7 @@ var SwapChartsWidget37 = function () {
     var chart1 = {
         self: null,
         rendered: false
-    }; 
+    };
 
     var chart2 = {
         self: null,
@@ -12432,25 +12433,25 @@ var SwapChartsWidget37 = function () {
     };
 
     // Private methods
-    var initChart = function(chart, toggle, chartSelector, data, labels, initByDefault) {
+    var initChart = function (chart, toggle, chartSelector, data, labels, initByDefault) {
         var element = document.querySelector(chartSelector);
 
         if (!element) {
             return;
         }
-        
+
         var height = parseInt(SwapUtil.css(element, 'height'));
-        var color = element.getAttribute('data-swap-chart-color');         
-        
+        var color = element.getAttribute('data-swap-chart-color');
+
         var labelColor = SwapUtil.getCssVariableValue('--swap-gray-500');
         var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
-        var baseColor = SwapUtil.getCssVariableValue('--swap-' + color);    
+        var baseColor = SwapUtil.getCssVariableValue('--swap-' + color);
 
         var options = {
             series: [{
                 name: 'Earnings',
                 data: data
-            }],            
+            }],
             chart: {
                 fontFamily: 'inherit',
                 type: 'area',
@@ -12458,7 +12459,7 @@ var SwapChartsWidget37 = function () {
                 toolbar: {
                     show: false
                 }
-            },            
+            },
             legend: {
                 show: false
             },
@@ -12496,7 +12497,7 @@ var SwapChartsWidget37 = function () {
                     show: false,
                     style: {
                         colors: labelColor,
-                        fontSize: '12px'                       
+                        fontSize: '12px'
                     }
                 },
                 crosshairs: {
@@ -12521,7 +12522,7 @@ var SwapChartsWidget37 = function () {
                 max: 4000,
                 min: 1000,
                 labels: {
-                    show: false                    
+                    show: false
                 }
             },
             states: {
@@ -12571,20 +12572,20 @@ var SwapChartsWidget37 = function () {
             }
         };
 
-        chart.self = new ApexCharts(element, options);        
+        chart.self = new ApexCharts(element, options);
         var tab = document.querySelector(toggle);
-        
+
         if (initByDefault === true) {
             // Set timeout to properly get the parent elements width
-            setTimeout(function() {
-                chart.self.render();  
+            setTimeout(function () {
+                chart.self.render();
                 chart.rendered = true;
             }, 200);
-        }        
+        }
 
         tab.addEventListener('shown.bs.tab', function (event) {
             if (chart.rendered === false) {
-                chart.self.render();  
+                chart.self.render();
                 chart.rendered = true;
             }
         });
@@ -12592,7 +12593,7 @@ var SwapChartsWidget37 = function () {
 
     // Public methods
     return {
-        init: function () { 
+        init: function () {
             var chart1Data = [2100, 3200, 3200, 2400, 2400, 1800, 1800, 2400, 2400, 3200, 3200, 3000, 3000, 3250, 3250];
             var chart1Labels = ['10AM', '10.30AM', '11AM', '11.15AM', '11.30AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', '9PM'];
 
@@ -12608,13 +12609,13 @@ var SwapChartsWidget37 = function () {
 
             initChart(chart3, '#swap_charts_widget_37_tab_3', '#swap_charts_widget_37_chart_3', chart3Data, chart3Labels, false);
 
-            var chart4Data =  [1800, 1800, 2400, 2400, 3200, 3200, 3000, 2100, 3200, 3300, 2400, 2400, 3000, 3200, 3100];
+            var chart4Data = [1800, 1800, 2400, 2400, 3200, 3200, 3000, 2100, 3200, 3300, 2400, 2400, 3000, 3200, 3100];
             var chart4Labels = ['Jun 2021', 'Jul 2021', 'Aug 2021', 'Sep 2021', 'Oct 2021', 'Nov 2021', 'Dec 2021', 'Jan 2022', 'Feb 2022', 'Mar 2022', 'Apr 2022', 'May 2022', 'Jun 2022', 'Jul 2022', 'Aug 2022'];
 
-            initChart(chart4, '#swap_charts_widget_37_tab_4', '#swap_charts_widget_37_chart_4', chart4Data, chart4Labels, false);  
-            
+            initChart(chart4, '#swap_charts_widget_37_tab_4', '#swap_charts_widget_37_chart_4', chart4Data, chart4Labels, false);
+
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart1.rendered) {
                     chart1.self.destroy();
                 }
@@ -12629,14 +12630,14 @@ var SwapChartsWidget37 = function () {
 
                 if (chart4.rendered) {
                     chart4.self.destroy();
-                } 
+                }
 
                 initChart(chart1, '#swap_charts_widget_37_tab_1', '#swap_charts_widget_37_chart_1', chart1Data, chart1Labels, chart1.rendered);
-                initChart(chart2, '#swap_charts_widget_37_tab_2', '#swap_charts_widget_37_chart_2', chart2Data, chart2Labels, chart2.rendered);  
+                initChart(chart2, '#swap_charts_widget_37_tab_2', '#swap_charts_widget_37_chart_2', chart2Data, chart2Labels, chart2.rendered);
                 initChart(chart3, '#swap_charts_widget_37_tab_3', '#swap_charts_widget_37_chart_3', chart3Data, chart3Labels, chart3.rendered);
-                initChart(chart4, '#swap_charts_widget_37_tab_4', '#swap_charts_widget_37_chart_4', chart4Data, chart4Labels, chart4.rendered);                 
+                initChart(chart4, '#swap_charts_widget_37_tab_4', '#swap_charts_widget_37_chart_4', chart4Data, chart4Labels, chart4.rendered);
             });
-        }   
+        }
     }
 }();
 
@@ -12647,7 +12648,7 @@ if (typeof module !== 'undefined') {
 
 
 
- 
+
 "use strict";
 
 // Class definition
@@ -12658,16 +12659,16 @@ var SwapChartsWidget38 = function () {
     };
 
     // Private methods
-    var initChart = function() {
+    var initChart = function () {
         var element = document.getElementById("swap_charts_widget_38_chart");
 
         if (!element) {
             return;
         }
-        
+
         var height = parseInt(SwapUtil.css(element, 'height'));
         var labelColor = SwapUtil.getCssVariableValue('--swap-gray-900');
-        var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');    
+        var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
 
         var options = {
             series: [{
@@ -12680,13 +12681,13 @@ var SwapChartsWidget38 = function () {
                 height: height,
                 toolbar: {
                     show: false
-                }              
+                }
             },
             plotOptions: {
                 bar: {
                     horizontal: false,
                     columnWidth: ['28%'],
-                    borderRadius: 5,                     
+                    borderRadius: 5,
                     dataLabels: {
                         position: "top" // top, center, bottom
                     },
@@ -12697,15 +12698,15 @@ var SwapChartsWidget38 = function () {
                 show: false
             },
             dataLabels: {
-                enabled: true, 
-                offsetY: -28,                                             
+                enabled: true,
+                offsetY: -28,
                 style: {
                     fontSize: '13px',
                     colors: [labelColor]
                 },
-                    formatter: function(val) {
-                        return val;// + "H";
-                    }                           
+                formatter: function (val) {
+                    return val;// + "H";
+                }
             },
             stroke: {
                 show: true,
@@ -12724,11 +12725,11 @@ var SwapChartsWidget38 = function () {
                     style: {
                         colors: SwapUtil.getCssVariableValue('--swap-gray-500'),
                         fontSize: '13px'
-                    }                  
+                    }
                 },
                 crosshairs: {
-                    fill: {         
-                        gradient: {         
+                    fill: {
+                        gradient: {
                             opacityFrom: 0,
                             opacityTo: 0
                         }
@@ -12741,9 +12742,9 @@ var SwapChartsWidget38 = function () {
                         colors: SwapUtil.getCssVariableValue('--swap-gray-500'),
                         fontSize: '13px'
                     },
-                    formatter: function(val) {
+                    formatter: function (val) {
                         return val + "M";
-                    } 
+                    }
                 }
             },
             fill: {
@@ -12776,9 +12777,9 @@ var SwapChartsWidget38 = function () {
                 },
                 y: {
                     formatter: function (val) {
-                        return  + val + 'M' 
+                        return + val + 'M'
                     }
-                } 
+                }
             },
             colors: [SwapUtil.getCssVariableValue('--swap-primary'), SwapUtil.getCssVariableValue('--swap-primary-light')],
             grid: {
@@ -12795,7 +12796,7 @@ var SwapChartsWidget38 = function () {
         chart.self = new ApexCharts(element, options);
 
         // Set timeout to properly get the parent elements width
-        setTimeout(function() {
+        setTimeout(function () {
             chart.self.render();
             chart.rendered = true;
         }, 200);
@@ -12807,14 +12808,14 @@ var SwapChartsWidget38 = function () {
             initChart();
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
 
                 initChart();
             });
-        }        
+        }
     }
 }();
 
@@ -12825,212 +12826,212 @@ if (typeof module !== 'undefined') {
 
 
 
- 
+
 "use strict";
 
 // Class definition
 var SwapChartsWidget39 = (function () {
-	// Private methods
-	var initChart = function () {
-		// Check if amchart library is included
-		if (typeof am5 === "undefined") {
-			return;
-		}
+    // Private methods
+    var initChart = function () {
+        // Check if amchart library is included
+        if (typeof am5 === "undefined") {
+            return;
+        }
 
-		var element = document.querySelector('#swap_charts_widget_39_chart');
+        var element = document.querySelector('#swap_charts_widget_39_chart');
 
-		if ( !element ) {
-			return;
-		}
+        if (!element) {
+            return;
+        }
 
         var root;
 
-		var init = function() {
-			// Create root element
-			// https://www.amcharts.com/docs/v5/getting-started/#Root_element
-			root = am5.Root.new(element);
+        var init = function () {
+            // Create root element
+            // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+            root = am5.Root.new(element);
 
-			if ( !root ) {
-				return;
-			}
+            if (!root) {
+                return;
+            }
 
-			// Set themes
-			// https://www.amcharts.com/docs/v5/concepts/themes/
-			root.setThemes([am5themes_Animated.new(root)]);
+            // Set themes
+            // https://www.amcharts.com/docs/v5/concepts/themes/
+            root.setThemes([am5themes_Animated.new(root)]);
 
-			// Create chart
-			// https://www.amcharts.com/docs/v5/charts/radar-chart/
-			var chart = root.container.children.push(
-				am5radar.RadarChart.new(root, {
-					panX: false,
-					panY: false,
-					wheelX: "panX",
-					wheelY: "zoomX",
-				})
-			);
+            // Create chart
+            // https://www.amcharts.com/docs/v5/charts/radar-chart/
+            var chart = root.container.children.push(
+                am5radar.RadarChart.new(root, {
+                    panX: false,
+                    panY: false,
+                    wheelX: "panX",
+                    wheelY: "zoomX",
+                })
+            );
 
-			// Create axes and their renderers
-			// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
-			var xRenderer = am5radar.AxisRendererCircular.new(root, {});
-			xRenderer.labels.template.setAll({
-				radius: 10
-			});
+            // Create axes and their renderers
+            // https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
+            var xRenderer = am5radar.AxisRendererCircular.new(root, {});
+            xRenderer.labels.template.setAll({
+                radius: 10
+            });
 
-			xRenderer.grid.template.setAll({
-				stroke: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700"))
-			});
+            xRenderer.grid.template.setAll({
+                stroke: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700"))
+            });
 
-			var yRenderer = am5radar.AxisRendererRadial.new(root, {
-				minGridDistance: 20
-			});	
-			
-			yRenderer.grid.template.setAll({
-				stroke: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700"))
-			});
+            var yRenderer = am5radar.AxisRendererRadial.new(root, {
+                minGridDistance: 20
+            });
 
-			var xAxis = chart.xAxes.push(
-				am5xy.CategoryAxis.new(root, {
-					maxDeviation: 0,
-					categoryField: "category",
-					renderer: xRenderer,
-					tooltip: am5.Tooltip.new(root, {}),
-				})
-			);			
+            yRenderer.grid.template.setAll({
+                stroke: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700"))
+            });
 
-			var yAxis = chart.yAxes.push(
-				am5xy.ValueAxis.new(root, {
-					min: 0,
-					max: 10,
-					renderer: yRenderer
-				})
-			);
+            var xAxis = chart.xAxes.push(
+                am5xy.CategoryAxis.new(root, {
+                    maxDeviation: 0,
+                    categoryField: "category",
+                    renderer: xRenderer,
+                    tooltip: am5.Tooltip.new(root, {}),
+                })
+            );
 
-			xRenderer.labels.template.setAll({
-				fontSize: 11,
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-800")),
-			});
+            var yAxis = chart.yAxes.push(
+                am5xy.ValueAxis.new(root, {
+                    min: 0,
+                    max: 10,
+                    renderer: yRenderer
+                })
+            );
 
-			yRenderer.labels.template.setAll({
-				fontSize: 11,
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-800")),
-			});
+            xRenderer.labels.template.setAll({
+                fontSize: 11,
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-800")),
+            });
 
-			//yAxis.get("renderer").labels.template.set("forceHidden", true);
+            yRenderer.labels.template.setAll({
+                fontSize: 11,
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-800")),
+            });
 
-			// Create series
-			// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
-			var series = chart.series.push(
-				am5radar.RadarColumnSeries.new(root, {
-					xAxis: xAxis,
-					yAxis: yAxis,
-					valueYField: "value",
-					categoryXField: "category",
-				})
-			);
+            //yAxis.get("renderer").labels.template.set("forceHidden", true);
 
-			series.columns.template.setAll({
-				tooltipText: "{categoryX}: {valueY}",
-				templateField: "columnSettings",
-				strokeOpacity: 0,
-				width: am5.p100,
-			});
+            // Create series
+            // https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
+            var series = chart.series.push(
+                am5radar.RadarColumnSeries.new(root, {
+                    xAxis: xAxis,
+                    yAxis: yAxis,
+                    valueYField: "value",
+                    categoryXField: "category",
+                })
+            );
 
-			// Set data
-			// https://www.amcharts.com/docs/v5/charts/radar-chart/#Setting_data
-			var data = [
-				{
-					category: "Spain",
-					value: 5,
-					columnSettings: {
-						fill: chart.get("colors").next(),
-					},
-				},
-				{
-					category: "Spain",
-					value: 4,
-					columnSettings: {
-						fill: chart.get("colors").next(),
-					},
-				},
-				{
-					category: "United States",
-					value: 9,
-					columnSettings: {
-						fill: chart.get("colors").next(),
-					},
-				},
-				{
-					category: "Italy",
-					value: 7,
-					columnSettings: {
-						fill: chart.get("colors").next(),
-					},
-				},
-				{
-					category: "France",
-					value: 8,
-					columnSettings: {
-						fill: chart.get("colors").next(),
-					},
-				},
-				{
-					category: "Norway",
-					value: 4,
-					columnSettings: {
-						fill: chart.get("colors").next(),
-					},
-				},
-				{
-					category: "Brasil",
-					value: 7,
-					columnSettings: {
-						fill: chart.get("colors").next(),
-					},
-				},
-				{
-					category: "Canada",
-					value: 5,
-					columnSettings: {
-						fill: chart.get("colors").next(),
-					},
-				},
-			];
+            series.columns.template.setAll({
+                tooltipText: "{categoryX}: {valueY}",
+                templateField: "columnSettings",
+                strokeOpacity: 0,
+                width: am5.p100,
+            });
 
-			series.data.setAll(data);
-			xAxis.data.setAll(data);
+            // Set data
+            // https://www.amcharts.com/docs/v5/charts/radar-chart/#Setting_data
+            var data = [
+                {
+                    category: "Spain",
+                    value: 5,
+                    columnSettings: {
+                        fill: chart.get("colors").next(),
+                    },
+                },
+                {
+                    category: "Spain",
+                    value: 4,
+                    columnSettings: {
+                        fill: chart.get("colors").next(),
+                    },
+                },
+                {
+                    category: "United States",
+                    value: 9,
+                    columnSettings: {
+                        fill: chart.get("colors").next(),
+                    },
+                },
+                {
+                    category: "Italy",
+                    value: 7,
+                    columnSettings: {
+                        fill: chart.get("colors").next(),
+                    },
+                },
+                {
+                    category: "France",
+                    value: 8,
+                    columnSettings: {
+                        fill: chart.get("colors").next(),
+                    },
+                },
+                {
+                    category: "Norway",
+                    value: 4,
+                    columnSettings: {
+                        fill: chart.get("colors").next(),
+                    },
+                },
+                {
+                    category: "Brasil",
+                    value: 7,
+                    columnSettings: {
+                        fill: chart.get("colors").next(),
+                    },
+                },
+                {
+                    category: "Canada",
+                    value: 5,
+                    columnSettings: {
+                        fill: chart.get("colors").next(),
+                    },
+                },
+            ];
 
-			// Animate chart
-			// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
-			series.appear(1000);
-			chart.appear(1000, 100);
-		}
+            series.data.setAll(data);
+            xAxis.data.setAll(data);
 
-		// On amchart ready
-		am5.ready(function () {
-			init();
-		}); // end am5.ready()
+            // Animate chart
+            // https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+            series.appear(1000);
+            chart.appear(1000, 100);
+        }
 
-		// Update chart on theme mode change
-		ThemeMode.on("kt.thememode.change", function() {     
-			// Destroy chart
-			root.dispose();
+        // On amchart ready
+        am5.ready(function () {
+            init();
+        }); // end am5.ready()
 
-			// Reinit chart
-			init();
-		});
-	};
+        // Update chart on theme mode change
+        ThemeMode.on("kt.thememode.change", function () {
+            // Destroy chart
+            root.dispose();
 
-	// Public methods
-	return {
-		init: function () {
-			initChart();
-		},
-	};
+            // Reinit chart
+            init();
+        });
+    };
+
+    // Public methods
+    return {
+        init: function () {
+            initChart();
+        },
+    };
 })();
 
 // Webpack support
 if (typeof module !== "undefined") {
-	window.SwapChartsWidget39 = module.exports = SwapChartsWidget39;
+    window.SwapChartsWidget39 = module.exports = SwapChartsWidget39;
 }
 
 
@@ -13044,13 +13045,13 @@ var SwapChartsWidget4 = function () {
     };
 
     // Private methods
-    var initChart = function() {
+    var initChart = function () {
         var element = document.getElementById("swap_charts_widget_4");
 
         if (!element) {
             return;
         }
-        
+
         var height = parseInt(SwapUtil.css(element, 'height'));
         var labelColor = SwapUtil.getCssVariableValue('--swap-gray-500');
         var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
@@ -13192,10 +13193,10 @@ var SwapChartsWidget4 = function () {
         chart.self = new ApexCharts(element, options);
 
         // Set timeout to properly get the parent elements width
-        setTimeout(function() {
+        setTimeout(function () {
             chart.self.render();
             chart.rendered = true;
-        }, 200);          
+        }, 200);
     }
 
     // Public methods
@@ -13204,14 +13205,14 @@ var SwapChartsWidget4 = function () {
             initChart();
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
 
                 initChart(chart);
             });
-        }   
+        }
     }
 }();
 
@@ -13225,207 +13226,207 @@ if (typeof module !== 'undefined') {
 
 // Class definition
 var SwapChartsWidget40 = (function () {
-	// Private methods
-	var initChart = function () {
-		// Check if amchart library is included
-		if (typeof am5 === "undefined") {
-			return;
-		}
+    // Private methods
+    var initChart = function () {
+        // Check if amchart library is included
+        if (typeof am5 === "undefined") {
+            return;
+        }
 
-		var element = document.querySelector('#swap_charts_widget_40_chart');
+        var element = document.querySelector('#swap_charts_widget_40_chart');
 
-		if ( !element ) {
-			return;
-		}
+        if (!element) {
+            return;
+        }
 
         var root;
 
-		var init = function() {
-			// Create root element
-			// https://www.amcharts.com/docs/v5/getting-started/#Root_element
-			root = am5.Root.new(element);
+        var init = function () {
+            // Create root element
+            // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+            root = am5.Root.new(element);
 
-			if ( !root ) {
-				return;
-			}
+            if (!root) {
+                return;
+            }
 
-			// Set themes
-			// https://www.amcharts.com/docs/v5/concepts/themes/
-			root.setThemes([am5themes_Animated.new(root)]);
+            // Set themes
+            // https://www.amcharts.com/docs/v5/concepts/themes/
+            root.setThemes([am5themes_Animated.new(root)]);
 
-			// Create chart
-			// https://www.amcharts.com/docs/v5/charts/radar-chart/
-			var chart = root.container.children.push(
-				am5radar.RadarChart.new(root, {
-					panX: false,
-					panY: false,
-					wheelX: "panX",
-					wheelY: "zoomX",
-				})
-			);
+            // Create chart
+            // https://www.amcharts.com/docs/v5/charts/radar-chart/
+            var chart = root.container.children.push(
+                am5radar.RadarChart.new(root, {
+                    panX: false,
+                    panY: false,
+                    wheelX: "panX",
+                    wheelY: "zoomX",
+                })
+            );
 
-			// Create axes and their renderers
-			// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
-			var xRenderer = am5radar.AxisRendererCircular.new(root, {});
-			xRenderer.labels.template.setAll({
-				radius: 10
-			});
+            // Create axes and their renderers
+            // https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_axes
+            var xRenderer = am5radar.AxisRendererCircular.new(root, {});
+            xRenderer.labels.template.setAll({
+                radius: 10
+            });
 
-			xRenderer.grid.template.setAll({
-				stroke: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700"))
-			});
+            xRenderer.grid.template.setAll({
+                stroke: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700"))
+            });
 
-			var yRenderer = am5radar.AxisRendererRadial.new(root, {
-				minGridDistance: 20
-			});	
-			
-			yRenderer.grid.template.setAll({
-				stroke: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700"))
-			});
+            var yRenderer = am5radar.AxisRendererRadial.new(root, {
+                minGridDistance: 20
+            });
 
-			var xAxis = chart.xAxes.push(
-				am5xy.CategoryAxis.new(root, {
-					maxDeviation: 0,
-					categoryField: "category",
-					renderer: xRenderer,
-					tooltip: am5.Tooltip.new(root, {}),
-				})
-			);			
+            yRenderer.grid.template.setAll({
+                stroke: am5.color(SwapUtil.getCssVariableValue("--swap-gray-700"))
+            });
 
-			var yAxis = chart.yAxes.push(
-				am5xy.ValueAxis.new(root, {
-					min: 0,
-					max: 10,
-					renderer: yRenderer
-				})
-			);
+            var xAxis = chart.xAxes.push(
+                am5xy.CategoryAxis.new(root, {
+                    maxDeviation: 0,
+                    categoryField: "category",
+                    renderer: xRenderer,
+                    tooltip: am5.Tooltip.new(root, {}),
+                })
+            );
 
-			xRenderer.labels.template.setAll({
-				fontSize: 11,
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-800")),
-			});
+            var yAxis = chart.yAxes.push(
+                am5xy.ValueAxis.new(root, {
+                    min: 0,
+                    max: 10,
+                    renderer: yRenderer
+                })
+            );
 
-			yRenderer.labels.template.setAll({
-				fontSize: 11,
-				fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-800")),
-			});
+            xRenderer.labels.template.setAll({
+                fontSize: 11,
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-800")),
+            });
 
-			//yAxis.get("renderer").labels.template.set("forceHidden", true);
+            yRenderer.labels.template.setAll({
+                fontSize: 11,
+                fill: am5.color(SwapUtil.getCssVariableValue("--swap-gray-800")),
+            });
 
-			// Create series
-			// https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
-			var series = chart.series.push(
-				am5radar.RadarColumnSeries.new(root, {
-					xAxis: xAxis,
-					yAxis: yAxis,
-					valueYField: "value",
-					categoryXField: "category",
-				})
-			);
+            //yAxis.get("renderer").labels.template.set("forceHidden", true);
 
-			series.columns.template.setAll({
-				tooltipText: "{categoryX}: {valueY}",
-				templateField: "columnSettings",
-				strokeOpacity: 0,
-				width: am5.p100,
-			});
+            // Create series
+            // https://www.amcharts.com/docs/v5/charts/radar-chart/#Adding_series
+            var series = chart.series.push(
+                am5radar.RadarColumnSeries.new(root, {
+                    xAxis: xAxis,
+                    yAxis: yAxis,
+                    valueYField: "value",
+                    categoryXField: "category",
+                })
+            );
 
-			// Set data
-			// https://www.amcharts.com/docs/v5/charts/radar-chart/#Setting_data
-			var data = [
-				{
-					category: "Spain",
-					value: 5,
-					columnSettings: {
-						fill: chart.get("colors").next(),
-					},
-				},
-				{
-					category: "Spain",
-					value: 4,
-					columnSettings: {
-						fill: chart.get("colors").next(),
-					},
-				},
-				{
-					category: "United States",
-					value: 9,
-					columnSettings: {
-						fill: chart.get("colors").next(),
-					},
-				},
-				{
-					category: "Italy",
-					value: 7,
-					columnSettings: {
-						fill: chart.get("colors").next(),
-					},
-				},
-				{
-					category: "France",
-					value: 8,
-					columnSettings: {
-						fill: chart.get("colors").next(),
-					},
-				},
-				{
-					category: "Norway",
-					value: 4,
-					columnSettings: {
-						fill: chart.get("colors").next(),
-					},
-				},
-				{
-					category: "Brasil",
-					value: 7,
-					columnSettings: {
-						fill: chart.get("colors").next(),
-					},
-				},
-				{
-					category: "Canada",
-					value: 5,
-					columnSettings: {
-						fill: chart.get("colors").next(),
-					},
-				},
-			];
+            series.columns.template.setAll({
+                tooltipText: "{categoryX}: {valueY}",
+                templateField: "columnSettings",
+                strokeOpacity: 0,
+                width: am5.p100,
+            });
 
-			series.data.setAll(data);
-			xAxis.data.setAll(data);
+            // Set data
+            // https://www.amcharts.com/docs/v5/charts/radar-chart/#Setting_data
+            var data = [
+                {
+                    category: "Spain",
+                    value: 5,
+                    columnSettings: {
+                        fill: chart.get("colors").next(),
+                    },
+                },
+                {
+                    category: "Spain",
+                    value: 4,
+                    columnSettings: {
+                        fill: chart.get("colors").next(),
+                    },
+                },
+                {
+                    category: "United States",
+                    value: 9,
+                    columnSettings: {
+                        fill: chart.get("colors").next(),
+                    },
+                },
+                {
+                    category: "Italy",
+                    value: 7,
+                    columnSettings: {
+                        fill: chart.get("colors").next(),
+                    },
+                },
+                {
+                    category: "France",
+                    value: 8,
+                    columnSettings: {
+                        fill: chart.get("colors").next(),
+                    },
+                },
+                {
+                    category: "Norway",
+                    value: 4,
+                    columnSettings: {
+                        fill: chart.get("colors").next(),
+                    },
+                },
+                {
+                    category: "Brasil",
+                    value: 7,
+                    columnSettings: {
+                        fill: chart.get("colors").next(),
+                    },
+                },
+                {
+                    category: "Canada",
+                    value: 5,
+                    columnSettings: {
+                        fill: chart.get("colors").next(),
+                    },
+                },
+            ];
 
-			// Animate chart
-			// https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
-			series.appear(1000);
-			chart.appear(1000, 100);
-		}
+            series.data.setAll(data);
+            xAxis.data.setAll(data);
 
-		// On amchart ready
-		am5.ready(function () {
-			init();
-		}); // end am5.ready()
+            // Animate chart
+            // https://www.amcharts.com/docs/v5/concepts/animations/#Initial_animation
+            series.appear(1000);
+            chart.appear(1000, 100);
+        }
 
-		// Update chart on theme mode change
-		ThemeMode.on("kt.thememode.change", function() {     
-			// Destroy chart
-			root.dispose();
+        // On amchart ready
+        am5.ready(function () {
+            init();
+        }); // end am5.ready()
 
-			// Reinit chart
-			init();
-		});
-	};
+        // Update chart on theme mode change
+        ThemeMode.on("kt.thememode.change", function () {
+            // Destroy chart
+            root.dispose();
 
-	// Public methods
-	return {
-		init: function () {
-			initChart();
-		},
-	};
+            // Reinit chart
+            init();
+        });
+    };
+
+    // Public methods
+    return {
+        init: function () {
+            initChart();
+        },
+    };
 })();
 
 // Webpack support
 if (typeof module !== "undefined") {
-	window.SwapChartsWidget40 = module.exports = SwapChartsWidget40;
+    window.SwapChartsWidget40 = module.exports = SwapChartsWidget40;
 }
 
 
@@ -13436,7 +13437,7 @@ var SwapChartsWidget41 = function () {
     var chart1 = {
         self: null,
         rendered: false
-    }; 
+    };
 
     var chart2 = {
         self: null,
@@ -13457,28 +13458,28 @@ var SwapChartsWidget41 = function () {
         self: null,
         rendered: false
     };
-    
+
 
     // Private methods
-    var initChart = function(chart, toggle, chartSelector, data, labels, initByDefault) {
-        var element = document.querySelector(chartSelector);       
+    var initChart = function (chart, toggle, chartSelector, data, labels, initByDefault) {
+        var element = document.querySelector(chartSelector);
 
         if (!element) {
             return;
-        }     
-         
+        }
+
         var height = parseInt(SwapUtil.css(element, 'height'));
-        var color = element.getAttribute('data-swap-chart-color');        
-        
+        var color = element.getAttribute('data-swap-chart-color');
+
         var labelColor = SwapUtil.getCssVariableValue('--swap-gray-500');
         var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
-        var baseColor = SwapUtil.getCssVariableValue('--swap-' + color);   
+        var baseColor = SwapUtil.getCssVariableValue('--swap-' + color);
 
         var options = {
             series: [{
                 name: 'Earnings',
                 data: data
-            }],            
+            }],
             chart: {
                 fontFamily: 'inherit',
                 type: 'area',
@@ -13486,7 +13487,7 @@ var SwapChartsWidget41 = function () {
                 toolbar: {
                     show: false
                 }
-            },            
+            },
             legend: {
                 show: false
             },
@@ -13524,7 +13525,7 @@ var SwapChartsWidget41 = function () {
                     show: false,
                     style: {
                         colors: labelColor,
-                        fontSize: '12px'                       
+                        fontSize: '12px'
                     }
                 },
                 crosshairs: {
@@ -13549,7 +13550,7 @@ var SwapChartsWidget41 = function () {
                 max: 4000,
                 min: 1000,
                 labels: {
-                    show: false                    
+                    show: false
                 }
             },
             states: {
@@ -13599,20 +13600,20 @@ var SwapChartsWidget41 = function () {
             }
         };
 
-        chart.self = new ApexCharts(element, options);        
+        chart.self = new ApexCharts(element, options);
         var tab = document.querySelector(toggle);
-        
+
         if (initByDefault === true) {
             // Set timeout to properly get the parent elements width
-            setTimeout(function() {
-                chart.self.render();  
+            setTimeout(function () {
+                chart.self.render();
                 chart.rendered = true;
             }, 200);
-        }        
+        }
 
         tab.addEventListener('shown.bs.tab', function (event) {
             if (chart.rendered === false) {
-                chart.self.render();  
+                chart.self.render();
                 chart.rendered = true;
             }
         });
@@ -13620,7 +13621,7 @@ var SwapChartsWidget41 = function () {
 
     // Public methods
     return {
-        init: function () {   
+        init: function () {
             var chart1Data = [2100, 3100, 3100, 2400, 2400, 1800, 1800, 2400, 2400, 3200, 3200, 2800, 2800, 3250, 3250];
             var chart1Labels = ['10AM', '10.30AM', '11AM', '11.15AM', '11.30AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', '9PM'];
 
@@ -13636,18 +13637,18 @@ var SwapChartsWidget41 = function () {
 
             initChart(chart3, '#swap_charts_widget_41_tab_3', '#swap_charts_widget_41_chart_3', chart3Data, chart3Labels, false);
 
-            var chart4Data =  [1800, 1800, 2400, 2400, 3200, 3200, 3000, 2100, 3200, 3200, 2400, 2400, 3000, 3200, 3100];
+            var chart4Data = [1800, 1800, 2400, 2400, 3200, 3200, 3000, 2100, 3200, 3200, 2400, 2400, 3000, 3200, 3100];
             var chart4Labels = ['Jun 2021', 'Jul 2021', 'Aug 2021', 'Sep 2021', 'Oct 2021', 'Nov 2021', 'Dec 2021', 'Jan 2022', 'Feb 2022', 'Mar 2022', 'Apr 2022', 'May 2022', 'Jun 2022', 'Jul 2022', 'Aug 2022'];
 
-            initChart(chart4, '#swap_charts_widget_41_tab_4', '#swap_charts_widget_41_chart_4', chart4Data, chart4Labels, false);                
-            
+            initChart(chart4, '#swap_charts_widget_41_tab_4', '#swap_charts_widget_41_chart_4', chart4Data, chart4Labels, false);
+
             var chart5Data = [3200, 2100, 3200, 3200, 3200, 3500, 3000, 2400, 3250, 2400, 2400, 3250, 3000, 2400, 2800];
             var chart5Labels = ['Sep 2021', 'Oct 2021', 'Nov 2021', 'Dec 2021', 'Jan 2022', 'Feb 2022', 'Mar 2022', 'Apr 2022', 'May 2022', 'Jun 2022', 'Jul 2022', 'Aug 2022', 'Sep 2022', 'Oct 2022', 'Nov 2022'];
 
             initChart(chart5, '#swap_charts_widget_41_tab_5', '#swap_charts_widget_41_chart_5', chart5Data, chart5Labels, false);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart1.rendered) {
                     chart1.self.destroy();
                 }
@@ -13669,12 +13670,12 @@ var SwapChartsWidget41 = function () {
                 }
 
                 initChart(chart1, '#swap_charts_widget_41_tab_1', '#swap_charts_widget_41_chart_1', chart1Data, chart1Labels, chart1.rendered);
-                initChart(chart2, '#swap_charts_widget_41_tab_2', '#swap_charts_widget_41_chart_2', chart2Data, chart2Labels, chart2.rendered);  
+                initChart(chart2, '#swap_charts_widget_41_tab_2', '#swap_charts_widget_41_chart_2', chart2Data, chart2Labels, chart2.rendered);
                 initChart(chart3, '#swap_charts_widget_41_tab_3', '#swap_charts_widget_41_chart_3', chart3Data, chart3Labels, chart3.rendered);
-                initChart(chart4, '#swap_charts_widget_41_tab_4', '#swap_charts_widget_41_chart_4', chart4Data, chart4Labels, chart4.rendered); 
-                initChart(chart5, '#swap_charts_widget_41_tab_5', '#swap_charts_widget_41_chart_5', chart5Data, chart5Labels, chart5.rendered); 
+                initChart(chart4, '#swap_charts_widget_41_tab_4', '#swap_charts_widget_41_chart_4', chart4Data, chart4Labels, chart4.rendered);
+                initChart(chart5, '#swap_charts_widget_41_tab_5', '#swap_charts_widget_41_chart_5', chart5Data, chart5Labels, chart5.rendered);
             });
-        }   
+        }
     }
 }();
 
@@ -13685,7 +13686,7 @@ if (typeof module !== 'undefined') {
 
 
 
- 
+
 "use strict";
 
 // Class definition
@@ -13696,18 +13697,18 @@ var SwapChartsWidget42 = function () {
     };
 
     // Private methods
-    var initChart = function(chart) {
+    var initChart = function (chart) {
         var element = document.getElementById("swap_charts_widget_42");
 
         if (!element) {
             return;
         }
-        
+
         var height = parseInt(SwapUtil.css(element, 'height'));
         var labelColor = SwapUtil.getCssVariableValue('--swap-gray-500');
         var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
-        var baseprimaryColor = SwapUtil.getCssVariableValue('--swap-primary');       
-        var basesuccessColor = SwapUtil.getCssVariableValue('--swap-success');        
+        var baseprimaryColor = SwapUtil.getCssVariableValue('--swap-primary');
+        var basesuccessColor = SwapUtil.getCssVariableValue('--swap-success');
 
         var options = {
             series: [{
@@ -13730,7 +13731,7 @@ var SwapChartsWidget42 = function () {
             },
             dataLabels: {
                 enabled: false
-            },            
+            },
             stroke: {
                 curve: 'smooth',
                 show: true,
@@ -13738,7 +13739,7 @@ var SwapChartsWidget42 = function () {
                 colors: [baseprimaryColor, basesuccessColor]
             },
             xaxis: {
-                categories: ['', '29 Sep', '1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug', '7 Aug', '8 Aug', '9 Aug', '10 Aug', '11 Aug', '12 Aug', '13 Aug','14 Aug', '15 Aug', '16 Aug', ''],
+                categories: ['', '29 Sep', '1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug', '7 Aug', '8 Aug', '9 Aug', '10 Aug', '11 Aug', '12 Aug', '13 Aug', '14 Aug', '15 Aug', '16 Aug', ''],
                 axisBorder: {
                     show: false,
                 },
@@ -13779,7 +13780,7 @@ var SwapChartsWidget42 = function () {
                     style: {
                         colors: labelColor,
                         fontSize: '12px'
-                    } 
+                    }
                 }
             },
             states: {
@@ -13806,7 +13807,7 @@ var SwapChartsWidget42 = function () {
             tooltip: {
                 style: {
                     fontSize: '12px'
-                } 
+                }
             },
             colors: [baseprimaryColor, basesuccessColor],
             grid: {
@@ -13827,10 +13828,10 @@ var SwapChartsWidget42 = function () {
         chart.self = new ApexCharts(element, options);
 
         // Set timeout to properly get the parent elements width
-        setTimeout(function() {
+        setTimeout(function () {
             chart.self.render();
             chart.rendered = true;
-        }, 200);      
+        }, 200);
     }
 
     // Public methods
@@ -13839,14 +13840,14 @@ var SwapChartsWidget42 = function () {
             initChart(chart);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
 
                 initChart(chart);
             });
-        }   
+        }
     }
 }();
 
@@ -13854,7 +13855,7 @@ var SwapChartsWidget42 = function () {
 if (typeof module !== 'undefined') {
     window.SwapChartsWidget42 = module.exports = SwapChartsWidget42;
 }
- 
+
 "use strict";
 
 // Class definition
@@ -13865,7 +13866,7 @@ var SwapChartsWidget43 = function () {
     };
 
     // Private methods
-    var initChart = function() {
+    var initChart = function () {
         var element = document.getElementById("swap_charts_widget_43");
 
         if (!element) {
@@ -13996,15 +13997,15 @@ var SwapChartsWidget43 = function () {
                 strokeColor: baseColor,
                 strokeWidth: 3
             }
-        }; 
+        };
 
         chart.self = new ApexCharts(element, options);
 
         // Set timeout to properly get the parent elements width
-        setTimeout(function() {
+        setTimeout(function () {
             chart.self.render();
             chart.rendered = true;
-        }, 200); 
+        }, 200);
     }
 
     // Public methods
@@ -14013,14 +14014,14 @@ var SwapChartsWidget43 = function () {
             initChart();
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
 
                 initChart();
             });
-        }   
+        }
     }
 }();
 
@@ -14040,7 +14041,7 @@ var SwapChartsWidget44 = function () {
     };
 
     // Private methods
-    var initChart = function() {
+    var initChart = function () {
         var element = document.getElementById("swap_charts_widget_44");
 
         if (!element) {
@@ -14171,15 +14172,15 @@ var SwapChartsWidget44 = function () {
                 strokeColor: baseColor,
                 strokeWidth: 3
             }
-        }; 
+        };
 
         chart.self = new ApexCharts(element, options);
 
         // Set timeout to properly get the parent elements width
-        setTimeout(function() {
+        setTimeout(function () {
             chart.self.render();
             chart.rendered = true;
-        }, 200); 
+        }, 200);
     }
 
     // Public methods
@@ -14188,14 +14189,14 @@ var SwapChartsWidget44 = function () {
             initChart();
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
 
                 initChart();
             });
-        }   
+        }
     }
 }();
 
@@ -14215,93 +14216,93 @@ var SwapChartsWidget5 = function () {
     };
 
     // Private methods
-    var initChart = function(chart) {
-        var element = document.getElementById("swap_charts_widget_5"); 
+    var initChart = function (chart) {
+        var element = document.getElementById("swap_charts_widget_5");
 
         if (!element) {
             return;
         }
-        
+
         var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
-        
+
         var options = {
             series: [{
                 data: [15, 12, 10, 8, 7, 4, 3],
-                show: false                                                                              
+                show: false
             }],
             chart: {
                 type: 'bar',
                 height: 350,
                 toolbar: {
                     show: false
-                }                             
-            },                    
+                }
+            },
             plotOptions: {
                 bar: {
                     borderRadius: 4,
                     horizontal: true,
                     distributed: true,
-                    barHeight: 23                   
+                    barHeight: 23
                 }
             },
             dataLabels: {
-                enabled: false                               
-            },             
+                enabled: false
+            },
             legend: {
                 show: false
-            },                               
-            colors: ['#3E97FF', '#F1416C', '#50CD89', '#FFC700', '#7239EA', '#50CDCD', '#3F4254'],                                                                      
+            },
+            colors: ['#3E97FF', '#F1416C', '#50CD89', '#FFC700', '#7239EA', '#50CDCD', '#3F4254'],
             xaxis: {
                 categories: ['Phones', 'Laptops', 'Headsets', 'Games', 'Keyboardsy', 'Monitors', 'Speakers'],
                 labels: {
                     formatter: function (val) {
-                      return val + "K"
+                        return val + "K"
                     },
                     style: {
                         colors: SwapUtil.getCssVariableValue('--swap-gray-400'),
                         fontSize: '14px',
                         fontWeight: '600',
-                        align: 'left'                                              
-                    }                  
+                        align: 'left'
+                    }
                 },
                 axisBorder: {
-					show: false
-				}                         
+                    show: false
+                }
             },
             yaxis: {
-                labels: {                   
+                labels: {
                     style: {
                         colors: SwapUtil.getCssVariableValue('--swap-gray-800'),
                         fontSize: '14px',
-                        fontWeight: '600'                                                                 
+                        fontWeight: '600'
                     },
                     offsetY: 2,
-                    align: 'left' 
-                }              
+                    align: 'left'
+                }
             },
-            grid: {                
-                borderColor: borderColor,                
+            grid: {
+                borderColor: borderColor,
                 xaxis: {
                     lines: {
                         show: true
                     }
-                },   
+                },
                 yaxis: {
                     lines: {
-                        show: false  
+                        show: false
                     }
                 },
-                strokeDashArray: 4              
-            }                                 
-        };  
-          
+                strokeDashArray: 4
+            }
+        };
+
         chart.self = new ApexCharts(element, options);
 
         // Set timeout to properly get the parent elements width
-        setTimeout(function() {
+        setTimeout(function () {
             chart.self.render();
             chart.rendered = true;
-        }, 200); 
+        }, 200);
     }
 
     // Public methods
@@ -14310,14 +14311,14 @@ var SwapChartsWidget5 = function () {
             initChart(chart);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
 
                 initChart(chart);
             });
-        }   
+        }
     }
 }();
 
@@ -14328,7 +14329,7 @@ if (typeof module !== 'undefined') {
 
 
 
- 
+
 "use strict";
 
 // Class definition
@@ -14339,30 +14340,30 @@ var SwapChartsWidget6 = function () {
     };
 
     // Private methods
-    var initChart = function(chart) {
-        var element = document.getElementById("swap_charts_widget_6"); 
+    var initChart = function (chart) {
+        var element = document.getElementById("swap_charts_widget_6");
 
         if (!element) {
             return;
         }
-        
-        var labelColor = SwapUtil.getCssVariableValue('--swap-gray-800');    
+
+        var labelColor = SwapUtil.getCssVariableValue('--swap-gray-800');
         var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
         var maxValue = 18;
-        
+
         var options = {
             series: [{
                 name: 'Sales',
-                data: [15, 12, 10, 8, 7]                                                                                                             
-            }],           
+                data: [15, 12, 10, 8, 7]
+            }],
             chart: {
                 fontFamily: 'inherit',
                 type: 'bar',
                 height: 350,
                 toolbar: {
                     show: false
-                }                             
-            },                    
+                }
+            },
             plotOptions: {
                 bar: {
                     borderRadius: 8,
@@ -14370,14 +14371,14 @@ var SwapChartsWidget6 = function () {
                     distributed: true,
                     barHeight: 50,
                     dataLabels: {
-				        position: 'bottom' // use 'bottom' for left and 'top' for right align(textAnchor)
-			        }                                                       
+                        position: 'bottom' // use 'bottom' for left and 'top' for right align(textAnchor)
+                    }
                 }
             },
             dataLabels: {  // Docs: https://apexcharts.com/docs/options/datalabels/
-                enabled: true,              
-                textAnchor: 'start',  
-                offsetX: 0,                 
+                enabled: true,
+                textAnchor: 'start',
+                offsetX: 0,
                 formatter: function (val, opts) {
                     var val = val * 1000;
                     var Format = wNumb({
@@ -14391,13 +14392,13 @@ var SwapChartsWidget6 = function () {
                 style: {
                     fontSize: '14px',
                     fontWeight: '600',
-                    align: 'left',                                                            
-                }                                       
-            },             
+                    align: 'left',
+                }
+            },
             legend: {
                 show: false
-            },                               
-            colors: ['#3E97FF', '#F1416C', '#50CD89', '#FFC700', '#7239EA'],                                                                      
+            },
+            colors: ['#3E97FF', '#F1416C', '#50CD89', '#FFC700', '#7239EA'],
             xaxis: {
                 categories: ["ECR - 90%", "FGI - 82%", 'EOQ - 75%', 'FMG - 60%', 'PLG - 50%'],
                 labels: {
@@ -14408,45 +14409,45 @@ var SwapChartsWidget6 = function () {
                         colors: [labelColor],
                         fontSize: '14px',
                         fontWeight: '600',
-                        align: 'left'                                              
-                    }                  
+                        align: 'left'
+                    }
                 },
                 axisBorder: {
-					show: false
-				}                         
+                    show: false
+                }
             },
             yaxis: {
-                labels: {       
+                labels: {
                     formatter: function (val, opt) {
                         if (Number.isInteger(val)) {
-                            var percentage = parseInt(val * 100 / maxValue) . toString(); 
+                            var percentage = parseInt(val * 100 / maxValue).toString();
                             return val + ' - ' + percentage + '%';
                         } else {
                             return val;
                         }
-                    },            
+                    },
                     style: {
                         colors: labelColor,
                         fontSize: '14px',
-                        fontWeight: '600'                                                                 
+                        fontWeight: '600'
                     },
                     offsetY: 2,
-                    align: 'left' 
-                }           
+                    align: 'left'
+                }
             },
-            grid: {                
-                borderColor: borderColor,                
+            grid: {
+                borderColor: borderColor,
                 xaxis: {
                     lines: {
                         show: true
                     }
-                },   
+                },
                 yaxis: {
                     lines: {
-                        show: false  
+                        show: false
                     }
                 },
-                strokeDashArray: 4              
+                strokeDashArray: 4
             },
             tooltip: {
                 style: {
@@ -14457,16 +14458,16 @@ var SwapChartsWidget6 = function () {
                         return val + 'K';
                     }
                 }
-            }                                 
-        };  
-          
+            }
+        };
+
         chart.self = new ApexCharts(element, options);
 
         // Set timeout to properly get the parent elements width
-        setTimeout(function() {
+        setTimeout(function () {
             chart.self.render();
             chart.rendered = true;
-        }, 200);         
+        }, 200);
     }
 
     // Public methods
@@ -14475,14 +14476,14 @@ var SwapChartsWidget6 = function () {
             initChart(chart);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
 
                 initChart(chart);
             });
-        }   
+        }
     }
 }();
 
@@ -14493,13 +14494,13 @@ if (typeof module !== 'undefined') {
 
 
 
- 
+
 "use strict";
 
 // Class definition
 var SwapChartsWidget7 = function () {
     // Private methods
-    var initChart = function(chartSelector) {
+    var initChart = function (chartSelector) {
         var element = document.querySelector(chartSelector);
 
         if (!element) {
@@ -14616,11 +14617,11 @@ var SwapChartsWidget7 = function () {
 
         var init = false;
         var tab = document.querySelector(tabSelector);
-        
+
         if (initByDefault === true) {
             chart.render();
             init = true;
-        }        
+        }
 
         tab.addEventListener('shown.bs.tab', function (event) {
             if (init == false) {
@@ -14628,19 +14629,19 @@ var SwapChartsWidget7 = function () {
                 init = true;
             }
         })
-          
+
         var chart = new ApexCharts(element, options);
-        chart.render();   
+        chart.render();
     }
 
     // Public methods
     return {
-        init: function () {          
+        init: function () {
             initChart('#swap_chart_widget_7_tab_1', '#swap_chart_widget_7_chart_1', [44, 55, 57, 56, 61, 58], [76, 85, 101, 98, 87, 105], true);
             initChart('#swap_chart_widget_7_tab_2', '#swap_chart_widget_7_chart_2', [35, 60, 35, 50, 45, 30], [65, 80, 50, 80, 75, 105], false);
             initChart('#swap_chart_widget_7_tab_3', '#swap_chart_widget_7_chart_3', [25, 40, 45, 50, 40, 60], [76, 85, 101, 98, 87, 105], false);
-            initChart('#swap_chart_widget_7_tab_4', '#swap_chart_widget_7_chart_4', [50, 35, 45, 55, 30, 40], [76, 85, 101, 98, 87, 105], false);             
-        }   
+            initChart('#swap_chart_widget_7_tab_4', '#swap_chart_widget_7_chart_4', [50, 35, 45, 55, 30, 40], [76, 85, 101, 98, 87, 105], false);
+        }
     }
 }();
 
@@ -14651,7 +14652,7 @@ if (typeof module !== 'undefined') {
 
 
 
- 
+
 "use strict";
 
 // Class definition
@@ -14667,15 +14668,15 @@ var SwapChartsWidget8 = function () {
     };
 
     // Private methods
-    var initChart = function(chart, toggle, selector, data, initByDefault) {
+    var initChart = function (chart, toggle, selector, data, initByDefault) {
         var element = document.querySelector(selector);
 
         if (!element) {
             return;
         }
 
-        var height = parseInt(SwapUtil.css(element, 'height'));    
-        var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');    
+        var height = parseInt(SwapUtil.css(element, 'height'));
+        var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
 
         var options = {
             series: [
@@ -14697,16 +14698,16 @@ var SwapChartsWidget8 = function () {
                 }, {
                     name: 'Radio',
                     data: data[5]
-                }                
+                }
             ],
             chart: {
                 fontFamily: 'inherit',
-                type: 'bubble',    
+                type: 'bubble',
                 height: height,
                 toolbar: {
                     show: false
-                }                         
-            },                                 
+                }
+            },
             plotOptions: {
                 bubble: {
                 }
@@ -14722,7 +14723,7 @@ var SwapChartsWidget8 = function () {
                 enabled: false
             },
             xaxis: {
-                type: 'numeric',             
+                type: 'numeric',
                 tickAmount: 7,
                 min: 0,
                 max: 700,
@@ -14751,7 +14752,7 @@ var SwapChartsWidget8 = function () {
                         colors: SwapUtil.getCssVariableValue('--swap-gray-500'),
                         fontSize: '13px'
                     }
-                }               
+                }
             },
             tooltip: {
                 style: {
@@ -14779,17 +14780,17 @@ var SwapChartsWidget8 = function () {
                     width: 1,
                     dashArray: 0,
                 }
-            },           
+            },
             colors: [
                 SwapUtil.getCssVariableValue('--swap-primary'),
-                SwapUtil.getCssVariableValue('--swap-success'),   
+                SwapUtil.getCssVariableValue('--swap-success'),
                 SwapUtil.getCssVariableValue('--swap-warning'),
                 SwapUtil.getCssVariableValue('--swap-danger'),
                 SwapUtil.getCssVariableValue('--swap-info'),
                 '#43CED7'
             ],
             fill: {
-                opacity: 1,                
+                opacity: 1,
             },
             markers: {
                 strokeWidth: 0
@@ -14808,20 +14809,20 @@ var SwapChartsWidget8 = function () {
             }
         };
 
-        chart.self = new ApexCharts(element, options);        
+        chart.self = new ApexCharts(element, options);
         var tab = document.querySelector(toggle);
-        
+
         if (initByDefault === true) {
             // Set timeout to properly get the parent elements width
-            setTimeout(function() {
-                chart.self.render();  
+            setTimeout(function () {
+                chart.self.render();
                 chart.rendered = true;
             }, 200);
-        }        
+        }
 
         tab.addEventListener('shown.bs.tab', function (event) {
             if (chart.rendered === false) {
-                chart.self.render();  
+                chart.self.render();
                 chart.rendered = true;
             }
         });
@@ -14829,7 +14830,7 @@ var SwapChartsWidget8 = function () {
 
     // Public methods
     return {
-        init: function () {    
+        init: function () {
             var data1 = [
                 [[100, 250, 30]], [[225, 300, 35]], [[300, 350, 25]], [[350, 350, 20]], [[450, 400, 25]], [[550, 350, 35]]
             ];
@@ -14839,10 +14840,10 @@ var SwapChartsWidget8 = function () {
             ];
 
             initChart(chart1, '#swap_chart_widget_8_week_toggle', '#swap_chart_widget_8_week_chart', data1, false);
-            initChart(chart2, '#swap_chart_widget_8_month_toggle', '#swap_chart_widget_8_month_chart', data2, true);    
+            initChart(chart2, '#swap_chart_widget_8_month_toggle', '#swap_chart_widget_8_month_chart', data2, true);
 
             // Update chart on theme mode change
-            var handlerId = ThemeMode.on("kt.thememode.change", function() {
+            var handlerId = ThemeMode.on("kt.thememode.change", function () {
                 if (chart1.rendered) {
                     chart1.self.destroy();
                 }
@@ -14852,9 +14853,9 @@ var SwapChartsWidget8 = function () {
                 }
 
                 initChart(chart1, '#swap_chart_widget_8_week_toggle', '#swap_chart_widget_8_week_chart', data1, chart1.rendered);
-                initChart(chart2, '#swap_chart_widget_8_month_toggle', '#swap_chart_widget_8_month_chart', data2, chart2.rendered);  
+                initChart(chart2, '#swap_chart_widget_8_month_toggle', '#swap_chart_widget_8_month_chart', data2, chart2.rendered);
             });
-        }   
+        }
     }
 }();
 
@@ -14865,7 +14866,7 @@ if (typeof module !== 'undefined') {
 
 
 
- 
+
 "use strict";
 
 // Class definition
@@ -14876,7 +14877,7 @@ var SwapChartsWidget9 = function () {
     };
 
     // Private methods
-    var initChart = function() {
+    var initChart = function () {
         var element = document.getElementById("swap_charts_widget_9");
 
         if (!element) {
@@ -14885,7 +14886,7 @@ var SwapChartsWidget9 = function () {
 
         var height = parseInt(SwapUtil.css(element, 'height'));
         var labelColor = SwapUtil.getCssVariableValue('--swap-gray-400');
-        var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');    
+        var borderColor = SwapUtil.getCssVariableValue('--swap-border-dashed-color');
 
         var baseColor = SwapUtil.getCssVariableValue('--swap-gray-200');
         var secondaryColor = SwapUtil.getCssVariableValue('--swap-primary');
@@ -15016,15 +15017,15 @@ var SwapChartsWidget9 = function () {
                 strokeColor: [SwapUtil.getCssVariableValue('--swap-primary'), SwapUtil.getCssVariableValue('--swap-gray-300')],
                 strokeWidth: 3
             }
-        };        
-          
+        };
+
         chart.self = new ApexCharts(element, options);
 
         // Set timeout to properly get the parent elements width
-        setTimeout(function() {
+        setTimeout(function () {
             chart.self.render();
             chart.rendered = true;
-        }, 200);       
+        }, 200);
     }
 
     // Public methods
@@ -15033,14 +15034,14 @@ var SwapChartsWidget9 = function () {
             initChart();
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart.rendered) {
                     chart.self.destroy();
                 }
 
                 initChart(chart);
             });
-        }   
+        }
     }
 }();
 
@@ -15051,7 +15052,7 @@ if (typeof module !== 'undefined') {
 
 
 
- 
+
 "use strict";
 
 // Class definition
@@ -15060,12 +15061,12 @@ var SwapFormsWidget1 = (function () {
     var initForm1 = function () {
         var element = document.querySelector('#swap_forms_widget_1_select_1');
 
-        if ( !element ) {
+        if (!element) {
             return;
         }
 
-        var optionFormat = function(item) {
-            if ( !item.id ) {
+        var optionFormat = function (item) {
+            if (!item.id) {
                 return item.text;
             }
 
@@ -15092,12 +15093,12 @@ var SwapFormsWidget1 = (function () {
     var initForm2 = function () {
         var element = document.querySelector('#swap_forms_widget_1_select_2');
 
-        if ( !element ) {
+        if (!element) {
             return;
         }
 
-        var optionFormat = function(item) {
-            if ( !item.id ) {
+        var optionFormat = function (item) {
+            if (!item.id) {
                 return item.text;
             }
 
@@ -15141,16 +15142,16 @@ if (typeof module !== "undefined") {
 // Class definition
 var SwapTimelineWidget24 = function () {
     // Private methods
-    var handleActions = function() {
-        var card = document.querySelector('#swap_list_widget_24');        
-        
-        if ( !card ) {
+    var handleActions = function () {
+        var card = document.querySelector('#swap_list_widget_24');
+
+        if (!card) {
             return;
         }
 
         // Checkbox Handler
         SwapUtil.on(card, '[data-swap-element="follow"]', 'click', function (e) {
-            if ( this.innerText === 'Following' ) {
+            if (this.innerText === 'Following') {
                 this.innerText = 'Follow';
                 this.classList.add('btn-light-primary');
                 this.classList.remove('btn-primary');
@@ -15166,9 +15167,9 @@ var SwapTimelineWidget24 = function () {
 
     // Public methods
     return {
-        init: function () {           
-            handleActions();             
-        }   
+        init: function () {
+            handleActions();
+        }
     }
 }();
 
@@ -15176,7 +15177,7 @@ var SwapTimelineWidget24 = function () {
 if (typeof module !== 'undefined') {
     window.SwapTimelineWidget24 = module.exports = SwapTimelineWidget24;
 }
- 
+
 
 "use strict";
 
@@ -15197,7 +15198,7 @@ var SwapMapsWidget1 = (function () {
 
         var root;
 
-        var init = function() {
+        var init = function () {
             // Create root element
             // https://www.amcharts.com/docs/v5/getting-started/#Root_element
             root = am5.Root.new(element);
@@ -15213,9 +15214,9 @@ var SwapMapsWidget1 = (function () {
                     panX: "translateX",
                     panY: "translateY",
                     projection: am5map.geoMercator(),
-					paddingLeft: 0,
-					paddingrIGHT: 0,
-					paddingBottom: 0
+                    paddingLeft: 0,
+                    paddingrIGHT: 0,
+                    paddingBottom: 0
                 })
             );
 
@@ -15232,7 +15233,7 @@ var SwapMapsWidget1 = (function () {
                 tooltipText: "{name}",
                 toggleKey: "active",
                 interactive: true,
-				fill: am5.color(SwapUtil.getCssVariableValue('--swap-gray-300')),
+                fill: am5.color(SwapUtil.getCssVariableValue('--swap-gray-300')),
             });
 
             polygonSeries.mapPolygons.template.states.create("hover", {
@@ -15249,8 +15250,8 @@ var SwapMapsWidget1 = (function () {
             var polygonSeriesHighlighted = chart.series.push(
                 am5map.MapPolygonSeries.new(root, {
                     //geoJSON: am5geodata_usaLow,
-					geoJSON: am5geodata_worldLow,
-					include: ['US', 'BR', 'DE', 'AU', 'JP']
+                    geoJSON: am5geodata_worldLow,
+                    include: ['US', 'BR', 'DE', 'AU', 'JP']
                 })
             );
 
@@ -15264,7 +15265,7 @@ var SwapMapsWidget1 = (function () {
 
             polygonSeriesHighlighted.mapPolygons.template.set(
                 "fill",
-				am5.color(SwapUtil.getCssVariableValue('--swap-primary')),
+                am5.color(SwapUtil.getCssVariableValue('--swap-primary')),
             );
 
             polygonSeriesHighlighted.mapPolygons.template.states.create("hover", {
@@ -15296,13 +15297,13 @@ var SwapMapsWidget1 = (function () {
         }); // end am5.ready()
 
         // Update chart on theme mode change
-		ThemeMode.on("kt.thememode.change", function() {     
-			// Destroy chart
-			root.dispose();
+        ThemeMode.on("kt.thememode.change", function () {
+            // Destroy chart
+            root.dispose();
 
-			// Reinit chart
-			init();
-		});
+            // Reinit chart
+            init();
+        });
     };
 
     // Public methods
@@ -15339,7 +15340,7 @@ var SwapMapsWidget2 = (function () {
         // Root
         var root;
 
-        var init = function() {
+        var init = function () {
             // Create root element
             // https://www.amcharts.com/docs/v5/getting-started/#Root_element
             root = am5.Root.new(element);
@@ -15355,9 +15356,9 @@ var SwapMapsWidget2 = (function () {
                     panX: "translateX",
                     panY: "translateY",
                     projection: am5map.geoMercator(),
-					paddingLeft: 0,
-					paddingrIGHT: 0,
-					paddingBottom: 0
+                    paddingLeft: 0,
+                    paddingrIGHT: 0,
+                    paddingBottom: 0
                 })
             );
 
@@ -15374,7 +15375,7 @@ var SwapMapsWidget2 = (function () {
                 tooltipText: "{name}",
                 toggleKey: "active",
                 interactive: true,
-				fill: am5.color(SwapUtil.getCssVariableValue('--swap-gray-300')),
+                fill: am5.color(SwapUtil.getCssVariableValue('--swap-gray-300')),
             });
 
             polygonSeries.mapPolygons.template.states.create("hover", {
@@ -15391,8 +15392,8 @@ var SwapMapsWidget2 = (function () {
             var polygonSeriesHighlighted = chart.series.push(
                 am5map.MapPolygonSeries.new(root, {
                     //geoJSON: am5geodata_usaLow,
-					geoJSON: am5geodata_worldLow,
-					include: ['US', 'BR', 'DE', 'AU', 'JP']
+                    geoJSON: am5geodata_worldLow,
+                    include: ['US', 'BR', 'DE', 'AU', 'JP']
                 })
             );
 
@@ -15406,7 +15407,7 @@ var SwapMapsWidget2 = (function () {
 
             polygonSeriesHighlighted.mapPolygons.template.set(
                 "fill",
-				am5.color(SwapUtil.getCssVariableValue('--swap-primary')),
+                am5.color(SwapUtil.getCssVariableValue('--swap-primary')),
             );
 
             polygonSeriesHighlighted.mapPolygons.template.states.create("hover", {
@@ -15438,13 +15439,13 @@ var SwapMapsWidget2 = (function () {
         }); // end am5.ready()
 
         // Update chart on theme mode change
-		ThemeMode.on("kt.thememode.change", function() {     
-			// Destroy chart
-			root.dispose();
+        ThemeMode.on("kt.thememode.change", function () {
+            // Destroy chart
+            root.dispose();
 
-			// Reinit chart
-			init();
-		});
+            // Reinit chart
+            init();
+        });
     };
 
     // Public methods
@@ -15466,7 +15467,7 @@ if (typeof module !== "undefined") {
 // Class definition
 var SwapPlayersWidget1 = function () {
     // Private methods
-    var initPlayers = function() {
+    var initPlayers = function () {
         // https://www.w3schools.com/jsref/dom_obj_audio.asp
         // Toggle Handler
         SwapUtil.on(document.body, '[data-swap-element="list-play-button"]', 'click', function (e) {
@@ -15487,7 +15488,7 @@ var SwapPlayersWidget1 = function () {
                 playIcon.classList.remove('d-none');
                 pauseIcon.classList.add('d-none');
             }
-            
+
             var buttons = [].slice.call(document.querySelectorAll('[data-swap-element="list-play-button"]'));
             buttons.map(function (button) {
                 if (button !== currentButton) {
@@ -15505,7 +15506,7 @@ var SwapPlayersWidget1 = function () {
     return {
         init: function () {
             initPlayers();
-        }   
+        }
     }
 }();
 
@@ -15515,28 +15516,28 @@ if (typeof module !== 'undefined') {
 }
 
 // Window load
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
     SwapPlayersWidget1.init();
-}); 
-        
-        
-        
-           
+});
+
+
+
+
 "use strict";
 
 // Class definition
 var SwapPlayersWidget2 = function () {
     // Private methods
-    var initPlayer = function() {
+    var initPlayer = function () {
         // https://www.w3schools.com/jsref/dom_obj_audio.asp
         var element = document.getElementById("swap_player_widget_2");
 
-        if ( !element ) {
+        if (!element) {
             return;
         }
 
         var audio = element.querySelector('[data-swap-element="audio-track-1"]');
-        var progress = element.querySelector('[data-swap-element="progress"]');        
+        var progress = element.querySelector('[data-swap-element="progress"]');
         var currentTime = element.querySelector('[data-swap-element="current-time"]');
         var duration = element.querySelector('[data-swap-element="duration"]');
         var playButton = element.querySelector('[data-swap-element="play-button"]');
@@ -15548,7 +15549,7 @@ var SwapPlayersWidget2 = function () {
         var playNextButton = element.querySelector('[data-swap-element="play-next-button"]');
         var playPrevButton = element.querySelector('[data-swap-element="play-prev-button"]');
 
-        var formatTime = function(time) {
+        var formatTime = function (time) {
             var s = parseInt(time % 60);
             var m = parseInt((time / 60) % 60);
 
@@ -15556,15 +15557,15 @@ var SwapPlayersWidget2 = function () {
         }
 
         // Duration
-        duration.innerHTML = formatTime(audio.duration); 
+        duration.innerHTML = formatTime(audio.duration);
 
         // Update progress
-        var setBarProgress = function() {
+        var setBarProgress = function () {
             progress.value = (audio.currentTime / audio.duration) * 100;
         }
-        
+
         // Handle audio update
-        var handleAudioUpdate = function() {
+        var handleAudioUpdate = function () {
             currentTime.innerHTML = formatTime(audio.currentTime);
 
             setBarProgress();
@@ -15578,7 +15579,7 @@ var SwapPlayersWidget2 = function () {
         audio.addEventListener('timeupdate', handleAudioUpdate);
 
         // Handle play
-        playButton.addEventListener('click', function() {
+        playButton.addEventListener('click', function () {
             if (audio.duration > 0 && !audio.paused) {
                 audio.pause();
 
@@ -15593,7 +15594,7 @@ var SwapPlayersWidget2 = function () {
         });
 
         // Handle replay
-        replayButton.addEventListener('click', function() {
+        replayButton.addEventListener('click', function () {
             if (audio.readyState >= 2) {
                 audio.currentTime = 0;
                 audio.play();
@@ -15604,7 +15605,7 @@ var SwapPlayersWidget2 = function () {
         });
 
         // Handle prev play
-        playPrevButton.addEventListener('click', function() {
+        playPrevButton.addEventListener('click', function () {
             if (audio.readyState >= 2) {
                 audio.currentTime = 0;
                 audio.play();
@@ -15615,7 +15616,7 @@ var SwapPlayersWidget2 = function () {
         });
 
         // Handle next play
-        playNextButton.addEventListener('click', function() {
+        playNextButton.addEventListener('click', function () {
             if (audio.readyState >= 2) {
                 audio.currentTime = 0;
                 audio.play();
@@ -15626,7 +15627,7 @@ var SwapPlayersWidget2 = function () {
         });
 
         // Shuffle replay
-        shuffleButton.addEventListener('click', function() {
+        shuffleButton.addEventListener('click', function () {
             if (audio.readyState >= 2) {
                 audio.currentTime = 0;
                 audio.play();
@@ -15637,7 +15638,7 @@ var SwapPlayersWidget2 = function () {
         });
 
         // Handle track change
-        progress.addEventListener('change', function() {
+        progress.addEventListener('change', function () {
             audio.currentTime = progress.value;
 
             playIcon.classList.add('d-none');
@@ -15650,7 +15651,7 @@ var SwapPlayersWidget2 = function () {
     return {
         init: function () {
             initPlayer();
-        }   
+        }
     }
 }();
 
@@ -15660,13 +15661,13 @@ if (typeof module !== 'undefined') {
 }
 
 // Window load
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
     SwapPlayersWidget2.init();
-}); 
+});
 "use strict";
 
 // Class definition
-var SwapSlidersWidget1 = function() {
+var SwapSlidersWidget1 = function () {
     var chart1 = {
         self: null,
         rendered: false
@@ -15683,20 +15684,20 @@ var SwapSlidersWidget1 = function() {
     };
 
     // Private methods
-    var initChart = function(chart, query, data) {
+    var initChart = function (chart, query, data) {
         var element = document.querySelector(query);
 
-        if ( !element) {
+        if (!element) {
             return;
-        }              
-        
-        if ( chart.rendered === true && element.classList.contains("initialized") ) {
+        }
+
+        if (chart.rendered === true && element.classList.contains("initialized")) {
             return;
         }
 
         var height = parseInt(SwapUtil.css(element, 'height'));
         var baseColor = SwapUtil.getCssVariableValue('--swap-' + 'primary');
-        var lightColor = SwapUtil.getCssVariableValue('--swap-' + 'primary-light' );         
+        var lightColor = SwapUtil.getCssVariableValue('--swap-' + 'primary-light');
 
         var options = {
             series: [data],
@@ -15717,10 +15718,10 @@ var SwapSlidersWidget1 = function() {
                     dataLabels: {
                         showOn: "always",
                         name: {
-                            show: false                                 
+                            show: false
                         },
-                        value: {                                 
-                            show: false                              
+                        value: {
+                            show: false
                         }
                     },
                     track: {
@@ -15750,8 +15751,8 @@ var SwapSlidersWidget1 = function() {
             initChart(chart1, '#swap_slider_widget_1_chart_1', 76);
 
             var carousel = document.querySelector('#swap_sliders_widget_1_slider');
-            
-            if ( !carousel ) {
+
+            if (!carousel) {
                 return;
             }
 
@@ -15769,7 +15770,7 @@ var SwapSlidersWidget1 = function() {
             });
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart1.rendered) {
                     chart1.self.destroy();
                     chart1.rendered = false;
@@ -15789,8 +15790,8 @@ var SwapSlidersWidget1 = function() {
                 initChart(chart2, '#swap_slider_widget_1_chart_2', 55);
                 initChart(chart3, '#swap_slider_widget_1_chart_3', 25);
             });
-        }   
-    }        
+        }
+    }
 }();
 
 
@@ -15799,11 +15800,11 @@ if (typeof module !== 'undefined') {
     window.SwapSlidersWidget1 = module.exports = SwapSlidersWidget1;
 }
 
-   
-        
-        
-        
-           
+
+
+
+
+
 "use strict";
 
 // Class definition
@@ -15819,14 +15820,14 @@ var SwapSlidersWidget3 = function () {
     };
 
     // Private methods
-    var initChart = function(chart, query, color, data) {
+    var initChart = function (chart, query, color, data) {
         var element = document.querySelector(query);
 
         if (!element) {
             return;
         }
-        
-        if ( chart.rendered === true && element.classList.contains("initialized") ) {
+
+        if (chart.rendered === true && element.classList.contains("initialized")) {
             return;
         }
 
@@ -15839,7 +15840,7 @@ var SwapSlidersWidget3 = function () {
             series: [{
                 name: 'Lessons',
                 data: data
-            }],            
+            }],
             chart: {
                 fontFamily: 'inherit',
                 type: 'area',
@@ -15914,7 +15915,7 @@ var SwapSlidersWidget3 = function () {
                     style: {
                         colors: labelColor,
                         fontSize: '12px'
-                    } 
+                    }
                 }
             },
             states: {
@@ -15941,7 +15942,7 @@ var SwapSlidersWidget3 = function () {
             tooltip: {
                 style: {
                     fontSize: '12px'
-                } 
+                }
             },
             colors: [baseColor],
             grid: {
@@ -15963,7 +15964,7 @@ var SwapSlidersWidget3 = function () {
         chart.self.render();
         chart.rendered = true;
 
-        element.classList.add('initialized');   
+        element.classList.add('initialized');
     }
 
     // Public methods
@@ -15971,25 +15972,25 @@ var SwapSlidersWidget3 = function () {
         init: function () {
             var data1 = [19, 21, 21, 20, 20, 18, 18, 20, 20, 22, 22, 21, 21, 22];
             var data2 = [18, 22, 22, 20, 20, 18, 18, 20, 20, 18, 18, 20, 20, 22];
-            
+
             // Init default chart
             initChart(chart1, '#swap_sliders_widget_3_chart_1', 'danger', data1);
 
             var carousel = document.querySelector('#swap_sliders_widget_3_slider');
 
-            if ( !carousel ){
+            if (!carousel) {
                 return;
             }
-            
+
             carousel.addEventListener('slid.bs.carousel', function (e) {
                 if (e.to === 1) {
                     // Init second chart
                     initChart(chart2, '#swap_sliders_widget_3_chart_2', 'primary', data2);
-                }                
+                }
             });
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart1.rendered) {
                     chart1.self.destroy();
                     chart1.rendered = false;
@@ -16003,7 +16004,7 @@ var SwapSlidersWidget3 = function () {
                 initChart(chart1, '#swap_sliders_widget_3_chart_1', 'danger', data1);
                 initChart(chart2, '#swap_sliders_widget_3_chart_2', 'primary', data2);
             });
-        }   
+        }
     }
 }();
 
@@ -16016,7 +16017,7 @@ if (typeof module !== 'undefined') {
 "use strict";
 
 // Class definition
-var SwapSlidersWidget7 = function() {
+var SwapSlidersWidget7 = function () {
     var chart1 = {
         self: null,
         rendered: false
@@ -16033,20 +16034,20 @@ var SwapSlidersWidget7 = function() {
     };
 
     // Private methods
-    var initChart = function(chart, query, data) {
+    var initChart = function (chart, query, data) {
         var element = document.querySelector(query);
 
-        if ( !element) {
+        if (!element) {
             return;
-        }              
-        
-        if ( chart.rendered === true && element.classList.contains("initialized") ) {
+        }
+
+        if (chart.rendered === true && element.classList.contains("initialized")) {
             return;
         }
 
         var height = parseInt(SwapUtil.css(element, 'height'));
         var baseColor = SwapUtil.getCssVariableValue('--swap-' + 'danger');
-        var lightColor = SwapUtil.getCssVariableValue('--swap-' + 'white' );         
+        var lightColor = SwapUtil.getCssVariableValue('--swap-' + 'white');
 
         var options = {
             series: [data],
@@ -16067,10 +16068,10 @@ var SwapSlidersWidget7 = function() {
                     dataLabels: {
                         showOn: "always",
                         name: {
-                            show: false                                 
+                            show: false
                         },
-                        value: {                                 
-                            show: false                              
+                        value: {
+                            show: false
                         }
                     },
                     track: {
@@ -16100,8 +16101,8 @@ var SwapSlidersWidget7 = function() {
             initChart(chart1, '#swap_slider_widget_7_chart_1', 76);
 
             var carousel = document.querySelector('#swap_sliders_widget_7_slider');
-            
-            if ( !carousel ) {
+
+            if (!carousel) {
                 return;
             }
 
@@ -16119,7 +16120,7 @@ var SwapSlidersWidget7 = function() {
             });
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {                
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart1.rendered) {
                     chart1.self.destroy();
                     chart1.rendered = false;
@@ -16139,8 +16140,8 @@ var SwapSlidersWidget7 = function() {
                 initChart(chart2, '#swap_slider_widget_7_chart_2', 55);
                 initChart(chart3, '#swap_slider_widget_7_chart_3', 25);
             });
-        }   
-    }        
+        }
+    }
 }();
 
 
@@ -16149,15 +16150,15 @@ if (typeof module !== 'undefined') {
     window.SwapSlidersWidget7 = module.exports = SwapSlidersWidget7;
 }
 
-   
-        
-        
-        
-           
+
+
+
+
+
 "use strict";
 
 // Class definition
-var SwapTablesWidget14 = function () {
+var TablesWidget = function () {
     var chart1 = {
         self: null,
         rendered: false
@@ -16184,16 +16185,16 @@ var SwapTablesWidget14 = function () {
     };
 
     // Private methods
-    var initChart = function(chart, chartSelector, data, initByDefault) {
+    var initChart = function (chart, chartSelector, data, initByDefault) {
         var element = document.querySelector(chartSelector);
 
         if (!element) {
             return;
         }
-        
+
         var height = parseInt(SwapUtil.css(element, 'height'));
         var color = element.getAttribute('data-swap-chart-color');
-       
+
         var strokeColor = SwapUtil.getCssVariableValue('--swap-' + 'gray-300');
         var baseColor = SwapUtil.getCssVariableValue('--swap-' + color);
         var lightColor = SwapUtil.getCssVariableValue('--swap-body-bg');
@@ -16234,7 +16235,7 @@ var SwapTablesWidget14 = function () {
                 width: 2,
                 colors: [baseColor]
             },
-            xaxis: {                 
+            xaxis: {
                 axisBorder: {
                     show: false,
                 },
@@ -16242,7 +16243,7 @@ var SwapTablesWidget14 = function () {
                     show: false
                 },
                 labels: {
-                    show: false                   
+                    show: false
                 },
                 crosshairs: {
                     show: false,
@@ -16261,7 +16262,7 @@ var SwapTablesWidget14 = function () {
                 min: 0,
                 max: 60,
                 labels: {
-                    show: false                     
+                    show: false
                 }
             },
             states: {
@@ -16296,37 +16297,37 @@ var SwapTablesWidget14 = function () {
             }
         };
 
-        chart.self = new ApexCharts(element, options);          
-        
+        chart.self = new ApexCharts(element, options);
+
         if (initByDefault === true) {
             // Set timeout to properly get the parent elements width
-            setTimeout(function() {
-                chart.self.render();  
+            setTimeout(function () {
+                chart.self.render();
                 chart.rendered = true;
             }, 200);
-        }            
+        }
     }
 
     // Public methods
     return {
-        init: function () { 
-            var chart1Data = [7, 10, 5, 21, 6, 11, 5, 23, 5, 11, 18, 7, 21,13];            
-            initChart(chart1, '#swap_table_widget_14_chart_1', chart1Data, true);
+        init: function () {
+            var chart1Data = [7, 10, 5, 21, 6, 11, 5, 23, 5, 11, 18, 7, 21, 13];
+            initChart(chart1, '#table_widget_chart_1', chart1Data, true);
 
-            var chart2Data = [17, 5, 23, 2, 21, 9, 17, 23, 4, 24, 9, 17, 21,7];            
-            initChart(chart2, '#swap_table_widget_14_chart_2', chart2Data, true);
+            var chart2Data = [17, 5, 23, 2, 21, 9, 17, 23, 4, 24, 9, 17, 21, 7];
+            initChart(chart2, '#table_widget_chart_2', chart2Data, true);
 
-            var chart3Data = [2, 24, 5, 17, 7, 2, 12, 24, 5, 24, 2, 8, 12,7];            
-            initChart(chart3, '#swap_table_widget_14_chart_3', chart3Data, true);
+            var chart3Data = [2, 24, 5, 17, 7, 2, 12, 24, 5, 24, 2, 8, 12, 7];
+            initChart(chart3, '#table_widget_chart_3', chart3Data, true);
 
-            var chart4Data = [24, 3, 5, 19, 3, 7, 25, 14, 5, 14, 2, 8, 5,17];            
-            initChart(chart4, '#swap_table_widget_14_chart_4', chart4Data, true);
+            var chart4Data = [24, 3, 5, 19, 3, 7, 25, 14, 5, 14, 2, 8, 5, 17];
+            initChart(chart4, '#table_widget_chart_4', chart4Data, true);
 
-            var chart5Data = [3, 23, 1, 19, 3, 17, 3, 9, 25, 4, 2, 18, 25,3];            
-            initChart(chart5, '#swap_table_widget_14_chart_5', chart5Data, true); 
+            var chart5Data = [3, 23, 1, 19, 3, 17, 3, 9, 25, 4, 2, 18, 25, 3];
+            initChart(chart5, '#table_widget_chart_5', chart5Data, true);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart1.rendered) {
                     chart1.self.destroy();
                 }
@@ -16347,28 +16348,28 @@ var SwapTablesWidget14 = function () {
                     chart5.self.destroy();
                 }
 
-                initChart(chart1, '#swap_table_widget_14_chart_1', chart1Data, chart1.rendered);
-                initChart(chart2, '#swap_table_widget_14_chart_2', chart2Data, chart2.rendered);  
-                initChart(chart3, '#swap_table_widget_14_chart_3', chart3Data, chart3.rendered);
-                initChart(chart4, '#swap_table_widget_14_chart_4', chart4Data, chart4.rendered); 
-                initChart(chart5, '#swap_table_widget_14_chart_5', chart5Data, chart5.rendered); 
+                initChart(chart1, '#table_widget_chart_1', chart1Data, chart1.rendered);
+                initChart(chart2, '#table_widget_chart_2', chart2Data, chart2.rendered);
+                initChart(chart3, '#table_widget_chart_3', chart3Data, chart3.rendered);
+                initChart(chart4, '#table_widget_chart_4', chart4Data, chart4.rendered);
+                initChart(chart5, '#table_widget_chart_5', chart5Data, chart5.rendered);
             });
-        }   
+        }
     }
 }();
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    window.SwapTablesWidget14 = module.exports = SwapTablesWidget14;
+    window.TablesWidget = module.exports = TablesWidget;
 }
 
 
 
- 
+
 "use strict";
 
 // Class definition
-var SwapTablesWidget15 = function () {
+var TablesWidget15 = function () {
     var chart1 = {
         self: null,
         rendered: false
@@ -16395,16 +16396,16 @@ var SwapTablesWidget15 = function () {
     };
 
     // Private methods
-    var initChart = function(chart, chartSelector, data, initByDefault) {
+    var initChart = function (chart, chartSelector, data, initByDefault) {
         var element = document.querySelector(chartSelector);
 
         if (!element) {
             return;
         }
-        
+
         var height = parseInt(SwapUtil.css(element, 'height'));
         var color = element.getAttribute('data-swap-chart-color');
-         
+
         var strokeColor = SwapUtil.getCssVariableValue('--swap-' + 'gray-300');
         var baseColor = SwapUtil.getCssVariableValue('--swap-' + color);
         var lightColor = SwapUtil.getCssVariableValue('--swap-body-bg');
@@ -16445,7 +16446,7 @@ var SwapTablesWidget15 = function () {
                 width: 2,
                 colors: [baseColor]
             },
-            xaxis: {                
+            xaxis: {
                 axisBorder: {
                     show: false
                 },
@@ -16453,7 +16454,7 @@ var SwapTablesWidget15 = function () {
                     show: false
                 },
                 labels: {
-                    show: false                    
+                    show: false
                 },
                 crosshairs: {
                     show: false,
@@ -16473,7 +16474,7 @@ var SwapTablesWidget15 = function () {
                 max: 60,
                 labels: {
                     show: false,
-                    ontSize: '12px'                   
+                    ontSize: '12px'
                 }
             },
             states: {
@@ -16508,37 +16509,37 @@ var SwapTablesWidget15 = function () {
             }
         };
 
-        chart.self = new ApexCharts(element, options);          
-        
+        chart.self = new ApexCharts(element, options);
+
         if (initByDefault === true) {
             // Set timeout to properly get the parent elements width
-            setTimeout(function() {
-                chart.self.render();  
+            setTimeout(function () {
+                chart.self.render();
                 chart.rendered = true;
             }, 200);
-        }              
+        }
     }
 
     // Public methods
     return {
-        init: function () { 
-            var chart1Data = [7, 10, 5, 21, 6, 11, 5, 23, 5, 11, 18, 7, 21,13];            
-            initChart(chart1, '#swap_table_widget_15_chart_1', chart1Data, true);
+        init: function () {
+            var chart1Data = [7, 10, 5, 21, 6, 11, 5, 23, 5, 11, 18, 7, 21, 13];
+            initChart(chart1, '#table_widget_15_chart_1', chart1Data, true);
 
-            var chart2Data = [17, 5, 23, 2, 21, 9, 17, 23, 4, 24, 9, 17, 21,7];            
-            initChart(chart2, '#swap_table_widget_15_chart_2', chart2Data, true);
+            var chart2Data = [17, 5, 23, 2, 21, 9, 17, 23, 4, 24, 9, 17, 21, 7];
+            initChart(chart2, '#table_widget_15_chart_2', chart2Data, true);
 
-            var chart3Data = [2, 24, 5, 17, 7, 2, 12, 24, 5, 24, 2, 8, 12,7];            
-            initChart(chart3, '#swap_table_widget_15_chart_3', chart3Data, true);
+            var chart3Data = [2, 24, 5, 17, 7, 2, 12, 24, 5, 24, 2, 8, 12, 7];
+            initChart(chart3, '#table_widget_15_chart_3', chart3Data, true);
 
-            var chart4Data = [24, 3, 5, 19, 3, 7, 25, 14, 5, 14, 2, 8, 5,17];            
-            initChart(chart4, '#swap_table_widget_15_chart_4', chart4Data, true);
+            var chart4Data = [24, 3, 5, 19, 3, 7, 25, 14, 5, 14, 2, 8, 5, 17];
+            initChart(chart4, '#table_widget_15_chart_4', chart4Data, true);
 
-            var chart5Data = [3, 23, 1, 19, 3, 17, 3, 9, 25, 4, 2, 18, 25,3];            
-            initChart(chart5, '#swap_table_widget_15_chart_5', chart5Data, true);
-            
+            var chart5Data = [3, 23, 1, 19, 3, 17, 3, 9, 25, 4, 2, 18, 25, 3];
+            initChart(chart5, '#table_widget_15_chart_5', chart5Data, true);
+
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart1.rendered) {
                     chart1.self.destroy();
                 }
@@ -16559,32 +16560,32 @@ var SwapTablesWidget15 = function () {
                     chart5.self.destroy();
                 }
 
-                initChart(chart1, '#swap_table_widget_15_chart_1', chart1Data, chart1.rendered);
-                initChart(chart2, '#swap_table_widget_15_chart_2', chart2Data, chart2.rendered);  
-                initChart(chart3, '#swap_table_widget_15_chart_3', chart3Data, chart3.rendered);
-                initChart(chart4, '#swap_table_widget_15_chart_4', chart4Data, chart4.rendered); 
-                initChart(chart5, '#swap_table_widget_15_chart_5', chart5Data, chart5.rendered); 
+                initChart(chart1, '#table_widget_15_chart_1', chart1Data, chart1.rendered);
+                initChart(chart2, '#table_widget_15_chart_2', chart2Data, chart2.rendered);
+                initChart(chart3, '#table_widget_15_chart_3', chart3Data, chart3.rendered);
+                initChart(chart4, '#table_widget_15_chart_4', chart4Data, chart4.rendered);
+                initChart(chart5, '#table_widget_15_chart_5', chart5Data, chart5.rendered);
             });
-        }   
+        }
     }
 }();
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    window.SwapTablesWidget15 = module.exports = SwapTablesWidget15;
+    window.TablesWidget15 = module.exports = TablesWidget15;
 }
 
 
 
- 
+
 "use strict";
 
 // Class definition
-var SwapTablesWidget16 = function () {
+var TablesWidget16 = function () {
     var chart1 = {
         self: null,
         rendered: false
-    }; 
+    };
 
     var chart2 = {
         self: null,
@@ -16609,7 +16610,7 @@ var SwapTablesWidget16 = function () {
     var chart6 = {
         self: null,
         rendered: false
-    }; 
+    };
 
     var chart7 = {
         self: null,
@@ -16634,7 +16635,7 @@ var SwapTablesWidget16 = function () {
     var chart11 = {
         self: null,
         rendered: false
-    }; 
+    };
 
     var chart12 = {
         self: null,
@@ -16659,7 +16660,7 @@ var SwapTablesWidget16 = function () {
     var chart16 = {
         self: null,
         rendered: false
-    }; 
+    };
 
     var chart17 = {
         self: null,
@@ -16682,13 +16683,13 @@ var SwapTablesWidget16 = function () {
     };
 
     // Private methods
-    var initChart = function(chart, toggle, selector, data, initByDefault) {
+    var initChart = function (chart, toggle, selector, data, initByDefault) {
         var element = document.querySelector(selector);
 
-        if ( !element ) {
+        if (!element) {
             return;
         }
-        
+
         var height = parseInt(SwapUtil.css(element, 'height'));
         var color = element.getAttribute('data-swap-chart-color');
         var labelColor = SwapUtil.getCssVariableValue('--swap-gray-800');
@@ -16732,7 +16733,7 @@ var SwapTablesWidget16 = function () {
                 width: 2,
                 colors: [baseColor]
             },
-            xaxis: {                
+            xaxis: {
                 axisBorder: {
                     show: false
                 },
@@ -16740,7 +16741,7 @@ var SwapTablesWidget16 = function () {
                     show: false
                 },
                 labels: {
-                    show: false                    
+                    show: false
                 },
                 crosshairs: {
                     show: false,
@@ -16760,7 +16761,7 @@ var SwapTablesWidget16 = function () {
                 max: 60,
                 labels: {
                     show: false,
-                    ontSize: '12px'                   
+                    ontSize: '12px'
                 }
             },
             states: {
@@ -16795,20 +16796,20 @@ var SwapTablesWidget16 = function () {
             }
         };
 
-        chart.self = new ApexCharts(element, options);        
+        chart.self = new ApexCharts(element, options);
         var tab = document.querySelector(toggle);
-        
+
         if (initByDefault === true) {
             // Set timeout to properly get the parent elements width
-            setTimeout(function() {
-                chart.self.render();  
+            setTimeout(function () {
+                chart.self.render();
                 chart.rendered = true;
             }, 200);
-        }        
+        }
 
         tab.addEventListener('shown.bs.tab', function (event) {
             if (chart.rendered === false) {
-                chart.self.render();  
+                chart.self.render();
                 chart.rendered = true;
             }
         });
@@ -16816,73 +16817,73 @@ var SwapTablesWidget16 = function () {
 
     // Public methods
     return {
-        init: function () {  
-            var chart1Data = [16, 10, 15, 21, 6, 11, 5, 23, 5, 11, 18, 7, 21, 13];  
-            initChart(chart1, '#swap_stats_widget_16_tab_link_1', '#swap_table_widget_16_chart_1_1', chart1Data, true);        
-             
-            var chart2Data = [8, 5, 16, 3, 23, 16, 11, 15, 3, 11, 15, 7, 17, 9];  
-            initChart(chart2, '#swap_stats_widget_16_tab_link_1', '#swap_table_widget_16_chart_1_2', chart2Data, true);    
-            
-            var chart3Data = [8, 6, 16, 3, 23, 16, 11, 14, 3, 11, 15, 8, 17, 9];  
-            initChart(chart3, '#swap_stats_widget_16_tab_link_1', '#swap_table_widget_16_chart_1_3', chart3Data, true);  
-            
-            var chart4Data = [12, 5, 23, 12, 21, 9, 17, 20, 4, 24, 9, 13, 18, 9];  
-            initChart(chart4, '#swap_stats_widget_16_tab_link_1', '#swap_table_widget_16_chart_1_4', chart4Data, true); 
+        init: function () {
+            var chart1Data = [16, 10, 15, 21, 6, 11, 5, 23, 5, 11, 18, 7, 21, 13];
+            initChart(chart1, '#swap_stats_widget_16_tab_link_1', '#table_widget_16_chart_1_1', chart1Data, true);
+
+            var chart2Data = [8, 5, 16, 3, 23, 16, 11, 15, 3, 11, 15, 7, 17, 9];
+            initChart(chart2, '#swap_stats_widget_16_tab_link_1', '#table_widget_16_chart_1_2', chart2Data, true);
+
+            var chart3Data = [8, 6, 16, 3, 23, 16, 11, 14, 3, 11, 15, 8, 17, 9];
+            initChart(chart3, '#swap_stats_widget_16_tab_link_1', '#table_widget_16_chart_1_3', chart3Data, true);
+
+            var chart4Data = [12, 5, 23, 12, 21, 9, 17, 20, 4, 24, 9, 13, 18, 9];
+            initChart(chart4, '#swap_stats_widget_16_tab_link_1', '#table_widget_16_chart_1_4', chart4Data, true);
 
 
-            var chart5Data = [13, 10, 15, 21, 6, 11, 5, 21, 5, 12, 18, 7, 21, 13];  
-            initChart(chart5, '#swap_stats_widget_16_tab_link_2', '#swap_table_widget_16_chart_2_1', chart5Data, false);        
-             
-            var chart6Data = [13, 5, 21, 12, 21, 9, 17, 20, 4, 23, 9, 17, 21, 7];  
-            initChart(chart6, '#swap_stats_widget_16_tab_link_2', '#swap_table_widget_16_chart_2_2', chart6Data, false);    
-            
-            var chart7Data = [8, 10, 14, 21, 6, 31, 5, 21, 5, 11, 15, 7, 23, 13];  
-            initChart(chart7, '#swap_stats_widget_16_tab_link_2', '#swap_table_widget_16_chart_2_3', chart7Data, false);  
-            
-            var chart8Data = [6, 10, 12, 21, 6, 11, 7, 23, 5, 12, 18, 7, 21, 15];  
-            initChart(chart8, '#swap_stats_widget_16_tab_link_2', '#swap_table_widget_16_chart_2_4', chart8Data, false); 
+            var chart5Data = [13, 10, 15, 21, 6, 11, 5, 21, 5, 12, 18, 7, 21, 13];
+            initChart(chart5, '#swap_stats_widget_16_tab_link_2', '#table_widget_16_chart_2_1', chart5Data, false);
+
+            var chart6Data = [13, 5, 21, 12, 21, 9, 17, 20, 4, 23, 9, 17, 21, 7];
+            initChart(chart6, '#swap_stats_widget_16_tab_link_2', '#table_widget_16_chart_2_2', chart6Data, false);
+
+            var chart7Data = [8, 10, 14, 21, 6, 31, 5, 21, 5, 11, 15, 7, 23, 13];
+            initChart(chart7, '#swap_stats_widget_16_tab_link_2', '#table_widget_16_chart_2_3', chart7Data, false);
+
+            var chart8Data = [6, 10, 12, 21, 6, 11, 7, 23, 5, 12, 18, 7, 21, 15];
+            initChart(chart8, '#swap_stats_widget_16_tab_link_2', '#table_widget_16_chart_2_4', chart8Data, false);
 
 
-            var chart9Data = [7, 10, 5, 21, 6, 11, 5, 23, 5, 11, 18, 7, 21,13];  
-            initChart(chart9, '#swap_stats_widget_16_tab_link_3', '#swap_table_widget_16_chart_3_1', chart9Data, false);        
-             
-            var chart10Data = [8, 5, 16, 2, 19, 9, 17, 21, 4, 24, 4, 13, 21,5];  
-            initChart(chart10, '#swap_stats_widget_16_tab_link_3', '#swap_table_widget_16_chart_3_2', chart10Data, false);    
-            
-            var chart11Data = [15, 10, 12, 21, 6, 11, 23, 11, 5, 12, 18, 7, 21, 15];  
-            initChart(chart11, '#swap_stats_widget_16_tab_link_3', '#swap_table_widget_16_chart_3_3', chart11Data, false);  
-            
-            var chart12Data = [3, 9, 12, 23, 6, 11, 7, 23, 5, 12, 14, 7, 21, 8];  
-            initChart(chart12, '#swap_stats_widget_16_tab_link_3', '#swap_table_widget_16_chart_3_4', chart12Data, false);
+            var chart9Data = [7, 10, 5, 21, 6, 11, 5, 23, 5, 11, 18, 7, 21, 13];
+            initChart(chart9, '#swap_stats_widget_16_tab_link_3', '#table_widget_16_chart_3_1', chart9Data, false);
+
+            var chart10Data = [8, 5, 16, 2, 19, 9, 17, 21, 4, 24, 4, 13, 21, 5];
+            initChart(chart10, '#swap_stats_widget_16_tab_link_3', '#table_widget_16_chart_3_2', chart10Data, false);
+
+            var chart11Data = [15, 10, 12, 21, 6, 11, 23, 11, 5, 12, 18, 7, 21, 15];
+            initChart(chart11, '#swap_stats_widget_16_tab_link_3', '#table_widget_16_chart_3_3', chart11Data, false);
+
+            var chart12Data = [3, 9, 12, 23, 6, 11, 7, 23, 5, 12, 14, 7, 21, 8];
+            initChart(chart12, '#swap_stats_widget_16_tab_link_3', '#table_widget_16_chart_3_4', chart12Data, false);
 
 
-            var chart13Data = [9, 14, 15, 21, 8, 11, 5, 23, 5, 11, 18, 5, 23, 8];  
-            initChart(chart13, '#swap_stats_widget_16_tab_link_4', '#swap_table_widget_16_chart_4_1', chart13Data, false);        
-             
-            var chart14Data = [7, 5, 23, 12, 21, 9, 17, 15, 4, 24, 9, 17, 21, 7];  
-            initChart(chart14, '#swap_stats_widget_16_tab_link_4', '#swap_table_widget_16_chart_4_2', chart14Data, false);    
-            
-            var chart15Data = [8, 10, 14, 21, 6, 31, 8, 23, 5, 3, 14, 7, 21, 12];  
-            initChart(chart15, '#swap_stats_widget_16_tab_link_4', '#swap_table_widget_16_chart_4_3', chart15Data, false);  
-            
-            var chart16Data = [6, 12, 12, 19, 6, 11, 7, 23, 5, 12, 18, 7, 21, 15];  
-            initChart(chart16, '#swap_stats_widget_16_tab_link_4', '#swap_table_widget_16_chart_4_4', chart16Data, false);
+            var chart13Data = [9, 14, 15, 21, 8, 11, 5, 23, 5, 11, 18, 5, 23, 8];
+            initChart(chart13, '#swap_stats_widget_16_tab_link_4', '#table_widget_16_chart_4_1', chart13Data, false);
+
+            var chart14Data = [7, 5, 23, 12, 21, 9, 17, 15, 4, 24, 9, 17, 21, 7];
+            initChart(chart14, '#swap_stats_widget_16_tab_link_4', '#table_widget_16_chart_4_2', chart14Data, false);
+
+            var chart15Data = [8, 10, 14, 21, 6, 31, 8, 23, 5, 3, 14, 7, 21, 12];
+            initChart(chart15, '#swap_stats_widget_16_tab_link_4', '#table_widget_16_chart_4_3', chart15Data, false);
+
+            var chart16Data = [6, 12, 12, 19, 6, 11, 7, 23, 5, 12, 18, 7, 21, 15];
+            initChart(chart16, '#swap_stats_widget_16_tab_link_4', '#table_widget_16_chart_4_4', chart16Data, false);
 
 
-            var chart17Data = [5, 10, 15, 21, 6, 11, 5, 23, 5, 11, 17, 7, 21, 13];  
-            initChart(chart17, '#swap_stats_widget_16_tab_link_5', '#swap_table_widget_16_chart_5_1', chart17Data, false);        
-             
-            var chart18Data = [4, 5, 23, 12, 21, 9, 17, 15, 4, 24, 9, 17, 21, 7];  
-            initChart(chart18, '#swap_stats_widget_16_tab_link_5', '#swap_table_widget_16_chart_5_2', chart18Data, false);    
-            
-            var chart19Data = [7, 10, 14, 21, 6, 31, 5, 23, 5, 11, 15, 7, 21, 17];  
-            initChart(chart19, '#swap_stats_widget_16_tab_link_5', '#swap_table_widget_16_chart_5_3', chart19Data, false);  
-            
-            var chart20Data = [3, 10, 12, 23, 6, 11, 7, 22, 5, 12, 18, 7, 21, 14];  
-            initChart(chart20, '#swap_stats_widget_16_tab_link_5', '#swap_table_widget_16_chart_5_4', chart20Data, false);
+            var chart17Data = [5, 10, 15, 21, 6, 11, 5, 23, 5, 11, 17, 7, 21, 13];
+            initChart(chart17, '#swap_stats_widget_16_tab_link_5', '#table_widget_16_chart_5_1', chart17Data, false);
+
+            var chart18Data = [4, 5, 23, 12, 21, 9, 17, 15, 4, 24, 9, 17, 21, 7];
+            initChart(chart18, '#swap_stats_widget_16_tab_link_5', '#table_widget_16_chart_5_2', chart18Data, false);
+
+            var chart19Data = [7, 10, 14, 21, 6, 31, 5, 23, 5, 11, 15, 7, 21, 17];
+            initChart(chart19, '#swap_stats_widget_16_tab_link_5', '#table_widget_16_chart_5_3', chart19Data, false);
+
+            var chart20Data = [3, 10, 12, 23, 6, 11, 7, 22, 5, 12, 18, 7, 21, 14];
+            initChart(chart20, '#swap_stats_widget_16_tab_link_5', '#table_widget_16_chart_5_4', chart20Data, false);
 
             // Update chart on theme mode change
-            ThemeMode.on("kt.thememode.change", function() {
+            ThemeMode.on("kt.thememode.change", function () {
                 if (chart1.rendered) {
                     chart1.self.destroy();
                 }
@@ -16961,49 +16962,49 @@ var SwapTablesWidget16 = function () {
 
                 if (chart20.rendered) {
                     chart20.self.destroy();
-                }                
+                }
 
-                initChart(chart1, '#swap_stats_widget_16_tab_link_1', '#swap_table_widget_16_chart_1_1', chart1Data, chart1.rendered);
-                initChart(chart2, '#swap_stats_widget_16_tab_link_1', '#swap_table_widget_16_chart_1_2', chart2Data, chart2.rendered);  
-                initChart(chart3, '#swap_stats_widget_16_tab_link_1', '#swap_table_widget_16_chart_1_3', chart3Data, chart3.rendered);
-                initChart(chart4, '#swap_stats_widget_16_tab_link_1', '#swap_table_widget_16_chart_1_4', chart4Data, chart4.rendered); 
+                initChart(chart1, '#swap_stats_widget_16_tab_link_1', '#table_widget_16_chart_1_1', chart1Data, chart1.rendered);
+                initChart(chart2, '#swap_stats_widget_16_tab_link_1', '#table_widget_16_chart_1_2', chart2Data, chart2.rendered);
+                initChart(chart3, '#swap_stats_widget_16_tab_link_1', '#table_widget_16_chart_1_3', chart3Data, chart3.rendered);
+                initChart(chart4, '#swap_stats_widget_16_tab_link_1', '#table_widget_16_chart_1_4', chart4Data, chart4.rendered);
 
-                initChart(chart5, '#swap_stats_widget_16_tab_link_2', '#swap_table_widget_16_chart_2_1', chart5Data, chart5.rendered);
-                initChart(chart6, '#swap_stats_widget_16_tab_link_2', '#swap_table_widget_16_chart_2_2', chart6Data, chart6.rendered);  
-                initChart(chart7, '#swap_stats_widget_16_tab_link_2', '#swap_table_widget_16_chart_2_3', chart7Data, chart7.rendered);
-                initChart(chart8, '#swap_stats_widget_16_tab_link_2', '#swap_table_widget_16_chart_2_4', chart8Data, chart8.rendered); 
+                initChart(chart5, '#swap_stats_widget_16_tab_link_2', '#table_widget_16_chart_2_1', chart5Data, chart5.rendered);
+                initChart(chart6, '#swap_stats_widget_16_tab_link_2', '#table_widget_16_chart_2_2', chart6Data, chart6.rendered);
+                initChart(chart7, '#swap_stats_widget_16_tab_link_2', '#table_widget_16_chart_2_3', chart7Data, chart7.rendered);
+                initChart(chart8, '#swap_stats_widget_16_tab_link_2', '#table_widget_16_chart_2_4', chart8Data, chart8.rendered);
 
-                initChart(chart9, '#swap_stats_widget_16_tab_link_3', '#swap_table_widget_16_chart_3_1', chart9Data, chart9.rendered);
-                initChart(chart10, '#swap_stats_widget_16_tab_link_3', '#swap_table_widget_16_chart_3_2', chart10Data, chart10.rendered);  
-                initChart(chart11, '#swap_stats_widget_16_tab_link_3', '#swap_table_widget_16_chart_3_3', chart11Data, chart11.rendered);
-                initChart(chart12, '#swap_stats_widget_16_tab_link_3', '#swap_table_widget_16_chart_3_4', chart12Data, chart12.rendered); 
+                initChart(chart9, '#swap_stats_widget_16_tab_link_3', '#table_widget_16_chart_3_1', chart9Data, chart9.rendered);
+                initChart(chart10, '#swap_stats_widget_16_tab_link_3', '#table_widget_16_chart_3_2', chart10Data, chart10.rendered);
+                initChart(chart11, '#swap_stats_widget_16_tab_link_3', '#table_widget_16_chart_3_3', chart11Data, chart11.rendered);
+                initChart(chart12, '#swap_stats_widget_16_tab_link_3', '#table_widget_16_chart_3_4', chart12Data, chart12.rendered);
 
-                initChart(chart13, '#swap_stats_widget_16_tab_link_4', '#swap_table_widget_16_chart_4_1', chart13Data, chart13.rendered);
-                initChart(chart14, '#swap_stats_widget_16_tab_link_4', '#swap_table_widget_16_chart_4_2', chart14Data, chart14.rendered);  
-                initChart(chart15, '#swap_stats_widget_16_tab_link_4', '#swap_table_widget_16_chart_4_3', chart15Data, chart15.rendered);
-                initChart(chart16, '#swap_stats_widget_16_tab_link_4', '#swap_table_widget_16_chart_4_4', chart16Data, chart16.rendered); 
+                initChart(chart13, '#swap_stats_widget_16_tab_link_4', '#table_widget_16_chart_4_1', chart13Data, chart13.rendered);
+                initChart(chart14, '#swap_stats_widget_16_tab_link_4', '#table_widget_16_chart_4_2', chart14Data, chart14.rendered);
+                initChart(chart15, '#swap_stats_widget_16_tab_link_4', '#table_widget_16_chart_4_3', chart15Data, chart15.rendered);
+                initChart(chart16, '#swap_stats_widget_16_tab_link_4', '#table_widget_16_chart_4_4', chart16Data, chart16.rendered);
 
-                initChart(chart17, '#swap_stats_widget_16_tab_link_5', '#swap_table_widget_16_chart_5_1', chart17Data, chart17.rendered);
-                initChart(chart18, '#swap_stats_widget_16_tab_link_5', '#swap_table_widget_16_chart_5_2', chart18Data, chart18.rendered);  
-                initChart(chart19, '#swap_stats_widget_16_tab_link_5', '#swap_table_widget_16_chart_5_3', chart19Data, chart19.rendered);
-                initChart(chart20, '#swap_stats_widget_16_tab_link_5', '#swap_table_widget_16_chart_5_4', chart20Data, chart20.rendered);                 
-            });            
-        }   
+                initChart(chart17, '#swap_stats_widget_16_tab_link_5', '#table_widget_16_chart_5_1', chart17Data, chart17.rendered);
+                initChart(chart18, '#swap_stats_widget_16_tab_link_5', '#table_widget_16_chart_5_2', chart18Data, chart18.rendered);
+                initChart(chart19, '#swap_stats_widget_16_tab_link_5', '#table_widget_16_chart_5_3', chart19Data, chart19.rendered);
+                initChart(chart20, '#swap_stats_widget_16_tab_link_5', '#table_widget_16_chart_5_4', chart20Data, chart20.rendered);
+            });
+        }
     }
 }();
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    window.SwapTablesWidget16 = module.exports = SwapTablesWidget16;
+    window.TablesWidget16 = module.exports = TablesWidget16;
 }
 
 
 
- 
+
 "use strict";
 
 // Class definition
-var SwapTablesWidget3 = function () {
+var TablesWidget3 = function () {
     var table;
     var datatable;
 
@@ -17077,14 +17078,14 @@ var SwapTablesWidget3 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    window.SwapTablesWidget3 = module.exports = SwapTablesWidget3;
+    window.TablesWidget3 = module.exports = TablesWidget3;
 }
 
 
 "use strict";
 
 // Class definition
-var SwapTablesWidget4 = function () {
+var TablesWidget4 = function () {
     var table;
     var datatable;
     var template;
@@ -17277,7 +17278,7 @@ var SwapTablesWidget4 = function () {
                 // When multiple rows detected
                 if (index === (data.length - 1)) { // first row
                     //let borderClasses = ['rounded-start', 'rounded-bottom-0'];
-                   // newTemplate.querySelectorAll('td')[0].classList.add(...borderClasses);
+                    // newTemplate.querySelectorAll('td')[0].classList.add(...borderClasses);
                     //borderClasses = ['rounded-end', 'rounded-bottom-0'];
                     //newTemplate.querySelectorAll('td')[4].classList.add(...borderClasses);
                 }
@@ -17317,7 +17318,7 @@ var SwapTablesWidget4 = function () {
     // Public methods
     return {
         init: function () {
-            table = document.querySelector('#swap_table_widget_4_table');
+            table = document.querySelector('#table_widget_4_table');
 
             if (!table) {
                 return;
@@ -17333,14 +17334,14 @@ var SwapTablesWidget4 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    window.SwapTablesWidget4 = module.exports = SwapTablesWidget4;
+    window.TablesWidget4 = module.exports = TablesWidget4;
 }
 
 
 "use strict";
 
 // Class definition
-var SwapTablesWidget5 = function () {
+var TablesWidget5 = function () {
     var table;
     var datatable;
 
@@ -17385,7 +17386,7 @@ var SwapTablesWidget5 = function () {
     // Public methods
     return {
         init: function () {
-            table = document.querySelector('#swap_table_widget_5_table');
+            table = document.querySelector('#table_widget_5_table');
 
             if (!table) {
                 return;
@@ -17399,7 +17400,7 @@ var SwapTablesWidget5 = function () {
 
 // Webpack support
 if (typeof module !== 'undefined') {
-    window.SwapTablesWidget5 = module.exports = SwapTablesWidget5;
+    window.TablesWidget5 = module.exports = TablesWidget5;
 }
 
 
@@ -17416,7 +17417,7 @@ var SwapTimelineWidget1 = function () {
             return;
         }
 
-        if(element.innerHTML){
+        if (element.innerHTML) {
             return;
         }
 
@@ -17568,7 +17569,7 @@ var SwapTimelineWidget1 = function () {
                 if (blockUI.isBlocked()) {
                     setTimeout(() => {
                         blockUI.release();
-                    }, 1000);      
+                    }, 1000);
                 }
             }
         };
@@ -17577,7 +17578,7 @@ var SwapTimelineWidget1 = function () {
         const timeline = new vis.Timeline(element, items, groups, options);
 
         // Prevent infinite loop draws
-        timeline.on("currentTimeTick", () => {            
+        timeline.on("currentTimeTick", () => {
             // After fired the first time we un-subscribed
             timeline.off("currentTimeTick");
         });
@@ -17591,7 +17592,7 @@ var SwapTimelineWidget1 = function () {
             return;
         }
 
-        if(element.innerHTML){
+        if (element.innerHTML) {
             return;
         }
 
@@ -17744,7 +17745,7 @@ var SwapTimelineWidget1 = function () {
                 if (blockUI.isBlocked()) {
                     setTimeout(() => {
                         blockUI.release();
-                    }, 1000);      
+                    }, 1000);
                 }
             }
         };
@@ -17753,7 +17754,7 @@ var SwapTimelineWidget1 = function () {
         const timeline = new vis.Timeline(element, items, groups, options);
 
         // Prevent infinite loop draws
-        timeline.on("currentTimeTick", () => {            
+        timeline.on("currentTimeTick", () => {
             // After fired the first time we un-subscribed
             timeline.off("currentTimeTick");
         });
@@ -17767,7 +17768,7 @@ var SwapTimelineWidget1 = function () {
             return;
         }
 
-        if(element.innerHTML){
+        if (element.innerHTML) {
             return;
         }
 
@@ -17913,14 +17914,14 @@ var SwapTimelineWidget1 = function () {
             // Remove block ui on initial draw
             onInitialDrawComplete: function () {
                 handleAvatarPath();
-                
+
                 const target = element.closest('[data-swap-timeline-widget-1-blockui="true"]');
                 const blockUI = SwapBlockUI.getInstance(target);
 
                 if (blockUI.isBlocked()) {
                     setTimeout(() => {
                         blockUI.release();
-                    }, 1000);                    
+                    }, 1000);
                 }
             }
         };
@@ -17929,7 +17930,7 @@ var SwapTimelineWidget1 = function () {
         const timeline = new vis.Timeline(element, items, groups, options);
 
         // Prevent infinite loop draws
-        timeline.on("currentTimeTick", () => {            
+        timeline.on("currentTimeTick", () => {
             // After fired the first time we un-subscribed
             timeline.off("currentTimeTick");
         });
@@ -17957,12 +17958,12 @@ var SwapTimelineWidget1 = function () {
         tabs.forEach(tab => {
             tab.addEventListener('shown.bs.tab', e => {
                 // Week tab
-                if(tab.getAttribute('href') === '#swap_timeline_widget_1_tab_week'){
+                if (tab.getAttribute('href') === '#swap_timeline_widget_1_tab_week') {
                     initTimelineWeek();
                 }
 
                 // Month tab
-                if(tab.getAttribute('href') === '#swap_timeline_widget_1_tab_month'){
+                if (tab.getAttribute('href') === '#swap_timeline_widget_1_tab_month') {
                     initTimelineMonth();
                 }
             });
@@ -17973,7 +17974,7 @@ var SwapTimelineWidget1 = function () {
     const handleAvatarPath = () => {
         const avatars = document.querySelectorAll('[data-swap-timeline-avatar-src]');
 
-        if(!avatars){
+        if (!avatars) {
             return;
         }
 
@@ -18004,9 +18005,9 @@ if (typeof module !== 'undefined') {
 // Class definition
 var SwapTimelineWidget2 = function () {
     // Private methods
-    var handleCheckbox = function() {
-        var card = document.querySelector('#swap_timeline_widget_2_card');        
-        
+    var handleCheckbox = function () {
+        var card = document.querySelector('#swap_timeline_widget_2_card');
+
         if (!card) {
             return;
         }
@@ -18018,7 +18019,7 @@ var SwapTimelineWidget2 = function () {
             var bullet = tr.querySelector('[data-swap-element="bullet"]');
             var status = tr.querySelector('[data-swap-element="status"]');
 
-            if ( this.checked === true ) {
+            if (this.checked === true) {
                 check.classList.add('form-check-success');
 
                 bullet.classList.remove('bg-primary');
@@ -18042,9 +18043,9 @@ var SwapTimelineWidget2 = function () {
 
     // Public methods
     return {
-        init: function () {           
-            handleCheckbox();             
-        }   
+        init: function () {
+            handleCheckbox();
+        }
     }
 }();
 
@@ -18055,7 +18056,7 @@ if (typeof module !== 'undefined') {
 
 
 
- 
+
 "use strict";
 
 // Class definition
@@ -18069,7 +18070,7 @@ var SwapTimelineWidget4 = function () {
             return;
         }
 
-        if(element.innerHTML){
+        if (element.innerHTML) {
             return;
         }
 
@@ -18221,7 +18222,7 @@ var SwapTimelineWidget4 = function () {
                 if (blockUI.isBlocked()) {
                     setTimeout(() => {
                         blockUI.release();
-                    }, 1000);      
+                    }, 1000);
                 }
             }
         };
@@ -18230,7 +18231,7 @@ var SwapTimelineWidget4 = function () {
         const timeline = new vis.Timeline(element, items, groups, options);
 
         // Prevent infinite loop draws
-        timeline.on("currentTimeTick", () => {            
+        timeline.on("currentTimeTick", () => {
             // After fired the first time we un-subscribed
             timeline.off("currentTimeTick");
         });
@@ -18244,7 +18245,7 @@ var SwapTimelineWidget4 = function () {
             return;
         }
 
-        if(element.innerHTML){
+        if (element.innerHTML) {
             return;
         }
 
@@ -18397,7 +18398,7 @@ var SwapTimelineWidget4 = function () {
                 if (blockUI.isBlocked()) {
                     setTimeout(() => {
                         blockUI.release();
-                    }, 1000);      
+                    }, 1000);
                 }
             }
         };
@@ -18406,7 +18407,7 @@ var SwapTimelineWidget4 = function () {
         const timeline = new vis.Timeline(element, items, groups, options);
 
         // Prevent infinite loop draws
-        timeline.on("currentTimeTick", () => {            
+        timeline.on("currentTimeTick", () => {
             // After fired the first time we un-subscribed
             timeline.off("currentTimeTick");
         });
@@ -18420,7 +18421,7 @@ var SwapTimelineWidget4 = function () {
             return;
         }
 
-        if(element.innerHTML){
+        if (element.innerHTML) {
             return;
         }
 
@@ -18566,14 +18567,14 @@ var SwapTimelineWidget4 = function () {
             // Remove block ui on initial draw
             onInitialDrawComplete: function () {
                 handleAvatarPath();
-                
+
                 const target = element.closest('[data-swap-timeline-widget-4-blockui="true"]');
                 const blockUI = SwapBlockUI.getInstance(target);
 
                 if (blockUI.isBlocked()) {
                     setTimeout(() => {
                         blockUI.release();
-                    }, 1000);                    
+                    }, 1000);
                 }
             }
         };
@@ -18582,12 +18583,12 @@ var SwapTimelineWidget4 = function () {
         const timeline = new vis.Timeline(element, items, groups, options);
 
         // Prevent infinite loop draws
-        timeline.on("currentTimeTick", () => {            
+        timeline.on("currentTimeTick", () => {
             // After fired the first time we un-subscribed
             timeline.off("currentTimeTick");
         });
     }
-    
+
     // 2022 timeline
     const initTimeline2022 = () => {
         // Detect element
@@ -18596,7 +18597,7 @@ var SwapTimelineWidget4 = function () {
             return;
         }
 
-        if(element.innerHTML){
+        if (element.innerHTML) {
             return;
         }
 
@@ -18742,14 +18743,14 @@ var SwapTimelineWidget4 = function () {
             // Remove block ui on initial draw
             onInitialDrawComplete: function () {
                 handleAvatarPath();
-                
+
                 const target = element.closest('[data-swap-timeline-widget-4-blockui="true"]');
                 const blockUI = SwapBlockUI.getInstance(target);
 
                 if (blockUI.isBlocked()) {
                     setTimeout(() => {
                         blockUI.release();
-                    }, 1000);                    
+                    }, 1000);
                 }
             }
         };
@@ -18758,7 +18759,7 @@ var SwapTimelineWidget4 = function () {
         const timeline = new vis.Timeline(element, items, groups, options);
 
         // Prevent infinite loop draws
-        timeline.on("currentTimeTick", () => {            
+        timeline.on("currentTimeTick", () => {
             // After fired the first time we un-subscribed
             timeline.off("currentTimeTick");
         });
@@ -18785,17 +18786,17 @@ var SwapTimelineWidget4 = function () {
         tabs.forEach(tab => {
             tab.addEventListener('shown.bs.tab', e => {
                 // Week tab
-                if(tab.getAttribute('href') === '#swap_timeline_widget_4_tab_week'){
+                if (tab.getAttribute('href') === '#swap_timeline_widget_4_tab_week') {
                     initTimelineWeek();
                 }
 
                 // Month tab
-                if(tab.getAttribute('href') === '#swap_timeline_widget_4_tab_month'){
+                if (tab.getAttribute('href') === '#swap_timeline_widget_4_tab_month') {
                     initTimelineMonth();
                 }
 
                 // 2022 tab
-                if(tab.getAttribute('href') === '#swap_timeline_widget_4_tab_2022'){
+                if (tab.getAttribute('href') === '#swap_timeline_widget_4_tab_2022') {
                     initTimeline2022();
                 }
             });
@@ -18806,7 +18807,7 @@ var SwapTimelineWidget4 = function () {
     const handleAvatarPath = () => {
         const avatars = document.querySelectorAll('[data-swap-timeline-avatar-src]');
 
-        if(!avatars){
+        if (!avatars) {
             return;
         }
 

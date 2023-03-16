@@ -2,7 +2,7 @@
 
 var SwapUsersList = function () {
     // Define shared variables
-    var table = document.getElementById('swap_table_users');
+    var table = document.getElementById('table_users');
     var datatable;
     var toolbarBase;
     var toolbarSelected;
