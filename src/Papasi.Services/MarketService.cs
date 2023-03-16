@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using Papasi.Models;
 using System;
 using System.Collections.Generic;
@@ -23,9 +24,17 @@ namespace Papasi.Services
             return _coinsURLOptions.Value.Url ??
                         throw new InvalidOperationException("Coins Url is null");
         }
-        public Task<List<Coins>?> GetCoinsListAsync()
+        public async Task<List<Coins>?> GetCoinsListAsync()
         {
-            throw new NotImplementedException();
+            using (var httpClient = new HttpClient())
+            {
+                var json = await httpClient.GetStringAsync(GetCoinsURL());
+
+                List<Coins>? _coins = JsonConvert.DeserializeObject<List<Coins>>(json);
+
+
+                return _coins;
+            }
         }
 
 
