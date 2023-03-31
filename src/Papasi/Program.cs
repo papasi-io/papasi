@@ -17,16 +17,7 @@ using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigureLogging(builder.Logging, builder.Environment, builder.Configuration);
-string password = args
-   .DefaultIfEmpty("--password=")
-   .Where(arg => arg.StartsWith("--password", ignoreCase: true, CultureInfo.InvariantCulture))
-   .Select(arg => arg.Replace("--password=", string.Empty, ignoreCase: true, CultureInfo.InvariantCulture))
-   .FirstOrDefault();
-if (string.IsNullOrWhiteSpace(password))
-{
-    password = "M123@321#20r";
-}
-ConfigureServices(builder.Services, builder.Configuration, password);
+ConfigureServices(builder.Services, builder.Configuration);
 var webApp = builder.Build();
 ConfigureMiddlewares(webApp, webApp.Environment);
 ConfigureEndpoints(webApp);
@@ -34,7 +25,7 @@ ConfigureDatabase(webApp);
 webApp.Run();
 
 
-void ConfigureServices(IServiceCollection services, IConfiguration configuration, string password)
+void ConfigureServices(IServiceCollection services, IConfiguration configuration)
 {
     services.AddOptions<AdminUserSeed>().Bind(configuration.GetSection("AdminUserSeed"));
 
@@ -45,7 +36,7 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
     // NOTE! this method of registering the db-context doesn't work with blazor-server apps!
     //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString))
 
-    services.AddDbContextFactory<ApplicationDbContext>(options => options.UseSqlServer(connectionString.Replace("#password", password)));
+    services.AddDbContextFactory<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
     services.AddScoped(serviceProvider =>
                            serviceProvider.GetRequiredService<IDbContextFactory<ApplicationDbContext>>()
                                           .CreateDbContext());
