@@ -9,34 +9,54 @@ using System.Threading.Tasks;
 
 namespace Papasi.Services
 {
-    public class MarketService : IMarketService
-    {
-        private readonly IOptions<CoinsURL> _coinsURLOptions;
+	public class MarketService : IMarketService
+	{
+		private readonly IOptions<CoinsURL> _coinsURLOptions;
+		private readonly IOptions<ChainsInfoURL> _chainsInfoURLOptions;
 
-        public MarketService(IOptions<CoinsURL> coinsURLOptions)
-        {
-            _coinsURLOptions = coinsURLOptions ?? throw new ArgumentNullException(nameof(coinsURLOptions));
+		public MarketService(IOptions<CoinsURL> coinsURLOptions, IOptions<ChainsInfoURL> chainsInfoURLOptions)
+		{
+			_coinsURLOptions = coinsURLOptions ?? throw new ArgumentNullException(nameof(coinsURLOptions));
+			_chainsInfoURLOptions = chainsInfoURLOptions ?? throw new ArgumentNullException(nameof(coinsURLOptions));
+		}
 
-        }
+		public string? GetCoinsURL()
+		{
+			return _coinsURLOptions.Value.Url ??
+						throw new InvalidOperationException("Coins Url is null");
+		}
+		public async Task<List<Coin>?> GetCoinsListAsync()
+		{
+			using (var httpClient = new HttpClient())
+			{
+				httpClient.Timeout = TimeSpan.FromSeconds(3);
 
-        public string? GetCoinsURL()
-        {
-            return _coinsURLOptions.Value.Url ??
-                        throw new InvalidOperationException("Coins Url is null");
-        }
-        public async Task<List<Coins>?> GetCoinsListAsync()
-        {
-            using (var httpClient = new HttpClient())
-            {
-                var json = await httpClient.GetStringAsync(GetCoinsURL());
+				var _coinsListJson = await httpClient.GetStringAsync(GetCoinsURL());
 
-                List<Coins>? _coins = JsonConvert.DeserializeObject<List<Coins>>(json);
+				List<Coin>? _coins = JsonConvert.DeserializeObject<List<Coin>>(_coinsListJson);
+				if (_coins != null)
+				{
+					foreach (var item in _coins)
+					{
+						var _chainInfoJson = await httpClient.GetStringAsync($"{GetChainsInfoURL()}{item.Symbol}.json");
+						ChainInfo? chainInfo = JsonConvert.DeserializeObject<ChainInfo>(_chainInfoJson);
+						if (chainInfo != null)
+						{
+							item.ChainsInfo = chainInfo;
+						}
+					}
+				}
+
+				return _coins;
+			}
+		}
+
+		public string? GetChainsInfoURL()
+		{
+			return _chainsInfoURLOptions.Value.Url ??
+						throw new InvalidOperationException("ChainsInfo Url is null");
+		}
 
 
-                return _coins;
-            }
-        }
-
-
-    }
+	}
 }

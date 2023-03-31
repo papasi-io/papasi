@@ -4,7 +4,8 @@ namespace Papasi.Services;
 
 public interface IMarketService
 {
-    string? GetCoinsURL();
+	string? GetCoinsURL();
+	string? GetChainsInfoURL();
 
-    Task<List<Coins>?> GetCoinsListAsync();
+	Task<List<Coin>?> GetCoinsListAsync();
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Papasi.Models
 {
-	public class Providers
+	public class Provider
 	{
 		public string? name { get; set; }
 		public string? url { get; set; }

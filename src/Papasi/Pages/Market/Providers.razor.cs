@@ -8,19 +8,19 @@ using static System.Net.WebRequestMethods;
 
 namespace Papasi.Pages.Market
 {
-    public partial class Providers
-    {
-        [Inject] public IProvidersService ProvidersService { set; get; } = default!;
+	public partial class Providers
+	{
+		[Inject] public IProvidersService ProvidersService { set; get; } = default!;
 
 
 
-        private IEnumerable<Models.Providers> providers { get; set; } = new List<Models.Providers>();
+		private IEnumerable<Models.Provider> providers { get; set; } = new List<Models.Provider>();
 
-        protected override async Task OnInitializedAsync()
-        {
+		protected override async Task OnInitializedAsync()
+		{
 
-            providers = await ProvidersService.GetProvidersListAsync();
+			providers = await ProvidersService.GetProvidersListAsync();
 
-        }
-    }
+		}
+	}
 }

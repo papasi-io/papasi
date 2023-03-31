@@ -2,6 +2,7 @@
 @page "/market"
 
 @using Papasi.Shared.Partials.Widgets.Market;
+@using Papasi.Shared.Partials.Widgets.Charts;
 
 
 <Title Value="Markets"></Title>
@@ -9,7 +10,7 @@
 <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
 	<!--begin::Col-->
 	<div class="col-xxl-12">
-		<_CoinsWidget></_CoinsWidget>
+		<_CoinsWidget CoinsList="@coinsList"></_CoinsWidget>
 	</div>
 	<!--end::Col-->
 </div>

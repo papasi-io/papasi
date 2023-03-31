@@ -26,104 +26,106 @@ webApp.Run();
 
 void ConfigureServices(IServiceCollection services, IConfiguration configuration)
 {
-    services.AddOptions<AdminUserSeed>().Bind(configuration.GetSection("AdminUserSeed"));
+	services.AddOptions<AdminUserSeed>().Bind(configuration.GetSection("AdminUserSeed"));
 
-    services.AddAutoMapper(typeof(MappingProfile).Assembly);
+	services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
-    var connectionString = configuration.GetConnectionString("DefaultConnection");
+	var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-    // NOTE! this method of registering the db-context doesn't work with blazor-server apps!
-    //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString))
+	// NOTE! this method of registering the db-context doesn't work with blazor-server apps!
+	//services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString))
 
-    services.AddDbContextFactory<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
-    services.AddScoped(serviceProvider =>
-                           serviceProvider.GetRequiredService<IDbContextFactory<ApplicationDbContext>>()
-                                          .CreateDbContext());
-
-
-    builder.Services.AddOptions<ProvidersURL>().Bind(configuration.GetSection("Providers"));
-    builder.Services.AddOptions<CoinsURL>().Bind(configuration.GetSection("Coins"));
+	services.AddDbContextFactory<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+	services.AddScoped(serviceProvider =>
+						   serviceProvider.GetRequiredService<IDbContextFactory<ApplicationDbContext>>()
+										  .CreateDbContext());
 
 
-    IConfiguration themeConfiguration = new ConfigurationBuilder()
-                            .AddJsonFile("themesettings.json")
-                            .Build();
-    ThemeSettings.init(themeConfiguration);
-
-    services.AddIdentity<ApplicationUser, IdentityRole>()
-            .AddEntityFrameworkStores<ApplicationDbContext>()
-            .AddDefaultTokenProviders()
-            .AddDefaultUI();
-
-    services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
-    services.AddScoped<IUserInfoService, UserInfoService>();
-    services.AddScoped<IProvidersService, ProvidersService>();
-    services.AddScoped<IMarketService, MarketService>();
+	builder.Services.AddOptions<ProvidersURL>().Bind(configuration.GetSection("Providers"));
+	builder.Services.AddOptions<CoinsURL>().Bind(configuration.GetSection("Coins"));
+	builder.Services.AddOptions<ChainsInfoURL>().Bind(configuration.GetSection("ChainsInfo"));
 
 
-    services.AddScoped<IIdentityDbInitializer, IdentityDbInitializer>();
 
-    services.AddSingleton<ITheme, Theme>();
-    services.AddSingleton<IBootstrapBase, BootstrapBase>();
+	IConfiguration themeConfiguration = new ConfigurationBuilder()
+							.AddJsonFile("themesettings.json")
+							.Build();
+	ThemeSettings.init(themeConfiguration);
+
+	services.AddIdentity<ApplicationUser, IdentityRole>()
+			.AddEntityFrameworkStores<ApplicationDbContext>()
+			.AddDefaultTokenProviders()
+			.AddDefaultUI();
+
+	services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
+	services.AddScoped<IUserInfoService, UserInfoService>();
+	services.AddScoped<IProvidersService, ProvidersService>();
+	services.AddScoped<IMarketService, MarketService>();
 
 
-    services.AddRazorPages();
-    services.AddServerSideBlazor();
+	services.AddScoped<IIdentityDbInitializer, IdentityDbInitializer>();
+
+	services.AddSingleton<ITheme, Theme>();
+	services.AddSingleton<IBootstrapBase, BootstrapBase>();
+
+
+	services.AddRazorPages();
+	services.AddServerSideBlazor();
 }
 
 void ConfigureLogging(ILoggingBuilder logging, IHostEnvironment env, IConfiguration configuration)
 {
-    logging.ClearProviders();
+	logging.ClearProviders();
 
-    logging.AddDebug();
+	logging.AddDebug();
 
-    if (env.IsDevelopment())
-    {
-        logging.AddConsole();
-    }
+	if (env.IsDevelopment())
+	{
+		logging.AddConsole();
+	}
 
-    logging.AddConfiguration(configuration.GetSection("Logging"));
+	logging.AddConfiguration(configuration.GetSection("Logging"));
 }
 
 void ConfigureMiddlewares(IApplicationBuilder app, IHostEnvironment env)
 {
-    if (env.IsDevelopment())
-    {
-        app.UseDeveloperExceptionPage();
-    }
-    else
-    {
-        app.UseExceptionHandler("/Error");
-        app.UseHsts();
-    }
+	if (env.IsDevelopment())
+	{
+		app.UseDeveloperExceptionPage();
+	}
+	else
+	{
+		app.UseExceptionHandler("/Error");
+		app.UseHsts();
+	}
 
-    app.UseHttpsRedirection();
-    app.UseStaticFiles();
+	app.UseHttpsRedirection();
+	app.UseStaticFiles();
 
-    app.UseRouting();
+	app.UseRouting();
 
-    app.UseAuthentication();
-    app.UseAuthorization();
+	app.UseAuthentication();
+	app.UseAuthorization();
 }
 
 void ConfigureEndpoints(IApplicationBuilder app)
 {
-    app.UseEndpoints(endpoints =>
-    {
-        endpoints.MapRazorPages();
-        endpoints.MapBlazorHub();
-        endpoints.MapFallbackToPage("/_Host");
-    });
+	app.UseEndpoints(endpoints =>
+	{
+		endpoints.MapRazorPages();
+		endpoints.MapBlazorHub();
+		endpoints.MapFallbackToPage("/_Host");
+	});
 }
 
 void ConfigureDatabase(IApplicationBuilder app)
 {
-    app.ApplicationServices.MigrateDbContext<ApplicationDbContext>(
-                                                                   scopedServiceProvider =>
-                                                                       scopedServiceProvider
-                                                                           .GetRequiredService<IIdentityDbInitializer>()
-                                                                           .SeedDatabaseWithAdminUserAsync()
-                                                                           .GetAwaiter()
-                                                                           .GetResult()
-                                                                  );
+	app.ApplicationServices.MigrateDbContext<ApplicationDbContext>(
+																   scopedServiceProvider =>
+																	   scopedServiceProvider
+																		   .GetRequiredService<IIdentityDbInitializer>()
+																		   .SeedDatabaseWithAdminUserAsync()
+																		   .GetAwaiter()
+																		   .GetResult()
+																  );
 }

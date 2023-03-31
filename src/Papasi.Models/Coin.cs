@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Papasi.Models
 {
-    public class Coins
-    {
-        public string? name { get; set; }
+	public class Coin
+	{
+		public string? Symbol { get; set; }
 
-    }
+		public ChainInfo? ChainsInfo { get; set; }
+
+	}
 }

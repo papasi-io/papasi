@@ -16188,6 +16188,8 @@ var TablesWidget = function () {
     var initChart = function (chart, chartSelector, data, initByDefault) {
         var element = document.querySelector(chartSelector);
 
+        $(chartSelector).empty();
+
         if (!element) {
             return;
         }

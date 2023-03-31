@@ -4,8 +4,8 @@ namespace Papasi.Services;
 
 public interface IProvidersService
 {
-    string? GetAllowURL();
-    string? GetDenyURL();
+	string? GetAllowURL();
+	string? GetDenyURL();
 
-    Task<List<Providers>?> GetProvidersListAsync();
+	Task<List<Provider>?> GetProvidersListAsync();
 }
